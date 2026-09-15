@@ -173,97 +173,66 @@ export function MapEngine({
 
     const themeColor = entityConfig?.color || "#EA580C";
 
-    if (!selectedState) {
-      // OVERVIEW MODE: Render State Centroid Badges with outer aura rings
-      stateAggregations.forEach((agg) => {
-        const el = document.createElement("div");
-        el.className =
-          "group cursor-pointer transition-all duration-200 transform hover:scale-105 select-none";
+    // RENDER SLEEK GLOWING CIRCULAR PINS MATCHING REFERENCE SPECIMEN (media__1789481991797.png)
+    const activeLocations = selectedState
+      ? locations.filter((l) => l.state === selectedState)
+      : locations;
 
-        el.innerHTML = `
-          <div class="relative flex items-center justify-center">
-            <div class="absolute w-14 h-14 rounded-full opacity-15 pointer-events-none transition-transform group-hover:scale-125" style="background-color: ${themeColor}"></div>
-            <div class="absolute w-10 h-10 rounded-full opacity-30 pointer-events-none" style="background-color: ${themeColor}"></div>
-            <div class="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full text-white shadow-xl border border-white/90 font-extrabold text-xs"
-                 style="background-color: ${themeColor}; box-shadow: 0 4px 16px ${themeColor}60">
-              <span class="text-[10px] tracking-wider uppercase font-black">${agg.stateName}</span>
-              <span class="bg-black/25 px-1.5 py-0.2 rounded-full text-[10px] font-black">${agg.count}</span>
-            </div>
-          </div>
-        `;
+    activeLocations.forEach((loc) => {
+      const isSelected = selectedLocation?.id === loc.id;
+      const el = document.createElement("div");
+      el.className = "group cursor-pointer transition-all duration-300 select-none";
 
-        el.addEventListener("click", (e) => {
-          e.stopPropagation();
-          onSelectState(agg.stateName, agg.bounds);
-          if (agg.bounds) {
-            map.fitBounds(agg.bounds, { padding: 90, duration: 1200 });
-          } else {
-            map.flyTo({ center: agg.centroid, zoom: 7.2, duration: 1200 });
+      el.innerHTML = `
+        <div class="relative flex items-center justify-center">
+          <div class="absolute w-11 h-11 rounded-full opacity-20 pointer-events-none group-hover:scale-150 transition-transform duration-300" style="background-color: ${themeColor}"></div>
+          <div class="absolute w-7 h-7 rounded-full opacity-35 pointer-events-none" style="background-color: ${themeColor}"></div>
+          ${
+            isSelected
+              ? `<div class="absolute w-9 h-9 rounded-full animate-ping opacity-60" style="background-color: ${themeColor}"></div>`
+              : ""
           }
+          <div class="relative w-4 h-4 rounded-full border-2 border-white shadow-xl flex items-center justify-center transition-transform transform group-hover:scale-125"
+               style="background-color: ${themeColor}; box-shadow: 0 4px 14px ${themeColor}70">
+            <div class="w-1 h-1 bg-white rounded-full"></div>
+          </div>
+        </div>
+      `;
+
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        onSelectLocation(loc);
+
+        // Fly map smoothly to touched pin
+        map.flyTo({
+          center: [loc.longitude, loc.latitude],
+          zoom: Math.max(map.getZoom(), 6.8),
+          duration: 1000,
         });
 
-        const marker = new maplibregl.Marker({ element: el })
-          .setLngLat(agg.centroid)
-          .addTo(map);
+        // Show minimal popover label
+        if (popupRef.current) popupRef.current.remove();
 
-        stateMarkersRef.current.push(marker);
-      });
-    } else {
-      // STATE DETAIL MODE: Render Glowing Concentric Aura Node Markers
-      const stateLocs = locations.filter((l) => l.state === selectedState);
-
-      stateLocs.forEach((loc) => {
-        const isSelected = selectedLocation?.id === loc.id;
-        const el = document.createElement("div");
-        el.className = "group cursor-pointer transition-all duration-300 select-none";
-
-        el.innerHTML = `
-          <div class="relative flex items-center justify-center">
-            <div class="absolute w-12 h-12 rounded-full opacity-20 pointer-events-none group-hover:scale-125 transition-transform" style="background-color: ${themeColor}"></div>
-            <div class="absolute w-8 h-8 rounded-full opacity-35 pointer-events-none" style="background-color: ${themeColor}"></div>
-            ${
-              isSelected
-                ? `<div class="absolute w-10 h-10 rounded-full animate-ping opacity-60" style="background-color: ${themeColor}"></div>`
-                : ""
-            }
-            <div class="relative w-5 h-5 rounded-full border-2 border-white shadow-xl flex items-center justify-center transition-transform transform group-hover:scale-125"
-                 style="background-color: ${themeColor}; box-shadow: 0 4px 14px ${themeColor}70">
-              <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
-            </div>
-          </div>
+        const popupDom = document.createElement("div");
+        popupDom.className =
+          "px-3 py-1.5 bg-white/95 text-slate-900 rounded-lg shadow-md text-xs font-bold border border-slate-200 select-none pointer-events-none";
+        popupDom.innerHTML = `
+          <div class="text-xs font-black text-slate-900">${loc.name}</div>
+          <div class="text-[10px] text-slate-500 font-medium">${loc.city}, ${loc.state}</div>
         `;
 
-        el.addEventListener("click", (e) => {
-          e.stopPropagation();
-          onSelectLocation(loc);
-
-          // Show minimal popover
-          if (popupRef.current) popupRef.current.remove();
-
-          const popupDom = document.createElement("div");
-          popupDom.className =
-            "p-3 bg-white text-slate-900 rounded-xl shadow-xl text-xs border border-slate-200 space-y-1 select-none min-w-[180px]";
-          popupDom.innerHTML = `
-            <div class="font-extrabold text-sm text-slate-900">${loc.name}</div>
-            <div class="text-[11px] text-slate-500 font-medium">${loc.city}, ${loc.state}</div>
-            <div class="mt-1.5 pt-1.5 border-t border-slate-100 font-bold text-[11px]" style="color: ${themeColor}">
-              ${entityConfig?.shortName || "Impact"} Record
-            </div>
-          `;
-
-          popupRef.current = new maplibregl.Popup({ offset: 15, closeButton: false })
-            .setLngLat([loc.longitude, loc.latitude])
-            .setDOMContent(popupDom)
-            .addTo(map);
-        });
-
-        const marker = new maplibregl.Marker({ element: el })
+        popupRef.current = new maplibregl.Popup({ offset: 12, closeButton: false })
           .setLngLat([loc.longitude, loc.latitude])
+          .setDOMContent(popupDom)
           .addTo(map);
-
-        locationMarkersRef.current.push(marker);
       });
-    }
+
+      const marker = new maplibregl.Marker({ element: el })
+        .setLngLat([loc.longitude, loc.latitude])
+        .addTo(map);
+
+      locationMarkersRef.current.push(marker);
+    });
   }, [mapLoaded, selectedState, stateAggregations, locations, entityConfig, selectedLocation]);
 
   // Handle smooth map camera transitions when selectedState changes
