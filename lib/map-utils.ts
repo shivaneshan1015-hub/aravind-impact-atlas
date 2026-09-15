@@ -26,34 +26,31 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
 }
 
 /**
- * Premium Quiet Vector Institutional Basemap Style.
- * Clean monochrome vector landmass with 0 street noise, 0 raster tiles, 0 watermarks, 
- * matching reference specimen (soft off-white ocean #F4F4F2, warm light gray land #E2E2DF, crisp white borders #FFFFFF).
+ * Premium Quiet Light Institutional Basemap Style.
+ * Uses Esri World Light Gray Canvas - 100% free, 0 API key required, 100% ZERO watermark text, 
+ * ultra-clean quiet institutional landmass style.
  */
 export const LIGHT_ATLAS_MAP_STYLE: maplibreGl.StyleSpecification = {
   version: 8,
-  name: "CARTO Quiet Light Institutional Atlas",
+  name: "Esri World Light Gray Institutional Atlas",
   sources: {
-    carto_light: {
+    esri_light_gray: {
       type: "raster",
       tiles: [
-        "https://a.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}@2x.png",
-        "https://b.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}@2x.png",
-        "https://c.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}@2x.png",
-        "https://d.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}@2x.png",
+        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
       ],
       tileSize: 256,
       attribution:
-        '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>',
+        '&copy; <a href="https://www.esri.com/">Esri</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     },
   },
   layers: [
     {
-      id: "carto-light-basemap",
+      id: "esri-light-gray-basemap",
       type: "raster",
-      source: "carto_light",
+      source: "esri_light_gray",
       minzoom: 0,
-      maxzoom: 20,
+      maxzoom: 16,
     },
   ],
 };
