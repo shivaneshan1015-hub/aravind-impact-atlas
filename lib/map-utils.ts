@@ -32,60 +32,28 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
  */
 export const LIGHT_ATLAS_MAP_STYLE: maplibreGl.StyleSpecification = {
   version: 8,
-  name: "Quiet Light Vector Atlas",
+  name: "CARTO Quiet Light Institutional Atlas",
   sources: {
-    world: {
-      type: "geojson",
-      data: "/maps/world/countries.geojson",
-    },
-    india: {
-      type: "geojson",
-      data: "/maps/india/states.geojson",
+    carto_light: {
+      type: "raster",
+      tiles: [
+        "https://a.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}@2x.png",
+        "https://b.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}@2x.png",
+        "https://c.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}@2x.png",
+        "https://d.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}@2x.png",
+      ],
+      tileSize: 256,
+      attribution:
+        '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>',
     },
   },
   layers: [
     {
-      id: "background-ocean",
-      type: "background",
-      paint: {
-        "background-color": "#F4F4F2",
-      },
-    },
-    {
-      id: "world-countries-fill",
-      type: "fill",
-      source: "world",
-      paint: {
-        "fill-color": "#E2E2DF",
-        "fill-opacity": 1.0,
-      },
-    },
-    {
-      id: "world-countries-border",
-      type: "line",
-      source: "world",
-      paint: {
-        "line-color": "#FFFFFF",
-        "line-width": 1.2,
-      },
-    },
-    {
-      id: "india-states-fill",
-      type: "fill",
-      source: "india",
-      paint: {
-        "fill-color": "#DADAD7",
-        "fill-opacity": 1.0,
-      },
-    },
-    {
-      id: "india-states-border",
-      type: "line",
-      source: "india",
-      paint: {
-        "line-color": "#FFFFFF",
-        "line-width": 1.5,
-      },
+      id: "carto-light-basemap",
+      type: "raster",
+      source: "carto_light",
+      minzoom: 0,
+      maxzoom: 20,
     },
   ],
 };
