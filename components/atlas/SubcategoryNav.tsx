@@ -18,7 +18,7 @@ export function SubcategoryNav({
   if (subcategories.length <= 1) return null;
 
   return (
-    <div className="bg-slate-950/80 border-b border-slate-800/80 px-4 py-2 flex items-center gap-2 overflow-x-auto select-none shrink-0 z-10 backdrop-blur-sm">
+    <div className="bg-white/90 border-b border-slate-200 px-4 py-2 flex items-center gap-2 overflow-x-auto select-none shrink-0 z-10 backdrop-blur-sm shadow-2xs">
       <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-500 mr-2 shrink-0 hidden sm:inline">
         Focus Layer:
       </span>
@@ -34,14 +34,15 @@ export function SubcategoryNav({
               className={clsx(
                 "px-3 py-1 rounded-md text-xs font-medium transition-all duration-150 whitespace-nowrap border shrink-0 flex items-center gap-1.5",
                 isSelected
-                  ? "bg-slate-900 text-white shadow-sm"
-                  : "bg-slate-900/40 text-slate-400 border-slate-850 hover:bg-slate-850 hover:text-slate-200"
+                  ? "bg-slate-900 text-white shadow-xs"
+                  : "bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200 hover:text-slate-900"
               )}
               style={
                 isSelected
                   ? {
+                      backgroundColor: entityConfig.color,
                       borderColor: entityConfig.color,
-                      boxShadow: `0 0 10px ${entityConfig.color}25`,
+                      color: "#FFFFFF",
                     }
                   : undefined
               }
@@ -49,7 +50,7 @@ export function SubcategoryNav({
               <span
                 className="w-1.5 h-1.5 rounded-full"
                 style={{
-                  backgroundColor: isSelected ? entityConfig.color : "#475569",
+                  backgroundColor: isSelected ? "#FFFFFF" : "#64748B",
                 }}
               />
               <span>{sub.name}</span>

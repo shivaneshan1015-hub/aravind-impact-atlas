@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronRight, Globe, MapPin, Building, RotateCcw } from "lucide-react";
+import { ChevronRight, Globe, MapPin, RotateCcw } from "lucide-react";
 import { buildGeographicBreadcrumbs } from "@/lib/geography/hierarchy";
 import { EntityConfig } from "@/types/entity";
 
@@ -28,10 +28,10 @@ export function GeographicBreadcrumb({
   );
 
   return (
-    <div className="bg-slate-950/90 border-b border-slate-800/80 px-4 py-1.5 flex items-center justify-between text-xs select-none shrink-0 z-10">
+    <div className="bg-[#F7F8F6] border-b border-slate-200 px-4 py-1.5 flex items-center justify-between text-xs select-none shrink-0 z-10">
       {/* Breadcrumb Links */}
-      <div className="flex items-center gap-1.5 overflow-x-auto text-slate-400">
-        <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-400 mr-1 flex items-center gap-1 shrink-0">
+      <div className="flex items-center gap-1.5 overflow-x-auto text-slate-500">
+        <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-500 mr-1 flex items-center gap-1 shrink-0">
           <Globe className="w-3 h-3 text-slate-400" />
           Location:
         </span>
@@ -47,10 +47,10 @@ export function GeographicBreadcrumb({
 
               {isLast ? (
                 <span
-                  className="font-bold text-slate-100 px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 flex items-center gap-1 shrink-0"
+                  className="font-bold text-slate-900 px-1.5 py-0.5 rounded bg-white border border-slate-300 shadow-2xs flex items-center gap-1 shrink-0"
                   style={item.id === "state" ? { borderColor: entityConfig.color } : undefined}
                 >
-                  {item.id === "state" && <MapPin className="w-3 h-3 text-amber-400" />}
+                  {item.id === "state" && <MapPin className="w-3 h-3 text-amber-600" />}
                   {item.label}
                 </span>
               ) : (
@@ -59,7 +59,7 @@ export function GeographicBreadcrumb({
                     if (item.id === "country") onResetToIndia();
                     else if (item.id === "entity" || item.id === "subcategory") onResetToWorld();
                   }}
-                  className="hover:text-slate-200 transition-colors font-medium px-1 py-0.5 rounded hover:bg-slate-900/50 shrink-0"
+                  className="hover:text-slate-900 transition-colors font-medium px-1 py-0.5 rounded hover:bg-slate-200/60 shrink-0"
                 >
                   {item.label}
                 </button>
@@ -73,10 +73,10 @@ export function GeographicBreadcrumb({
       {selectedState && (
         <button
           onClick={onResetToIndia}
-          className="flex items-center gap-1.5 px-2 py-1 rounded bg-slate-900 hover:bg-slate-800 text-amber-400 hover:text-amber-300 border border-amber-500/30 text-[11px] font-semibold transition-all shrink-0 ml-2"
+          className="flex items-center gap-1.5 px-2 py-1 rounded bg-white hover:bg-slate-100 text-amber-700 hover:text-amber-800 border border-amber-500/40 text-[11px] font-semibold transition-all shrink-0 ml-2 shadow-2xs"
         >
           <RotateCcw className="w-3 h-3" />
-          <span>Back to India</span>
+          <span>← India</span>
         </button>
       )}
     </div>

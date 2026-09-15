@@ -1,0 +1,44 @@
+{
+  "version": 8,
+  "name": "Institutional Light Atlas",
+  "metadata": {
+    "description": "API-key free self-contained MapLibre GL style for Aravind Impact Atlas"
+  },
+  "sources": {
+    "world-countries": {
+      "type": "geojson",
+      "data": "/maps/world/countries.geojson"
+    },
+    "india-states": {
+      "type": "geojson",
+      "data": "/maps/india/states.geojson"
+    }
+  },
+  "layers": [
+    {
+      "id": "background-water",
+      "type": "background",
+      "paint": {
+        "background-color": "#E7EEF2"
+      }
+    },
+    {
+      "id": "world-land-fill",
+      "type": "fill",
+      "source": "world-countries",
+      "paint": {
+        "fill-color": "#EEF0EC",
+        "fill-opacity": 0.95
+      }
+    },
+    {
+      "id": "world-borders",
+      "type": "line",
+      "source": "world-countries",
+      "paint": {
+        "line-color": "#D3D8D3",
+        "line-width": 1.0
+      }
+    }
+  ]
+}

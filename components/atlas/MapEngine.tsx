@@ -5,7 +5,7 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { EntityConfig } from "@/types/entity";
 import { GeoLocationItem, StateAggregation } from "@/types/geo";
-import { DARK_ATLAS_MAP_STYLE, hexToRgba } from "@/lib/map-utils";
+import { LIGHT_ATLAS_MAP_STYLE, hexToRgba } from "@/lib/map-utils";
 import { INDIA_CENTER, INDIA_DEFAULT_ZOOM } from "@/config/entities";
 
 interface MapEngineProps {
@@ -43,7 +43,7 @@ export function MapEngine({
 
     const map = new maplibregl.Map({
       container: mapContainerRef.current,
-      style: DARK_ATLAS_MAP_STYLE,
+      style: LIGHT_ATLAS_MAP_STYLE,
       center: INDIA_CENTER,
       zoom: INDIA_DEFAULT_ZOOM,
       attributionControl: false,
@@ -61,35 +61,35 @@ export function MapEngine({
         data: "/maps/india/states.geojson",
       });
 
-      // Layer 1: Fill layer for states
+      // Layer 1: Vector Fill layer for states
       map.addLayer({
         id: "india-states-fill",
         type: "fill",
         source: "india-states-source",
         paint: {
-          "fill-color": "#0f172a",
-          "fill-opacity": 0.4,
+          "fill-color": "#F1F3EE",
+          "fill-opacity": 0.5,
         },
       });
 
-      // Layer 2: Border outline layer
+      // Layer 2: Vector Border outline layer
       map.addLayer({
         id: "india-states-border",
         type: "line",
         source: "india-states-source",
         paint: {
-          "line-color": "rgba(148, 163, 184, 0.3)",
+          "line-color": "#CBD5E1",
           "line-width": 1.2,
         },
       });
 
-      // Layer 3: Hover highlight layer
+      // Layer 3: Hover highlight line
       map.addLayer({
         id: "india-states-hover",
         type: "line",
         source: "india-states-source",
         paint: {
-          "line-color": "#F97316",
+          "line-color": "#EA580C",
           "line-width": 2.5,
         },
         filter: ["==", "ST_NM", ""],
@@ -136,24 +136,18 @@ export function MapEngine({
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
 
-    const themeColor = entityConfig.color;
+    const themeColor = entityConfig.color || "#EA580C";
 
     // Build dynamic paint expression for state fills
-    const countMap: Record<string, number> = {};
-    stateAggregations.forEach((s) => {
-      countMap[s.stateName] = s.count;
-    });
-
-    // Color intensity scale
     const matchExpression: any[] = ["match", ["get", "ST_NM"]];
     stateAggregations.forEach((s) => {
-      let opacity = 0.25;
-      if (s.count >= 6) opacity = 0.65;
-      else if (s.count >= 3) opacity = 0.45;
+      let opacity = 0.2;
+      if (s.count >= 6) opacity = 0.55;
+      else if (s.count >= 3) opacity = 0.38;
 
       matchExpression.push(s.stateName, hexToRgba(themeColor, opacity));
     });
-    matchExpression.push("rgba(15, 23, 42, 0.4)"); // Default fill
+    matchExpression.push("#F1F3EE"); // Default light fill
 
     if (map.getLayer("india-states-fill")) {
       map.setPaintProperty("india-states-fill", "fill-color", matchExpression);
@@ -177,23 +171,23 @@ export function MapEngine({
       popupRef.current = null;
     }
 
-    const themeColor = entityConfig.color;
+    const themeColor = entityConfig.color || "#EA580C";
 
     if (!selectedState) {
       // OVERVIEW MODE: Render State Centroid Badges
       stateAggregations.forEach((agg) => {
         const el = document.createElement("div");
         el.className =
-          "group cursor-pointer transition-all duration-300 transform hover:scale-110 select-none";
+          "group cursor-pointer transition-all duration-300 transform hover:scale-105 select-none";
 
         el.innerHTML = `
           <div class="flex flex-col items-center">
-            <div class="px-2.5 py-1 rounded-full text-xs font-bold text-white shadow-xl border border-white/30 flex items-center gap-1.5 backdrop-blur-md transition-shadow"
-                 style="background-color: ${themeColor}; box-shadow: 0 4px 16px ${themeColor}70">
-              <span class="text-[10px] tracking-wider uppercase font-extrabold opacity-95">${agg.stateName}</span>
-              <span class="bg-black/40 px-1.5 py-0.5 rounded-full text-[11px] font-black tracking-tight border border-white/20">${agg.count}</span>
+            <div class="px-2.5 py-1 rounded-full text-xs font-bold text-white shadow-md border border-white flex items-center gap-1.5 backdrop-blur-sm"
+                 style="background-color: ${themeColor}; box-shadow: 0 4px 12px ${themeColor}40">
+              <span class="text-[10px] tracking-wider uppercase font-extrabold">${agg.stateName}</span>
+              <span class="bg-black/20 px-1.5 py-0.5 rounded-full text-[11px] font-black">${agg.count}</span>
             </div>
-            <div class="w-2 h-2 rounded-full mt-0.5 opacity-90 shadow-sm" style="background-color: ${themeColor}"></div>
+            <div class="w-2 h-2 rounded-full mt-0.5 shadow-sm" style="background-color: ${themeColor}"></div>
           </div>
         `;
 
@@ -226,11 +220,11 @@ export function MapEngine({
           <div class="relative flex items-center justify-center">
             ${
               isSelected
-                ? `<div class="absolute w-9 h-9 rounded-full animate-ping opacity-80" style="background-color: ${themeColor}"></div>`
+                ? `<div class="absolute w-9 h-9 rounded-full animate-ping opacity-75" style="background-color: ${themeColor}"></div>`
                 : ""
             }
-            <div class="w-6 h-6 rounded-full border-2 border-white shadow-2xl flex items-center justify-center transition-transform transform group-hover:scale-125"
-                 style="background-color: ${themeColor}; box-shadow: 0 0 16px ${themeColor}">
+            <div class="w-6 h-6 rounded-full border-2 border-white shadow-lg flex items-center justify-center transition-transform transform group-hover:scale-125"
+                 style="background-color: ${themeColor}; box-shadow: 0 2px 10px ${themeColor}60">
               <div class="w-2 h-2 bg-white rounded-full"></div>
             </div>
           </div>
@@ -245,11 +239,11 @@ export function MapEngine({
 
           const popupDom = document.createElement("div");
           popupDom.className =
-            "p-3 bg-slate-950 text-slate-100 rounded-lg shadow-2xl text-xs border border-slate-800 space-y-1 select-none min-w-[180px]";
+            "p-3 bg-white text-slate-900 rounded-lg shadow-xl text-xs border border-slate-200 space-y-1 select-none min-w-[180px]";
           popupDom.innerHTML = `
-            <div class="font-bold text-sm text-slate-100">${loc.name}</div>
-            <div class="text-[11px] text-slate-400 font-medium">${loc.city}, ${loc.state}</div>
-            <div class="mt-1.5 pt-1.5 border-t border-slate-800/80 font-semibold text-[11px]" style="color: ${entityConfig.colorLight}">
+            <div class="font-bold text-sm text-slate-900">${loc.name}</div>
+            <div class="text-[11px] text-slate-500 font-medium">${loc.city}, ${loc.state}</div>
+            <div class="mt-1.5 pt-1.5 border-t border-slate-100 font-semibold text-[11px]" style="color: ${themeColor}">
               ${entityConfig.shortName} Record
             </div>
           `;
@@ -291,7 +285,7 @@ export function MapEngine({
   }, [selectedState, entityConfig, mapLoaded]);
 
   return (
-    <div className="relative w-full h-full bg-slate-950 overflow-hidden">
+    <div className="relative w-full h-full bg-[#E7EEF2] overflow-hidden">
       <div ref={mapContainerRef} className="w-full h-full" />
     </div>
   );

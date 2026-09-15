@@ -1,0 +1,111 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "NAME": "India", "ISO_A2": "IN" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [68.16, 23.65],
+            [70.12, 24.70],
+            [74.47, 24.12],
+            [78.27, 30.20],
+            [77.34, 35.50],
+            [80.34, 30.00],
+            [88.22, 27.22],
+            [96.02, 27.97],
+            [92.12, 20.82],
+            [87.49, 21.53],
+            [80.34, 13.56],
+            [77.58, 8.29],
+            [76.24, 8.08],
+            [74.05, 14.82],
+            [68.16, 23.65]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "NAME": "Nepal", "ISO_A2": "NP" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [80.05, 28.85],
+            [88.12, 26.85],
+            [88.05, 27.85],
+            [80.05, 30.05],
+            [80.05, 28.85]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "NAME": "Sri Lanka", "ISO_A2": "LK" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [79.82, 9.85],
+            [81.82, 9.85],
+            [81.82, 5.85],
+            [79.82, 5.85],
+            [79.82, 9.85]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "NAME": "Bangladesh", "ISO_A2": "BD" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [88.05, 26.52],
+            [92.65, 26.52],
+            [92.65, 20.65],
+            [88.05, 20.65],
+            [88.05, 26.52]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "NAME": "Kenya", "ISO_A2": "KE" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [33.90, 4.62],
+            [41.90, 4.62],
+            [41.90, -4.68],
+            [33.90, -4.68],
+            [33.90, 4.62]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "NAME": "Brazil", "ISO_A2": "BR" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-73.98, 5.27],
+            [-34.79, 5.27],
+            [-34.79, -33.75],
+            [-73.98, -33.75],
+            [-73.98, 5.27]
+          ]
+        ]
+      }
+    }
+  ]
+}

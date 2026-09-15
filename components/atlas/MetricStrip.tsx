@@ -15,7 +15,7 @@ export function MetricStrip({
   selectedState,
   locations,
 }: MetricStripProps) {
-  // Compute dynamic stats
+  // Compute dynamic stats from records
   const totalLocations = locations.length;
   const uniqueStates = new Set(locations.map((l) => l.state)).size;
   const uniqueCities = new Set(locations.map((l) => l.city)).size;
@@ -26,15 +26,15 @@ export function MetricStrip({
     entityConfig.subcategories[0];
 
   return (
-    <div className="bg-slate-950/90 border-b border-slate-800/60 px-4 py-2 flex items-center justify-between z-10 shrink-0 select-none overflow-x-auto">
+    <div className="bg-white/95 border-b border-slate-200 px-4 py-2 flex items-center justify-between z-10 shrink-0 select-none overflow-x-auto shadow-2xs">
       {/* Scope Indicator */}
       <div className="flex items-center gap-2">
-        <span className="text-[10px] font-semibold tracking-widest text-slate-400 uppercase">
+        <span className="text-[10px] font-semibold tracking-widest text-slate-500 uppercase">
           {selectedState ? `STATE: ${selectedState.toUpperCase()}` : "SCOPE: NATIONAL & GLOBAL"}
         </span>
 
         {selectedState && (
-          <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30">
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-700 border border-amber-500/30 font-medium">
             Filtered State View
           </span>
         )}
@@ -43,12 +43,12 @@ export function MetricStrip({
       {/* Metrics Row */}
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-2">
-          <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+          <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider">
             {currentSubcat?.name || "RECORDS"}:
           </span>
           <span
             className="text-sm font-bold tracking-tight"
-            style={{ color: entityConfig.colorLight }}
+            style={{ color: entityConfig.color }}
           >
             {totalLocations}
           </span>
@@ -56,30 +56,30 @@ export function MetricStrip({
 
         {!selectedState && (
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+            <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider">
               STATES:
             </span>
-            <span className="text-sm font-bold text-slate-200">
+            <span className="text-sm font-bold text-slate-800">
               {uniqueStates}
             </span>
           </div>
         )}
 
         <div className="flex items-center gap-2">
-          <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+          <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider">
             CITIES:
           </span>
-          <span className="text-sm font-bold text-slate-200">
+          <span className="text-sm font-bold text-slate-800">
             {uniqueCities}
           </span>
         </div>
 
         {uniqueCountries > 1 && (
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+            <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider">
               COUNTRIES:
             </span>
-            <span className="text-sm font-bold text-slate-200">
+            <span className="text-sm font-bold text-slate-800">
               {uniqueCountries}
             </span>
           </div>

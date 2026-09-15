@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #090d16;
-  --foreground: #f8fafc;
+  --background: #F7F8F6;
+  --foreground: #18212B;
 }
 
 body {
@@ -14,26 +14,26 @@ body {
   overflow: hidden;
 }
 
-/* Custom Scrollbar */
+/* Custom Light Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(241, 245, 249, 0.8);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(51, 65, 85, 0.8);
+  background: rgba(203, 213, 225, 0.9);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(71, 85, 105, 1);
+  background: rgba(148, 163, 184, 1);
 }
 
-/* MapLibre Canvas Customization */
+/* MapLibre Light Popover Customization */
 .maplibregl-popup-content {
   background: transparent !important;
   padding: 0 !important;
@@ -42,5 +42,5 @@ body {
 }
 
 .maplibregl-popup-tip {
-  border-top-color: #020617 !important;
+  border-top-color: #FFFFFF !important;
 }

@@ -5,7 +5,7 @@ import { ENTITY_CONFIGS } from "@/config/entities";
  * Get map accent color for an entity.
  */
 export function getEntityColor(entityId: EntityId): string {
-  return ENTITY_CONFIGS[entityId]?.color || "#2563EB";
+  return ENTITY_CONFIGS[entityId]?.color || "#EA580C";
 }
 
 /**
@@ -26,32 +26,47 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
 }
 
 /**
- * Custom institutional MapLibre style JSON.
- * High-performance, crisp dark theme basemap without requiring external API keys.
+ * 100% API-Key Free Self-Contained MapLibre GL Light Style.
+ * Renders crisp vector land, borders, and water without any external tile dependencies.
  */
-export const DARK_ATLAS_MAP_STYLE: maplibreGl.StyleSpecification = {
+export const LIGHT_ATLAS_MAP_STYLE: maplibreGl.StyleSpecification = {
   version: 8,
-  name: "Institutional Dark Atlas",
+  name: "Institutional Light Atlas",
   sources: {
-    carto_dark: {
-      type: "raster",
-      tiles: [
-        "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-        "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-        "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-      ],
-      tileSize: 256,
-      attribution:
-        '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>',
+    world_countries: {
+      type: "geojson",
+      data: "/maps/world/countries.geojson",
+    },
+    india_states: {
+      type: "geojson",
+      data: "/maps/india/states.geojson",
     },
   },
   layers: [
     {
-      id: "carto-dark-layer",
-      type: "raster",
-      source: "carto_dark",
-      minzoom: 0,
-      maxzoom: 20,
+      id: "background-water",
+      type: "background",
+      paint: {
+        "background-color": "#E7EEF2",
+      },
+    },
+    {
+      id: "world-land-fill",
+      type: "fill",
+      source: "world_countries",
+      paint: {
+        "fill-color": "#EEF0EC",
+        "fill-opacity": 0.95,
+      },
+    },
+    {
+      id: "world-borders",
+      type: "line",
+      source: "world_countries",
+      paint: {
+        "line-color": "#D3D8D3",
+        "line-width": 1.0,
+      },
     },
   ],
 };

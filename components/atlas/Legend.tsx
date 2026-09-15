@@ -12,14 +12,14 @@ export function Legend({
   selectedState,
   selectedSubcategoryId,
 }: LegendProps) {
-  const color = entityConfig.color;
+  const color = entityConfig.color || "#EA580C";
   const currentSubcat =
     entityConfig.subcategories.find((s) => s.id === selectedSubcategoryId) ||
     entityConfig.subcategories[0];
 
   return (
-    <div className="absolute bottom-6 left-6 bg-slate-950/90 border border-slate-800/80 rounded-lg p-3 text-xs z-10 shadow-lg backdrop-blur-md select-none max-w-xs">
-      <h4 className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-2">
+    <div className="absolute bottom-6 left-6 bg-white/95 border border-slate-200 rounded-lg p-3 text-xs z-10 shadow-md backdrop-blur-sm select-none max-w-xs">
+      <h4 className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-2">
         {currentSubcat?.legendTitle || "Map Legend"}
       </h4>
 
@@ -27,37 +27,37 @@ export function Legend({
         <div className="space-y-1.5">
           <div className="flex items-center gap-2">
             <span
-              className="w-3 h-3 rounded-full border border-white/40 shadow-sm shrink-0"
+              className="w-3 h-3 rounded-full border border-white shadow-xs shrink-0"
               style={{ backgroundColor: color }}
             />
-            <span className="text-slate-300">
-              Individual {entityConfig.shortName} Facility Marker
+            <span className="text-slate-700 font-medium">
+              Individual {entityConfig.shortName} Marker
             </span>
           </div>
         </div>
       ) : (
         <div className="space-y-2">
-          <div className="text-[11px] text-slate-300 font-medium">
+          <div className="text-[11px] text-slate-700 font-medium">
             State Density & Location Counts
           </div>
-          <div className="flex items-center gap-3 text-[11px] text-slate-400">
+          <div className="flex items-center gap-3 text-[11px] text-slate-600">
             <div className="flex items-center gap-1.5">
               <span
-                className="w-2.5 h-2.5 rounded-full opacity-50"
+                className="w-2.5 h-2.5 rounded-full opacity-40"
                 style={{ backgroundColor: color }}
               />
               <span>1 - 2</span>
             </div>
             <div className="flex items-center gap-1.5">
               <span
-                className="w-2.5 h-2.5 rounded-full opacity-80"
+                className="w-2.5 h-2.5 rounded-full opacity-70"
                 style={{ backgroundColor: color }}
               />
               <span>3 - 4</span>
             </div>
             <div className="flex items-center gap-1.5">
               <span
-                className="w-2.5 h-2.5 rounded-full ring-2 ring-white/20"
+                className="w-2.5 h-2.5 rounded-full ring-2 ring-amber-500/20"
                 style={{ backgroundColor: color }}
               />
               <span>5+</span>

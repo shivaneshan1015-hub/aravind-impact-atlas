@@ -21,7 +21,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center rounded-md transition-all duration-200 font-medium disabled:opacity-50 disabled:pointer-events-none select-none focus:outline-none focus:ring-1 focus:ring-slate-500";
+    "inline-flex items-center justify-center rounded-md transition-all duration-200 font-medium disabled:opacity-50 disabled:pointer-events-none select-none focus:outline-none focus:ring-1 focus:ring-slate-400";
 
   const sizes = {
     sm: "px-2.5 py-1 text-xs gap-1.5",
@@ -30,17 +30,17 @@ export function Button({
   };
 
   const variants = {
-    primary: "bg-blue-600 text-white hover:bg-blue-500 shadow-sm",
-    secondary: "bg-slate-900/80 text-slate-200 border border-slate-800 hover:bg-slate-800 hover:border-slate-700",
-    outline: "border border-slate-700 text-slate-300 hover:bg-slate-800/60",
-    ghost: "text-slate-400 hover:text-white hover:bg-slate-800/50",
-    icon: "p-2 text-slate-400 hover:text-white hover:bg-slate-800/70 rounded-md border border-slate-800",
+    primary: "bg-blue-600 text-white hover:bg-blue-700 shadow-xs",
+    secondary: "bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200 hover:text-slate-900",
+    outline: "border border-slate-300 text-slate-700 hover:bg-slate-100",
+    ghost: "text-slate-600 hover:text-slate-900 hover:bg-slate-100",
+    icon: "p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md border border-slate-200",
   };
 
   const customStyle = active && accentColor ? {
     borderColor: accentColor,
-    backgroundColor: `${accentColor}1A`, // ~10% opacity
-    color: "#FFFFFF",
+    backgroundColor: `${accentColor}15`,
+    color: accentColor,
     ...style
   } : style;
 
@@ -51,7 +51,7 @@ export function Button({
           baseStyles,
           sizes[size],
           variants[variant],
-          active && !accentColor && "bg-slate-800 text-white border-slate-600",
+          active && !accentColor && "bg-slate-200 text-slate-900 border-slate-400",
           className
         )
       )}

@@ -17,10 +17,10 @@ export function Badge({
     "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium tracking-wide transition-colors";
 
   const variants = {
-    default: "bg-slate-800 text-slate-300 border border-slate-700/60",
-    outline: "border border-slate-700 text-slate-400 bg-transparent",
-    gold: "bg-amber-500/10 text-amber-400 border border-amber-500/30",
-    demo: "bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold tracking-wider animate-pulse",
+    default: "bg-slate-100 text-slate-700 border border-slate-200",
+    outline: "border border-slate-300 text-slate-600 bg-transparent",
+    gold: "bg-amber-500/10 text-amber-800 border border-amber-500/30",
+    demo: "bg-amber-500/10 text-amber-800 border border-amber-500/40 font-semibold tracking-wider",
   };
 
   return (
