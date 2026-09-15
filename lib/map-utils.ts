@@ -26,20 +26,20 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
 }
 
 /**
- * Premium Light Institutional Basemap Style.
- * Uses CARTO Positron light tiles - 100% free, no API key required, ultra-crisp real world map with oceans, land, rivers, boundaries, and cities.
+ * Premium Quiet Light Institutional Basemap Style.
+ * Uses CARTO Light No-Labels raster tiles - 100% free, 0 API key required, ultra-clean quiet landmass map with no text clutter or watermarks.
  */
 export const LIGHT_ATLAS_MAP_STYLE: maplibreGl.StyleSpecification = {
   version: 8,
-  name: "CARTO Light Institutional Atlas",
+  name: "CARTO Quiet Light Institutional Atlas",
   sources: {
     carto_light: {
       type: "raster",
       tiles: [
-        "https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
-        "https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
-        "https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
-        "https://d.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
+        "https://a.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}@2x.png",
+        "https://b.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}@2x.png",
+        "https://c.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}@2x.png",
+        "https://d.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}@2x.png",
       ],
       tileSize: 256,
       attribution:

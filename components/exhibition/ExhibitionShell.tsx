@@ -23,7 +23,7 @@ import { MapControls } from "@/components/atlas/MapControls";
 import { GeographicBreadcrumb } from "@/components/geography/GeographicBreadcrumb";
 import { SearchModal } from "@/components/atlas/SearchModal";
 import { InfoModal } from "@/components/atlas/InfoModal";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Cpu } from "lucide-react";
 import { EntityId } from "@/types/entity";
 
 // Dynamically import MapEngine with ssr: false to prevent MapLibre GL SSR window/WebGL exceptions
@@ -53,6 +53,7 @@ export function ExhibitionShell() {
     selectState,
     selectLocation,
     goToDimensions,
+    setProductFilter,
   } = useScene();
 
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
@@ -164,6 +165,52 @@ export function ExhibitionShell() {
                 selectedSubcategoryId={selectedSubcategoryId}
                 onSelectSubcategory={selectSubcategory}
               />
+            </div>
+          )}
+
+          {/* Auroitech Product Layer Selector (Story 05 - Technology) */}
+          {(currentScene === "story_exploration" || currentScene === "one_system") && selectedEntityId === "auroitech" && (
+            <div className="px-6 py-2 bg-sky-50/80 border-b border-sky-100 flex items-center justify-between z-10 text-xs select-none">
+              <div className="flex items-center gap-2">
+                <Cpu className="w-4 h-4 text-sky-700" />
+                <span className="font-extrabold text-sky-900 uppercase tracking-wider text-[10px]">
+                  Digital Health Product Layer:
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setProductFilter(null)}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                    !productFilterId ? "bg-sky-600 text-white shadow-xs" : "bg-white text-slate-700 hover:bg-slate-200 border border-slate-200"
+                  }`}
+                >
+                  All Products
+                </button>
+                <button
+                  onClick={() => setProductFilter("prod_a")}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                    productFilterId === "prod_a" ? "bg-sky-600 text-white shadow-xs" : "bg-white text-slate-700 hover:bg-slate-200 border border-slate-200"
+                  }`}
+                >
+                  Product A: AuroEMR
+                </button>
+                <button
+                  onClick={() => setProductFilter("prod_b")}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                    productFilterId === "prod_b" ? "bg-sky-600 text-white shadow-xs" : "bg-white text-slate-700 hover:bg-slate-200 border border-slate-200"
+                  }`}
+                >
+                  Product B: VisionScreen AI
+                </button>
+                <button
+                  onClick={() => setProductFilter("prod_c")}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                    productFilterId === "prod_c" ? "bg-sky-600 text-white shadow-xs" : "bg-white text-slate-700 hover:bg-slate-200 border border-slate-200"
+                  }`}
+                >
+                  Product C: Telemedicine Suite
+                </button>
+              </div>
             </div>
           )}
 
