@@ -39,6 +39,16 @@ export function validateAggregationIntegrity(
     }
   });
 
+  // 3. Test Tamil Nadu specific assertion (Must equal 4 records)
+  const tnRecords = locations.filter(
+    (l) => l.country === "India" && l.state === "Tamil Nadu"
+  );
+  if (tnRecords.length !== 4) {
+    mismatches.push(
+      `Acceptance test failure: Tamil Nadu should have exactly 4 demo records, found ${tnRecords.length}`
+    );
+  }
+
   return {
     isValid: mismatches.length === 0,
     totalLocations: locations.length,

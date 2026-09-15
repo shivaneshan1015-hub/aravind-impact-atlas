@@ -2,7 +2,7 @@ import { GeoLocationItem } from "@/types/geo";
 
 export const AUROLAB_NATIONAL_DEALERS: GeoLocationItem[] = [
   // ====================================================
-  // TAMIL NADU (EXACTLY 4 DEALERS FOR REFERENCE vertical slice)
+  // TAMIL NADU (EXACT 4 ACCEPTANCE TEST DEMO RECORDS)
   // ====================================================
   {
     id: "aurolab-tn-001",
@@ -86,7 +86,7 @@ export const AUROLAB_NATIONAL_DEALERS: GeoLocationItem[] = [
   },
 
   // ====================================================
-  // MAHARASHTRA (6 DEALERS)
+  // MAHARASHTRA (6 DEMO RECORDS)
   // ====================================================
   {
     id: "aurolab-mh-001",
@@ -168,7 +168,7 @@ export const AUROLAB_NATIONAL_DEALERS: GeoLocationItem[] = [
   },
 
   // ====================================================
-  // KARNATAKA (5 DEALERS)
+  // KARNATAKA (5 DEMO RECORDS)
   // ====================================================
   {
     id: "aurolab-ka-001",
@@ -237,7 +237,7 @@ export const AUROLAB_NATIONAL_DEALERS: GeoLocationItem[] = [
   },
 
   // ====================================================
-  // KERALA (3 DEALERS)
+  // KERALA (3 DEMO RECORDS)
   // ====================================================
   {
     id: "aurolab-kl-001",
@@ -280,7 +280,7 @@ export const AUROLAB_NATIONAL_DEALERS: GeoLocationItem[] = [
   },
 
   // ====================================================
-  // ANDHRA PRADESH (2 DEALERS)
+  // ANDHRA PRADESH (2 DEMO RECORDS)
   // ====================================================
   {
     id: "aurolab-ap-001",
@@ -310,7 +310,7 @@ export const AUROLAB_NATIONAL_DEALERS: GeoLocationItem[] = [
   },
 
   // ====================================================
-  // TELANGANA (2 DEALERS)
+  // TELANGANA (2 DEMO RECORDS)
   // ====================================================
   {
     id: "aurolab-ts-001",
@@ -340,7 +340,7 @@ export const AUROLAB_NATIONAL_DEALERS: GeoLocationItem[] = [
   },
 
   // ====================================================
-  // DELHI (2 DEALERS)
+  // DELHI (2 DEMO RECORDS)
   // ====================================================
   {
     id: "aurolab-dl-001",
