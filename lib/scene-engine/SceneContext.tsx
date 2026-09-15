@@ -5,6 +5,7 @@ import { EntityId } from "@/types/entity";
 import { GeoLocationItem } from "@/types/geo";
 import { SceneId, ExperienceMode, SceneState } from "./types";
 import { ENTITY_CONFIGS } from "@/config/entities";
+import { killAllTimelines } from "@/lib/animation/motion-engine";
 
 interface SceneContextType extends SceneState {
   // Navigation Actions
@@ -107,18 +108,21 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
   }, [isGuidedPlaying]);
 
   const goToArrival = useCallback(() => {
+    killAllTimelines();
     setCurrentScene("arrival");
     setSelectedState(null);
     setSelectedLocation(null);
   }, []);
 
   const goToDimensions = useCallback(() => {
+    killAllTimelines();
     setCurrentScene("dimensions");
     setSelectedState(null);
     setSelectedLocation(null);
   }, []);
 
   const selectStory = useCallback((entityId: EntityId) => {
+    killAllTimelines();
     setSelectedEntityId(entityId);
     const cfg = ENTITY_CONFIGS[entityId];
     if (cfg && cfg.subcategories.length > 0) {
@@ -159,6 +163,7 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const resetAtlas = useCallback(() => {
+    killAllTimelines();
     setCurrentScene("dimensions");
     setCurrentMode("explore");
     setIsGuidedPlaying(false);
@@ -199,6 +204,7 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toggleFullscreen = useCallback(() => {
+    if (typeof document === "undefined") return;
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().catch(() => {});
       setIsFullscreen(true);
