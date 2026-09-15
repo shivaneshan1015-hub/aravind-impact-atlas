@@ -27,7 +27,6 @@ export function MapEngine({
   selectedLocation,
   onSelectState,
   onSelectLocation,
-  onClearLocation,
 }: MapEngineProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
@@ -61,26 +60,26 @@ export function MapEngine({
         data: "/maps/india/states.geojson",
       });
 
-      // Layer 1: Vector Fill layer for states (subtle overlay on top of real map)
+      // Layer 1: Vector Fill layer for states (subtle quiet overlay)
       map.addLayer({
         id: "india-states-fill",
         type: "fill",
         source: "india-states-source",
         paint: {
           "fill-color": "#EA580C",
-          "fill-opacity": 0.15,
+          "fill-opacity": 0.12,
         },
       });
 
-      // Layer 2: Vector Border outline layer
+      // Layer 2: Vector Border outline layer (restrained boundaries)
       map.addLayer({
         id: "india-states-border",
         type: "line",
         source: "india-states-source",
         paint: {
-          "line-color": "#EA580C",
+          "line-color": "#CBD5E1",
           "line-width": 1.0,
-          "line-opacity": 0.3,
+          "line-opacity": 0.6,
         },
       });
 
@@ -90,7 +89,7 @@ export function MapEngine({
         type: "line",
         source: "india-states-source",
         paint: {
-          "line-color": "#EA580C",
+          "line-color": entityConfig?.color || "#EA580C",
           "line-width": 2.5,
         },
         filter: ["==", "ST_NM", ""],
@@ -137,14 +136,14 @@ export function MapEngine({
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
 
-    const themeColor = entityConfig.color || "#EA580C";
+    const themeColor = entityConfig?.color || "#EA580C";
 
     // Build dynamic paint expression for state fills
     const matchExpression: any[] = ["match", ["get", "ST_NM"]];
     stateAggregations.forEach((s) => {
-      let opacity = 0.15;
-      if (s.count >= 6) opacity = 0.35;
-      else if (s.count >= 3) opacity = 0.25;
+      let opacity = 0.12;
+      if (s.count >= 6) opacity = 0.32;
+      else if (s.count >= 3) opacity = 0.22;
 
       matchExpression.push(s.stateName, hexToRgba(themeColor, opacity));
     });
@@ -172,7 +171,7 @@ export function MapEngine({
       popupRef.current = null;
     }
 
-    const themeColor = entityConfig.color || "#EA580C";
+    const themeColor = entityConfig?.color || "#EA580C";
 
     if (!selectedState) {
       // OVERVIEW MODE: Render State Centroid Badges
@@ -182,9 +181,9 @@ export function MapEngine({
           "group cursor-pointer transition-all duration-200 transform hover:scale-105 select-none";
 
         el.innerHTML = `
-          <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-white shadow-md border border-white font-bold text-xs"
-               style="background-color: ${themeColor}; box-shadow: 0 4px 12px ${themeColor}50">
-            <span class="text-[10px] tracking-wider uppercase font-bold">${agg.stateName}</span>
+          <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-white shadow-lg border border-white/90 font-extrabold text-xs"
+               style="background-color: ${themeColor}; box-shadow: 0 4px 14px ${themeColor}50">
+            <span class="text-[10px] tracking-wider uppercase font-black">${agg.stateName}</span>
             <span class="bg-black/25 px-1.5 py-0.2 rounded-full text-[10px] font-black">${agg.count}</span>
           </div>
         `;
@@ -206,7 +205,7 @@ export function MapEngine({
         stateMarkersRef.current.push(marker);
       });
     } else {
-      // STATE DETAIL MODE: Render individual Location Markers
+      // STATE DETAIL MODE: Render individual Location Nodes (Restrained Museum Node Language)
       const stateLocs = locations.filter((l) => l.state === selectedState);
 
       stateLocs.forEach((loc) => {
@@ -219,11 +218,11 @@ export function MapEngine({
             ${
               isSelected
                 ? `<div class="absolute w-8 h-8 rounded-full animate-ping opacity-75" style="background-color: ${themeColor}"></div>`
-                : ""
+                : `<div class="absolute w-6 h-6 rounded-full opacity-25 group-hover:scale-150 transition-transform" style="background-color: ${themeColor}"></div>`
             }
-            <div class="w-6 h-6 rounded-full border-2 border-white shadow-lg flex items-center justify-center transition-transform transform group-hover:scale-125"
+            <div class="w-5 h-5 rounded-full border-2 border-white shadow-md flex items-center justify-center transition-transform transform group-hover:scale-125"
                  style="background-color: ${themeColor}; box-shadow: 0 2px 10px ${themeColor}60">
-              <div class="w-2 h-2 bg-white rounded-full"></div>
+              <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
             </div>
           </div>
         `;
@@ -237,12 +236,12 @@ export function MapEngine({
 
           const popupDom = document.createElement("div");
           popupDom.className =
-            "p-3 bg-white text-slate-900 rounded-lg shadow-xl text-xs border border-slate-200 space-y-1 select-none min-w-[180px]";
+            "p-3 bg-white text-slate-900 rounded-xl shadow-xl text-xs border border-slate-200 space-y-1 select-none min-w-[180px]";
           popupDom.innerHTML = `
-            <div class="font-bold text-sm text-slate-900">${loc.name}</div>
+            <div class="font-extrabold text-sm text-slate-900">${loc.name}</div>
             <div class="text-[11px] text-slate-500 font-medium">${loc.city}, ${loc.state}</div>
-            <div class="mt-1.5 pt-1.5 border-t border-slate-100 font-semibold text-[11px]" style="color: ${themeColor}">
-              ${entityConfig.shortName} Record
+            <div class="mt-1.5 pt-1.5 border-t border-slate-100 font-bold text-[11px]" style="color: ${themeColor}">
+              ${entityConfig?.shortName || "Impact"} Record
             </div>
           `;
 
@@ -268,8 +267,8 @@ export function MapEngine({
 
     if (!selectedState) {
       map.flyTo({
-        center: entityConfig.defaultCenter || INDIA_CENTER,
-        zoom: entityConfig.defaultZoom || INDIA_DEFAULT_ZOOM,
+        center: entityConfig?.defaultCenter || INDIA_CENTER,
+        zoom: entityConfig?.defaultZoom || INDIA_DEFAULT_ZOOM,
         duration: 1200,
       });
     } else {
