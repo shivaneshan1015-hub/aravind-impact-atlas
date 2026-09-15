@@ -120,6 +120,150 @@ export function MapEngine({
         }
       });
 
+      // Story 02: LAICO Knowledge Network Source & Layer
+      map.addSource("laico-network-source", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              properties: { name: "Nepal Knowledge Arc" },
+              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [83.4542, 27.5055]] },
+            },
+            {
+              type: "Feature",
+              properties: { name: "Kenya Knowledge Arc" },
+              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [36.6622, -1.2467]] },
+            },
+            {
+              type: "Feature",
+              properties: { name: "Vietnam Knowledge Arc" },
+              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [108.2022, 16.0544]] },
+            },
+            {
+              type: "Feature",
+              properties: { name: "Karnataka Knowledge Path" },
+              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] },
+            },
+            {
+              type: "Feature",
+              properties: { name: "Maharashtra Knowledge Path" },
+              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [72.8777, 19.0760]] },
+            },
+            {
+              type: "Feature",
+              properties: { name: "Delhi Knowledge Path" },
+              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.2090, 28.6139]] },
+            },
+          ],
+        },
+      });
+
+      map.addLayer({
+        id: "laico-network-layer",
+        type: "line",
+        source: "laico-network-source",
+        paint: {
+          "line-color": "#0D9488",
+          "line-width": 2.5,
+          "line-opacity": 0.8,
+          "line-dasharray": [2, 2],
+        },
+        layout: {
+          visibility: entityConfig.id === "laico" ? "visible" : "none",
+        },
+      });
+
+      // Story 03: AMRF Research Collaboration Source & Layer
+      map.addSource("amrf-collaboration-source", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              properties: { partner: "Johns Hopkins USA" },
+              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [-76.6122, 39.2904]] },
+            },
+            {
+              type: "Feature",
+              properties: { partner: "UCL London UK" },
+              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [-0.1278, 51.5074]] },
+            },
+            {
+              type: "Feature",
+              properties: { partner: "SERI Singapore" },
+              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [103.8198, 1.3521]] },
+            },
+          ],
+        },
+      });
+
+      map.addLayer({
+        id: "amrf-collaboration-layer",
+        type: "line",
+        source: "amrf-collaboration-source",
+        paint: {
+          "line-color": "#7C3AED",
+          "line-width": 3.0,
+          "line-opacity": 0.85,
+        },
+        layout: {
+          visibility: entityConfig.id === "amrf" ? "visible" : "none",
+        },
+      });
+
+      // Story 06: Eye Bank Sight Restoration Flow Source & Layer
+      map.addSource("eyebank-flow-source", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              properties: { flow: "Coimbatore -> Madurai Lab" },
+              geometry: { type: "LineString", coordinates: [[76.9558, 11.0168], [78.1198, 9.9252]] },
+            },
+            {
+              type: "Feature",
+              properties: { flow: "Tirunelveli -> Madurai Lab" },
+              geometry: { type: "LineString", coordinates: [[77.7567, 8.7139], [78.1198, 9.9252]] },
+            },
+            {
+              type: "Feature",
+              properties: { flow: "Puducherry -> Madurai Lab" },
+              geometry: { type: "LineString", coordinates: [[79.8083, 11.9416], [78.1198, 9.9252]] },
+            },
+            {
+              type: "Feature",
+              properties: { flow: "Madurai Hub -> Bengaluru Recipient Network" },
+              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] },
+            },
+            {
+              type: "Feature",
+              properties: { flow: "Madurai Hub -> Kochi Recipient Network" },
+              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [76.2673, 9.9312]] },
+            },
+          ],
+        },
+      });
+
+      map.addLayer({
+        id: "eyebank-flow-layer",
+        type: "line",
+        source: "eyebank-flow-source",
+        paint: {
+          "line-color": "#059669",
+          "line-width": 3.0,
+          "line-opacity": 0.9,
+          "line-dasharray": [4, 2],
+        },
+        layout: {
+          visibility: entityConfig.id === "eyebank" ? "visible" : "none",
+        },
+      });
+
       setMapLoaded(true);
     });
 
@@ -234,6 +378,34 @@ export function MapEngine({
       locationMarkersRef.current.push(marker);
     });
   }, [mapLoaded, selectedState, stateAggregations, locations, entityConfig, selectedLocation]);
+
+  // Toggle story-specific vector layers dynamically based on active entity
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapLoaded) return;
+
+    if (map.getLayer("laico-network-layer")) {
+      map.setLayoutProperty(
+        "laico-network-layer",
+        "visibility",
+        entityConfig.id === "laico" ? "visible" : "none"
+      );
+    }
+    if (map.getLayer("amrf-collaboration-layer")) {
+      map.setLayoutProperty(
+        "amrf-collaboration-layer",
+        "visibility",
+        entityConfig.id === "amrf" ? "visible" : "none"
+      );
+    }
+    if (map.getLayer("eyebank-flow-layer")) {
+      map.setLayoutProperty(
+        "eyebank-flow-layer",
+        "visibility",
+        entityConfig.id === "eyebank" ? "visible" : "none"
+      );
+    }
+  }, [mapLoaded, entityConfig.id]);
 
   // Handle smooth map camera transitions when selectedState changes
   useEffect(() => {
