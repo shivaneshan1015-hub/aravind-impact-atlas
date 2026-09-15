@@ -37,7 +37,7 @@ export function MapEngine({
 
   const [mapLoaded, setMapLoaded] = useState(false);
 
-  // Initialize MapLibre GL map instance
+  // Initialize MapLibre GL map instance with CARTO Light basemap
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current) return;
 
@@ -55,20 +55,20 @@ export function MapEngine({
     );
 
     map.on("load", () => {
-      // Add local India States GeoJSON vector source
+      // Add local India States GeoJSON vector source for choropleth & hover fills
       map.addSource("india-states-source", {
         type: "geojson",
         data: "/maps/india/states.geojson",
       });
 
-      // Layer 1: Vector Fill layer for states
+      // Layer 1: Vector Fill layer for states (subtle overlay on top of real map)
       map.addLayer({
         id: "india-states-fill",
         type: "fill",
         source: "india-states-source",
         paint: {
-          "fill-color": "#F1F3EE",
-          "fill-opacity": 0.5,
+          "fill-color": "#EA580C",
+          "fill-opacity": 0.15,
         },
       });
 
@@ -78,8 +78,9 @@ export function MapEngine({
         type: "line",
         source: "india-states-source",
         paint: {
-          "line-color": "#CBD5E1",
-          "line-width": 1.2,
+          "line-color": "#EA580C",
+          "line-width": 1.0,
+          "line-opacity": 0.3,
         },
       });
 
@@ -141,13 +142,13 @@ export function MapEngine({
     // Build dynamic paint expression for state fills
     const matchExpression: any[] = ["match", ["get", "ST_NM"]];
     stateAggregations.forEach((s) => {
-      let opacity = 0.2;
-      if (s.count >= 6) opacity = 0.55;
-      else if (s.count >= 3) opacity = 0.38;
+      let opacity = 0.15;
+      if (s.count >= 6) opacity = 0.35;
+      else if (s.count >= 3) opacity = 0.25;
 
       matchExpression.push(s.stateName, hexToRgba(themeColor, opacity));
     });
-    matchExpression.push("#F1F3EE"); // Default light fill
+    matchExpression.push("rgba(0, 0, 0, 0)"); // Transparent default fill
 
     if (map.getLayer("india-states-fill")) {
       map.setPaintProperty("india-states-fill", "fill-color", matchExpression);
@@ -178,16 +179,13 @@ export function MapEngine({
       stateAggregations.forEach((agg) => {
         const el = document.createElement("div");
         el.className =
-          "group cursor-pointer transition-all duration-300 transform hover:scale-105 select-none";
+          "group cursor-pointer transition-all duration-200 transform hover:scale-105 select-none";
 
         el.innerHTML = `
-          <div class="flex flex-col items-center">
-            <div class="px-2.5 py-1 rounded-full text-xs font-bold text-white shadow-md border border-white flex items-center gap-1.5 backdrop-blur-sm"
-                 style="background-color: ${themeColor}; box-shadow: 0 4px 12px ${themeColor}40">
-              <span class="text-[10px] tracking-wider uppercase font-extrabold">${agg.stateName}</span>
-              <span class="bg-black/20 px-1.5 py-0.5 rounded-full text-[11px] font-black">${agg.count}</span>
-            </div>
-            <div class="w-2 h-2 rounded-full mt-0.5 shadow-sm" style="background-color: ${themeColor}"></div>
+          <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-white shadow-md border border-white font-bold text-xs"
+               style="background-color: ${themeColor}; box-shadow: 0 4px 12px ${themeColor}50">
+            <span class="text-[10px] tracking-wider uppercase font-bold">${agg.stateName}</span>
+            <span class="bg-black/25 px-1.5 py-0.2 rounded-full text-[10px] font-black">${agg.count}</span>
           </div>
         `;
 
@@ -220,7 +218,7 @@ export function MapEngine({
           <div class="relative flex items-center justify-center">
             ${
               isSelected
-                ? `<div class="absolute w-9 h-9 rounded-full animate-ping opacity-75" style="background-color: ${themeColor}"></div>`
+                ? `<div class="absolute w-8 h-8 rounded-full animate-ping opacity-75" style="background-color: ${themeColor}"></div>`
                 : ""
             }
             <div class="w-6 h-6 rounded-full border-2 border-white shadow-lg flex items-center justify-center transition-transform transform group-hover:scale-125"

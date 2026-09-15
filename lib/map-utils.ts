@@ -26,47 +26,33 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
 }
 
 /**
- * 100% API-Key Free Self-Contained MapLibre GL Light Style.
- * Renders crisp vector land, borders, and water without any external tile dependencies.
+ * Premium Light Institutional Basemap Style.
+ * Uses CARTO Positron light tiles - 100% free, no API key required, ultra-crisp real world map with oceans, land, rivers, boundaries, and cities.
  */
 export const LIGHT_ATLAS_MAP_STYLE: maplibreGl.StyleSpecification = {
   version: 8,
-  name: "Institutional Light Atlas",
+  name: "CARTO Light Institutional Atlas",
   sources: {
-    world_countries: {
-      type: "geojson",
-      data: "/maps/world/countries.geojson",
-    },
-    india_states: {
-      type: "geojson",
-      data: "/maps/india/states.geojson",
+    carto_light: {
+      type: "raster",
+      tiles: [
+        "https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
+        "https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
+        "https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
+        "https://d.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
+      ],
+      tileSize: 256,
+      attribution:
+        '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>',
     },
   },
   layers: [
     {
-      id: "background-water",
-      type: "background",
-      paint: {
-        "background-color": "#E7EEF2",
-      },
-    },
-    {
-      id: "world-land-fill",
-      type: "fill",
-      source: "world_countries",
-      paint: {
-        "fill-color": "#EEF0EC",
-        "fill-opacity": 0.95,
-      },
-    },
-    {
-      id: "world-borders",
-      type: "line",
-      source: "world_countries",
-      paint: {
-        "line-color": "#D3D8D3",
-        "line-width": 1.0,
-      },
+      id: "carto-light-basemap",
+      type: "raster",
+      source: "carto_light",
+      minzoom: 0,
+      maxzoom: 20,
     },
   ],
 };
