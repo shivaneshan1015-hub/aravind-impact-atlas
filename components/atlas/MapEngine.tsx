@@ -154,7 +154,7 @@ export function MapEngine({
     }
   }, [mapLoaded, stateAggregations, entityConfig]);
 
-  // Render Markers (Centroid Badges in Overview Mode vs Point Markers in State Detail Mode)
+  // Render Markers with concentric aura rings (matching reference sample aesthetic)
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
@@ -174,17 +174,21 @@ export function MapEngine({
     const themeColor = entityConfig?.color || "#EA580C";
 
     if (!selectedState) {
-      // OVERVIEW MODE: Render State Centroid Badges
+      // OVERVIEW MODE: Render State Centroid Badges with outer aura rings
       stateAggregations.forEach((agg) => {
         const el = document.createElement("div");
         el.className =
           "group cursor-pointer transition-all duration-200 transform hover:scale-105 select-none";
 
         el.innerHTML = `
-          <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-white shadow-lg border border-white/90 font-extrabold text-xs"
-               style="background-color: ${themeColor}; box-shadow: 0 4px 14px ${themeColor}50">
-            <span class="text-[10px] tracking-wider uppercase font-black">${agg.stateName}</span>
-            <span class="bg-black/25 px-1.5 py-0.2 rounded-full text-[10px] font-black">${agg.count}</span>
+          <div class="relative flex items-center justify-center">
+            <div class="absolute w-14 h-14 rounded-full opacity-15 pointer-events-none transition-transform group-hover:scale-125" style="background-color: ${themeColor}"></div>
+            <div class="absolute w-10 h-10 rounded-full opacity-30 pointer-events-none" style="background-color: ${themeColor}"></div>
+            <div class="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full text-white shadow-xl border border-white/90 font-extrabold text-xs"
+                 style="background-color: ${themeColor}; box-shadow: 0 4px 16px ${themeColor}60">
+              <span class="text-[10px] tracking-wider uppercase font-black">${agg.stateName}</span>
+              <span class="bg-black/25 px-1.5 py-0.2 rounded-full text-[10px] font-black">${agg.count}</span>
+            </div>
           </div>
         `;
 
@@ -205,7 +209,7 @@ export function MapEngine({
         stateMarkersRef.current.push(marker);
       });
     } else {
-      // STATE DETAIL MODE: Render individual Location Nodes (Restrained Museum Node Language)
+      // STATE DETAIL MODE: Render Glowing Concentric Aura Node Markers
       const stateLocs = locations.filter((l) => l.state === selectedState);
 
       stateLocs.forEach((loc) => {
@@ -215,13 +219,15 @@ export function MapEngine({
 
         el.innerHTML = `
           <div class="relative flex items-center justify-center">
+            <div class="absolute w-12 h-12 rounded-full opacity-20 pointer-events-none group-hover:scale-125 transition-transform" style="background-color: ${themeColor}"></div>
+            <div class="absolute w-8 h-8 rounded-full opacity-35 pointer-events-none" style="background-color: ${themeColor}"></div>
             ${
               isSelected
-                ? `<div class="absolute w-8 h-8 rounded-full animate-ping opacity-75" style="background-color: ${themeColor}"></div>`
-                : `<div class="absolute w-6 h-6 rounded-full opacity-25 group-hover:scale-150 transition-transform" style="background-color: ${themeColor}"></div>`
+                ? `<div class="absolute w-10 h-10 rounded-full animate-ping opacity-60" style="background-color: ${themeColor}"></div>`
+                : ""
             }
-            <div class="w-5 h-5 rounded-full border-2 border-white shadow-md flex items-center justify-center transition-transform transform group-hover:scale-125"
-                 style="background-color: ${themeColor}; box-shadow: 0 2px 10px ${themeColor}60">
+            <div class="relative w-5 h-5 rounded-full border-2 border-white shadow-xl flex items-center justify-center transition-transform transform group-hover:scale-125"
+                 style="background-color: ${themeColor}; box-shadow: 0 4px 14px ${themeColor}70">
               <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
             </div>
           </div>
