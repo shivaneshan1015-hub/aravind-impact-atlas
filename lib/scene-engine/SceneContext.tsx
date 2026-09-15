@@ -5,6 +5,7 @@ import { EntityId } from "@/types/entity";
 import { GeoLocationItem } from "@/types/geo";
 import { SceneId, ExperienceMode, SceneState } from "./types";
 import { ENTITY_CONFIGS } from "@/config/entities";
+import { EXHIBITION_CONFIG } from "@/config/exhibition-config";
 import { killAllTimelines } from "@/lib/animation/motion-engine";
 
 interface SceneContextType extends SceneState {
@@ -55,9 +56,11 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
       // Only set attract timer if user is not already in attract scene
       if (currentScene !== "attract") {
         timer = setTimeout(() => {
+          killAllTimelines();
           setCurrentScene("attract");
           setCurrentMode("attract");
-        }, INACTIVITY_TIMEOUT_MS);
+          setIsGuidedPlaying(false);
+        }, EXHIBITION_CONFIG.attractMode.idleTimeoutMs);
       }
     };
 
@@ -76,15 +79,7 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!isGuidedPlaying) return;
 
-    const guidedSequence: EntityId[] = [
-      "hospitals",
-      "laico",
-      "amrf",
-      "aurolab",
-      "auroitech",
-      "eyebank",
-      "all",
-    ];
+    const guidedSequence: EntityId[] = EXHIBITION_CONFIG.guidedMode.sequence;
 
     const stepTimer = setInterval(() => {
       setGuidedStepIndex((prev) => {
@@ -102,7 +97,7 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
         }
         return nextIdx;
       });
-    }, 12000); // 12 seconds per story in Guided Mode
+    }, EXHIBITION_CONFIG.guidedMode.stepDurationMs);
 
     return () => clearInterval(stepTimer);
   }, [isGuidedPlaying]);
