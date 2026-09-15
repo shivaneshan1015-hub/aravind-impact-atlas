@@ -32,6 +32,18 @@ export function getLocationsForEntity(
 }
 
 /**
+ * Filters Auroitech locations by product filter ID.
+ */
+export function filterAuroitechByProduct(
+  locations: GeoLocationItem[],
+  productId: string
+): GeoLocationItem[] {
+  return locations.filter(
+    (item) => item.metrics && item.metrics.productId === productId
+  );
+}
+
+/**
  * Enforces Aurolab Aggregate-Only Policy.
  * Aurolab is meant to communicate aggregate reach only (e.g. Tamil Nadu · 4 Dealers),
  * without exposing individual operational dealer profiles or names.

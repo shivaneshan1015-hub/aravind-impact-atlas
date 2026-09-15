@@ -1,5 +1,10 @@
-import { AtlasShell } from "@/components/atlas/AtlasShell";
+import { SceneProvider } from "@/lib/scene-engine/SceneContext";
+import { ExhibitionShell } from "@/components/exhibition/ExhibitionShell";
 
 export default function Home() {
-  return <AtlasShell />;
+  return (
+    <SceneProvider>
+      <ExhibitionShell />
+    </SceneProvider>
+  );
 }
