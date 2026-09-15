@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
+import dynamic from "next/dynamic";
 import { useScene } from "@/lib/scene-engine/SceneContext";
 import { ENTITY_CONFIGS } from "@/config/entities";
 import { IMPACT_STORIES } from "@/lib/stories/definitions";
@@ -14,7 +15,6 @@ import { ExhibitionHeader } from "./ExhibitionHeader";
 import { ArrivalScene } from "./ArrivalScene";
 import { SixDoorsNav } from "./SixDoorsNav";
 import { AttractOverlay } from "./AttractOverlay";
-import { MapEngine } from "@/components/atlas/MapEngine";
 import { ContextPanel } from "@/components/atlas/ContextPanel";
 import { MetricStrip } from "@/components/atlas/MetricStrip";
 import { SubcategoryNav } from "@/components/atlas/SubcategoryNav";
@@ -23,8 +23,21 @@ import { MapControls } from "@/components/atlas/MapControls";
 import { GeographicBreadcrumb } from "@/components/geography/GeographicBreadcrumb";
 import { SearchModal } from "@/components/atlas/SearchModal";
 import { InfoModal } from "@/components/atlas/InfoModal";
-import { ArrowLeft, Sparkles, Layers, Compass } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { EntityId } from "@/types/entity";
+
+// Dynamically import MapEngine with ssr: false to prevent MapLibre GL SSR window/WebGL exceptions
+const MapEngine = dynamic(
+  () => import("@/components/atlas/MapEngine").then((mod) => mod.MapEngine),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-full bg-[#E7EEF2] flex items-center justify-center text-slate-400 font-medium text-xs select-none">
+        Loading Map Canvas...
+      </div>
+    ),
+  }
+);
 
 export function ExhibitionShell() {
   const {
@@ -40,21 +53,30 @@ export function ExhibitionShell() {
     selectState,
     selectLocation,
     goToDimensions,
-    resetAtlas,
-    setProductFilter,
   } = useScene();
 
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isInfoOpen, setIsInfoOpen] = React.useState(false);
 
-  // Active Entity Config
-  const activeEntityConfig = ENTITY_CONFIGS[selectedEntityId];
+  // Active Entity Config with fallback
+  const activeEntityConfig = ENTITY_CONFIGS[selectedEntityId] || ENTITY_CONFIGS.hospitals;
 
-  // Active Story Definition
+  // Active Story Definition with fallback
   const activeStory = IMPACT_STORIES[selectedEntityId] || IMPACT_STORIES.hospitals;
 
-  // Active Subcategory Config
+  // Active Subcategory Config with fallback
   const activeSubcategory = useMemo(() => {
+    if (!activeEntityConfig || !activeEntityConfig.subcategories || activeEntityConfig.subcategories.length === 0) {
+      return {
+        id: "default",
+        name: "Overview",
+        tagline: "",
+        defaultScope: "country" as const,
+        primaryMetricKey: "",
+        secondaryMetricKeys: [],
+        legendTitle: "Overview",
+      };
+    }
     return (
       activeEntityConfig.subcategories.find((s) => s.id === selectedSubcategoryId) ||
       activeEntityConfig.subcategories[0]
@@ -167,7 +189,7 @@ export function ExhibitionShell() {
             />
           )}
 
-          {/* Interactive Map Canvas Engine */}
+          {/* Interactive Map Canvas Engine (Dynamically Loaded) */}
           <div className="flex-1 relative">
             <MapEngine
               entityConfig={activeEntityConfig}
