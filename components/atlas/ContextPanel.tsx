@@ -1,6 +1,7 @@
 import React from "react";
 import { GeoLocationItem, StateAggregation } from "@/types/geo";
 import { EntityConfig } from "@/types/entity";
+import { isAurolabAggregateOnly } from "@/lib/data/adapters";
 import {
   MapPin,
   X,
@@ -9,6 +10,7 @@ import {
   Calendar,
   ChevronRight,
   Compass,
+  ShieldCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
@@ -33,6 +35,8 @@ export function ContextPanel({
   onClearLocation,
   onClearState,
 }: ContextPanelProps) {
+  const isAggregateOnly = isAurolabAggregateOnly(entityConfig.id);
+
   return (
     <aside className="w-72 md:w-80 bg-white border-l border-slate-200 flex flex-col shrink-0 z-20 select-none overflow-y-auto shadow-xs">
       {/* Header */}
@@ -59,8 +63,8 @@ export function ContextPanel({
 
       {/* Content Body */}
       <div className="p-4 flex-1 space-y-4">
-        {/* STATE 1: Location Selected */}
-        {selectedLocation ? (
+        {/* STATE 1: Location Selected (Hides personal details for Aurolab) */}
+        {selectedLocation && !isAggregateOnly ? (
           <div className="space-y-4 animate-in fade-in slide-in-from-right-2 duration-200">
             <div>
               <div
@@ -101,34 +105,6 @@ export function ContextPanel({
               ))}
             </div>
 
-            {/* Contact / Address Metadata */}
-            {(selectedLocation.address ||
-              selectedLocation.contact ||
-              selectedLocation.establishedYear) && (
-              <div className="space-y-2 text-xs text-slate-600">
-                {selectedLocation.address && (
-                  <p className="flex items-start gap-2">
-                    <Building className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
-                    <span>{selectedLocation.address}</span>
-                  </p>
-                )}
-
-                {selectedLocation.contact && (
-                  <p className="flex items-center gap-2">
-                    <Phone className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                    <span>{selectedLocation.contact}</span>
-                  </p>
-                )}
-
-                {selectedLocation.establishedYear && (
-                  <p className="flex items-center gap-2">
-                    <Calendar className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                    <span>Established {selectedLocation.establishedYear}</span>
-                  </p>
-                )}
-              </div>
-            )}
-
             <Button
               variant="outline"
               size="sm"
@@ -139,7 +115,7 @@ export function ContextPanel({
             </Button>
           </div>
         ) : selectedState ? (
-          /* STATE 2: Region / State Selected */
+          /* STATE 2: Region / State Selected (Aggregate View for Aurolab) */
           <div className="space-y-4 animate-in fade-in slide-in-from-right-2 duration-200">
             <div className="border-b border-slate-200 pb-3">
               <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
@@ -162,32 +138,45 @@ export function ContextPanel({
               </div>
             </div>
 
-            {/* List of locations in state */}
-            <div>
-              <h5 className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
-                Locations ({locationsInSelectedState.length})
-              </h5>
-
-              <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
-                {locationsInSelectedState.map((loc) => (
-                  <button
-                    key={loc.id}
-                    onClick={() => onSelectLocation(loc)}
-                    className="w-full text-left p-2.5 rounded-md bg-slate-50 border border-slate-200 hover:border-slate-300 hover:bg-slate-100 transition-all flex items-center justify-between group"
-                  >
-                    <div>
-                      <p className="text-xs font-semibold text-slate-800 group-hover:text-slate-900">
-                        {loc.name}
-                      </p>
-                      <p className="text-[11px] text-slate-500 mt-0.5">
-                        {loc.city}
-                      </p>
-                    </div>
-                    <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600" />
-                  </button>
-                ))}
+            {/* Aurolab Aggregate-Only Notice */}
+            {isAggregateOnly ? (
+              <div className="bg-amber-500/10 border border-amber-500/30 p-3 rounded-lg text-amber-800 text-xs space-y-1">
+                <div className="font-bold flex items-center gap-1.5 text-amber-900">
+                  <ShieldCheck className="w-4 h-4 text-amber-700" />
+                  Aggregate Distribution View
+                </div>
+                <p className="text-[11px] text-amber-900/90 leading-relaxed">
+                  Showing aggregate dealer distribution reach in {selectedState} across {locationsInSelectedState.length} location nodes. Operational dealer profile details are withheld.
+                </p>
               </div>
-            </div>
+            ) : (
+              /* Non-Aurolab Location List */
+              <div>
+                <h5 className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                  Locations ({locationsInSelectedState.length})
+                </h5>
+
+                <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
+                  {locationsInSelectedState.map((loc) => (
+                    <button
+                      key={loc.id}
+                      onClick={() => onSelectLocation(loc)}
+                      className="w-full text-left p-2.5 rounded-md bg-slate-50 border border-slate-200 hover:border-slate-300 hover:bg-slate-100 transition-all flex items-center justify-between group"
+                    >
+                      <div>
+                        <p className="text-xs font-semibold text-slate-800 group-hover:text-slate-900">
+                          {loc.name}
+                        </p>
+                        <p className="text-[11px] text-slate-500 mt-0.5">
+                          {loc.city}
+                        </p>
+                      </div>
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <Button
               variant="outline"
@@ -209,7 +198,7 @@ export function ContextPanel({
                 Explore The Map
               </h4>
               <p className="text-xs text-slate-500 mt-1 max-w-[200px] mx-auto leading-relaxed">
-                Click on a state region or individual location marker on the map to inspect details.
+                Click on a state region or individual location marker on the map to inspect aggregate impact.
               </p>
             </div>
           </div>
