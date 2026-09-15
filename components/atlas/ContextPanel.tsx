@@ -149,7 +149,7 @@ export function ContextPanel({
                   Locations ({locationsInSelectedState.length})
                 </h5>
 
-                <div className="space-y-1 max-h-40 overflow-y-auto pr-1">
+                <div className="space-y-1 max-h-36 overflow-y-auto pr-1">
                   {locationsInSelectedState.map((loc) => (
                     <button
                       key={loc.id}
@@ -170,6 +170,16 @@ export function ContextPanel({
                 </div>
               </div>
             )}
+
+            {/* Cross-Entity Impact Dimensions in this Geography */}
+            <div className="pt-2 border-t border-slate-100 space-y-1">
+              <span className="text-[9px] font-extrabold uppercase tracking-widest text-slate-400">
+                Ecosystem Impact in {selectedState}
+              </span>
+              <p className="text-[10px] text-slate-500 font-medium">
+                Multiple Aravind dimensions operate in this region. Select a dimension to switch stories:
+              </p>
+            </div>
 
             <button
               onClick={onClearState}

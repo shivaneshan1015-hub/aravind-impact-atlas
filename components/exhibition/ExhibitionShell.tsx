@@ -21,6 +21,9 @@ import { SubcategoryNav } from "@/components/atlas/SubcategoryNav";
 import { Legend } from "@/components/atlas/Legend";
 import { MapControls } from "@/components/atlas/MapControls";
 import { GeographicBreadcrumb } from "@/components/geography/GeographicBreadcrumb";
+import { FollowImpactNav } from "@/components/geography/FollowImpactNav";
+import { GuidedControls } from "./GuidedControls";
+import { OneSystemFinale } from "./OneSystemFinale";
 import { SearchModal } from "@/components/atlas/SearchModal";
 import { InfoModal } from "@/components/atlas/InfoModal";
 import { ArrowLeft, Cpu } from "lucide-react";
@@ -48,6 +51,7 @@ export function ExhibitionShell() {
     selectedState,
     selectedLocation,
     productFilterId,
+    isGuidedPlaying,
     selectStory,
     selectSubcategory,
     selectState,
@@ -248,6 +252,17 @@ export function ExhibitionShell() {
               onSelectLocation={selectLocation}
               onClearLocation={() => selectLocation(null)}
             />
+
+            {/* Guided Tour Controls Bar */}
+            {isGuidedPlaying && <GuidedControls />}
+
+            {/* Follow the Impact Step-by-Step Nav */}
+            {(currentScene === "story_exploration" || currentScene === "one_system") && !isGuidedPlaying && (
+              <FollowImpactNav entityId={selectedEntityId} />
+            )}
+
+            {/* One System Finale Synthesis Overlay */}
+            {currentScene === "one_system" && <OneSystemFinale />}
 
             {/* Map Legend */}
             <Legend
