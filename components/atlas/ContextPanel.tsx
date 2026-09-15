@@ -5,6 +5,7 @@ import { IMPACT_STORIES } from "@/lib/stories/definitions";
 import { isAurolabAggregateOnly } from "@/lib/data/adapters";
 import { MapPin, X, ChevronRight, Globe2, ShieldCheck, Sparkles, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 
 interface ContextPanelProps {
   entityConfig: EntityConfig;
@@ -201,12 +202,11 @@ export function ContextPanel({
 
               {/* Big Hero Overall Metric (Reference Specimen Style: media__1789481991797.png) */}
               <div className="mt-1">
-                <div
-                  className="text-4xl font-black tracking-tight leading-none"
+                <AnimatedCounter
+                  value={story.primaryMetric.value}
+                  className="text-4xl font-black tracking-tight leading-none block"
                   style={{ color: story.accentColor }}
-                >
-                  {story.primaryMetric.value}
-                </div>
+                />
                 {story.primaryMetric.unit && (
                   <p className="text-[11px] text-slate-500 font-bold mt-1">
                     {story.primaryMetric.unit}
