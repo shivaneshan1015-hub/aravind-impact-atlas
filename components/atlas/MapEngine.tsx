@@ -19,6 +19,8 @@ export interface MapEngineProps {
   onClearLocation: () => void;
   modeGrammar?: GeographicGrammar;
   geographicLevel?: GeographicLevel;
+  careTypeFilter?: "all" | "tertiary" | "secondary" | "community";
+  revealMaxYear?: number | null;
   isLabMode?: boolean;
 }
 
@@ -32,6 +34,8 @@ export function MapEngine({
   onSelectLocation,
   modeGrammar = "auto",
   geographicLevel = "country",
+  careTypeFilter = "all",
+  revealMaxYear = null,
   isLabMode = false,
 }: MapEngineProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -284,7 +288,7 @@ export function MapEngine({
     }
   }, [mapLoaded, entityConfig.id, activeGrammar]);
 
-  // Render Restrained Pins with 48px Hit Targets and Aurolab Privacy Protection
+  // Render Restrained Pins with 48px Hit Targets, CARE Visual Hierarchy, and Privacy Protection
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
@@ -298,18 +302,56 @@ export function MapEngine({
     }
 
     const themeColor = entityConfig?.color || "#EA580C";
-    const activeLocations = selectedState
+
+    // 1. State filter
+    let filtered = selectedState
       ? locations.filter((l) => l.state === selectedState)
       : locations;
 
-    activeLocations.forEach((loc) => {
+    // 2. CARE Type filter
+    if (careTypeFilter !== "all") {
+      filtered = filtered.filter((l) => l.careType === careTypeFilter);
+    }
+
+    // 3. Reveal Max Year filter
+    if (revealMaxYear !== null && revealMaxYear !== undefined) {
+      filtered = filtered.filter(
+        (l) => !l.establishedYear || l.establishedYear <= revealMaxYear
+      );
+    }
+
+    filtered.forEach((loc) => {
       const isSelected = selectedLocation?.id === loc.id;
       const el = document.createElement("div");
-      el.className = "group cursor-pointer transition-all duration-200 select-none w-12 h-12 flex items-center justify-center";
+      el.className =
+        "group cursor-pointer transition-all duration-200 select-none w-12 h-12 flex items-center justify-center";
+
+      // CARE Centre visual hierarchy styling
+      let markerSize = isSelected ? "20px" : "12px";
+      let markerBg = themeColor;
+      let markerBorder = "2px solid #FFFFFF";
+      let outerShadow = "0 2px 6px rgba(0,0,0,0.15)";
+
+      if (loc.careType === "tertiary") {
+        markerSize = isSelected ? "22px" : "18px";
+        markerBg = "#2563EB"; // Solid Primary Royal Blue
+        markerBorder = "2.5px solid #FFFFFF";
+        outerShadow = "0 0 0 4px rgba(37,99,235,0.25), 0 3px 8px rgba(0,0,0,0.25)";
+      } else if (loc.careType === "secondary") {
+        markerSize = isSelected ? "18px" : "14px";
+        markerBg = "#3B82F6"; // Mid Blue
+        markerBorder = "2px solid #FFFFFF";
+        outerShadow = "0 0 0 3px rgba(59,130,246,0.2), 0 2px 6px rgba(0,0,0,0.2)";
+      } else if (loc.careType === "community") {
+        markerSize = isSelected ? "14px" : "10px";
+        markerBg = "#60A5FA"; // Light Blue
+        markerBorder = "2px solid #FFFFFF";
+        outerShadow = "0 1px 4px rgba(0,0,0,0.18)";
+      }
 
       el.innerHTML = `
         <div class="relative flex items-center justify-center">
-          <div style="width: ${isSelected ? "18px" : "12px"}; height: ${isSelected ? "18px" : "12px"}; background-color: ${themeColor}; border: 2px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: all 0.2s ease-out;">
+          <div style="width: ${markerSize}; height: ${markerSize}; background-color: ${markerBg}; border: ${markerBorder}; border-radius: 9999px; box-shadow: ${outerShadow}; transition: all 0.2s ease-out;">
           </div>
         </div>
       `;
@@ -327,18 +369,39 @@ export function MapEngine({
         if (popupRef.current) popupRef.current.remove();
 
         const isAurolab = entityConfig?.id === "aurolab" || activeGrammar === "distribution";
-        const popTitle = isAurolab ? `${loc.state} Aggregate Distribution` : loc.name;
-        const popSub = isAurolab ? `Regional Aggregate Footprint · ${loc.state}` : `${loc.city}, ${loc.state}`;
+        const displayName = loc.rawName || loc.name;
+        const popTitle = isAurolab ? `${loc.state} Aggregate Distribution` : displayName;
+        
+        let popSub = isAurolab
+          ? `Regional Aggregate Footprint · ${loc.state}`
+          : `${loc.city}, ${loc.state}`;
+          
+        if (loc.establishedYear && !isAurolab) {
+          popSub += ` · Est. ${loc.establishedYear}`;
+        }
+
+        const typeBadge = loc.careType
+          ? `<span class="px-1.5 py-0.5 text-[9px] font-extrabold uppercase rounded tracking-wider ${
+              loc.careType === "tertiary"
+                ? "bg-blue-600 text-white"
+                : loc.careType === "secondary"
+                ? "bg-blue-500 text-white"
+                : "bg-sky-400 text-slate-900"
+            }">${loc.careType}</span>`
+          : "";
 
         const popupDom = document.createElement("div");
         popupDom.className =
-          "px-3 py-1.5 bg-white/95 text-slate-900 rounded-lg shadow-md text-xs font-bold border border-slate-200 select-none pointer-events-none";
+          "px-3 py-2 bg-white/95 text-slate-900 rounded-lg shadow-xl text-xs font-bold border border-slate-200 select-none pointer-events-none min-w-[160px]";
         popupDom.innerHTML = `
-          <div class="text-xs font-black text-slate-900">${popTitle}</div>
+          <div class="flex items-center justify-between gap-2 mb-0.5">
+            <span class="text-xs font-black text-slate-900 leading-tight">${popTitle}</span>
+            ${typeBadge}
+          </div>
           <div class="text-[10px] text-slate-500 font-medium">${popSub}</div>
         `;
 
-        popupRef.current = new maplibregl.Popup({ offset: 12, closeButton: false })
+        popupRef.current = new maplibregl.Popup({ offset: 14, closeButton: false })
           .setLngLat([loc.longitude, loc.latitude])
           .setDOMContent(popupDom)
           .addTo(map);
@@ -350,7 +413,17 @@ export function MapEngine({
 
       locationMarkersRef.current.push(marker);
     });
-  }, [mapLoaded, selectedState, stateAggregations, locations, entityConfig, selectedLocation, activeGrammar]);
+  }, [
+    mapLoaded,
+    selectedState,
+    stateAggregations,
+    locations,
+    entityConfig,
+    selectedLocation,
+    activeGrammar,
+    careTypeFilter,
+    revealMaxYear,
+  ]);
 
   // Handle Camera Transitions for Geographic Levels (World -> Country -> State -> City)
   useEffect(() => {

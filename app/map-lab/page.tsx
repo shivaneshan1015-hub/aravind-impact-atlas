@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ENTITY_CONFIGS } from "@/config/entities";
@@ -10,7 +10,7 @@ import { DEMO_LOCATIONS } from "@/data/demo-data";
 import { AUROLAB_NATIONAL_DEALERS } from "@/data/aurolab/national-dealers";
 import { calculateStateAggregations, aggregateByCountry } from "@/lib/geography/aggregation";
 import { filterAuroitechByProduct } from "@/lib/data/adapters";
-import { RotateCcw, Cpu, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { RotateCcw, Cpu, ArrowLeft, CheckCircle2, Play, Pause, Filter, Calendar } from "lucide-react";
 
 const MapEngine = dynamic(
   () => import("@/components/atlas/MapEngine").then((mod) => mod.MapEngine),
@@ -53,6 +53,29 @@ export default function MapLabPage() {
   const [productFilterId, setProductFilterId] = useState<string | null>(null);
   const [datasetMode, setDatasetMode] = useState<"standard" | "aurolab_dealers">("standard");
 
+  // CARE specific controls state
+  const [careTypeFilter, setCareTypeFilter] = useState<"all" | "tertiary" | "secondary" | "community">("all");
+  const [revealMaxYear, setRevealMaxYear] = useState<number | null>(null);
+  const [isPlayingReveal, setIsPlayingReveal] = useState<boolean>(false);
+
+  // Progressive reveal timeline animation timer
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isPlayingReveal) {
+      timer = setInterval(() => {
+        setRevealMaxYear((prev) => {
+          const current = prev === null ? 1976 : prev;
+          if (current >= 2025) {
+            setIsPlayingReveal(false);
+            return 2025;
+          }
+          return current + 1;
+        });
+      }, 250);
+    }
+    return () => clearInterval(timer);
+  }, [isPlayingReveal]);
+
   const activeEntityConfig = ENTITY_CONFIGS[selectedEntityId] || ENTITY_CONFIGS.hospitals;
 
   // Active Locations based on dataset mode and entity filter
@@ -84,6 +107,17 @@ export default function MapLabPage() {
     return aggregateByCountry(locations);
   }, [locations]);
 
+  // CARE diagnostics count breakdown
+  const careCounts = useMemo(() => {
+    const careLocs = rawLocations.filter((l) => l.entityId === "hospitals");
+    return {
+      total: careLocs.length,
+      tertiary: careLocs.filter((l) => l.careType === "tertiary").length,
+      secondary: careLocs.filter((l) => l.careType === "secondary").length,
+      community: careLocs.filter((l) => l.careType === "community").length,
+    };
+  }, [rawLocations]);
+
   return (
     <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#F7F8F6] font-sans text-slate-900 antialiased relative">
       {/* Map Lab Top Control Header */}
@@ -107,7 +141,7 @@ export default function MapLabPage() {
               </span>
             </div>
             <p className="text-[11px] font-medium text-slate-500">
-              One Map Engine · Testing Surface for 6 Geographic Grammars
+              One Map Engine · CARE Storyboard & Geographic Visualization
             </p>
           </div>
         </div>
@@ -122,7 +156,7 @@ export default function MapLabPage() {
                 : "text-slate-600 hover:text-slate-900"
             }`}
           >
-            Standard Demo Data
+            CARE Dataset & Standard
           </button>
 
           <button
@@ -148,6 +182,9 @@ export default function MapLabPage() {
             setSelectedGeoLevel("country");
             setSelectedGrammar("auto");
             setProductFilterId(null);
+            setCareTypeFilter("all");
+            setRevealMaxYear(null);
+            setIsPlayingReveal(false);
           }}
           className="flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-full text-xs font-extrabold shadow-sm transition-all"
         >
@@ -243,7 +280,118 @@ export default function MapLabPage() {
             </div>
           </div>
 
-          {/* Section 4: Auroitech Product Layer (If Auroitech is selected) */}
+          {/* Section 4: CARE Centre Controls (Visible for hospitals or all entity) */}
+          {(selectedEntityId === "hospitals" || selectedEntityId === "all") && (
+            <div className="pt-3 border-t border-slate-200/80 space-y-3">
+              <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-blue-700 flex items-center gap-1">
+                    <Filter className="w-3 h-3 text-blue-600" />
+                    <span>CARE Centre Type Filter</span>
+                  </label>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase">
+                    {careTypeFilter}
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 gap-1 text-[11px]">
+                  <button
+                    onClick={() => setCareTypeFilter("all")}
+                    className={`px-2 py-1 rounded font-bold transition-all text-left flex justify-between items-center ${
+                      careTypeFilter === "all"
+                        ? "bg-slate-900 text-white shadow-xs"
+                        : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                    }`}
+                  >
+                    <span>ALL</span>
+                    <span className="text-[10px] opacity-75">{careCounts.total}</span>
+                  </button>
+                  <button
+                    onClick={() => setCareTypeFilter("tertiary")}
+                    className={`px-2 py-1 rounded font-bold transition-all text-left flex justify-between items-center ${
+                      careTypeFilter === "tertiary"
+                        ? "bg-blue-600 text-white shadow-xs"
+                        : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                    }`}
+                  >
+                    <span>TERTIARY</span>
+                    <span className="text-[10px] opacity-75">{careCounts.tertiary}</span>
+                  </button>
+                  <button
+                    onClick={() => setCareTypeFilter("secondary")}
+                    className={`px-2 py-1 rounded font-bold transition-all text-left flex justify-between items-center ${
+                      careTypeFilter === "secondary"
+                        ? "bg-blue-500 text-white shadow-xs"
+                        : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                    }`}
+                  >
+                    <span>SECONDARY</span>
+                    <span className="text-[10px] opacity-75">{careCounts.secondary}</span>
+                  </button>
+                  <button
+                    onClick={() => setCareTypeFilter("community")}
+                    className={`px-2 py-1 rounded font-bold transition-all text-left flex justify-between items-center ${
+                      careTypeFilter === "community"
+                        ? "bg-sky-500 text-white shadow-xs"
+                        : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                    }`}
+                  >
+                    <span>COMMUNITY</span>
+                    <span className="text-[10px] opacity-75">{careCounts.community}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Progressive Reveal Timeline Controls */}
+              <div className="pt-2 border-t border-slate-100">
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-600 flex items-center gap-1">
+                    <Calendar className="w-3 h-3 text-slate-500" />
+                    <span>Progressive Reveal</span>
+                  </label>
+                  <span className="text-[10px] font-black text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200">
+                    {revealMaxYear === null ? "1976 – 2025 (ALL)" : `YEAR <= ${revealMaxYear}`}
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => {
+                      if (revealMaxYear === null) setRevealMaxYear(1976);
+                      setIsPlayingReveal(!isPlayingReveal);
+                    }}
+                    className="p-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-all shrink-0"
+                    title={isPlayingReveal ? "Pause Reveal" : "Play Progressive Reveal"}
+                  >
+                    {isPlayingReveal ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+                  </button>
+
+                  <input
+                    type="range"
+                    min={1976}
+                    max={2025}
+                    value={revealMaxYear === null ? 2025 : revealMaxYear}
+                    onChange={(e) => {
+                      setIsPlayingReveal(false);
+                      setRevealMaxYear(parseInt(e.target.value, 10));
+                    }}
+                    className="w-full accent-blue-600 h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                  />
+
+                  <button
+                    onClick={() => {
+                      setIsPlayingReveal(false);
+                      setRevealMaxYear(null);
+                    }}
+                    className="px-2 py-1 text-[10px] font-bold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded transition-all shrink-0"
+                  >
+                    ALL
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Section 5: Auroitech Product Layer (If Auroitech is selected) */}
           {selectedEntityId === "auroitech" && (
             <div className="pt-2 border-t border-slate-100">
               <label className="text-[10px] font-black uppercase tracking-widest text-sky-800 block mb-2 flex items-center gap-1">
@@ -287,12 +435,20 @@ export default function MapLabPage() {
             </div>
           )}
 
-          {/* Section 5: Diagnostic State Panel */}
+          {/* Section 6: Diagnostic State Panel */}
           <div className="pt-3 border-t border-slate-100 space-y-1.5 text-[11px] text-slate-600 font-medium">
             <div className="flex justify-between">
               <span>Visible Locations:</span>
               <strong className="text-slate-900 font-bold">{locations.length} records</strong>
             </div>
+            {selectedEntityId === "hospitals" && (
+              <div className="flex justify-between text-[10px] text-blue-700 bg-blue-50 px-2 py-1 rounded border border-blue-100 font-semibold">
+                <span>CARE Breakdown:</span>
+                <span>
+                  {careCounts.tertiary} Tertiary · {careCounts.secondary} Sec · {careCounts.community} Comm
+                </span>
+              </div>
+            )}
             <div className="flex justify-between">
               <span>Aggregated States:</span>
               <strong className="text-slate-900 font-bold">{stateAggregations.length} states</strong>
@@ -303,8 +459,8 @@ export default function MapLabPage() {
             </div>
             <div className="flex justify-between">
               <span>Data Status:</span>
-              <span className="text-amber-700 font-bold bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">
-                source-supplied-dev-data
+              <span className="text-amber-700 font-bold bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200 text-[10px]">
+                source-supplied / validation-pending
               </span>
             </div>
           </div>
@@ -323,6 +479,8 @@ export default function MapLabPage() {
             onClearLocation={() => setSelectedLocation(null)}
             modeGrammar={selectedGrammar}
             geographicLevel={selectedGeoLevel}
+            careTypeFilter={careTypeFilter}
+            revealMaxYear={revealMaxYear}
             isLabMode={true}
           />
         </div>
@@ -330,3 +488,4 @@ export default function MapLabPage() {
     </div>
   );
 }
+

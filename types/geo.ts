@@ -1,8 +1,11 @@
 import { EntityId } from "./entity";
 
+export type CareCentreType = "tertiary" | "secondary" | "community";
+
 export interface GeoLocationItem {
   id: string;
   name: string;
+  rawName?: string;
   entityId: EntityId;
   subcategoryId: string;
   country: string;
@@ -16,6 +19,8 @@ export interface GeoLocationItem {
   contact?: string;
   establishedYear?: number;
   type?: string;
+  careType?: CareCentreType;
+  sourceStatus?: "source-supplied" | "validated" | "needs-validation";
 }
 
 export type GeographicGrammar =
