@@ -326,8 +326,29 @@ export function MapEngine({
 
       const isAurolabLoc = loc.entityId === "aurolab";
       const isEyeBankLoc = loc.entityId === "eyebank";
+      const isOneSystemActive = isOneSystem || entityConfig.id === "all";
 
-      if (isEyeBankLoc) {
+      if (isOneSystemActive) {
+        // Compact Micro-Orb Pins for One System view so all colors are clearly visible across the map
+        const entityColors: Record<string, string> = {
+          hospitals: "#2563EB",  // Royal Blue
+          laico: "#0D9488",      // Teal
+          amrf: "#7C3AED",       // Violet
+          aurolab: "#D97706",    // Amber
+          auroitech: "#EA580C",  // Orange
+          eyebank: "#059669",    // Emerald
+        };
+        const pointColor = entityColors[loc.entityId] || themeColor;
+        const orbSize = isSelected ? "13px" : "8px";
+        const orbShadow = `0 0 6px ${pointColor}, 0 1px 3px rgba(0,0,0,0.3)`;
+
+        el.innerHTML = `
+          <div class="relative flex items-center justify-center pointer-events-auto group">
+            <div style="width: ${orbSize}; height: ${orbSize}; background-color: ${pointColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: ${orbShadow}; transition: all 0.2s ease-out;" class="group-hover:scale-150">
+            </div>
+          </div>
+        `;
+      } else if (isEyeBankLoc) {
         const isMainHub = loc.metadata?.isMainHub || loc.id.startsWith("eb_hub_");
         const displayName = loc.name || loc.rawName;
         const showLabel = !isOneSystem && !hidePinLabels && entityConfig.id !== "all";
@@ -526,6 +547,8 @@ export function MapEngine({
     activeGrammar,
     careTypeFilter,
     revealMaxYear,
+    isOneSystem,
+    hidePinLabels,
   ]);
 
   // Handle Camera Transitions for Geographic Levels (World -> Country -> State -> City)
@@ -539,6 +562,22 @@ export function MapEngine({
     }
 
     if (!selectedState) {
+      if (entityConfig.id === "eyebank") {
+        // Tight South India camera focus for Eye Bank Collection Network
+        map.fitBounds(
+          [
+            [76.2, 7.8],   // SW: Kanyakumari / Southern tip
+            [80.6, 14.2],  // NE: Tirupati / Chennai region
+          ],
+          {
+            padding: { top: 60, bottom: 60, left: 60, right: 60 },
+            maxZoom: 7.8,
+            duration: 1200,
+          }
+        );
+        return;
+      }
+
       let filtered = locations;
       if (careTypeFilter && careTypeFilter !== "all") {
         filtered = filtered.filter((l) => l.careType === careTypeFilter);
