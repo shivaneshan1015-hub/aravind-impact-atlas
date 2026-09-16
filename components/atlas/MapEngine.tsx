@@ -334,29 +334,31 @@ export function MapEngine({
         activeGrammar === "distribution" || entityConfig.id === "aurolab" ? "visible" : "none"
       );
     }
-    if (map.getLayer("eyebank-flow-layer")) {
-      const showCollection =
-        entityConfig.id === "eyebank" &&
-        (!selectedSubcategoryId ||
-          selectedSubcategoryId === "collected" ||
-          selectedSubcategoryId === "collection_vs_utilisation");
-      map.setLayoutProperty(
-        "eyebank-flow-layer",
-        "visibility",
-        showCollection || activeGrammar === "flow" ? "visible" : "none"
-      );
-    }
-    if (map.getLayer("eyebank-distribution-layer")) {
-      const showDistribution =
-        entityConfig.id === "eyebank" &&
-        (!selectedSubcategoryId ||
-          selectedSubcategoryId === "distributed" ||
-          selectedSubcategoryId === "collection_vs_utilisation");
-      map.setLayoutProperty(
-        "eyebank-distribution-layer",
-        "visibility",
-        showDistribution || activeGrammar === "flow" ? "visible" : "none"
-      );
+    if (entityConfig.id === "eyebank") {
+      const isDistributedOnly = selectedSubcategoryId === "distributed";
+      const isCollectedOnly = selectedSubcategoryId === "collected";
+
+      if (map.getLayer("eyebank-flow-layer")) {
+        map.setLayoutProperty(
+          "eyebank-flow-layer",
+          "visibility",
+          isDistributedOnly ? "none" : "visible"
+        );
+      }
+      if (map.getLayer("eyebank-distribution-layer")) {
+        map.setLayoutProperty(
+          "eyebank-distribution-layer",
+          "visibility",
+          isCollectedOnly ? "none" : "visible"
+        );
+      }
+    } else {
+      if (map.getLayer("eyebank-flow-layer")) {
+        map.setLayoutProperty("eyebank-flow-layer", "visibility", "none");
+      }
+      if (map.getLayer("eyebank-distribution-layer")) {
+        map.setLayoutProperty("eyebank-distribution-layer", "visibility", "none");
+      }
     }
   }, [mapLoaded, entityConfig.id, activeGrammar, selectedSubcategoryId]);
 
@@ -637,12 +639,18 @@ export function MapEngine({
     if (!selectedState) {
       if (entityConfig.id === "eyebank") {
         if (selectedSubcategoryId === "distributed") {
-          // Fly to all-India overview for National Distribution Network
-          map.flyTo({
-            center: INDIA_CENTER,
-            zoom: 4.8,
-            duration: 1200,
-          });
+          // Fit camera to full India extent so all national distribution destination nodes fit in view
+          map.fitBounds(
+            [
+              [71.5, 7.5],   // SW: Gujarat coast / Southerntip
+              [89.5, 31.5],  // NE: West Bengal / Haridwar / Delhi
+            ],
+            {
+              padding: { top: 70, bottom: 70, left: 70, right: 70 },
+              maxZoom: 5.2,
+              duration: 1200,
+            }
+          );
           return;
         } else {
           // Tight South India camera focus for Eye Bank Collection Network

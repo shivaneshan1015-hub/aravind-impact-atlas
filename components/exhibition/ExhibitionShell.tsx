@@ -186,6 +186,15 @@ export function ExhibitionShell() {
 
         {/* Core Exploration View (Map Canvas Dominates Remaining Viewport) */}
         <main className="flex-1 flex flex-col relative overflow-hidden bg-[#F7F8F6]">
+          {/* Subcategory Focus Layer Navigation Bar */}
+          {(currentScene === "story_exploration" || currentScene === "one_system") && (
+            <SubcategoryNav
+              entityConfig={activeEntityConfig}
+              selectedSubcategoryId={selectedSubcategoryId}
+              onSelectSubcategory={selectSubcategory}
+            />
+          )}
+
           {/* Geographic Breadcrumb Navigation bar */}
           {(currentScene === "story_exploration" || currentScene === "one_system") && (
             <GeographicBreadcrumb
