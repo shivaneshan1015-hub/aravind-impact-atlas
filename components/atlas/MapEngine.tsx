@@ -347,8 +347,14 @@ export function MapEngine({
           outerShadow = "0 1px 4px rgba(0,0,0,0.18)";
         }
 
+        const labelText = loc.rawName || loc.city || loc.name;
+        const hospitalLabel = labelText.startsWith("AEH-") ? labelText : `AEH-${labelText}`;
+
         el.innerHTML = `
-          <div class="relative flex items-center justify-center">
+          <div class="relative flex flex-col items-center justify-center pointer-events-auto">
+            <span class="mb-1 text-[10px] font-black text-slate-800 bg-white/95 px-2 py-0.5 rounded-md shadow-md border border-slate-200/90 whitespace-nowrap tracking-wide pointer-events-none">
+              ${hospitalLabel}
+            </span>
             <div style="width: ${markerSize}; height: ${markerSize}; background-color: ${markerBg}; border: ${markerBorder}; border-radius: 9999px; box-shadow: ${outerShadow}; transition: all 0.2s ease-out;">
             </div>
           </div>
