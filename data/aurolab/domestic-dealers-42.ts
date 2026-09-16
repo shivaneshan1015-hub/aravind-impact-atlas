@@ -59,7 +59,7 @@ export const AUROLAB_DOMESTIC_LOCATIONS: GeoLocationItem[] = AUROLAB_DOMESTIC_DE
   id: `aurolab_domestic_${d.sNo}`,
   name: `${d.city} Dealer Node`,
   entityId: "aurolab",
-  subcategoryId: "domestic_dealers",
+  subcategoryId: "domestic",
   country: "India",
   state: d.state,
   city: d.city,

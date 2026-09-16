@@ -28,8 +28,12 @@ export function getFilteredLocations(
 
     // Special handling for Aurolab
     if (entityId === "aurolab") {
-      if (subcategoryId === "domestic") return item.subcategoryId === "domestic";
-      if (subcategoryId === "international") return item.subcategoryId === "international";
+      if (!subcategoryId || subcategoryId === "domestic" || subcategoryId === "national_dealers" || subcategoryId === "domestic_dealers") {
+        return item.subcategoryId === "domestic" || item.subcategoryId === "national_dealers" || item.subcategoryId === "domestic_dealers";
+      }
+      if (subcategoryId === "international" || subcategoryId === "international_dealers") {
+        return item.subcategoryId === "international" || item.subcategoryId === "international_dealers";
+      }
       return true;
     }
 

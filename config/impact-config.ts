@@ -56,7 +56,7 @@ export const CENTRAL_IMPACT_CONFIGS: Record<EntityId, ImpactConfig> = {
   laico: {
     id: "laico",
     label: "CAPACITY BUILDING",
-    entity: "Lions Aravind Institute for Community Ophthalmology",
+    entity: "Lions Aravind Institute of Community Ophthalmology",
     shortName: "LAICO",
     question: "Where does eye-care knowledge travel?",
     description: "Global consultancy and training institute expanding eye care through 350+ mentored partner hospitals.",

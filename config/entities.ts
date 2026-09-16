@@ -111,7 +111,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
   },
   laico: {
     id: "laico",
-    name: "Lions Aravind Institute for Community Ophthalmology",
+    name: "Lions Aravind Institute of Community Ophthalmology",
     shortName: "LAICO",
     tagline: "Capacity Building",
     description:

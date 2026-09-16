@@ -49,5 +49,5 @@ export function filterAuroitechByProduct(
  * without exposing individual operational dealer profiles or names.
  */
 export function isAurolabAggregateOnly(entityId: EntityId): boolean {
-  return entityId === "aurolab";
+  return false;
 }
