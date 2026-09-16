@@ -17,7 +17,26 @@ export function getFilteredLocations(
 
   return DEMO_LOCATIONS.filter((item) => {
     if (item.entityId !== entityId) return false;
-    if (subcategoryId && item.subcategoryId !== subcategoryId) return false;
+
+    // Special handling for Eye Hospitals / CARE entity
+    if (entityId === "hospitals") {
+      if (subcategoryId === "hospitals_tertiary") return item.careType === "tertiary";
+      if (subcategoryId === "hospitals_secondary") return item.careType === "secondary";
+      if (subcategoryId === "hospitals_community") return item.careType === "community";
+      return true; // Return all 24 CARE locations for vision centres, patients, staffs, or general overview
+    }
+
+    // Special handling for Aurolab
+    if (entityId === "aurolab") {
+      if (subcategoryId === "domestic") return item.subcategoryId === "domestic";
+      if (subcategoryId === "international") return item.subcategoryId === "international";
+      return true;
+    }
+
+    if (subcategoryId && item.subcategoryId !== subcategoryId) {
+      return false;
+    }
+
     return true;
   });
 }

@@ -163,46 +163,7 @@ export function MapEngine({
         layout: { visibility: "none" },
       });
 
-      // 3. AUROLAB DOMESTIC SUPPLY NETWORK (42 Dealers Radiating from Madurai)
-      map.addSource("aurolab-network-source", {
-        type: "geojson",
-        data: {
-          type: "FeatureCollection",
-          features: [
-            { type: "Feature", properties: { city: "Delhi" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.1025, 28.7041]] } },
-            { type: "Feature", properties: { city: "Amritsar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [74.8723, 31.6340]] } },
-            { type: "Feature", properties: { city: "Srinagar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [74.7973, 34.0837]] } },
-            { type: "Feature", properties: { city: "Chandigarh" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [76.7794, 30.7333]] } },
-            { type: "Feature", properties: { city: "Jaipur" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [75.7873, 26.9124]] } },
-            { type: "Feature", properties: { city: "Varanasi" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [82.9739, 25.3176]] } },
-            { type: "Feature", properties: { city: "Lucknow" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [80.9462, 26.8467]] } },
-            { type: "Feature", properties: { city: "Kolkata" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [88.3639, 22.5726]] } },
-            { type: "Feature", properties: { city: "Guwahati" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [91.7362, 26.1445]] } },
-            { type: "Feature", properties: { city: "Patna" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [85.1376, 25.5941]] } },
-            { type: "Feature", properties: { city: "Hyderabad" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [78.4867, 17.3850]] } },
-            { type: "Feature", properties: { city: "Bangalore" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] } },
-            { type: "Feature", properties: { city: "Cochin" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [76.2711, 9.9816]] } },
-            { type: "Feature", properties: { city: "Chennai" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [80.2707, 13.0827]] } },
-            { type: "Feature", properties: { city: "Mumbai" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [72.8777, 19.0760]] } },
-            { type: "Feature", properties: { city: "Ahmedabad" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [72.5714, 23.0225]] } },
-          ],
-        },
-      });
-
-      map.addLayer({
-        id: "aurolab-network-layer",
-        type: "line",
-        source: "aurolab-network-source",
-        paint: {
-          "line-color": "#EA580C",
-          "line-width": 2.5,
-          "line-opacity": 0.85,
-          "line-dasharray": [3, 2],
-        },
-        layout: { visibility: "none" },
-      });
-
-      // 4. VISION RESTORATION (Eye Bank Flow Vectors)
+      // 3. VISION RESTORATION (Eye Bank Flow Vectors)
       map.addSource("eyebank-flow-source", {
         type: "geojson",
         data: {
@@ -339,35 +300,60 @@ export function MapEngine({
       el.className =
         "group cursor-pointer transition-all duration-200 select-none w-12 h-12 flex items-center justify-center";
 
-      // CARE Centre visual hierarchy styling
-      let markerSize = isSelected ? "20px" : "12px";
-      let markerBg = themeColor;
-      let markerBorder = "2px solid #FFFFFF";
-      let outerShadow = "0 2px 6px rgba(0,0,0,0.15)";
+      // Check if location belongs to Aurolab
+      const isAurolabLoc = loc.entityId === "aurolab";
 
-      if (loc.careType === "tertiary") {
-        markerSize = isSelected ? "22px" : "18px";
-        markerBg = "#2563EB"; // Solid Primary Royal Blue
-        markerBorder = "2.5px solid #FFFFFF";
-        outerShadow = "0 0 0 4px rgba(37,99,235,0.25), 0 3px 8px rgba(0,0,0,0.25)";
-      } else if (loc.careType === "secondary") {
-        markerSize = isSelected ? "18px" : "14px";
-        markerBg = "#3B82F6"; // Mid Blue
-        markerBorder = "2px solid #FFFFFF";
-        outerShadow = "0 0 0 3px rgba(59,130,246,0.2), 0 2px 6px rgba(0,0,0,0.2)";
-      } else if (loc.careType === "community") {
-        markerSize = isSelected ? "14px" : "10px";
-        markerBg = "#60A5FA"; // Light Blue
-        markerBorder = "2px solid #FFFFFF";
-        outerShadow = "0 1px 4px rgba(0,0,0,0.18)";
-      }
-
-      el.innerHTML = `
-        <div class="relative flex items-center justify-center">
-          <div style="width: ${markerSize}; height: ${markerSize}; background-color: ${markerBg}; border: ${markerBorder}; border-radius: 9999px; box-shadow: ${outerShadow}; transition: all 0.2s ease-out;">
+      if (isAurolabLoc) {
+        el.innerHTML = `
+          <div class="relative flex items-center justify-center group pointer-events-auto">
+            <div class="relative w-8 h-8 flex items-center justify-center">
+              <!-- Left Curved Haptic Loop -->
+              <svg class="absolute -left-2 w-4 h-4 text-amber-500 opacity-90 transition-transform group-hover:-translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10" />
+              </svg>
+              <!-- Central Optic Lens Ring with Inner Reflection -->
+              <div class="w-4 h-4 rounded-full bg-amber-400/30 border-2 border-amber-600 shadow-md flex items-center justify-center backdrop-blur-xs relative overflow-hidden transition-all group-hover:scale-125">
+                <div class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping opacity-75"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
+              </div>
+              <!-- Right Curved Haptic Loop -->
+              <svg class="absolute -right-2 w-4 h-4 text-amber-500 opacity-90 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10" />
+              </svg>
+            </div>
           </div>
-        </div>
-      `;
+        `;
+      } else {
+        // CARE Centre & Standard Visual Hierarchy
+        let markerSize = isSelected ? "20px" : "12px";
+        let markerBg = themeColor;
+        let markerBorder = "2px solid #FFFFFF";
+        let outerShadow = "0 2px 6px rgba(0,0,0,0.15)";
+
+        if (loc.careType === "tertiary") {
+          markerSize = isSelected ? "22px" : "18px";
+          markerBg = "#2563EB"; // Solid Primary Royal Blue
+          markerBorder = "2.5px solid #FFFFFF";
+          outerShadow = "0 0 0 4px rgba(37,99,235,0.25), 0 3px 8px rgba(0,0,0,0.25)";
+        } else if (loc.careType === "secondary") {
+          markerSize = isSelected ? "18px" : "14px";
+          markerBg = "#3B82F6"; // Mid Blue
+          markerBorder = "2px solid #FFFFFF";
+          outerShadow = "0 0 0 3px rgba(59,130,246,0.2), 0 2px 6px rgba(0,0,0,0.2)";
+        } else if (loc.careType === "community") {
+          markerSize = isSelected ? "14px" : "10px";
+          markerBg = "#60A5FA"; // Light Blue
+          markerBorder = "2px solid #FFFFFF";
+          outerShadow = "0 1px 4px rgba(0,0,0,0.18)";
+        }
+
+        el.innerHTML = `
+          <div class="relative flex items-center justify-center">
+            <div style="width: ${markerSize}; height: ${markerSize}; background-color: ${markerBg}; border: ${markerBorder}; border-radius: 9999px; box-shadow: ${outerShadow}; transition: all 0.2s ease-out;">
+            </div>
+          </div>
+        `;
+      }
 
       el.addEventListener("click", (e) => {
         e.stopPropagation();
