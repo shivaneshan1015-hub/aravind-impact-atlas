@@ -1,4 +1,5 @@
 import { GeoLocationItem } from "@/types/geo";
+import { EYE_BANK_DISTRIBUTION_RECORDS } from "./eyebank-data-extended";
 
 export interface CollectionVector {
   id: string;
@@ -82,7 +83,7 @@ export const MAIN_EYE_BANK_HUBS = [
   },
 ];
 
-// District Collection Nodes dictionary for mapping coordinates
+// Master Coordinates Dictionary for Collection Nodes & National Distribution Destinations
 export const DISTRICT_COORDINATES: Record<string, { lat: number; lng: number; state: string }> = {
   Madurai: { lat: 9.9252, lng: 78.1198, state: "Tamil Nadu" },
   Dindigul: { lat: 10.3673, lng: 77.9803, state: "Tamil Nadu" },
@@ -112,6 +113,7 @@ export const DISTRICT_COORDINATES: Record<string, { lat: number; lng: number; st
   Cuddalore: { lat: 11.7480, lng: 79.7681, state: "Tamil Nadu" },
   Vilupuram: { lat: 11.9401, lng: 79.4937, state: "Tamil Nadu" },
   Puducherry: { lat: 11.9416, lng: 79.8083, state: "Puducherry" },
+  Pondicherry: { lat: 11.9416, lng: 79.8083, state: "Puducherry" },
   Thiruvanamalai: { lat: 12.2253, lng: 79.0747, state: "Tamil Nadu" },
   Kallakuruchi: { lat: 11.7384, lng: 78.9610, state: "Tamil Nadu" },
   Salem: { lat: 11.6643, lng: 78.1460, state: "Tamil Nadu" },
@@ -120,10 +122,37 @@ export const DISTRICT_COORDINATES: Record<string, { lat: number; lng: number; st
   Krishanagiri: { lat: 12.5186, lng: 78.2144, state: "Tamil Nadu" },
   Krishnagiri: { lat: 12.5186, lng: 78.2144, state: "Tamil Nadu" },
   Thirupathi: { lat: 13.6288, lng: 79.4192, state: "Andhra Pradesh" },
+  Tirupathi: { lat: 13.6288, lng: 79.4192, state: "Andhra Pradesh" },
   Chittoor: { lat: 13.2172, lng: 79.1003, state: "Andhra Pradesh" },
+
+  // Distribution Destinations across India
+  Ernakulam: { lat: 9.9816, lng: 76.2999, state: "Kerala" },
+  Bangalore: { lat: 12.9716, lng: 77.5946, state: "Karnataka" },
+  Hyderabad: { lat: 17.3850, lng: 78.4867, state: "Telangana" },
+  Kakinada: { lat: 16.9891, lng: 82.2475, state: "Andhra Pradesh" },
+  Mumbai: { lat: 19.0760, lng: 72.8777, state: "Maharashtra" },
+  Haridwar: { lat: 29.9457, lng: 78.1642, state: "Uttarakhand" },
+  Haryana: { lat: 28.4595, lng: 77.0266, state: "Haryana" },
+  "Haryana Region": { lat: 28.4595, lng: 77.0266, state: "Haryana" },
+  Delhi: { lat: 28.7041, lng: 77.1025, state: "Delhi" },
+  "Delhi NCR": { lat: 28.7041, lng: 77.1025, state: "Delhi" },
+  Kolkatta: { lat: 22.5726, lng: 88.3639, state: "West Bengal" },
+  Kolkata: { lat: 22.5726, lng: 88.3639, state: "West Bengal" },
+  Nagpur: { lat: 21.1458, lng: 79.0882, state: "Maharashtra" },
+  Lucknow: { lat: 26.8467, lng: 80.9462, state: "Uttar Pradesh" },
+  Chandigarh: { lat: 30.7333, lng: 76.7794, state: "Chandigarh" },
+  Ahmedabad: { lat: 23.0225, lng: 72.5714, state: "Gujarat" },
+  Varanasi: { lat: 25.3176, lng: 82.9739, state: "Uttar Pradesh" },
+  Thrissur: { lat: 10.5276, lng: 76.2144, state: "Kerala" },
+  Tiruvanandapuram: { lat: 8.5241, lng: 76.9366, state: "Kerala" },
+  Thiruvananthapuram: { lat: 8.5241, lng: 76.9366, state: "Kerala" },
+  Palakkad: { lat: 10.7867, lng: 76.6548, state: "Kerala" },
+  Palakadu: { lat: 10.7867, lng: 76.6548, state: "Kerala" },
+  Kozhikode: { lat: 11.2588, lng: 75.7804, state: "Kerala" },
+  Chengalpattu: { lat: 12.6823, lng: 79.9757, state: "Tamil Nadu" },
 };
 
-// Build complete GeoLocationItem list for Eye Bank entity
+// 1. Main Hub Location Items
 const MAIN_HUB_ITEMS: GeoLocationItem[] = MAIN_EYE_BANK_HUBS.map((hub) => ({
   id: hub.id,
   name: hub.centerName,
@@ -143,9 +172,8 @@ const MAIN_HUB_ITEMS: GeoLocationItem[] = MAIN_EYE_BANK_HUBS.map((hub) => ({
   },
 }));
 
-// Generate collection nodes attached to main hubs
+// 2. Collection Node Items
 const COLLECTION_CENTRE_ITEMS: GeoLocationItem[] = [
-  // RAIEB , Madurai Collection Nodes
   ...["Madurai", "Dindigul", "Theni", "Virdhunagar", "Sivagangai", "Pudukkottai", "Ramanathapuram", "Ariyalur", "Karur", "Thanjavur", "Nagapattinam", "Thiruvarur", "Trichy", "Mayaladudurai"].map((district) => {
     const coords = DISTRICT_COORDINATES[district] || { lat: 9.9252, lng: 78.1198, state: "Tamil Nadu" };
     return {
@@ -160,15 +188,10 @@ const COLLECTION_CENTRE_ITEMS: GeoLocationItem[] = [
       latitude: coords.lat,
       longitude: coords.lng,
       metrics: { attachedHub: "RAIEB , Madurai", status: "Active Network" },
-      metadata: {
-        isMainHub: false,
-        attachedMainCenter: "RAIEB , Madurai",
-        district,
-      },
+      metadata: { isMainHub: false, attachedMainCenter: "RAIEB , Madurai", district },
     };
   }),
 
-  // AIOB, Coimbatore Collection Nodes
   ...["Coimbatore", "Tirupur", "Erode", "Dindigul"].map((district) => {
     const coords = DISTRICT_COORDINATES[district] || { lat: 11.0168, lng: 76.9558, state: "Tamil Nadu" };
     return {
@@ -183,15 +206,10 @@ const COLLECTION_CENTRE_ITEMS: GeoLocationItem[] = [
       latitude: coords.lat,
       longitude: coords.lng,
       metrics: { attachedHub: "AIOB, Coimbatore", status: "Active Network" },
-      metadata: {
-        isMainHub: false,
-        attachedMainCenter: "AIOB, Coimbatore",
-        district,
-      },
+      metadata: { isMainHub: false, attachedMainCenter: "AIOB, Coimbatore", district },
     };
   }),
 
-  // RAEB ,Tirunelveli Collection Nodes
   ...["Tirunelveli", "Tuticorin", "Kaniyakumari", "Tenkasi", "Virudhunagar"].map((district) => {
     const coords = DISTRICT_COORDINATES[district] || { lat: 8.7139, lng: 77.7567, state: "Tamil Nadu" };
     return {
@@ -206,15 +224,10 @@ const COLLECTION_CENTRE_ITEMS: GeoLocationItem[] = [
       latitude: coords.lat,
       longitude: coords.lng,
       metrics: { attachedHub: "RAEB ,Tirunelveli", status: "Active Network" },
-      metadata: {
-        isMainHub: false,
-        attachedMainCenter: "RAEB ,Tirunelveli",
-        district,
-      },
+      metadata: { isMainHub: false, attachedMainCenter: "RAEB ,Tirunelveli", district },
     };
   }),
 
-  // AEB Chennai Collection Nodes
   ...["Vellore"].map((district) => {
     const coords = DISTRICT_COORDINATES[district] || { lat: 12.9165, lng: 79.1325, state: "Tamil Nadu" };
     return {
@@ -229,15 +242,10 @@ const COLLECTION_CENTRE_ITEMS: GeoLocationItem[] = [
       latitude: coords.lat,
       longitude: coords.lng,
       metrics: { attachedHub: "AEB Chennai", status: "Active Network" },
-      metadata: {
-        isMainHub: false,
-        attachedMainCenter: "AEB Chennai",
-        district,
-      },
+      metadata: { isMainHub: false, attachedMainCenter: "AEB Chennai", district },
     };
   }),
 
-  // AEBAP,Pondicherry Collection Nodes
   ...["Cuddalore", "Vilupuram", "Puducherry", "Mayaldudurai", "Thiruvanamalai", "Kallakuruchi"].map((district) => {
     const coords = DISTRICT_COORDINATES[district] || { lat: 11.9416, lng: 79.8083, state: "Puducherry" };
     return {
@@ -252,15 +260,10 @@ const COLLECTION_CENTRE_ITEMS: GeoLocationItem[] = [
       latitude: coords.lat,
       longitude: coords.lng,
       metrics: { attachedHub: "AEBAP,Pondicherry", status: "Active Network" },
-      metadata: {
-        isMainHub: false,
-        attachedMainCenter: "AEBAP,Pondicherry",
-        district,
-      },
+      metadata: { isMainHub: false, attachedMainCenter: "AEBAP,Pondicherry", district },
     };
   }),
 
-  // AEH, Salem Collection Nodes
   ...["Salem", "Namakkal", "Dharmapuri", "Krishanagiri"].map((district) => {
     const coords = DISTRICT_COORDINATES[district] || { lat: 11.6643, lng: 78.1460, state: "Tamil Nadu" };
     return {
@@ -275,15 +278,10 @@ const COLLECTION_CENTRE_ITEMS: GeoLocationItem[] = [
       latitude: coords.lat,
       longitude: coords.lng,
       metrics: { attachedHub: "AEH, Salem", status: "Active Network" },
-      metadata: {
-        isMainHub: false,
-        attachedMainCenter: "AEH, Salem",
-        district,
-      },
+      metadata: { isMainHub: false, attachedMainCenter: "AEH, Salem", district },
     };
   }),
 
-  // AEH ,Tirupathi Collection Nodes
   ...["Thirupathi", "Chittoor"].map((district) => {
     const coords = DISTRICT_COORDINATES[district] || { lat: 13.6288, lng: 79.4192, state: "Andhra Pradesh" };
     return {
@@ -298,55 +296,38 @@ const COLLECTION_CENTRE_ITEMS: GeoLocationItem[] = [
       latitude: coords.lat,
       longitude: coords.lng,
       metrics: { attachedHub: "AEH ,Tirupathi", status: "Active Network" },
-      metadata: {
-        isMainHub: false,
-        attachedMainCenter: "AEH ,Tirupathi",
-        district,
-      },
+      metadata: { isMainHub: false, attachedMainCenter: "AEH ,Tirupathi", district },
     };
   }),
 ];
 
-// Master EYEBANK_DATA combining Main Hubs & Collection Nodes
+// 3. National Distribution Items generated from EYE_BANK_DISTRIBUTION_RECORDS
+const DISTRIBUTION_DESTINATION_ITEMS: GeoLocationItem[] = EYE_BANK_DISTRIBUTION_RECORDS.map((rec, index) => {
+  const coords = DISTRICT_COORDINATES[rec.district] || { lat: 12.9716, lng: 77.5946, state: rec.state };
+  return {
+    id: `eb_dist_${index}_${rec.district.toLowerCase().replace(/[^a-z0-9]/g, "")}`,
+    name: `${rec.district} Distribution Centre`,
+    rawName: rec.district,
+    entityId: "eyebank" as const,
+    subcategoryId: "distribution_network",
+    country: "India",
+    state: rec.state,
+    city: rec.district,
+    latitude: coords.lat,
+    longitude: coords.lng,
+    metrics: { sourceHub: rec.centerName, recipientRegion: rec.state },
+    metadata: {
+      isMainHub: false,
+      isDistributionDestination: true,
+      sourceHubName: rec.centerName,
+      district: rec.district,
+    },
+  };
+});
+
+// Master EYEBANK_DATA combining Main Hubs, Collection Nodes, and National Distribution Nodes
 export const EYEBANK_DATA: GeoLocationItem[] = [
   ...MAIN_HUB_ITEMS,
   ...COLLECTION_CENTRE_ITEMS,
-
-  // National Distribution Nodes
-  {
-    id: "eyebank_dist_tn",
-    name: "Tamil Nadu Corneal Tissue Distribution Network",
-    entityId: "eyebank",
-    subcategoryId: "distribution_network",
-    country: "India",
-    state: "Tamil Nadu",
-    city: "Madurai Hub",
-    latitude: 9.9252,
-    longitude: 78.1198,
-    metrics: { recipientHospitals: 42, cornealTransplants: 4530, utilizationRate: "88%" },
-  },
-  {
-    id: "eyebank_dist_ka",
-    name: "Karnataka Tissue Distribution Partner",
-    entityId: "eyebank",
-    subcategoryId: "distribution_network",
-    country: "India",
-    state: "Karnataka",
-    city: "Bengaluru",
-    latitude: 12.9716,
-    longitude: 77.5946,
-    metrics: { recipientHospitals: 18, cornealTransplants: 1200, utilizationRate: "85%" },
-  },
-  {
-    id: "eyebank_dist_kl",
-    name: "Kerala Tissue Distribution Partner",
-    entityId: "eyebank",
-    subcategoryId: "distribution_network",
-    country: "India",
-    state: "Kerala",
-    city: "Kochi",
-    latitude: 9.9312,
-    longitude: 76.2673,
-    metrics: { recipientHospitals: 14, cornealTransplants: 950, utilizationRate: "86%" },
-  },
+  ...DISTRIBUTION_DESTINATION_ITEMS,
 ];

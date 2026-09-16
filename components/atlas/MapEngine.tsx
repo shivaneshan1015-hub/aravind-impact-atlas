@@ -168,12 +168,44 @@ export function MapEngine({
         layout: { visibility: "none" },
       });
 
-      // 3. VISION RESTORATION (Eye Bank Collection Dotted Vector Networks)
+      // 3. VISION RESTORATION (Eye Bank Collection & Distribution Vector Networks)
       const eyeBankCollectionFeatures: any[] = [];
+      const eyeBankDistributionFeatures: any[] = [];
+
       EYEBANK_DATA.forEach((item) => {
-        if (!item.metadata?.isMainHub && item.metadata?.attachedMainCenter) {
+        if (item.metadata?.isDistributionDestination || item.subcategoryId === "distribution_network") {
           const mainHub = EYEBANK_DATA.find(
-            (h) => h.metadata?.isMainHub && (h.name === item.metadata?.attachedMainCenter || h.rawName === item.metadata?.attachedMainCenter)
+            (h) =>
+              h.metadata?.isMainHub &&
+              (h.name === item.metadata?.sourceHubName ||
+                h.rawName === item.metadata?.sourceHubName ||
+                (h as any).centerName === item.metadata?.sourceHubName)
+          );
+          if (mainHub) {
+            const dist = Math.hypot(item.longitude - mainHub.longitude, item.latitude - mainHub.latitude);
+            if (dist > 0.001) {
+              eyeBankDistributionFeatures.push({
+                type: "Feature",
+                properties: {
+                  hubName: mainHub.name,
+                  destCity: item.city,
+                },
+                geometry: {
+                  type: "LineString",
+                  coordinates: [
+                    [mainHub.longitude, mainHub.latitude],
+                    [item.longitude, item.latitude],
+                  ],
+                },
+              });
+            }
+          }
+        } else if (!item.metadata?.isMainHub && item.metadata?.attachedMainCenter) {
+          const mainHub = EYEBANK_DATA.find(
+            (h) =>
+              h.metadata?.isMainHub &&
+              (h.name === item.metadata?.attachedMainCenter ||
+                h.rawName === item.metadata?.attachedMainCenter)
           );
           if (mainHub) {
             const dist = Math.hypot(item.longitude - mainHub.longitude, item.latitude - mainHub.latitude);
@@ -197,6 +229,7 @@ export function MapEngine({
         }
       });
 
+      // Collection Network Source & Dotted Layer (Emerald Green)
       map.addSource("eyebank-flow-source", {
         type: "geojson",
         data: {
@@ -211,9 +244,31 @@ export function MapEngine({
         source: "eyebank-flow-source",
         paint: {
           "line-color": "#059669",
-          "line-width": 3.0,
+          "line-width": 2.5,
           "line-opacity": 0.85,
-          "line-dasharray": [4, 4],
+          "line-dasharray": [3, 3],
+        },
+        layout: { visibility: "none" },
+      });
+
+      // Distribution Network Source & Dashed Layer (Sky Blue)
+      map.addSource("eyebank-distribution-source", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: eyeBankDistributionFeatures,
+        },
+      });
+
+      map.addLayer({
+        id: "eyebank-distribution-layer",
+        type: "line",
+        source: "eyebank-distribution-source",
+        paint: {
+          "line-color": "#0284C7",
+          "line-width": 2.5,
+          "line-opacity": 0.85,
+          "line-dasharray": [6, 3],
         },
         layout: { visibility: "none" },
       });
@@ -284,6 +339,13 @@ export function MapEngine({
         activeGrammar === "flow" || entityConfig.id === "eyebank" ? "visible" : "none"
       );
     }
+    if (map.getLayer("eyebank-distribution-layer")) {
+      map.setLayoutProperty(
+        "eyebank-distribution-layer",
+        "visibility",
+        activeGrammar === "flow" || entityConfig.id === "eyebank" ? "visible" : "none"
+      );
+    }
   }, [mapLoaded, entityConfig.id, activeGrammar]);
 
   // Render Restrained Pins with 48px Hit Targets, CARE Visual Hierarchy, and Privacy Protection
@@ -350,6 +412,7 @@ export function MapEngine({
         `;
       } else if (isEyeBankLoc) {
         const isMainHub = loc.metadata?.isMainHub || loc.id.startsWith("eb_hub_");
+        const isDistribution = loc.metadata?.isDistributionDestination || loc.subcategoryId === "distribution_network";
         const displayName = loc.name || loc.rawName;
         const showLabel = !isOneSystem && !hidePinLabels && entityConfig.id !== "all";
 
@@ -380,21 +443,19 @@ export function MapEngine({
               </div>
             </div>
           `;
-        } else {
-          // Distinct Collection Centre Pin
-          const collName = loc.rawName || loc.city;
+        } else if (isDistribution) {
+          // Small non-overlapping Distribution Network Pin (Sky Blue Dot, NO text label)
           el.innerHTML = `
-            <div class="relative flex flex-col items-center justify-center pointer-events-auto group">
-              ${
-                showLabel
-                  ? `<span class="mb-1 text-[9px] font-extrabold text-slate-900 bg-white/95 px-2 py-0.5 rounded-md shadow-xs border border-emerald-300 whitespace-nowrap tracking-tight pointer-events-none transition-transform group-hover:scale-105">
-                       ${collName}
-                     </span>`
-                  : ""
-              }
-              <!-- Collection Node Pin -->
-              <div class="w-4 h-4 rounded-full bg-teal-600 border-2 border-white shadow-md flex items-center justify-center transition-all group-hover:scale-125">
-                <div class="w-1.5 h-1.5 rounded-full bg-white animate-ping opacity-75"></div>
+            <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
+              <div style="width: 7px; height: 7px; background-color: #0284C7; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 4px rgba(2, 132, 199, 0.7), 0 1px 3px rgba(0,0,0,0.3); transition: all 0.2s ease-out;" class="group-hover:scale-150">
+              </div>
+            </div>
+          `;
+        } else {
+          // Small non-overlapping Collection Centre Pin (Emerald Green Dot, NO text label)
+          el.innerHTML = `
+            <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
+              <div style="width: 7px; height: 7px; background-color: #059669; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 4px rgba(5, 150, 105, 0.7), 0 1px 3px rgba(0,0,0,0.3); transition: all 0.2s ease-out;" class="group-hover:scale-150">
               </div>
             </div>
           `;
