@@ -103,34 +103,34 @@ export function SidebarPanel({
         </div>
       </div>
 
-      {/* Main Menus & Submenus Section (Restructured without States Represented) */}
+      {/* Main Subcategories Section */}
       <div className="space-y-4 flex-1">
         <div className="flex items-center justify-between border-b border-slate-100 pb-2">
           <span className="text-xs font-black uppercase tracking-widest text-slate-600 flex items-center gap-1.5">
             <Layers className="w-3.5 h-3.5 text-slate-400" />
-            <span>Category Menus</span>
+            <span>Categories</span>
           </span>
           <span className="text-[10px] text-slate-400 font-extrabold">
-            {entityConfig.subcategories.length} Menus
+            {entityConfig.subcategories.length} Sections
           </span>
         </div>
 
         {/* 1. CARE / HOSPITALS CATEGORY */}
         {entityConfig.id === "hospitals" && (
           <div className="space-y-3">
-            {/* Primary Menu 1: Hospitals */}
+            {/* Primary Category 1: Hospitals */}
             <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2">
               <div className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
                   <Building2 className="w-4 h-4 text-blue-600" />
-                  <span>Menu: Hospitals</span>
+                  <span>Hospitals</span>
                 </span>
                 <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">
                   24 Centres
                 </span>
               </div>
 
-              {/* Submenus under Hospitals */}
+              {/* Subcategories under Hospitals */}
               <div className="space-y-1.5 pt-1">
                 <button
                   onClick={() => {
@@ -214,7 +214,7 @@ export function SidebarPanel({
               </div>
             </div>
 
-            {/* Primary Menu 2: Patients */}
+            {/* Primary Category 2: Patients */}
             <button
               onClick={() => onSelectSubcategory?.("patients")}
               className={`w-full p-3 rounded-2xl border text-left flex items-center justify-between font-bold text-xs transition-all ${
@@ -226,14 +226,14 @@ export function SidebarPanel({
               <div className="flex items-center gap-2.5">
                 <Users className="w-4 h-4 text-blue-500 shrink-0" />
                 <div>
-                  <div className="font-black">Menu: Patients</div>
+                  <div className="font-black">Patients</div>
                   <div className="text-[10px] font-normal opacity-80">Outpatient & Surgical Care</div>
                 </div>
               </div>
               <ChevronRight className="w-4 h-4 opacity-60" />
             </button>
 
-            {/* Primary Menu 3: Staffs */}
+            {/* Primary Category 3: Staffs */}
             <button
               onClick={() => onSelectSubcategory?.("staffs")}
               className={`w-full p-3 rounded-2xl border text-left flex items-center justify-between font-bold text-xs transition-all ${
@@ -245,7 +245,7 @@ export function SidebarPanel({
               <div className="flex items-center gap-2.5">
                 <Activity className="w-4 h-4 text-blue-500 shrink-0" />
                 <div>
-                  <div className="font-black">Menu: Staffs</div>
+                  <div className="font-black">Staffs</div>
                   <div className="text-[10px] font-normal opacity-80">Doctors, MLOPs & Caregivers</div>
                 </div>
               </div>
@@ -257,7 +257,7 @@ export function SidebarPanel({
         {/* 2. LAICO CATEGORY */}
         {entityConfig.id === "laico" && (
           <div className="space-y-3">
-            {/* Primary Menu 1: Capacity Building */}
+            {/* Primary Category 1: Capacity Building */}
             <button
               onClick={() => onSelectSubcategory?.("capacity_building")}
               className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between font-bold text-xs transition-all ${
@@ -269,26 +269,26 @@ export function SidebarPanel({
               <div className="flex items-center gap-2.5">
                 <GraduationCap className="w-4 h-4 text-teal-500 shrink-0" />
                 <div>
-                  <div className="font-black">Menu: Capacity Building</div>
+                  <div className="font-black">Capacity Building</div>
                   <div className="text-[10px] font-normal opacity-80">Mentored Eye Hospitals Worldwide</div>
                 </div>
               </div>
               <ChevronRight className="w-4 h-4 opacity-60" />
             </button>
 
-            {/* Primary Menu 2: Training Programmes */}
+            {/* Primary Category 2: Training Programmes */}
             <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2">
               <div className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
                   <Award className="w-4 h-4 text-teal-600" />
-                  <span>Menu: Training Programmes</span>
+                  <span>Training Programmes</span>
                 </span>
                 <span className="text-[10px] bg-teal-100 text-teal-800 px-2 py-0.5 rounded-full font-bold">
                   {laicoCourses.length} Courses
                 </span>
               </div>
 
-              {/* Submenu under Training Programmes: Individual Courses */}
+              {/* Subcategories under Training Programmes: Individual Courses */}
               <div className="space-y-1 pt-1 max-h-48 overflow-y-auto pr-1">
                 {laicoCourses.map((course) => {
                   const isSelected = activeCourse === course;
@@ -318,19 +318,19 @@ export function SidebarPanel({
         {/* 3. AMRF CATEGORY */}
         {entityConfig.id === "amrf" && (
           <div className="space-y-3">
-            {/* Primary Menu 1: Doctorate */}
+            {/* Primary Category 1: Doctorate */}
             <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2">
               <div className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
                   <Microscope className="w-4 h-4 text-purple-600" />
-                  <span>Menu: Doctorate</span>
+                  <span>Doctorate</span>
                 </span>
                 <span className="text-[10px] bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full font-bold">
                   Ph.D. Program
                 </span>
               </div>
 
-              {/* Submenus under Doctorate */}
+              {/* Subcategories under Doctorate */}
               <div className="grid grid-cols-2 gap-2 pt-1">
                 <button
                   onClick={() => onSelectSubcategory?.("doctorate")}
@@ -347,7 +347,7 @@ export function SidebarPanel({
               </div>
             </div>
 
-            {/* Primary Menu 2: Collaboratives */}
+            {/* Primary Category 2: Collaboratives */}
             <button
               onClick={() => onSelectSubcategory?.("collaboratives")}
               className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between font-bold text-xs transition-all ${
@@ -359,14 +359,14 @@ export function SidebarPanel({
               <div className="flex items-center gap-2.5">
                 <Globe2 className="w-4 h-4 text-purple-500 shrink-0" />
                 <div>
-                  <div className="font-black">Menu: Collaboratives</div>
+                  <div className="font-black">Collaboratives</div>
                   <div className="text-[10px] font-normal opacity-80">Global University Partners</div>
                 </div>
               </div>
               <ChevronRight className="w-4 h-4 opacity-60" />
             </button>
 
-            {/* Primary Menu 3: Students from abroad */}
+            {/* Primary Category 3: Students from abroad */}
             <button
               onClick={() => onSelectSubcategory?.("students_abroad")}
               className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between font-bold text-xs transition-all ${
@@ -378,7 +378,7 @@ export function SidebarPanel({
               <div className="flex items-center gap-2.5">
                 <Users className="w-4 h-4 text-purple-500 shrink-0" />
                 <div>
-                  <div className="font-black">Menu: Students from abroad</div>
+                  <div className="font-black">Students from abroad</div>
                   <div className="text-[10px] font-normal opacity-80">International Research Fellows</div>
                 </div>
               </div>
@@ -390,7 +390,7 @@ export function SidebarPanel({
         {/* 4. AUROLAB CATEGORY */}
         {entityConfig.id === "aurolab" && (
           <div className="space-y-3">
-            {/* Primary Menu 1: Domestic */}
+            {/* Primary Category 1: Domestic */}
             <button
               onClick={() => onSelectSubcategory?.("domestic")}
               className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between font-bold text-xs transition-all ${
@@ -402,7 +402,7 @@ export function SidebarPanel({
               <div className="flex items-center gap-2.5">
                 <Package className="w-4 h-4 text-amber-500 shrink-0" />
                 <div>
-                  <div className="font-black">Menu: Domestic</div>
+                  <div className="font-black">Domestic</div>
                   <div className="text-[10px] font-normal opacity-80">42 Domestic Dealers Across India</div>
                 </div>
               </div>
@@ -411,7 +411,7 @@ export function SidebarPanel({
               </span>
             </button>
 
-            {/* Primary Menu 2: International */}
+            {/* Primary Category 2: International */}
             <button
               onClick={() => onSelectSubcategory?.("international")}
               className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between font-bold text-xs transition-all ${
@@ -423,7 +423,7 @@ export function SidebarPanel({
               <div className="flex items-center gap-2.5">
                 <Globe2 className="w-4 h-4 text-amber-500 shrink-0" />
                 <div>
-                  <div className="font-black">Menu: International</div>
+                  <div className="font-black">International</div>
                   <div className="text-[10px] font-normal opacity-80">Global Export Network</div>
                 </div>
               </div>
@@ -438,10 +438,10 @@ export function SidebarPanel({
         {entityConfig.id === "auroitech" && (
           <div className="space-y-2">
             {[
-              { id: "ihms", name: "Menu: IHMS", desc: "Hospital Management System" },
-              { id: "eyenotes", name: "Menu: Eyenotes", desc: "Electronic Medical Records" },
-              { id: "vcms", name: "Menu: VCMS", desc: "Vision Centre Software" },
-              { id: "total_patients", name: "Menu: Total Patients Registered", desc: "Digital Health Telemetry" },
+              { id: "ihms", name: "IHMS", desc: "Hospital Management System" },
+              { id: "eyenotes", name: "Eyenotes", desc: "Electronic Medical Records" },
+              { id: "vcms", name: "VCMS", desc: "Vision Centre Software" },
+              { id: "total_patients", name: "Total Patients Registered", desc: "Digital Health Telemetry" },
             ].map((m) => {
               const isSelected = activeSubId === m.id;
               return (
@@ -472,9 +472,9 @@ export function SidebarPanel({
         {entityConfig.id === "eyebank" && (
           <div className="space-y-2">
             {[
-              { id: "collected", name: "Menu: Collected", desc: "7 District Collection Hubs" },
-              { id: "distributed", name: "Menu: Distributed", desc: "National Distribution Network" },
-              { id: "collection_vs_utilisation", name: "Menu: Collection vs Utilisation", desc: "10-Year Trend Dataset" },
+              { id: "collected", name: "Collected", desc: "7 District Collection Hubs" },
+              { id: "distributed", name: "Distributed", desc: "National Distribution Network" },
+              { id: "collection_vs_utilisation", name: "Collection vs Utilisation", desc: "10-Year Trend Dataset" },
             ].map((m) => {
               const isSelected = activeSubId === m.id;
               return (
