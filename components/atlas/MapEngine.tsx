@@ -23,6 +23,8 @@ export interface MapEngineProps {
   careTypeFilter?: "all" | "tertiary" | "secondary" | "community";
   revealMaxYear?: number | null;
   isLabMode?: boolean;
+  isOneSystem?: boolean;
+  hidePinLabels?: boolean;
 }
 
 export function MapEngine({
@@ -38,6 +40,8 @@ export function MapEngine({
   careTypeFilter = "all",
   revealMaxYear = null,
   isLabMode = false,
+  isOneSystem = false,
+  hidePinLabels = false,
 }: MapEngineProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
@@ -326,6 +330,7 @@ export function MapEngine({
       if (isEyeBankLoc) {
         const isMainHub = loc.metadata?.isMainHub || loc.id.startsWith("eb_hub_");
         const displayName = loc.name || loc.rawName;
+        const showLabel = !isOneSystem && !hidePinLabels && entityConfig.id !== "all";
 
         if (isMainHub) {
           // Distinct Main Eye Bank Hub Pin with Exact Name from Table & Animated Radar Rings
@@ -336,10 +341,14 @@ export function MapEngine({
               <div class="absolute w-8 h-8 rounded-full bg-emerald-400/20 border border-emerald-500/40 animate-pulse pointer-events-none"></div>
               
               <!-- Main Hub Badge Label displaying EXACT name -->
-              <span class="mb-1 text-[10px] font-black text-white bg-slate-900/95 px-2.5 py-1 rounded-lg shadow-xl border-2 border-emerald-400 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>${displayName}</span>
-              </span>
+              ${
+                showLabel
+                  ? `<span class="mb-1 text-[10px] font-black text-white bg-slate-900/95 px-2.5 py-1 rounded-lg shadow-xl border-2 border-emerald-400 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+                       <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                       <span>${displayName}</span>
+                     </span>`
+                  : ""
+              }
 
               <!-- Central Main Hub Pin Badge with Eye Icon -->
               <div class="w-7 h-7 rounded-full bg-emerald-700 border-2 border-amber-300 shadow-xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
@@ -355,9 +364,13 @@ export function MapEngine({
           const collName = loc.rawName || loc.city;
           el.innerHTML = `
             <div class="relative flex flex-col items-center justify-center pointer-events-auto group">
-              <span class="mb-1 text-[9px] font-extrabold text-slate-900 bg-white/95 px-2 py-0.5 rounded-md shadow-xs border border-emerald-300 whitespace-nowrap tracking-tight pointer-events-none transition-transform group-hover:scale-105">
-                ${collName}
-              </span>
+              ${
+                showLabel
+                  ? `<span class="mb-1 text-[9px] font-extrabold text-slate-900 bg-white/95 px-2 py-0.5 rounded-md shadow-xs border border-emerald-300 whitespace-nowrap tracking-tight pointer-events-none transition-transform group-hover:scale-105">
+                       ${collName}
+                     </span>`
+                  : ""
+              }
               <!-- Collection Node Pin -->
               <div class="w-4 h-4 rounded-full bg-teal-600 border-2 border-white shadow-md flex items-center justify-center transition-all group-hover:scale-125">
                 <div class="w-1.5 h-1.5 rounded-full bg-white animate-ping opacity-75"></div>
@@ -410,13 +423,23 @@ export function MapEngine({
         }
 
         const labelText = loc.rawName || loc.city || loc.name;
-        const hospitalLabel = labelText.startsWith("AEH-") ? labelText : `AEH-${labelText}`;
+        // Only prefix "AEH-" to Eye Hospitals (Tertiary, Secondary, Community clinics)
+        const isEyeHospital = loc.entityId === "hospitals" || !!loc.careType;
+        const displayLabel = isEyeHospital
+          ? (labelText.startsWith("AEH-") ? labelText : `AEH-${labelText}`)
+          : labelText;
+
+        const showLabel = !isOneSystem && !hidePinLabels && entityConfig.id !== "all";
 
         el.innerHTML = `
           <div class="relative flex flex-col items-center justify-center pointer-events-auto">
-            <span class="mb-1 text-[10px] font-black text-slate-800 bg-white/95 px-2 py-0.5 rounded-md shadow-md border border-slate-200/90 whitespace-nowrap tracking-wide pointer-events-none">
-              ${hospitalLabel}
-            </span>
+            ${
+              showLabel
+                ? `<span class="mb-1 text-[10px] font-black text-slate-800 bg-white/95 px-2 py-0.5 rounded-md shadow-md border border-slate-200/90 whitespace-nowrap tracking-wide pointer-events-none">
+                     ${displayLabel}
+                   </span>`
+                : ""
+            }
             <div style="width: ${markerSize}; height: ${markerSize}; background-color: ${markerBg}; border: ${markerBorder}; border-radius: 9999px; box-shadow: ${outerShadow}; transition: all 0.2s ease-out;">
             </div>
           </div>

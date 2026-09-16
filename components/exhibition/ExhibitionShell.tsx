@@ -210,6 +210,7 @@ export function ExhibitionShell() {
               onSelectLocation={handleSelectLocationWithInterruption}
               onClearLocation={() => selectLocation(null)}
               careTypeFilter={careTypeFilter}
+              isOneSystem={currentScene === "one_system" || selectedEntityId === "all"}
             />
 
             {/* Guided Tour Narration Indicator Bar */}
@@ -230,9 +231,6 @@ export function ExhibitionShell() {
             ) : isGuidedPlaying ? (
               <GuidedControls />
             ) : null}
-
-            {/* One System Finale Synthesis Overlay */}
-            {currentScene === "one_system" && <OneSystemFinale />}
 
             {/* Quick Six Doors Switcher Bar at Bottom of Map */}
             {(currentScene === "story_exploration" || currentScene === "one_system") && (
@@ -265,37 +263,19 @@ export function ExhibitionShell() {
           </div>
         </main>
 
-        {/* Right Story Context Panel & Eye Bank Custom Visualizer */}
-        {(currentScene === "story_exploration" || currentScene === "one_system") && (
+        {/* Right Story Context Panel (Hidden in Eye Bank mode and One System mode for pure map focus) */}
+        {currentScene === "story_exploration" && selectedEntityId !== "eyebank" && selectedEntityId !== "all" && (
           <div className="absolute top-4 right-4 z-30 max-w-lg pointer-events-auto">
-            {selectedEntityId === "eyebank" ? (
-              <EyeBankVisualizer
-                activeView={
-                  (selectedSubcategoryId as any) === "distributed"
-                    ? "distributed"
-                    : (selectedSubcategoryId as any) === "collection_vs_utilisation"
-                    ? "collection_vs_utilisation"
-                    : "collected"
-                }
-                onSelectView={(v) => selectSubcategory(v)}
-                selectedCenterName={selectedLocation?.name || selectedLocation?.rawName}
-                onSelectCenterName={(hubName) => {
-                  const loc = filteredLocations.find(l => l.name === hubName || l.rawName === hubName);
-                  if (loc) handleSelectLocationWithInterruption(loc);
-                }}
-              />
-            ) : (
-              <ContextPanel
-                entityConfig={activeEntityConfig}
-                selectedState={selectedState}
-                stateAggregations={stateAggregations}
-                selectedLocation={selectedLocation}
-                locationsInSelectedState={locationsInSelectedState}
-                onSelectLocation={selectLocation}
-                onClearLocation={() => selectLocation(null)}
-                onClearState={() => selectState(null)}
-              />
-            )}
+            <ContextPanel
+              entityConfig={activeEntityConfig}
+              selectedState={selectedState}
+              stateAggregations={stateAggregations}
+              selectedLocation={selectedLocation}
+              locationsInSelectedState={locationsInSelectedState}
+              onSelectLocation={selectLocation}
+              onClearLocation={() => selectLocation(null)}
+              onClearState={() => selectState(null)}
+            />
           </div>
         )}
       </div>
