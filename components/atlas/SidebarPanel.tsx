@@ -403,11 +403,11 @@ export function SidebarPanel({
                 <Package className="w-4 h-4 text-amber-500 shrink-0" />
                 <div>
                   <div className="font-black">Menu: Domestic</div>
-                  <div className="text-[10px] font-normal opacity-80">42 Dealer Cities Across India</div>
+                  <div className="text-[10px] font-normal opacity-80">42 Domestic Dealers Across India</div>
                 </div>
               </div>
               <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded font-black">
-                42 Cities
+                42 Dealers
               </span>
             </button>
 
@@ -428,7 +428,7 @@ export function SidebarPanel({
                 </div>
               </div>
               <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded font-black">
-                160+ Nations
+                83 Clients
               </span>
             </button>
           </div>
