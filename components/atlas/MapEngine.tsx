@@ -92,47 +92,16 @@ export function MapEngine({
         source: "india-states-source",
         paint: {
           "fill-color": entityConfig?.color || "#EA580C",
-          "fill-opacity": 0.12,
+          "fill-opacity": 0.05,
         },
       });
 
-      // Layer 2: Vector Border outline layer (restrained boundaries)
-      map.addLayer({
-        id: "india-states-border",
-        type: "line",
-        source: "india-states-source",
-        paint: {
-          "line-color": "#CBD5E1",
-          "line-width": 1.0,
-          "line-opacity": 0.6,
-        },
-      });
-
-      // Layer 3: Hover highlight line
-      map.addLayer({
-        id: "india-states-hover",
-        type: "line",
-        source: "india-states-source",
-        paint: {
-          "line-color": entityConfig?.color || "#EA580C",
-          "line-width": 2.5,
-        },
-        filter: ["==", "ST_NM", ""],
-      });
-
-      // State polygon click & hover handlers
-      map.on("mousemove", "india-states-fill", (e) => {
-        if (e.features && e.features.length > 0) {
-          const stName = e.features[0].properties?.ST_NM;
-          if (stName) {
-            map.setFilter("india-states-hover", ["==", "ST_NM", stName]);
-            map.getCanvas().style.cursor = "pointer";
-          }
-        }
+      // State polygon click handler (pointer cursor only, no outline lines)
+      map.on("mousemove", "india-states-fill", () => {
+        map.getCanvas().style.cursor = "pointer";
       });
 
       map.on("mouseleave", "india-states-fill", () => {
-        map.setFilter("india-states-hover", ["==", "ST_NM", ""]);
         map.getCanvas().style.cursor = "";
       });
 
@@ -436,6 +405,45 @@ export function MapEngine({
     }
 
     if (!selectedState) {
+      let filtered = locations;
+      if (careTypeFilter && careTypeFilter !== "all") {
+        filtered = filtered.filter((l) => l.careType === careTypeFilter);
+      }
+      if (revealMaxYear !== null && revealMaxYear !== undefined) {
+        filtered = filtered.filter(
+          (l) => !l.establishedYear || l.establishedYear <= revealMaxYear
+        );
+      }
+
+      if (filtered.length > 0) {
+        let minLng = 180,
+          maxLng = -180,
+          minLat = 90,
+          maxLat = -90;
+
+        filtered.forEach((l) => {
+          if (l.longitude < minLng) minLng = l.longitude;
+          if (l.longitude > maxLng) maxLng = l.longitude;
+          if (l.latitude < minLat) minLat = l.latitude;
+          if (l.latitude > maxLat) maxLat = l.latitude;
+        });
+
+        if (minLng < maxLng && minLat < maxLat) {
+          map.fitBounds(
+            [
+              [minLng, minLat],
+              [maxLng, maxLat],
+            ],
+            {
+              padding: { top: 70, bottom: 70, left: 70, right: 70 },
+              maxZoom: 7.8,
+              duration: 1200,
+            }
+          );
+          return;
+        }
+      }
+
       map.flyTo({
         center: entityConfig?.defaultCenter || INDIA_CENTER,
         zoom: entityConfig?.defaultZoom || INDIA_DEFAULT_ZOOM,
@@ -449,7 +457,15 @@ export function MapEngine({
         map.flyTo({ center: agg.centroid, zoom: 7.2, duration: 1200 });
       }
     }
-  }, [selectedState, entityConfig, mapLoaded, geographicLevel]);
+  }, [
+    selectedState,
+    entityConfig,
+    mapLoaded,
+    geographicLevel,
+    locations,
+    careTypeFilter,
+    revealMaxYear,
+  ]);
 
   return (
     <div className="relative w-full h-full bg-[#E7EEF2] overflow-hidden">

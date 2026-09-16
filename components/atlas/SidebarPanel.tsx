@@ -3,7 +3,6 @@
 import React from "react";
 import { EntityConfig } from "@/types/entity";
 import { GeoLocationItem, StateAggregation } from "@/types/geo";
-import { RotateCcw } from "lucide-react";
 
 export interface SidebarPanelProps {
   entityConfig: EntityConfig;
@@ -11,8 +10,6 @@ export interface SidebarPanelProps {
   stateAggregations: StateAggregation[];
   careTypeFilter: "all" | "tertiary" | "secondary" | "community";
   onSelectCareTypeFilter: (filter: "all" | "tertiary" | "secondary" | "community") => void;
-  revealMaxYear: number | null;
-  onSelectMaxYear: (year: number | null) => void;
   selectedState: string | null;
   onSelectState: (stateName: string | null) => void;
 }
@@ -23,8 +20,6 @@ export function SidebarPanel({
   stateAggregations,
   careTypeFilter,
   onSelectCareTypeFilter,
-  revealMaxYear,
-  onSelectMaxYear,
   selectedState,
   onSelectState,
 }: SidebarPanelProps) {
@@ -33,23 +28,16 @@ export function SidebarPanel({
   const secondaryCount = locations.filter((l) => l.careType === "secondary").length;
   const communityCount = locations.filter((l) => l.careType === "community").length;
 
-  const minYear = 1976;
-  const maxYear = 2025;
-  const currentMaxYear = revealMaxYear ?? maxYear;
-
   // Filter state breakdown based on currently visible locations
   const stateCounts = React.useMemo(() => {
     const counts: Record<string, number> = {};
     locations.forEach((loc) => {
-      if (!revealMaxYear || !loc.establishedYear || loc.establishedYear <= revealMaxYear) {
-        if (careTypeFilter === "all" || loc.careType === careTypeFilter) {
-          counts[loc.state] = (counts[loc.state] || 0) + 1;
-        }
+      if (careTypeFilter === "all" || loc.careType === careTypeFilter) {
+        counts[loc.state] = (counts[loc.state] || 0) + 1;
       }
     });
-    return Object.entries(counts)
-      .sort((a, b) => b[1] - a[1]);
-  }, [locations, revealMaxYear, careTypeFilter]);
+    return Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  }, [locations, careTypeFilter]);
 
   const totalFilteredCount = stateCounts.reduce((acc, [, cnt]) => acc + cnt, 0);
 
@@ -139,35 +127,6 @@ export function SidebarPanel({
             </span>
           </button>
         </div>
-      </div>
-
-      {/* Establishment Year Timeline Slider */}
-      <div className="pt-2 border-t border-slate-100">
-        <div className="flex items-center justify-between mb-2">
-          <label className="text-xs font-bold text-slate-700">
-            Establishment Year
-          </label>
-          <button
-            onClick={() => onSelectMaxYear(null)}
-            className="text-[11px] font-medium text-slate-400 hover:text-slate-700 underline flex items-center gap-1"
-          >
-            <RotateCcw className="w-3 h-3" />
-            <span>reset</span>
-          </button>
-        </div>
-
-        <div className="text-lg font-black text-slate-900 mb-2 tracking-tight">
-          {minYear} – {currentMaxYear}
-        </div>
-
-        <input
-          type="range"
-          min={minYear}
-          max={maxYear}
-          value={currentMaxYear}
-          onChange={(e) => onSelectMaxYear(parseInt(e.target.value, 10))}
-          className="w-full accent-[#0B252C] h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
-        />
       </div>
 
       {/* States Represented Breakdown List */}

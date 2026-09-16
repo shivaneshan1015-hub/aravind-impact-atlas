@@ -61,7 +61,6 @@ export function ExhibitionShell() {
   } = useScene();
 
   const [careTypeFilter, setCareTypeFilter] = React.useState<"all" | "tertiary" | "secondary" | "community">("all");
-  const [revealMaxYear, setRevealMaxYear] = React.useState<number | null>(null);
 
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isInfoOpen, setIsInfoOpen] = React.useState(false);
@@ -117,9 +116,6 @@ export function ExhibitionShell() {
 
   return (
     <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#F7F8F6] font-sans text-slate-900 antialiased relative">
-      {/* Permanent Touchscreen Exhibition Header */}
-      <ExhibitionHeader />
-
       {/* Main Workspace (Left Sidebar + Right Map Canvas) */}
       <div className="flex flex-1 overflow-hidden relative">
         {/* Scene 01: Arrival Screen */}
@@ -139,8 +135,6 @@ export function ExhibitionShell() {
             stateAggregations={stateAggregations}
             careTypeFilter={careTypeFilter}
             onSelectCareTypeFilter={setCareTypeFilter}
-            revealMaxYear={revealMaxYear}
-            onSelectMaxYear={setRevealMaxYear}
             selectedState={selectedState}
             onSelectState={selectState}
           />
@@ -172,34 +166,13 @@ export function ExhibitionShell() {
               onSelectLocation={selectLocation}
               onClearLocation={() => selectLocation(null)}
               careTypeFilter={careTypeFilter}
-              revealMaxYear={revealMaxYear}
             />
 
             {/* Guided Tour Controls Bar */}
             {isGuidedPlaying && <GuidedControls />}
 
-            {/* Follow the Impact Step-by-Step Nav */}
-            {(currentScene === "story_exploration" || currentScene === "one_system") && !isGuidedPlaying && (
-              <FollowImpactNav entityId={selectedEntityId} />
-            )}
-
             {/* One System Finale Synthesis Overlay */}
             {currentScene === "one_system" && <OneSystemFinale />}
-
-            {/* Map Info Callout Box (Bottom Left) */}
-            {(currentScene === "story_exploration" || currentScene === "one_system") && (
-              <div className="absolute bottom-6 left-6 z-10 max-w-xs bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-lg border border-slate-200/80 text-[11px] text-slate-600 font-medium select-none pointer-events-none">
-                Each pin represents a facility location. Click any pin to inspect detailed location metadata.
-              </div>
-            )}
-
-            {/* Unobtrusive Map Controls */}
-            <MapControls
-              onZoomIn={() => {}}
-              onZoomOut={() => {}}
-              onResetView={() => selectState(null)}
-              onToggleFullscreen={() => {}}
-            />
 
             {/* Quick Six Doors Switcher Bar at Bottom of Map */}
             {(currentScene === "story_exploration" || currentScene === "one_system") && (
