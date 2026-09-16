@@ -39,7 +39,13 @@ export function getFilteredLocations(
 
     // Special handling for Eye Bank
     if (entityId === "eyebank") {
-      return true; // Return all Eye Bank main hubs & collection nodes for display on map
+      if (subcategoryId === "collected") {
+        return !!(item.metadata?.isMainHub || item.subcategoryId === "collection_network");
+      }
+      if (subcategoryId === "distributed") {
+        return !!(item.metadata?.isMainHub || item.subcategoryId === "distribution_network");
+      }
+      return true; // Return all Eye Bank main hubs & collection/distribution nodes for display
     }
 
     if (subcategoryId && item.subcategoryId !== subcategoryId) {

@@ -171,6 +171,7 @@ export function AtlasShell() {
               stateAggregations={stateAggregations}
               selectedState={selectedState}
               selectedLocation={selectedLocation}
+              selectedSubcategoryId={selectedSubcategoryId}
               onSelectState={handleSelectState}
               onSelectLocation={handleSelectLocation}
               onClearLocation={() => setSelectedLocation(null)}

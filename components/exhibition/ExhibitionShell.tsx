@@ -206,6 +206,7 @@ export function ExhibitionShell() {
               stateAggregations={stateAggregations}
               selectedState={selectedState}
               selectedLocation={selectedLocation}
+              selectedSubcategoryId={selectedSubcategoryId}
               onSelectState={handleSelectStateWithInterruption}
               onSelectLocation={handleSelectLocationWithInterruption}
               onClearLocation={() => selectLocation(null)}

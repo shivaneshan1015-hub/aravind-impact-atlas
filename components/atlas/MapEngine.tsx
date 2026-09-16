@@ -18,6 +18,7 @@ export interface MapEngineProps {
   onSelectState: (stateName: string, bounds?: [[number, number], [number, number]]) => void;
   onSelectLocation: (location: GeoLocationItem) => void;
   onClearLocation: () => void;
+  selectedSubcategoryId?: string;
   modeGrammar?: GeographicGrammar;
   geographicLevel?: GeographicLevel;
   careTypeFilter?: "all" | "tertiary" | "secondary" | "community";
@@ -35,6 +36,7 @@ export function MapEngine({
   selectedLocation,
   onSelectState,
   onSelectLocation,
+  selectedSubcategoryId,
   modeGrammar = "auto",
   geographicLevel = "country",
   careTypeFilter = "all",
@@ -333,20 +335,30 @@ export function MapEngine({
       );
     }
     if (map.getLayer("eyebank-flow-layer")) {
+      const showCollection =
+        entityConfig.id === "eyebank" &&
+        (!selectedSubcategoryId ||
+          selectedSubcategoryId === "collected" ||
+          selectedSubcategoryId === "collection_vs_utilisation");
       map.setLayoutProperty(
         "eyebank-flow-layer",
         "visibility",
-        activeGrammar === "flow" || entityConfig.id === "eyebank" ? "visible" : "none"
+        showCollection || activeGrammar === "flow" ? "visible" : "none"
       );
     }
     if (map.getLayer("eyebank-distribution-layer")) {
+      const showDistribution =
+        entityConfig.id === "eyebank" &&
+        (!selectedSubcategoryId ||
+          selectedSubcategoryId === "distributed" ||
+          selectedSubcategoryId === "collection_vs_utilisation");
       map.setLayoutProperty(
         "eyebank-distribution-layer",
         "visibility",
-        activeGrammar === "flow" || entityConfig.id === "eyebank" ? "visible" : "none"
+        showDistribution || activeGrammar === "flow" ? "visible" : "none"
       );
     }
-  }, [mapLoaded, entityConfig.id, activeGrammar]);
+  }, [mapLoaded, entityConfig.id, activeGrammar, selectedSubcategoryId]);
 
   // Render Restrained Pins with 48px Hit Targets, CARE Visual Hierarchy, and Privacy Protection
   useEffect(() => {
@@ -624,19 +636,29 @@ export function MapEngine({
 
     if (!selectedState) {
       if (entityConfig.id === "eyebank") {
-        // Tight South India camera focus for Eye Bank Collection Network
-        map.fitBounds(
-          [
-            [76.2, 7.8],   // SW: Kanyakumari / Southern tip
-            [80.6, 14.2],  // NE: Tirupati / Chennai region
-          ],
-          {
-            padding: { top: 60, bottom: 60, left: 60, right: 60 },
-            maxZoom: 7.8,
+        if (selectedSubcategoryId === "distributed") {
+          // Fly to all-India overview for National Distribution Network
+          map.flyTo({
+            center: INDIA_CENTER,
+            zoom: 4.8,
             duration: 1200,
-          }
-        );
-        return;
+          });
+          return;
+        } else {
+          // Tight South India camera focus for Eye Bank Collection Network
+          map.fitBounds(
+            [
+              [76.2, 7.8],   // SW: Kanyakumari / Southern tip
+              [80.6, 14.2],  // NE: Tirupati / Chennai region
+            ],
+            {
+              padding: { top: 60, bottom: 60, left: 60, right: 60 },
+              maxZoom: 7.8,
+              duration: 1200,
+            }
+          );
+          return;
+        }
       }
 
       let filtered = locations;
@@ -699,6 +721,7 @@ export function MapEngine({
     locations,
     careTypeFilter,
     revealMaxYear,
+    selectedSubcategoryId,
   ]);
 
   return (
