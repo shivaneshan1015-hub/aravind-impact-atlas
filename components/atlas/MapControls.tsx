@@ -15,7 +15,7 @@ export function MapControls({
   onToggleFullscreen,
 }: MapControlsProps) {
   return (
-    <div className="absolute top-6 right-6 flex flex-col gap-1.5 z-10 select-none">
+    <div className="absolute top-6 left-6 flex flex-col gap-1.5 z-10 select-none">
       <div className="bg-white/95 border border-slate-200 rounded-lg p-1 shadow-md backdrop-blur-sm flex flex-col gap-1">
         <button
           onClick={onZoomIn}
