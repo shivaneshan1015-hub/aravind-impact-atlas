@@ -427,36 +427,49 @@ export function MapEngine({
       } else if (isEyeBankLoc) {
         const isMainHub = loc.metadata?.isMainHub || loc.id.startsWith("eb_hub_");
         const isDistribution = loc.metadata?.isDistributionDestination || loc.subcategoryId === "distribution_network";
-        const displayName = loc.name || loc.rawName;
-        const showLabel = !isOneSystem && !hidePinLabels && entityConfig.id !== "all";
+        const isDistributedSubcategoryActive = selectedSubcategoryId === "distributed";
+
+        // Display short city name alone for Main Hubs (e.g., "Madurai", "Salem")
+        const cityOnlyName = loc.city || loc.rawName || loc.name;
+        const showLabel = !isDistributedSubcategoryActive && !isOneSystem && !hidePinLabels && entityConfig.id !== "all";
 
         if (isMainHub) {
-          // Distinct Main Eye Bank Hub Pin with Exact Name from Table & Animated Radar Rings
-          el.innerHTML = `
-            <div class="relative flex flex-col items-center justify-center pointer-events-auto group">
-              <!-- Radar Pulse Scanning Halo Rings for Main Hub -->
-              <div class="absolute w-12 h-12 rounded-full bg-emerald-500/30 border border-emerald-400/50 animate-ping opacity-75 pointer-events-none"></div>
-              <div class="absolute w-8 h-8 rounded-full bg-emerald-400/20 border border-emerald-500/40 animate-pulse pointer-events-none"></div>
-              
-              <!-- Main Hub Badge Label displaying EXACT name -->
-              ${
-                showLabel
-                  ? `<span class="mb-1 text-[10px] font-black text-white bg-slate-900/95 px-2.5 py-1 rounded-lg shadow-xl border-2 border-emerald-400 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
-                       <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                       <span>${displayName}</span>
-                     </span>`
-                  : ""
-              }
-
-              <!-- Central Main Hub Pin Badge with Eye Icon -->
-              <div class="w-7 h-7 rounded-full bg-emerald-700 border-2 border-amber-300 shadow-xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
-                <svg class="w-4 h-4 text-white animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
+          if (isDistributedSubcategoryActive) {
+            // Small compact Main Hub Pin when Distributed subcategory is active to prevent overlapping
+            el.innerHTML = `
+              <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
+                <div style="width: 9px; height: 9px; background-color: #059669; border: 2px solid #F59E0B; border-radius: 9999px; box-shadow: 0 0 6px rgba(5, 150, 105, 0.8), 0 1px 3px rgba(0,0,0,0.4); transition: all 0.2s ease-out;" class="group-hover:scale-150">
+                </div>
               </div>
-            </div>
-          `;
+            `;
+          } else {
+            // Main Eye Bank Hub Pin with City Name Alone & Radar Pulse Rings
+            el.innerHTML = `
+              <div class="relative flex flex-col items-center justify-center pointer-events-auto group">
+                <!-- Radar Pulse Scanning Halo Rings for Main Hub -->
+                <div class="absolute w-12 h-12 rounded-full bg-emerald-500/30 border border-emerald-400/50 animate-ping opacity-75 pointer-events-none"></div>
+                <div class="absolute w-8 h-8 rounded-full bg-emerald-400/20 border border-emerald-500/40 animate-pulse pointer-events-none"></div>
+                
+                <!-- Main Hub Badge Label displaying City Name Alone -->
+                ${
+                  showLabel
+                    ? `<span class="mb-1 text-[10px] font-black text-white bg-slate-900/95 px-2.5 py-1 rounded-lg shadow-xl border-2 border-emerald-400 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                         <span>${cityOnlyName}</span>
+                       </span>`
+                    : ""
+                }
+
+                <!-- Central Main Hub Pin Badge with Eye Icon -->
+                <div class="w-7 h-7 rounded-full bg-emerald-700 border-2 border-amber-300 shadow-xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
+                  <svg class="w-4 h-4 text-white animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </div>
+              </div>
+            `;
+          }
         } else if (isDistribution) {
           // Small non-overlapping Distribution Network Pin (Sky Blue Dot, NO text label)
           el.innerHTML = `
@@ -624,6 +637,7 @@ export function MapEngine({
     revealMaxYear,
     isOneSystem,
     hidePinLabels,
+    selectedSubcategoryId,
   ]);
 
   // Handle Camera Transitions for Geographic Levels (World -> Country -> State -> City)
