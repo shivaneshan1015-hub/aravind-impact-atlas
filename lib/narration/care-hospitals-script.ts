@@ -1,0 +1,101 @@
+import { NarrationChapter } from "./types";
+
+export const careHospitalsChapter: NarrationChapter = {
+  id: "care-hospitals",
+  entityId: "hospitals",
+  subcategoryId: "hospitals_locations",
+  title: "CARE — Eye Care Facilities",
+  question: "Where does care reach?",
+  audioSrc: "/audio/care/hospitals-guided-en.mp3",
+  language: "en",
+  cues: [
+    {
+      id: "cue-0-intro",
+      time: 0.0,
+      action: "focusCountry",
+      label: "India & South India Footprint",
+      centreType: "all",
+    },
+    {
+      id: "cue-1-madurai",
+      time: 6.0,
+      action: "focusLocation",
+      label: "Origin Hospital · Madurai (1976)",
+      targetId: "hosp_madurai",
+      centreType: "tertiary",
+    },
+    {
+      id: "cue-2-tertiary",
+      time: 14.0,
+      action: "revealCentreType",
+      label: "8 Tertiary Eye Care Centres",
+      centreType: "tertiary",
+    },
+    {
+      id: "cue-3-secondary",
+      time: 26.0,
+      action: "revealCentreType",
+      label: "8 Secondary Eye Care Centres",
+      centreType: "secondary",
+    },
+    {
+      id: "cue-4-community",
+      time: 38.0,
+      action: "revealCentreType",
+      label: "8 Community Eye Clinics",
+      centreType: "community",
+    },
+    {
+      id: "cue-5-scale",
+      time: 50.0,
+      action: "focusCountry",
+      label: "Complete CARE Network Footprint (24 Centres)",
+      centreType: "all",
+    },
+    {
+      id: "cue-6-complete",
+      time: 62.0,
+      action: "complete",
+      label: "Guided Narration Complete · Explore Map",
+      centreType: "all",
+    },
+  ],
+  segments: [
+    {
+      id: "seg-intro",
+      cueId: "cue-0-intro",
+      title: "Where Does Care Reach?",
+      text: "Aravind's eye care footprint extends across South India through a structured network of facilities designed to deliver high-volume, equitable clinical services.",
+    },
+    {
+      id: "seg-madurai",
+      cueId: "cue-1-madurai",
+      title: "Origin Hospital",
+      text: "The clinical network originated in Madurai with the founding eye clinic in 1976, establishing the model of integrated clinical care.",
+    },
+    {
+      id: "seg-tertiary",
+      cueId: "cue-2-tertiary",
+      title: "Tertiary Eye Care Network",
+      text: "Eight tertiary eye care centres provide comprehensive subspecialty surgical care, education, and clinical supervision across major hubs including Tirunelveli, Coimbatore, Pondicherry, Salem, Chennai, Tirupati, and Thanjavur.",
+    },
+    {
+      id: "seg-secondary",
+      cueId: "cue-3-secondary",
+      title: "Secondary Eye Care Centres",
+      text: "Eight secondary eye care centres extend surgical and diagnostic capacity into regional townships such as Theni, Tirupur, Dindigul, Tuticorin, Udumalpet, Kovilpatti, Chengalpattu, and Coimbatore City Centre.",
+    },
+    {
+      id: "seg-community",
+      cueId: "cue-4-community",
+      title: "Community Eye Clinics",
+      text: "Eight community eye clinics deliver primary vision care and screening directly to local populations in Melur, Tirumangalam, Cumbum, Sankarankovil, Puttur, and city centres in Madurai, Pondicherry, and Chennai.",
+    },
+    {
+      id: "seg-scale",
+      cueId: "cue-5-scale",
+      title: "Complete CARE Footprint",
+      text: "Together, these 24 locations form a connected eye care system across tertiary, secondary, and community tiers, ensuring care reaches urban and rural communities alike.",
+    },
+  ],
+};

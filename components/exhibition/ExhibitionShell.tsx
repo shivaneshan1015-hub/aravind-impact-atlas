@@ -10,6 +10,7 @@ import {
   calculateStateAggregations,
 } from "@/lib/geography/aggregation";
 import { filterAuroitechByProduct } from "@/lib/data/adapters";
+import { GeoLocationItem } from "@/types/geo";
 
 import { ExhibitionHeader } from "./ExhibitionHeader";
 import { ArrivalScene } from "./ArrivalScene";
@@ -28,6 +29,9 @@ import { SearchModal } from "@/components/atlas/SearchModal";
 import { InfoModal } from "@/components/atlas/InfoModal";
 import { EntityId } from "@/types/entity";
 import { SidebarPanel } from "@/components/atlas/SidebarPanel";
+import { useNarration } from "@/lib/narration/useNarration";
+import { NarrationIndicator } from "@/components/narration/NarrationIndicator";
+import { TranscriptModal } from "@/components/narration/TranscriptModal";
 import { Maximize2, Minimize2, Home } from "lucide-react";
 
 // Dynamically import MapEngine with ssr: false to prevent MapLibre GL SSR window/WebGL exceptions
@@ -53,6 +57,7 @@ export function ExhibitionShell() {
     selectedLocation,
     productFilterId,
     isGuidedPlaying,
+    stopGuidedJourney,
     selectStory,
     selectSubcategory,
     selectState,
@@ -68,6 +73,38 @@ export function ExhibitionShell() {
 
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isInfoOpen, setIsInfoOpen] = React.useState(false);
+
+  // Guided Narration Hook for CARE Hospitals Pilot
+  const narration = useNarration();
+
+  // Synchronize narration playback when Guided Mode starts or stops
+  React.useEffect(() => {
+    if (isGuidedPlaying && selectedEntityId === "hospitals") {
+      narration.play();
+    } else {
+      narration.exit();
+    }
+  }, [isGuidedPlaying, selectedEntityId]);
+
+  // Synchronize narration cues with Map Engine filter and camera reveals
+  React.useEffect(() => {
+    if (isGuidedPlaying && selectedEntityId === "hospitals" && narration.activeCue) {
+      if (narration.activeCue.centreType) {
+        setCareTypeFilter(narration.activeCue.centreType);
+      }
+    }
+  }, [narration.activeCue, isGuidedPlaying, selectedEntityId]);
+
+  // Handle Visitor Interruption: Touching pins or map regions pauses narration cleanly
+  const handleSelectStateWithInterruption = (stName: string | null) => {
+    narration.handleVisitorInterruption();
+    selectState(stName);
+  };
+
+  const handleSelectLocationWithInterruption = (loc: GeoLocationItem | null) => {
+    narration.handleVisitorInterruption();
+    selectLocation(loc);
+  };
 
   // Active Entity Config with fallback
   const activeEntityConfig = ENTITY_CONFIGS[selectedEntityId] || ENTITY_CONFIGS.hospitals;
@@ -140,7 +177,7 @@ export function ExhibitionShell() {
             careTypeFilter={careTypeFilter}
             onSelectCareTypeFilter={setCareTypeFilter}
             selectedState={selectedState}
-            onSelectState={selectState}
+            onSelectState={handleSelectStateWithInterruption}
           />
         )}
 
@@ -153,8 +190,8 @@ export function ExhibitionShell() {
               selectedSubcategoryName={activeSubcategory.name}
               selectedCountry={selectedCountry}
               selectedState={selectedState}
-              onResetToIndia={() => selectState(null)}
-              onResetToWorld={() => selectState(null)}
+              onResetToIndia={() => handleSelectStateWithInterruption(null)}
+              onResetToWorld={() => handleSelectStateWithInterruption(null)}
             />
           )}
 
@@ -166,14 +203,30 @@ export function ExhibitionShell() {
               stateAggregations={stateAggregations}
               selectedState={selectedState}
               selectedLocation={selectedLocation}
-              onSelectState={selectState}
-              onSelectLocation={selectLocation}
+              onSelectState={handleSelectStateWithInterruption}
+              onSelectLocation={handleSelectLocationWithInterruption}
               onClearLocation={() => selectLocation(null)}
               careTypeFilter={careTypeFilter}
             />
 
-            {/* Guided Tour Controls Bar */}
-            {isGuidedPlaying && <GuidedControls />}
+            {/* Guided Tour Narration Indicator Bar */}
+            {isGuidedPlaying && selectedEntityId === "hospitals" ? (
+              <NarrationIndicator
+                playbackState={narration.playbackState}
+                activeCue={narration.activeCue}
+                currentCueIndex={narration.currentCueIndex}
+                totalCues={narration.chapter.cues.length}
+                isMuted={narration.isMuted}
+                onPause={narration.pause}
+                onResume={narration.resume}
+                onExplore={narration.explore}
+                onExit={stopGuidedJourney}
+                onToggleMute={narration.toggleMute}
+                onToggleTranscript={narration.toggleTranscript}
+              />
+            ) : isGuidedPlaying ? (
+              <GuidedControls />
+            ) : null}
 
             {/* One System Finale Synthesis Overlay */}
             {currentScene === "one_system" && <OneSystemFinale />}
@@ -236,6 +289,15 @@ export function ExhibitionShell() {
       <InfoModal
         isOpen={isInfoOpen}
         onClose={() => setIsInfoOpen(false)}
+      />
+
+      {/* Spoken Narration Script Transcript Modal */}
+      <TranscriptModal
+        isOpen={narration.isTranscriptOpen}
+        onClose={narration.toggleTranscript}
+        chapter={narration.chapter}
+        activeCueIndex={narration.currentCueIndex}
+        onSelectCue={narration.seekToCue}
       />
 
       {/* Floating Top-Right Fullscreen Control Button */}
