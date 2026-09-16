@@ -278,6 +278,11 @@ export function ExhibitionShell() {
                     : "collected"
                 }
                 onSelectView={(v) => selectSubcategory(v)}
+                selectedCenterName={selectedLocation?.name || selectedLocation?.rawName}
+                onSelectCenterName={(hubName) => {
+                  const loc = filteredLocations.find(l => l.name === hubName || l.rawName === hubName);
+                  if (loc) handleSelectLocationWithInterruption(loc);
+                }}
               />
             ) : (
               <ContextPanel

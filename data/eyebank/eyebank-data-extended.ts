@@ -16,10 +16,23 @@ export interface EyeBankYearlyMetric {
   utilization: number;
 }
 
-// Transposed from Image 2: Eye Bank Collection - District wise
+// Transposed from Image: Eye Bank Collection - District wise (Exact Main Centre Names)
+export interface EyeBankCollectionCenter {
+  centerName: string; // Exact Main Centre Name from table, e.g. "RAIEB , Madurai"
+  shortName: string;
+  city: string;
+  latitude: number;
+  longitude: number;
+  districts: string[];
+}
+
 export const EYE_BANK_COLLECTION_CENTRES: EyeBankCollectionCenter[] = [
   {
-    centerName: "Madurai Centre",
+    centerName: "RAIEB , Madurai",
+    shortName: "RAIEB Madurai",
+    city: "Madurai",
+    latitude: 9.9252,
+    longitude: 78.1198,
     districts: [
       "Madurai",
       "Dindigul",
@@ -38,19 +51,35 @@ export const EYE_BANK_COLLECTION_CENTRES: EyeBankCollectionCenter[] = [
     ],
   },
   {
-    centerName: "Coimbatore Centre",
+    centerName: "AIOB, Coimbatore",
+    shortName: "AIOB Coimbatore",
+    city: "Coimbatore",
+    latitude: 11.0168,
+    longitude: 76.9558,
     districts: ["Coimbatore", "Tirupur", "Erode", "Dindigul"],
   },
   {
-    centerName: "Tirunelveli Centre",
+    centerName: "RAEB ,Tirunelveli",
+    shortName: "RAEB Tirunelveli",
+    city: "Tirunelveli",
+    latitude: 8.7139,
+    longitude: 77.7567,
     districts: ["Tirunelveli", "Tuticorin", "Kaniyakumari", "Tenkasi", "Virudhunagar"],
   },
   {
-    centerName: "Chennai Centre",
+    centerName: "AEB Chennai",
+    shortName: "AEB Chennai",
+    city: "Chennai",
+    latitude: 13.0827,
+    longitude: 80.2707,
     districts: ["Vellore"],
   },
   {
-    centerName: "Pondicherry Centre",
+    centerName: "AEBAP,Pondicherry",
+    shortName: "AEBAP Pondicherry",
+    city: "Puducherry",
+    latitude: 11.9416,
+    longitude: 79.8083,
     districts: [
       "Cuddalore",
       "Vilupuram",
@@ -61,68 +90,82 @@ export const EYE_BANK_COLLECTION_CENTRES: EyeBankCollectionCenter[] = [
     ],
   },
   {
-    centerName: "Salem Centre",
-    districts: ["Salem", "Namakkal", "Dharmapuri", "Krishnagiri"],
+    centerName: "AEH, Salem",
+    shortName: "AEH Salem",
+    city: "Salem",
+    latitude: 11.6643,
+    longitude: 78.1460,
+    districts: ["Salem", "Namakkal", "Dharmapuri", "Krishanagiri"],
   },
   {
-    centerName: "Tirupathi Centre",
+    centerName: "AEH ,Tirupathi",
+    shortName: "AEH Tirupathi",
+    city: "Thirupathi",
+    latitude: 13.6288,
+    longitude: 79.4192,
     districts: ["Thirupathi", "Chittoor"],
   },
 ];
 
 // Transposed from Image 3: Collected Eyes Distribution across India
 export const EYE_BANK_DISTRIBUTION_RECORDS: EyeBankDistributionRecord[] = [
-  // Madurai Centre Destinations
-  { centerName: "Madurai Centre", district: "Madurai", state: "Tamil Nadu" },
-  { centerName: "Madurai Centre", district: "Ernakulam", state: "Kerala" },
-  { centerName: "Madurai Centre", district: "Bangalore", state: "Karnataka" },
-  { centerName: "Madurai Centre", district: "Chennai", state: "Tamil Nadu" },
-  { centerName: "Madurai Centre", district: "Coimbatore", state: "Tamil Nadu" },
-  { centerName: "Madurai Centre", district: "Salem", state: "Tamil Nadu" },
-  { centerName: "Madurai Centre", district: "Hyderabad", state: "Telangana" },
-  { centerName: "Madurai Centre", district: "Kakinada", state: "Andhra Pradesh" },
-  { centerName: "Madurai Centre", district: "Mumbai", state: "Maharashtra" },
-  { centerName: "Madurai Centre", district: "Haridwar", state: "Uttarakhand" },
-  { centerName: "Madurai Centre", district: "Haryana Region", state: "Haryana" },
-  { centerName: "Madurai Centre", district: "Delhi NCR", state: "Delhi" },
-  { centerName: "Madurai Centre", district: "Kolkata", state: "West Bengal" },
-  { centerName: "Madurai Centre", district: "Nagpur", state: "Maharashtra" },
-  { centerName: "Madurai Centre", district: "Lucknow", state: "Uttar Pradesh" },
-  { centerName: "Madurai Centre", district: "Chandigarh", state: "Chandigarh" },
-  { centerName: "Madurai Centre", district: "Ahmedabad", state: "Gujarat" },
-  { centerName: "Madurai Centre", district: "Varanasi", state: "Uttar Pradesh" },
-  { centerName: "Madurai Centre", district: "Sivagangai", state: "Tamil Nadu" },
-  { centerName: "Madurai Centre", district: "Vellore", state: "Tamil Nadu" },
-  { centerName: "Madurai Centre", district: "Karur", state: "Tamil Nadu" },
-  { centerName: "Madurai Centre", district: "Namakkal", state: "Tamil Nadu" },
-  { centerName: "Madurai Centre", district: "Theni", state: "Tamil Nadu" },
-  { centerName: "Madurai Centre", district: "Thanjavur", state: "Tamil Nadu" },
-  { centerName: "Madurai Centre", district: "Tirunelveli", state: "Tamil Nadu" },
-  { centerName: "Madurai Centre", district: "Pondicherry", state: "Pondicherry" },
-  { centerName: "Madurai Centre", district: "Thrissur", state: "Kerala" },
-  { centerName: "Madurai Centre", district: "Thiruvananthapuram", state: "Kerala" },
-  { centerName: "Madurai Centre", district: "Tirupathi", state: "Andhra Pradesh" },
-  { centerName: "Madurai Centre", district: "Palakkad", state: "Kerala" },
+  // RAIEB , Madurai Destinations
+  { centerName: "RAIEB , Madurai", district: "Madurai", state: "Tamil Nadu" },
+  { centerName: "RAIEB , Madurai", district: "Ernakulam", state: "Kerala" },
+  { centerName: "RAIEB , Madurai", district: "Bangalore", state: "Karnataka" },
+  { centerName: "RAIEB , Madurai", district: "Chennai", state: "Tamil Nadu" },
+  { centerName: "RAIEB , Madurai", district: "Coimbatore", state: "Tamil Nadu" },
+  { centerName: "RAIEB , Madurai", district: "Salem", state: "Tamil Nadu" },
+  { centerName: "RAIEB , Madurai", district: "Hyderabad", state: "Telangana" },
+  { centerName: "RAIEB , Madurai", district: "Kakinada", state: "Andhra Pradesh" },
+  { centerName: "RAIEB , Madurai", district: "Mumbai", state: "Maharashtra" },
+  { centerName: "RAIEB , Madurai", district: "Haridwar", state: "Uttarakhand" },
+  { centerName: "RAIEB , Madurai", district: "Haryana Region", state: "Haryana" },
+  { centerName: "RAIEB , Madurai", district: "Delhi NCR", state: "Delhi" },
+  { centerName: "RAIEB , Madurai", district: "Kolkata", state: "West Bengal" },
+  { centerName: "RAIEB , Madurai", district: "Nagpur", state: "Maharashtra" },
+  { centerName: "RAIEB , Madurai", district: "Lucknow", state: "Uttar Pradesh" },
+  { centerName: "RAIEB , Madurai", district: "Chandigarh", state: "Chandigarh" },
+  { centerName: "RAIEB , Madurai", district: "Ahmedabad", state: "Gujarat" },
+  { centerName: "RAIEB , Madurai", district: "Varanasi", state: "Uttar Pradesh" },
+  { centerName: "RAIEB , Madurai", district: "Sivagangai", state: "Tamil Nadu" },
+  { centerName: "RAIEB , Madurai", district: "Vellore", state: "Tamil Nadu" },
+  { centerName: "RAIEB , Madurai", district: "Karur", state: "Tamil Nadu" },
+  { centerName: "RAIEB , Madurai", district: "Namakkal", state: "Tamil Nadu" },
+  { centerName: "RAIEB , Madurai", district: "Theni", state: "Tamil Nadu" },
+  { centerName: "RAIEB , Madurai", district: "Thanjavur", state: "Tamil Nadu" },
+  { centerName: "RAIEB , Madurai", district: "Tirunelveli", state: "Tamil Nadu" },
+  { centerName: "RAIEB , Madurai", district: "Pondicherry", state: "Pondicherry" },
+  { centerName: "RAIEB , Madurai", district: "Thrissur", state: "Kerala" },
+  { centerName: "RAIEB , Madurai", district: "Thiruvananthapuram", state: "Kerala" },
+  { centerName: "RAIEB , Madurai", district: "Tirupathi", state: "Andhra Pradesh" },
+  { centerName: "RAIEB , Madurai", district: "Palakkad", state: "Kerala" },
 
-  // Coimbatore Centre Destinations
-  { centerName: "Coimbatore Centre", district: "Coimbatore", state: "Tamil Nadu" },
-  { centerName: "Coimbatore Centre", district: "Palakkad", state: "Kerala" },
-  { centerName: "Coimbatore Centre", district: "Tirupur", state: "Tamil Nadu" },
-  { centerName: "Coimbatore Centre", district: "Kozhikode", state: "Kerala" },
-  { centerName: "Coimbatore Centre", district: "Erode", state: "Tamil Nadu" },
+  // AIOB, Coimbatore Destinations
+  { centerName: "AIOB, Coimbatore", district: "Coimbatore", state: "Tamil Nadu" },
+  { centerName: "AIOB, Coimbatore", district: "Palakkad", state: "Kerala" },
+  { centerName: "AIOB, Coimbatore", district: "Tirupur", state: "Tamil Nadu" },
+  { centerName: "AIOB, Coimbatore", district: "Kozhikode", state: "Kerala" },
+  { centerName: "AIOB, Coimbatore", district: "Erode", state: "Tamil Nadu" },
 
-  // Tirunelveli Centre Destinations
-  { centerName: "Tirunelveli Centre", district: "Tirunelveli", state: "Tamil Nadu" },
-  { centerName: "Tirunelveli Centre", district: "Tuticorin", state: "Tamil Nadu" },
-  { centerName: "Tirunelveli Centre", district: "Kaniyakumari", state: "Tamil Nadu" },
+  // RAEB ,Tirunelveli Destinations
+  { centerName: "RAEB ,Tirunelveli", district: "Tirunelveli", state: "Tamil Nadu" },
+  { centerName: "RAEB ,Tirunelveli", district: "Tuticorin", state: "Tamil Nadu" },
+  { centerName: "RAEB ,Tirunelveli", district: "Kaniyakumari", state: "Tamil Nadu" },
 
-  // Chennai Centre Destinations
-  { centerName: "Chennai Centre", district: "Chennai", state: "Tamil Nadu" },
-  { centerName: "Chennai Centre", district: "Chengalpattu", state: "Tamil Nadu" },
-  { centerName: "Chennai Centre", district: "Vellore", state: "Tamil Nadu" },
+  // AEB Chennai Destinations
+  { centerName: "AEB Chennai", district: "Chennai", state: "Tamil Nadu" },
+  { centerName: "AEB Chennai", district: "Chengalpattu", state: "Tamil Nadu" },
+  { centerName: "AEB Chennai", district: "Vellore", state: "Tamil Nadu" },
 
-  // Pondicherry Centre Destinations
-  { centerName: "Pondicherry Centre", district: "Puducherry", state: "Pondicherry" },
+  // AEBAP,Pondicherry Destinations
+  { centerName: "AEBAP,Pondicherry", district: "Puducherry", state: "Pondicherry" },
+
+  // AEH, Salem Destinations
+  { centerName: "AEH, Salem", district: "Salem", state: "Tamil Nadu" },
+
+  // AEH ,Tirupathi Destinations
+  { centerName: "AEH ,Tirupathi", district: "Thirupathi", state: "Andhra Pradesh" },
 ];
 
 // Transposed from Image 4: Aravind Integrated Eye Bank Services (AIEBS) 10-Year Collection & Utilization

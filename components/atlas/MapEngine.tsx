@@ -7,6 +7,7 @@ import { EntityConfig } from "@/types/entity";
 import { GeoLocationItem, StateAggregation, GeographicGrammar, GeographicLevel } from "@/types/geo";
 import { LIGHT_ATLAS_MAP_STYLE, hexToRgba } from "@/lib/map-utils";
 import { INDIA_CENTER, INDIA_DEFAULT_ZOOM } from "@/config/entities";
+import { EYEBANK_DATA } from "@/data/eyebank/eyebank-data";
 
 export interface MapEngineProps {
   entityConfig: EntityConfig;
@@ -163,21 +164,40 @@ export function MapEngine({
         layout: { visibility: "none" },
       });
 
-      // 3. VISION RESTORATION (Eye Bank Flow Vectors)
+      // 3. VISION RESTORATION (Eye Bank Collection Dotted Vector Networks)
+      const eyeBankCollectionFeatures: any[] = [];
+      EYEBANK_DATA.forEach((item) => {
+        if (!item.metadata?.isMainHub && item.metadata?.attachedMainCenter) {
+          const mainHub = EYEBANK_DATA.find(
+            (h) => h.metadata?.isMainHub && (h.name === item.metadata?.attachedMainCenter || h.rawName === item.metadata?.attachedMainCenter)
+          );
+          if (mainHub) {
+            const dist = Math.hypot(item.longitude - mainHub.longitude, item.latitude - mainHub.latitude);
+            if (dist > 0.001) {
+              eyeBankCollectionFeatures.push({
+                type: "Feature",
+                properties: {
+                  hubName: mainHub.name,
+                  collCity: item.city,
+                },
+                geometry: {
+                  type: "LineString",
+                  coordinates: [
+                    [item.longitude, item.latitude],
+                    [mainHub.longitude, mainHub.latitude],
+                  ],
+                },
+              });
+            }
+          }
+        }
+      });
+
       map.addSource("eyebank-flow-source", {
         type: "geojson",
         data: {
           type: "FeatureCollection",
-          features: [
-            { type: "Feature", properties: { flow: "Coimbatore -> Madurai Lab" }, geometry: { type: "LineString", coordinates: [[76.9558, 11.0168], [78.1198, 9.9252]] } },
-            { type: "Feature", properties: { flow: "Tirunelveli -> Madurai Lab" }, geometry: { type: "LineString", coordinates: [[77.7567, 8.7139], [78.1198, 9.9252]] } },
-            { type: "Feature", properties: { flow: "Puducherry -> Madurai Lab" }, geometry: { type: "LineString", coordinates: [[79.8083, 11.9416], [78.1198, 9.9252]] } },
-            { type: "Feature", properties: { flow: "Madurai Hub -> Bengaluru" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] } },
-            { type: "Feature", properties: { flow: "Madurai Hub -> Mumbai" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [72.8777, 19.0760]] } },
-            { type: "Feature", properties: { flow: "Madurai Hub -> Delhi NCR" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.1025, 28.7041]] } },
-            { type: "Feature", properties: { flow: "Madurai Hub -> Kolkata" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [88.3639, 22.5726]] } },
-            { type: "Feature", properties: { flow: "Madurai Hub -> Haridwar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [78.1642, 29.9457]] } },
-          ],
+          features: eyeBankCollectionFeatures,
         },
       });
 
@@ -188,8 +208,8 @@ export function MapEngine({
         paint: {
           "line-color": "#059669",
           "line-width": 3.0,
-          "line-opacity": 0.9,
-          "line-dasharray": [4, 2],
+          "line-opacity": 0.85,
+          "line-dasharray": [4, 4],
         },
         layout: { visibility: "none" },
       });
@@ -300,10 +320,52 @@ export function MapEngine({
       el.className =
         "group cursor-pointer transition-all duration-200 select-none w-12 h-12 flex items-center justify-center";
 
-      // Check if location belongs to Aurolab
       const isAurolabLoc = loc.entityId === "aurolab";
+      const isEyeBankLoc = loc.entityId === "eyebank";
 
-      if (isAurolabLoc) {
+      if (isEyeBankLoc) {
+        const isMainHub = loc.metadata?.isMainHub || loc.id.startsWith("eb_hub_");
+        const displayName = loc.name || loc.rawName;
+
+        if (isMainHub) {
+          // Distinct Main Eye Bank Hub Pin with Exact Name from Table & Animated Radar Rings
+          el.innerHTML = `
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group">
+              <!-- Radar Pulse Scanning Halo Rings for Main Hub -->
+              <div class="absolute w-12 h-12 rounded-full bg-emerald-500/30 border border-emerald-400/50 animate-ping opacity-75 pointer-events-none"></div>
+              <div class="absolute w-8 h-8 rounded-full bg-emerald-400/20 border border-emerald-500/40 animate-pulse pointer-events-none"></div>
+              
+              <!-- Main Hub Badge Label displaying EXACT name -->
+              <span class="mb-1 text-[10px] font-black text-white bg-slate-900/95 px-2.5 py-1 rounded-lg shadow-xl border-2 border-emerald-400 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>${displayName}</span>
+              </span>
+
+              <!-- Central Main Hub Pin Badge with Eye Icon -->
+              <div class="w-7 h-7 rounded-full bg-emerald-700 border-2 border-amber-300 shadow-xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
+                <svg class="w-4 h-4 text-white animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </div>
+            </div>
+          `;
+        } else {
+          // Distinct Collection Centre Pin
+          const collName = loc.rawName || loc.city;
+          el.innerHTML = `
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group">
+              <span class="mb-1 text-[9px] font-extrabold text-slate-900 bg-white/95 px-2 py-0.5 rounded-md shadow-xs border border-emerald-300 whitespace-nowrap tracking-tight pointer-events-none transition-transform group-hover:scale-105">
+                ${collName}
+              </span>
+              <!-- Collection Node Pin -->
+              <div class="w-4 h-4 rounded-full bg-teal-600 border-2 border-white shadow-md flex items-center justify-center transition-all group-hover:scale-125">
+                <div class="w-1.5 h-1.5 rounded-full bg-white animate-ping opacity-75"></div>
+              </div>
+            </div>
+          `;
+        }
+      } else if (isAurolabLoc) {
         el.innerHTML = `
           <div class="relative flex items-center justify-center group pointer-events-auto">
             <div class="relative w-8 h-8 flex items-center justify-center">
@@ -373,15 +435,28 @@ export function MapEngine({
 
         if (popupRef.current) popupRef.current.remove();
 
+        const isEyeBank = loc.entityId === "eyebank";
         const isAurolab = entityConfig?.id === "aurolab" || activeGrammar === "distribution";
         const displayName = loc.rawName || loc.name;
-        const popTitle = isAurolab ? `${loc.state} Aggregate Distribution` : displayName;
         
-        let popSub = isAurolab
-          ? `Regional Aggregate Footprint · ${loc.state}`
-          : `${loc.city}, ${loc.state}`;
+        let popTitle = displayName;
+        let popSub = `${loc.city}, ${loc.state}`;
+
+        if (isEyeBank) {
+          const isMainHub = loc.metadata?.isMainHub || loc.id.startsWith("eb_hub_");
+          if (isMainHub) {
+            popTitle = loc.name;
+            popSub = `Main Eye Bank Hub · ${loc.city}, ${loc.state}`;
+          } else {
+            popTitle = `${loc.rawName || loc.city} Collection Centre`;
+            popSub = `Attached Hub: ${loc.metadata?.attachedMainCenter || "Main Eye Bank"}`;
+          }
+        } else if (isAurolab) {
+          popTitle = `${loc.state} Aggregate Distribution`;
+          popSub = `Regional Aggregate Footprint · ${loc.state}`;
+        }
           
-        if (loc.establishedYear && !isAurolab) {
+        if (loc.establishedYear && !isAurolab && !isEyeBank) {
           popSub += ` · Est. ${loc.establishedYear}`;
         }
 

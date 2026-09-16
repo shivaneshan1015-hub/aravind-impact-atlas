@@ -11,10 +11,26 @@ import { Eye, TrendingUp, Share2, Award, ChevronRight, Activity, ArrowUpRight } 
 interface EyeBankVisualizerProps {
   activeView: "collected" | "distributed" | "collection_vs_utilisation";
   onSelectView?: (view: "collected" | "distributed" | "collection_vs_utilisation") => void;
+  selectedCenterName?: string;
+  onSelectCenterName?: (name: string) => void;
 }
 
-export function EyeBankVisualizer({ activeView, onSelectView }: EyeBankVisualizerProps) {
-  const [selectedCenter, setSelectedCenter] = useState<string>("Madurai Centre");
+export function EyeBankVisualizer({
+  activeView,
+  onSelectView,
+  selectedCenterName,
+  onSelectCenterName,
+}: EyeBankVisualizerProps) {
+  const [internalCenter, setInternalCenter] = useState<string>("RAIEB , Madurai");
+
+  const selectedCenter = selectedCenterName || internalCenter;
+
+  const handleSelectCenter = (centerName: string) => {
+    setInternalCenter(centerName);
+    if (onSelectCenterName) {
+      onSelectCenterName(centerName);
+    }
+  };
 
   // Calculate overall 10-year statistics
   const totalCollected10Yr = AIEBS_YEARLY_METRICS.reduce((acc, m) => acc + m.collection, 0);
@@ -189,7 +205,7 @@ export function EyeBankVisualizer({ activeView, onSelectView }: EyeBankVisualize
               return (
                 <button
                   key={c.centerName}
-                  onClick={() => setSelectedCenter(c.centerName)}
+                  onClick={() => handleSelectCenter(c.centerName)}
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border ${
                     isSelected
                       ? "bg-emerald-700 text-white border-emerald-700 shadow-xs"
