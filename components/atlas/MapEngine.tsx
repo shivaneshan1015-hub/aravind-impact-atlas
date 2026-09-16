@@ -163,7 +163,46 @@ export function MapEngine({
         layout: { visibility: "none" },
       });
 
-      // 3. VISION RESTORATION (Eye Bank Flow Vectors)
+      // 3. AUROLAB DOMESTIC SUPPLY NETWORK (42 Dealers Radiating from Madurai)
+      map.addSource("aurolab-network-source", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [
+            { type: "Feature", properties: { city: "Delhi" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.1025, 28.7041]] } },
+            { type: "Feature", properties: { city: "Amritsar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [74.8723, 31.6340]] } },
+            { type: "Feature", properties: { city: "Srinagar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [74.7973, 34.0837]] } },
+            { type: "Feature", properties: { city: "Chandigarh" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [76.7794, 30.7333]] } },
+            { type: "Feature", properties: { city: "Jaipur" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [75.7873, 26.9124]] } },
+            { type: "Feature", properties: { city: "Varanasi" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [82.9739, 25.3176]] } },
+            { type: "Feature", properties: { city: "Lucknow" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [80.9462, 26.8467]] } },
+            { type: "Feature", properties: { city: "Kolkata" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [88.3639, 22.5726]] } },
+            { type: "Feature", properties: { city: "Guwahati" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [91.7362, 26.1445]] } },
+            { type: "Feature", properties: { city: "Patna" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [85.1376, 25.5941]] } },
+            { type: "Feature", properties: { city: "Hyderabad" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [78.4867, 17.3850]] } },
+            { type: "Feature", properties: { city: "Bangalore" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] } },
+            { type: "Feature", properties: { city: "Cochin" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [76.2711, 9.9816]] } },
+            { type: "Feature", properties: { city: "Chennai" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [80.2707, 13.0827]] } },
+            { type: "Feature", properties: { city: "Mumbai" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [72.8777, 19.0760]] } },
+            { type: "Feature", properties: { city: "Ahmedabad" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [72.5714, 23.0225]] } },
+          ],
+        },
+      });
+
+      map.addLayer({
+        id: "aurolab-network-layer",
+        type: "line",
+        source: "aurolab-network-source",
+        paint: {
+          "line-color": "#EA580C",
+          "line-width": 2.5,
+          "line-opacity": 0.85,
+          "line-dasharray": [3, 2],
+        },
+        layout: { visibility: "none" },
+      });
+
+      // 4. VISION RESTORATION (Eye Bank Flow Vectors)
       map.addSource("eyebank-flow-source", {
         type: "geojson",
         data: {
@@ -172,8 +211,11 @@ export function MapEngine({
             { type: "Feature", properties: { flow: "Coimbatore -> Madurai Lab" }, geometry: { type: "LineString", coordinates: [[76.9558, 11.0168], [78.1198, 9.9252]] } },
             { type: "Feature", properties: { flow: "Tirunelveli -> Madurai Lab" }, geometry: { type: "LineString", coordinates: [[77.7567, 8.7139], [78.1198, 9.9252]] } },
             { type: "Feature", properties: { flow: "Puducherry -> Madurai Lab" }, geometry: { type: "LineString", coordinates: [[79.8083, 11.9416], [78.1198, 9.9252]] } },
-            { type: "Feature", properties: { flow: "Madurai Hub -> Bengaluru Recipient Network" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] } },
-            { type: "Feature", properties: { flow: "Madurai Hub -> Kochi Recipient Network" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [76.2673, 9.9312]] } },
+            { type: "Feature", properties: { flow: "Madurai Hub -> Bengaluru" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] } },
+            { type: "Feature", properties: { flow: "Madurai Hub -> Mumbai" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [72.8777, 19.0760]] } },
+            { type: "Feature", properties: { flow: "Madurai Hub -> Delhi NCR" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.1025, 28.7041]] } },
+            { type: "Feature", properties: { flow: "Madurai Hub -> Kolkata" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [88.3639, 22.5726]] } },
+            { type: "Feature", properties: { flow: "Madurai Hub -> Haridwar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [78.1642, 29.9457]] } },
           ],
         },
       });
@@ -241,6 +283,13 @@ export function MapEngine({
         "amrf-collaboration-layer",
         "visibility",
         activeGrammar === "collaboration" || entityConfig.id === "amrf" ? "visible" : "none"
+      );
+    }
+    if (map.getLayer("aurolab-network-layer")) {
+      map.setLayoutProperty(
+        "aurolab-network-layer",
+        "visibility",
+        activeGrammar === "distribution" || entityConfig.id === "aurolab" ? "visible" : "none"
       );
     }
     if (map.getLayer("eyebank-flow-layer")) {

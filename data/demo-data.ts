@@ -1,5 +1,5 @@
 import { GeoLocationItem } from "@/types/geo";
-import { AUROLAB_NATIONAL_DEALERS } from "./aurolab/national-dealers";
+import { AUROLAB_DOMESTIC_LOCATIONS } from "./aurolab/domestic-dealers-42";
 import { HOSPITALS_DATA } from "./hospitals/hospitals-data";
 import { LAICO_DATA } from "./laico/laico-data";
 import { AMRF_DATA } from "./amrf/amrf-data";
@@ -12,7 +12,7 @@ export const AUROLAB_INTERNATIONAL_DEALERS: GeoLocationItem[] = [
     id: "auro_intl_1",
     name: "BioVision Latin America",
     entityId: "aurolab",
-    subcategoryId: "international_dealers",
+    subcategoryId: "international",
     country: "Brazil",
     state: "Sao Paulo",
     city: "Sao Paulo",
@@ -25,7 +25,7 @@ export const AUROLAB_INTERNATIONAL_DEALERS: GeoLocationItem[] = [
     id: "auro_intl_2",
     name: "AfriSight Ophthalmic Kenya",
     entityId: "aurolab",
-    subcategoryId: "international_dealers",
+    subcategoryId: "international",
     country: "Kenya",
     state: "Nairobi",
     city: "Nairobi",
@@ -38,7 +38,7 @@ export const AUROLAB_INTERNATIONAL_DEALERS: GeoLocationItem[] = [
     id: "auro_intl_3",
     name: "Mekong Eye Tech Vietnam",
     entityId: "aurolab",
-    subcategoryId: "international_dealers",
+    subcategoryId: "international",
     country: "Vietnam",
     state: "Ho Chi Minh City",
     city: "Ho Chi Minh City",
@@ -49,9 +49,15 @@ export const AUROLAB_INTERNATIONAL_DEALERS: GeoLocationItem[] = [
   },
 ];
 
+// Ensure Aurolab domestic dealers use subcategoryId: "domestic"
+const AUROLAB_DOMESTIC = AUROLAB_DOMESTIC_LOCATIONS.map((loc) => ({
+  ...loc,
+  subcategoryId: "domestic",
+}));
+
 // Master Demo Locations Export
 export const DEMO_LOCATIONS: GeoLocationItem[] = [
-  ...AUROLAB_NATIONAL_DEALERS,
+  ...AUROLAB_DOMESTIC,
   ...AUROLAB_INTERNATIONAL_DEALERS,
   ...HOSPITALS_DATA,
   ...LAICO_DATA,

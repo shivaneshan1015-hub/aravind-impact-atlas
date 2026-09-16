@@ -28,6 +28,7 @@ import { OneSystemFinale } from "./OneSystemFinale";
 import { SearchModal } from "@/components/atlas/SearchModal";
 import { InfoModal } from "@/components/atlas/InfoModal";
 import { EntityId } from "@/types/entity";
+import { EyeBankVisualizer } from "@/components/eyebank/EyeBankVisualizer";
 import { SidebarPanel } from "@/components/atlas/SidebarPanel";
 import { useNarration } from "@/lib/narration/useNarration";
 import { NarrationIndicator } from "@/components/narration/NarrationIndicator";
@@ -178,6 +179,8 @@ export function ExhibitionShell() {
             onSelectCareTypeFilter={setCareTypeFilter}
             selectedState={selectedState}
             onSelectState={handleSelectStateWithInterruption}
+            selectedSubcategoryId={selectedSubcategoryId}
+            onSelectSubcategory={selectSubcategory}
           />
         )}
 
@@ -262,18 +265,33 @@ export function ExhibitionShell() {
           </div>
         </main>
 
-        {/* Right Story Context Panel */}
+        {/* Right Story Context Panel & Eye Bank Custom Visualizer */}
         {(currentScene === "story_exploration" || currentScene === "one_system") && (
-          <ContextPanel
-            entityConfig={activeEntityConfig}
-            selectedState={selectedState}
-            stateAggregations={stateAggregations}
-            selectedLocation={selectedLocation}
-            locationsInSelectedState={locationsInSelectedState}
-            onSelectLocation={selectLocation}
-            onClearLocation={() => selectLocation(null)}
-            onClearState={() => selectState(null)}
-          />
+          <div className="absolute top-4 right-4 z-30 max-w-lg pointer-events-auto">
+            {selectedEntityId === "eyebank" ? (
+              <EyeBankVisualizer
+                activeView={
+                  (selectedSubcategoryId as any) === "distributed"
+                    ? "distributed"
+                    : (selectedSubcategoryId as any) === "collection_vs_utilisation"
+                    ? "collection_vs_utilisation"
+                    : "collected"
+                }
+                onSelectView={(v) => selectSubcategory(v)}
+              />
+            ) : (
+              <ContextPanel
+                entityConfig={activeEntityConfig}
+                selectedState={selectedState}
+                stateAggregations={stateAggregations}
+                selectedLocation={selectedLocation}
+                locationsInSelectedState={locationsInSelectedState}
+                onSelectLocation={selectLocation}
+                onClearLocation={() => selectLocation(null)}
+                onClearState={() => selectState(null)}
+              />
+            )}
+          </div>
         )}
       </div>
 
