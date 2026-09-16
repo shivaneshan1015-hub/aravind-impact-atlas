@@ -28,6 +28,7 @@ import { SearchModal } from "@/components/atlas/SearchModal";
 import { InfoModal } from "@/components/atlas/InfoModal";
 import { EntityId } from "@/types/entity";
 import { SidebarPanel } from "@/components/atlas/SidebarPanel";
+import { Maximize2, Minimize2, Home } from "lucide-react";
 
 // Dynamically import MapEngine with ssr: false to prevent MapLibre GL SSR window/WebGL exceptions
 const MapEngine = dynamic(
@@ -57,7 +58,10 @@ export function ExhibitionShell() {
     selectState,
     selectLocation,
     goToDimensions,
+    goToArrival,
     setProductFilter,
+    isFullscreen,
+    toggleFullscreen,
   } = useScene();
 
   const [careTypeFilter, setCareTypeFilter] = React.useState<"all" | "tertiary" | "secondary" | "community">("all");
@@ -233,6 +237,27 @@ export function ExhibitionShell() {
         isOpen={isInfoOpen}
         onClose={() => setIsInfoOpen(false)}
       />
+
+      {/* Floating Top-Right Fullscreen Control Button */}
+      <button
+        onClick={toggleFullscreen}
+        className="fixed top-4 right-4 z-40 p-2.5 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl shadow-md hover:bg-slate-100 text-slate-700 transition-all"
+        title={isFullscreen ? "Exit Fullscreen Mode" : "Enter Fullscreen Mode"}
+      >
+        {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+      </button>
+
+      {/* Floating Bottom-Left Back Button to Starting Page */}
+      {(currentScene === "story_exploration" || currentScene === "one_system") && (
+        <button
+          onClick={goToArrival}
+          className="fixed bottom-4 left-4 z-40 px-3 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-extrabold shadow-lg flex items-center gap-1.5 transition-all border border-slate-800"
+          title="Return to Starting Page"
+        >
+          <Home className="w-3.5 h-3.5 text-amber-400" />
+          <span>STARTING PAGE</span>
+        </button>
+      )}
     </div>
   );
 }

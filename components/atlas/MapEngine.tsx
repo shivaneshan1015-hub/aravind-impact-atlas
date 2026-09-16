@@ -73,11 +73,6 @@ export function MapEngine({
       attributionControl: false,
     });
 
-    map.addControl(
-      new maplibregl.NavigationControl({ showCompass: false }),
-      "bottom-right"
-    );
-
     map.on("load", () => {
       // Add local India States GeoJSON vector source for choropleth & hover fills
       map.addSource("india-states-source", {

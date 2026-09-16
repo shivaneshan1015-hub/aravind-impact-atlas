@@ -66,6 +66,43 @@ export function ArrivalScene() {
           </span>
         </div>
 
+        {/* Eye Movement Visual Animation for Eye Care Organisation */}
+        <div className="relative flex items-center justify-center my-2">
+          <svg
+            className="w-20 h-12 text-[#0D282E]"
+            viewBox="0 0 64 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Eye Contour */}
+            <path
+              d="M2 18C2 18 12 4 32 4C52 4 62 18 62 18C62 18 52 32 32 32C12 32 2 18 2 18Z"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-slate-800"
+            />
+            {/* Animated Iris & Pupil Looking Around */}
+            <g className="animate-eye-scan">
+              <circle cx="32" cy="18" r="8.5" fill="#0D282E" />
+              <circle cx="32" cy="18" r="4" fill="#0284C7" />
+              <circle cx="33.5" cy="16.5" r="1.3" fill="#FFFFFF" />
+            </g>
+          </svg>
+          <style jsx>{`
+            @keyframes eyeScan {
+              0%, 100% { transform: translateX(0px); }
+              25% { transform: translateX(-6px); }
+              50% { transform: translateX(0px); }
+              75% { transform: translateX(6px); }
+            }
+            .animate-eye-scan {
+              animation: eyeScan 3.5s ease-in-out infinite;
+            }
+          `}</style>
+        </div>
+
         {/* Exhibition Main Title */}
         <div className="space-y-3">
           <h1
@@ -91,24 +128,24 @@ export function ArrivalScene() {
           Explore five decades of transforming global eye care across clinical services, healthcare leadership training, scientific research, affordable access, digital health, and sight restoration.
         </p>
 
-        {/* Large Touchscreen CTA Buttons (Min height 60px) */}
+        {/* Large Touchscreen CTA Buttons (Identical 256px x 80px dimensions) */}
         <div
           ref={actionsRef}
-          className="flex flex-col sm:flex-row items-center gap-5 pt-4 w-full max-w-md justify-center"
+          className="flex flex-col sm:flex-row items-center gap-5 pt-4 w-full max-w-xl justify-center"
         >
           <button
             onClick={goToDimensions}
-            className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all active:scale-95 min-h-[64px] border border-slate-800"
+            className="w-64 h-20 flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-bold text-base shadow-xl hover:shadow-2xl transition-all active:scale-95 border border-slate-800 text-center leading-tight shrink-0"
           >
-            <Compass className="w-6 h-6 text-amber-400" />
+            <Compass className="w-5 h-5 text-amber-400 shrink-0" />
             <span>EXPLORE THE IMPACT</span>
           </button>
 
           <button
             onClick={startGuidedJourney}
-            className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-white hover:bg-amber-50 text-slate-900 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all active:scale-95 border border-slate-200 min-h-[64px]"
+            className="w-64 h-20 flex items-center justify-center gap-3 bg-white hover:bg-amber-50 text-slate-900 rounded-2xl font-bold text-base shadow-lg hover:shadow-xl transition-all active:scale-95 border border-slate-200 text-center leading-tight shrink-0"
           >
-            <Play className="w-5 h-5 text-amber-600 fill-amber-600" />
+            <Play className="w-5 h-5 text-amber-600 fill-amber-600 shrink-0" />
             <span>START GUIDED TOUR</span>
           </button>
         </div>

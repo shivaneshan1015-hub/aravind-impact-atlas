@@ -36,7 +36,7 @@ export function ContextPanel({
   const totalStatesCount = stateAggregations.length;
 
   return (
-    <aside className="absolute bottom-10 right-8 z-20 w-72 max-h-[75vh] bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100/90 flex flex-col select-none overflow-hidden transition-all animate-in fade-in slide-in-from-right-4 duration-300">
+    <aside className="absolute bottom-24 right-8 z-20 w-72 max-h-[calc(100vh-180px)] bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100/90 flex flex-col select-none overflow-hidden transition-all animate-in fade-in slide-in-from-right-4 duration-300">
       {/* Small Compact Header */}
       <div className="p-3.5 px-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/60">
         <div className="flex items-center gap-1.5">
