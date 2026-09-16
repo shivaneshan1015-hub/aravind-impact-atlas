@@ -55,18 +55,18 @@ export function SixDoorsNav() {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 bg-slate-950/60 backdrop-blur-md flex flex-col justify-between p-8 z-20 select-none overflow-y-auto"
+      className="absolute inset-0 bg-[#F7F8F6]/90 backdrop-blur-md flex flex-col justify-between p-8 z-20 select-none overflow-y-auto"
     >
       {/* Top Title & Invitation */}
       <div className="text-center max-w-2xl mx-auto space-y-2 mt-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-amber-300 text-xs font-bold uppercase tracking-widest border border-white/20">
-          <Sparkles className="w-3.5 h-3.5" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-widest border border-amber-200">
+          <Sparkles className="w-3.5 h-3.5 text-amber-600" />
           <span>Six Doors Into Six Geographic Stories</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
           Select an Impact Dimension
         </h2>
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-slate-600">
           Discover how each part of the Aravind ecosystem extends care, knowledge, research, access, technology, and sight restoration.
         </p>
       </div>

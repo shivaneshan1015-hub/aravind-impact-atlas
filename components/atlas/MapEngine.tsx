@@ -317,7 +317,7 @@ export function MapEngine({
 
     const themeColor = entityConfig?.color || "#EA580C";
 
-    // RENDER SLEEK GLOWING CIRCULAR PINS MATCHING REFERENCE SPECIMEN (media__1789481991797.png)
+    // RENDER RESTRAINED, INSTITUTIONAL MAP MARKERS (48px Touch Hit Area)
     const activeLocations = selectedState
       ? locations.filter((l) => l.state === selectedState)
       : locations;
@@ -325,20 +325,12 @@ export function MapEngine({
     activeLocations.forEach((loc) => {
       const isSelected = selectedLocation?.id === loc.id;
       const el = document.createElement("div");
-      el.className = "group cursor-pointer transition-all duration-300 select-none";
+      el.className = "group cursor-pointer transition-all duration-200 select-none w-12 h-12 flex items-center justify-center";
 
+      // Restrained pin visual without aura/ping clutter
       el.innerHTML = `
         <div class="relative flex items-center justify-center">
-          <div class="absolute w-11 h-11 rounded-full opacity-20 pointer-events-none group-hover:scale-150 transition-transform duration-300" style="background-color: ${themeColor}"></div>
-          <div class="absolute w-7 h-7 rounded-full opacity-35 pointer-events-none" style="background-color: ${themeColor}"></div>
-          ${
-            isSelected
-              ? `<div class="absolute w-9 h-9 rounded-full animate-ping opacity-60" style="background-color: ${themeColor}"></div>`
-              : ""
-          }
-          <div class="relative w-4 h-4 rounded-full border-2 border-white shadow-xl flex items-center justify-center transition-transform transform group-hover:scale-125"
-               style="background-color: ${themeColor}; box-shadow: 0 4px 14px ${themeColor}70">
-            <div class="w-1 h-1 bg-white rounded-full"></div>
+          <div style="width: ${isSelected ? "18px" : "12px"}; height: ${isSelected ? "18px" : "12px"}; background-color: ${themeColor}; border: 2px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: all 0.2s ease-out;">
           </div>
         </div>
       `;
@@ -354,15 +346,19 @@ export function MapEngine({
           duration: 1000,
         });
 
-        // Show minimal popover label
+        // Show minimal popover label with Aurolab privacy protection
         if (popupRef.current) popupRef.current.remove();
+
+        const isAurolab = entityConfig?.id === "aurolab";
+        const popTitle = isAurolab ? `${loc.state} Aggregate Distribution` : loc.name;
+        const popSub = isAurolab ? `Regional Aggregate Footprint · ${loc.state}` : `${loc.city}, ${loc.state}`;
 
         const popupDom = document.createElement("div");
         popupDom.className =
           "px-3 py-1.5 bg-white/95 text-slate-900 rounded-lg shadow-md text-xs font-bold border border-slate-200 select-none pointer-events-none";
         popupDom.innerHTML = `
-          <div class="text-xs font-black text-slate-900">${loc.name}</div>
-          <div class="text-[10px] text-slate-500 font-medium">${loc.city}, ${loc.state}</div>
+          <div class="text-xs font-black text-slate-900">${popTitle}</div>
+          <div class="text-[10px] text-slate-500 font-medium">${popSub}</div>
         `;
 
         popupRef.current = new maplibregl.Popup({ offset: 12, closeButton: false })

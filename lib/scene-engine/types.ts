@@ -10,6 +10,13 @@ export type SceneId =
 
 export type ExperienceMode = "guided" | "explore" | "attract";
 
+export interface AttractState {
+  active: boolean;
+  step: number;
+  impact?: EntityId;
+  startedAt?: number;
+}
+
 export interface SceneState {
   currentScene: SceneId;
   currentMode: ExperienceMode;
@@ -21,6 +28,7 @@ export interface SceneState {
   productFilterId: string | null;
   isGuidedPlaying: boolean;
   guidedStepIndex: number;
+  attractState: AttractState;
 }
 
 export interface ImpactStoryDefinition {

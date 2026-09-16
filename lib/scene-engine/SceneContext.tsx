@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { EntityId } from "@/types/entity";
 import { GeoLocationItem } from "@/types/geo";
-import { SceneId, ExperienceMode, SceneState } from "./types";
+import { SceneId, ExperienceMode, SceneState, AttractState } from "./types";
 import { ENTITY_CONFIGS } from "@/config/entities";
 import { EXHIBITION_CONFIG } from "@/config/exhibition-config";
 import { killAllTimelines } from "@/lib/animation/motion-engine";
@@ -19,10 +19,11 @@ interface SceneContextType extends SceneState {
   setProductFilter: (productId: string | null) => void;
   resetAtlas: () => void;
   
-  // Experience Modes
+  // Experience Modes & Attract State
   setExperienceMode: (mode: ExperienceMode) => void;
   startGuidedJourney: () => void;
   stopGuidedJourney: () => void;
+  setAttractStep: (step: number, impact?: EntityId) => void;
   wakeFromAttract: () => void;
   
   // Fullscreen
@@ -47,6 +48,12 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
   const [guidedStepIndex, setGuidedStepIndex] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
 
+  // Decoupled Attract State
+  const [attractState, setAttractState] = useState<AttractState>({
+    active: false,
+    step: 0,
+  });
+
   // Inactivity Timer for Exhibition Touchscreen
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -57,6 +64,7 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
       if (currentScene !== "attract") {
         timer = setTimeout(() => {
           killAllTimelines();
+          setAttractState({ active: true, step: 0 });
           setCurrentScene("attract");
           setCurrentMode("attract");
           setIsGuidedPlaying(false);
@@ -104,6 +112,7 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
 
   const goToArrival = useCallback(() => {
     killAllTimelines();
+    setAttractState({ active: false, step: 0 });
     setCurrentScene("arrival");
     setSelectedState(null);
     setSelectedLocation(null);
@@ -111,6 +120,7 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
 
   const goToDimensions = useCallback(() => {
     killAllTimelines();
+    setAttractState({ active: false, step: 0 });
     setCurrentScene("dimensions");
     setSelectedState(null);
     setSelectedLocation(null);
@@ -159,9 +169,11 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
 
   const resetAtlas = useCallback(() => {
     killAllTimelines();
+    setAttractState({ active: false, step: 0 });
     setCurrentScene("dimensions");
     setCurrentMode("explore");
     setIsGuidedPlaying(false);
+    setGuidedStepIndex(0);
     setSelectedEntityId("hospitals");
     setSelectedSubcategoryId("hospitals_locations");
     setSelectedCountry("India");
@@ -193,9 +205,21 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
     setCurrentMode("explore");
   }, []);
 
+  const setAttractStep = useCallback((step: number, impact?: EntityId) => {
+    setAttractState({
+      active: true,
+      step,
+      impact,
+      startedAt: Date.now(),
+    });
+  }, []);
+
   const wakeFromAttract = useCallback(() => {
+    killAllTimelines();
+    setAttractState({ active: false, step: 0 });
     setCurrentScene("dimensions");
     setCurrentMode("explore");
+    setIsGuidedPlaying(false);
   }, []);
 
   const toggleFullscreen = useCallback(() => {
@@ -222,6 +246,8 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
         productFilterId,
         isGuidedPlaying,
         guidedStepIndex,
+        attractState,
+        setAttractStep,
         goToArrival,
         goToDimensions,
         selectStory,

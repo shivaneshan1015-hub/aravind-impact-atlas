@@ -1,3 +1,4 @@
+import { StyleSpecification } from "maplibre-gl";
 import { EntityId } from "@/types/entity";
 import { ENTITY_CONFIGS } from "@/config/entities";
 
@@ -30,7 +31,7 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
  * Uses Esri World Light Gray Canvas - 100% free, 0 API key required, 100% ZERO watermark text, 
  * ultra-clean quiet institutional landmass style.
  */
-export const LIGHT_ATLAS_MAP_STYLE: maplibreGl.StyleSpecification = {
+export const LIGHT_ATLAS_MAP_STYLE: StyleSpecification = {
   version: 8,
   name: "Esri World Light Gray Institutional Atlas",
   sources: {

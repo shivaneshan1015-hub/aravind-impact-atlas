@@ -2,123 +2,217 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { useScene } from "@/lib/scene-engine/SceneContext";
-import { EXHIBITION_CONFIG } from "@/config/exhibition-config";
-import { IMPACT_STORIES } from "@/lib/stories/definitions";
+import { CENTRAL_IMPACT_CONFIGS } from "@/config/impact-config";
 import { EntityId } from "@/types/entity";
-import { Touchpad, Sparkles, Globe2, Compass } from "lucide-react";
+import { Touchpad, Sparkles, Globe2, Compass, Layers } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-const ATTRACT_ENTITIES: EntityId[] = EXHIBITION_CONFIG.attractMode.loopSequence;
+const ATTRACT_ENTITIES: EntityId[] = [
+  "hospitals",
+  "laico",
+  "amrf",
+  "aurolab",
+  "auroitech",
+  "eyebank",
+];
 
 export function AttractOverlay() {
-  const { wakeFromAttract, selectStory } = useScene();
-  const [attractIndex, setAttractIndex] = useState<number>(0);
+  const { wakeFromAttract, setAttractStep } = useScene();
+  const [currentStep, setCurrentStep] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
-  const activeEntity = ATTRACT_ENTITIES[attractIndex];
-  const story = IMPACT_STORIES[activeEntity] || IMPACT_STORIES.hospitals;
+  // Total steps in sequence: 0..9 (0: Title, 1: Atlas, 2..7: 6 Entities, 8: One System, 9: Touch Invitation)
+  const TOTAL_STEPS = 10;
 
-  // Cycle through the 6 stories in Attract Mode
+  // Advance attract sequence step every 5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
-      setAttractIndex((prev) => {
-        const nextIdx = (prev + 1) % ATTRACT_ENTITIES.length;
-        const nextEntity = ATTRACT_ENTITIES[nextIdx];
-        selectStory(nextEntity);
-        return nextIdx;
+      setCurrentStep((prev) => {
+        const nextStep = (prev + 1) % TOTAL_STEPS;
+        let impactId: EntityId | undefined;
+        if (nextStep >= 2 && nextStep <= 7) {
+          impactId = ATTRACT_ENTITIES[nextStep - 2];
+        }
+        setAttractStep(nextStep, impactId);
+        return nextStep;
       });
-    }, EXHIBITION_CONFIG.attractMode.storyDurationMs);
+    }, 5000);
 
     return () => clearInterval(timer);
-  }, [selectStory]);
+  }, [setAttractStep]);
 
-  // Gentle GSAP fade-in transition when story changes
+  // Restrained GSAP transition when step changes
   useGSAP(
     () => {
-      if (titleRef.current) {
+      if (cardRef.current) {
         gsap.fromTo(
-          titleRef.current,
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+          cardRef.current,
+          { opacity: 0, y: 12, scale: 0.98 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power2.out" }
         );
       }
     },
-    { dependencies: [attractIndex], scope: containerRef }
+    { dependencies: [currentStep], scope: containerRef }
   );
+
+  // Active Story if step corresponds to an entity (steps 2..7)
+  const activeEntity = currentStep >= 2 && currentStep <= 7 ? ATTRACT_ENTITIES[currentStep - 2] : null;
+  const activeConfig = activeEntity ? CENTRAL_IMPACT_CONFIGS[activeEntity] : null;
 
   return (
     <div
       ref={containerRef}
       onClick={wakeFromAttract}
-      className="absolute inset-0 bg-slate-950/70 backdrop-blur-xs flex flex-col justify-between p-12 z-50 cursor-pointer select-none overflow-hidden"
+      className="absolute inset-0 bg-transparent flex flex-col justify-between p-8 md:p-12 z-50 cursor-pointer select-none overflow-hidden"
     >
-      {/* Top Quiet Header */}
-      <div className="flex items-center justify-between w-full">
-        <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/95 text-slate-900 text-xs font-black uppercase tracking-widest border border-amber-300/80 shadow-lg backdrop-blur-md">
-          <Sparkles className="w-4 h-4 text-amber-600 animate-pulse" />
+      {/* Top Light Institutional Header */}
+      <div className="flex items-center justify-between w-full z-10">
+        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/95 text-slate-900 text-xs font-black uppercase tracking-widest border border-amber-200/80 shadow-md backdrop-blur-md">
+          <Sparkles className="w-3.5 h-3.5 text-amber-600" />
           <span>Aravind Eye Care System · Golden Jubilee (1976 – 2026)</span>
         </div>
 
-        <div className="flex items-center gap-2 text-white/80 text-xs font-extrabold uppercase tracking-widest">
-          <Globe2 className="w-4 h-4 text-amber-400" />
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-slate-700 text-xs font-bold uppercase tracking-wider border border-slate-200 shadow-sm backdrop-blur-md">
+          <Globe2 className="w-3.5 h-3.5 text-slate-500" />
           <span>Exhibition Attract Mode</span>
         </div>
       </div>
 
-      {/* Center Story Teaser Card (Communicates the 6 Impact Stories) */}
-      <div className="flex flex-col items-center text-center max-w-3xl mx-auto my-auto space-y-6">
-        <div ref={titleRef} className="space-y-4">
-          <span
-            className="inline-block px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest text-white shadow-md"
-            style={{ backgroundColor: story.accentColor }}
-          >
-            {story.doorNumber}. {story.title}
-          </span>
+      {/* Center Floating Institutional Reveal Card */}
+      <div className="flex-1 flex items-center justify-center my-auto z-10 pointer-events-none">
+        <div
+          ref={cardRef}
+          className="bg-white/95 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-2xl border border-slate-200/80 max-w-3xl w-full text-center space-y-6"
+        >
+          {/* Step 0: Title Statement */}
+          {currentStep === 0 && (
+            <div className="space-y-4">
+              <span className="inline-block px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-amber-100 text-amber-800 border border-amber-200">
+                50 YEARS OF IMPACT
+              </span>
+              <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-none">
+                ARAVIND 50
+              </h1>
+              <p className="text-2xl md:text-3xl font-medium text-amber-800/90 font-serif italic">
+                One system. A world of impact.
+              </p>
+              <p className="text-sm text-slate-600 max-w-xl mx-auto pt-2">
+                Discover five decades of transforming global eye care across clinical services, capacity building, research, access, technology, and sight restoration.
+              </p>
+            </div>
+          )}
 
-          <h2 className="text-5xl md:text-6xl font-black text-white tracking-tight leading-tight drop-shadow-md">
-            “{story.question}”
-          </h2>
+          {/* Step 1: Atlas Statement */}
+          {currentStep === 1 && (
+            <div className="space-y-4">
+              <span className="inline-block px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-sky-100 text-sky-800 border border-sky-200">
+                EXHIBITION INSTALLATION
+              </span>
+              <h2 className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-none">
+                IMPACT ATLAS
+              </h2>
+              <p className="text-2xl md:text-3xl font-medium text-slate-600 font-serif italic">
+                Quiet geography. Visible impact.
+              </p>
+              <p className="text-sm text-slate-600 max-w-xl mx-auto pt-2">
+                The map is the canvas. The data is the evidence. The interaction is the story.
+              </p>
+            </div>
+          )}
 
-          <p className="text-xl md:text-2xl font-medium text-amber-200/90 font-serif italic max-w-2xl mx-auto">
-            {story.tagline}
-          </p>
+          {/* Steps 2..7: 6 Impact Entity Previews */}
+          {activeConfig && (
+            <div className="space-y-4">
+              <div className="flex items-center justify-center gap-2">
+                <span
+                  className="inline-block px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-widest text-white shadow-xs"
+                  style={{ backgroundColor: activeConfig.accent }}
+                >
+                  DOOR {activeConfig.doorNumber} · {activeConfig.label}
+                </span>
+              </div>
 
-          <div className="pt-2 flex items-center justify-center gap-6 text-slate-300 text-sm font-bold">
-            <span className="bg-white/10 px-4 py-1.5 rounded-xl border border-white/10">
-              {story.primaryMetric.label}: <strong className="text-white font-black">{story.primaryMetric.value}</strong>
-            </span>
-          </div>
-        </div>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+                “{activeConfig.question}”
+              </h2>
 
-        {/* Story Sequence Progress Indicators */}
-        <div className="flex items-center gap-2 pt-4">
-          {ATTRACT_ENTITIES.map((ent, idx) => {
-            const entStory = IMPACT_STORIES[ent];
-            const isActive = idx === attractIndex;
-            return (
+              <p className="text-lg md:text-xl font-medium text-slate-700 font-serif italic max-w-2xl mx-auto">
+                {activeConfig.tagline}
+              </p>
+
+              <div className="pt-2 flex flex-wrap items-center justify-center gap-4 text-xs font-bold text-slate-700">
+                <span className="bg-slate-100 px-4 py-1.5 rounded-xl border border-slate-200">
+                  Grammar: <strong className="text-slate-900 font-extrabold">{activeConfig.visualGrammar}</strong>
+                </span>
+                <span className="bg-amber-50 text-amber-900 px-4 py-1.5 rounded-xl border border-amber-200">
+                  {activeConfig.primaryMetric.label}: <strong className="font-extrabold">{activeConfig.primaryMetric.value}</strong>
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* Step 8: Master Ecosystem View */}
+          {currentStep === 8 && (
+            <div className="space-y-4">
+              <span className="inline-block px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-amber-500 text-slate-950 font-black">
+                MASTER ECOSYSTEM VIEW
+              </span>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+                ONE SYSTEM
+              </h2>
+              <p className="text-xl font-medium text-amber-800 font-serif italic max-w-2xl mx-auto">
+                Six connected dimensions working as one integrated healthcare network.
+              </p>
+              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">
+                Care · Capacity Building · Research · Access · Technology · Vision Restoration
+              </p>
+            </div>
+          )}
+
+          {/* Step 9: Final Invitation */}
+          {currentStep === 9 && (
+            <div className="space-y-5">
+              <span className="inline-block px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-slate-900 text-white">
+                TOUCH TO EXPLORE
+              </span>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+                ARAVIND 50 — IMPACT ATLAS
+              </h2>
+              <p className="text-2xl font-medium text-amber-800 font-serif italic">
+                One system. A world of impact.
+              </p>
+              <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-amber-500 text-slate-950 font-black text-sm shadow-md">
+                <Touchpad className="w-5 h-5" />
+                <span>TOUCH ANYWHERE TO START EXPLORING</span>
+              </div>
+            </div>
+          )}
+
+          {/* Progress Dots Indicator */}
+          <div className="flex items-center justify-center gap-2 pt-4">
+            {Array.from({ length: TOTAL_STEPS }).map((_, idx) => (
               <div
-                key={ent}
-                className={`h-2 rounded-full transition-all duration-500 ${
-                  isActive ? "w-8 bg-amber-400" : "w-2 bg-white/30"
+                key={idx}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  idx === currentStep ? "w-8 bg-amber-600" : "w-2 bg-slate-300"
                 }`}
-                title={entStory?.title}
               />
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Bottom Prominent Invitation to Touch */}
-      <div className="flex flex-col items-center text-center space-y-3">
-        <div className="flex items-center gap-4 px-10 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 rounded-2xl text-lg font-black tracking-wider shadow-2xl animate-bounce border border-amber-300/60">
-          <Touchpad className="w-7 h-7 text-slate-950" />
+      {/* Bottom Quiet Touch Invitation Banner */}
+      <div className="flex flex-col items-center text-center space-y-2 z-10">
+        <div className="flex items-center gap-3 px-8 py-3.5 bg-slate-900 text-white rounded-full text-sm font-extrabold tracking-wider shadow-xl border border-slate-800 backdrop-blur-md">
+          <Touchpad className="w-5 h-5 text-amber-400" />
           <span>TOUCH ANYWHERE TO EXPLORE THE IMPACT ATLAS</span>
         </div>
 
-        <p className="text-xs text-slate-400 font-medium">
-          Exhibition Touchscreen Interactive Installation · Touch to wake up
+        <p className="text-[11px] text-slate-600 font-semibold tracking-wide uppercase">
+          Exhibition Touchscreen Interactive Installation · Touch anywhere to enter
         </p>
       </div>
     </div>

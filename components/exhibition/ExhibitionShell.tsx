@@ -113,7 +113,7 @@ export function ExhibitionShell() {
   }, [filteredLocations, selectedState]);
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-slate-950 font-sans text-slate-100 antialiased relative">
+    <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#F7F8F6] font-sans text-slate-900 antialiased relative">
       {/* Permanent Touchscreen Exhibition Header */}
       <ExhibitionHeader />
 
@@ -129,7 +129,7 @@ export function ExhibitionShell() {
         {currentScene === "attract" && <AttractOverlay />}
 
         {/* Core Exploration View (Story Exploration & One System Finale) */}
-        <main className="flex-1 flex flex-col relative overflow-hidden bg-slate-950">
+        <main className="flex-1 flex flex-col relative overflow-hidden bg-[#F7F8F6]">
           {/* Top Story Question & Context Banner */}
           {(currentScene === "story_exploration" || currentScene === "one_system") && (
             <div
