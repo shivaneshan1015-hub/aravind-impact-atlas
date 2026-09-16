@@ -1,5 +1,5 @@
 import { EntityId } from "@/types/entity";
-import { GeoLocationItem, StateAggregation } from "@/types/geo";
+import { GeoLocationItem, StateAggregation, CountryAggregation } from "@/types/geo";
 import { DEMO_LOCATIONS } from "@/data/demo-data";
 import { INDIA_STATES_META } from "@/data/india-states";
 
@@ -83,6 +83,56 @@ export function calculateStateAggregations(
         count: items.length,
         centroid,
         bounds,
+      };
+    })
+    .sort((a, b) => b.count - a.count);
+}
+
+/**
+ * Reusable Country Aggregator.
+ */
+export function aggregateByCountry(locations: GeoLocationItem[]): CountryAggregation[] {
+  const countryGroups = aggregateByField(locations, "country");
+
+  return Object.entries(countryGroups)
+    .map(([countryName, items]) => {
+      const avgLat = items.reduce((acc, i) => acc + i.latitude, 0) / items.length;
+      const avgLng = items.reduce((acc, i) => acc + i.longitude, 0) / items.length;
+      return {
+        countryName,
+        count: items.length,
+        centroid: [avgLng, avgLat] as [number, number],
+      };
+    })
+    .sort((a, b) => b.count - a.count);
+}
+
+/**
+ * Reusable City Aggregator.
+ */
+export interface CityAggregation {
+  cityName: string;
+  stateName: string;
+  countryName: string;
+  count: number;
+  centroid: [number, number];
+  items: GeoLocationItem[];
+}
+
+export function aggregateByCity(locations: GeoLocationItem[]): CityAggregation[] {
+  const cityGroups = aggregateByField(locations, "city");
+
+  return Object.entries(cityGroups)
+    .map(([cityName, items]) => {
+      const avgLat = items.reduce((acc, i) => acc + i.latitude, 0) / items.length;
+      const avgLng = items.reduce((acc, i) => acc + i.longitude, 0) / items.length;
+      return {
+        cityName,
+        stateName: items[0].state || "State",
+        countryName: items[0].country || "India",
+        count: items.length,
+        centroid: [avgLng, avgLat] as [number, number],
+        items,
       };
     })
     .sort((a, b) => b.count - a.count);

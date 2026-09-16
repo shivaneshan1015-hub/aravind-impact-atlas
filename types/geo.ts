@@ -18,6 +18,34 @@ export interface GeoLocationItem {
   type?: string;
 }
 
+export type GeographicGrammar =
+  | "footprint"
+  | "capacity"
+  | "collaboration"
+  | "distribution"
+  | "product"
+  | "flow"
+  | "auto";
+
+export type GeographicLevel = "world" | "country" | "state" | "city";
+
+export interface GeographicRecord {
+  id: string;
+  rawLocation: string;
+  normalizedLocation: string;
+  geographicLevel: GeographicLevel;
+  country: string;
+  state?: string;
+  city?: string;
+  latitude: number;
+  longitude: number;
+  category?: string;
+  metric?: string;
+  count?: number;
+  sourceStatus: "source-supplied-dev-data" | "phase7-pending";
+  metadata?: Record<string, any>;
+}
+
 export interface StateAggregation {
   stateName: string;
   countryName: string;
@@ -31,5 +59,6 @@ export interface CountryAggregation {
   countryName: string;
   count: number;
   centroid: [number, number]; // [lng, lat]
+  bounds?: [[number, number], [number, number]];
   entityBreakdown?: Record<EntityId, number>;
 }

@@ -4,11 +4,11 @@ import React, { useEffect, useRef, useState } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { EntityConfig } from "@/types/entity";
-import { GeoLocationItem, StateAggregation } from "@/types/geo";
+import { GeoLocationItem, StateAggregation, GeographicGrammar, GeographicLevel } from "@/types/geo";
 import { LIGHT_ATLAS_MAP_STYLE, hexToRgba } from "@/lib/map-utils";
 import { INDIA_CENTER, INDIA_DEFAULT_ZOOM } from "@/config/entities";
 
-interface MapEngineProps {
+export interface MapEngineProps {
   entityConfig: EntityConfig;
   locations: GeoLocationItem[];
   stateAggregations: StateAggregation[];
@@ -17,6 +17,9 @@ interface MapEngineProps {
   onSelectState: (stateName: string, bounds?: [[number, number], [number, number]]) => void;
   onSelectLocation: (location: GeoLocationItem) => void;
   onClearLocation: () => void;
+  modeGrammar?: GeographicGrammar;
+  geographicLevel?: GeographicLevel;
+  isLabMode?: boolean;
 }
 
 export function MapEngine({
@@ -27,16 +30,34 @@ export function MapEngine({
   selectedLocation,
   onSelectState,
   onSelectLocation,
+  modeGrammar = "auto",
+  geographicLevel = "country",
+  isLabMode = false,
 }: MapEngineProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
-  const stateMarkersRef = useRef<maplibregl.Marker[]>([]);
   const locationMarkersRef = useRef<maplibregl.Marker[]>([]);
   const popupRef = useRef<maplibregl.Popup | null>(null);
 
   const [mapLoaded, setMapLoaded] = useState(false);
 
-  // Initialize MapLibre GL map instance with CARTO Light basemap
+  // Compute active visual grammar based on entity or explicit grammar override
+  const activeGrammar: GeographicGrammar =
+    modeGrammar !== "auto"
+      ? modeGrammar
+      : entityConfig.id === "laico"
+      ? "capacity"
+      : entityConfig.id === "amrf"
+      ? "collaboration"
+      : entityConfig.id === "aurolab"
+      ? "distribution"
+      : entityConfig.id === "auroitech"
+      ? "product"
+      : entityConfig.id === "eyebank"
+      ? "flow"
+      : "footprint";
+
+  // Initialize MapLibre GL map instance
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current) return;
 
@@ -66,7 +87,7 @@ export function MapEngine({
         type: "fill",
         source: "india-states-source",
         paint: {
-          "fill-color": "#EA580C",
+          "fill-color": entityConfig?.color || "#EA580C",
           "fill-opacity": 0.12,
         },
       });
@@ -95,7 +116,7 @@ export function MapEngine({
         filter: ["==", "ST_NM", ""],
       });
 
-      // Mouse events on state polygons
+      // State polygon click & hover handlers
       map.on("mousemove", "india-states-fill", (e) => {
         if (e.features && e.features.length > 0) {
           const stName = e.features[0].properties?.ST_NM;
@@ -120,42 +141,18 @@ export function MapEngine({
         }
       });
 
-      // Story 02: LAICO Knowledge Network Source & Layer
+      // 1. CAPACITY BUILDING (LAICO Knowledge Arcs)
       map.addSource("laico-network-source", {
         type: "geojson",
         data: {
           type: "FeatureCollection",
           features: [
-            {
-              type: "Feature",
-              properties: { name: "Nepal Knowledge Arc" },
-              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [83.4542, 27.5055]] },
-            },
-            {
-              type: "Feature",
-              properties: { name: "Kenya Knowledge Arc" },
-              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [36.6622, -1.2467]] },
-            },
-            {
-              type: "Feature",
-              properties: { name: "Vietnam Knowledge Arc" },
-              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [108.2022, 16.0544]] },
-            },
-            {
-              type: "Feature",
-              properties: { name: "Karnataka Knowledge Path" },
-              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] },
-            },
-            {
-              type: "Feature",
-              properties: { name: "Maharashtra Knowledge Path" },
-              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [72.8777, 19.0760]] },
-            },
-            {
-              type: "Feature",
-              properties: { name: "Delhi Knowledge Path" },
-              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.2090, 28.6139]] },
-            },
+            { type: "Feature", properties: { name: "Nepal Arc" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [83.4542, 27.5055]] } },
+            { type: "Feature", properties: { name: "Kenya Arc" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [36.6622, -1.2467]] } },
+            { type: "Feature", properties: { name: "Vietnam Arc" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [108.2022, 16.0544]] } },
+            { type: "Feature", properties: { name: "Karnataka Path" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] } },
+            { type: "Feature", properties: { name: "Maharashtra Path" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [72.8777, 19.0760]] } },
+            { type: "Feature", properties: { name: "Delhi Path" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.2090, 28.6139]] } },
           ],
         },
       });
@@ -167,35 +164,21 @@ export function MapEngine({
         paint: {
           "line-color": "#0D9488",
           "line-width": 2.5,
-          "line-opacity": 0.8,
+          "line-opacity": 0.85,
           "line-dasharray": [2, 2],
         },
-        layout: {
-          visibility: entityConfig.id === "laico" ? "visible" : "none",
-        },
+        layout: { visibility: "none" },
       });
 
-      // Story 03: AMRF Research Collaboration Source & Layer
+      // 2. RESEARCH (AMRF Collaboration Network)
       map.addSource("amrf-collaboration-source", {
         type: "geojson",
         data: {
           type: "FeatureCollection",
           features: [
-            {
-              type: "Feature",
-              properties: { partner: "Johns Hopkins USA" },
-              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [-76.6122, 39.2904]] },
-            },
-            {
-              type: "Feature",
-              properties: { partner: "UCL London UK" },
-              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [-0.1278, 51.5074]] },
-            },
-            {
-              type: "Feature",
-              properties: { partner: "SERI Singapore" },
-              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [103.8198, 1.3521]] },
-            },
+            { type: "Feature", properties: { partner: "Johns Hopkins USA" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [-76.6122, 39.2904]] } },
+            { type: "Feature", properties: { partner: "UCL London UK" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [-0.1278, 51.5074]] } },
+            { type: "Feature", properties: { partner: "SERI Singapore" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [103.8198, 1.3521]] } },
           ],
         },
       });
@@ -209,42 +192,20 @@ export function MapEngine({
           "line-width": 3.0,
           "line-opacity": 0.85,
         },
-        layout: {
-          visibility: entityConfig.id === "amrf" ? "visible" : "none",
-        },
+        layout: { visibility: "none" },
       });
 
-      // Story 06: Eye Bank Sight Restoration Flow Source & Layer
+      // 3. VISION RESTORATION (Eye Bank Flow Vectors)
       map.addSource("eyebank-flow-source", {
         type: "geojson",
         data: {
           type: "FeatureCollection",
           features: [
-            {
-              type: "Feature",
-              properties: { flow: "Coimbatore -> Madurai Lab" },
-              geometry: { type: "LineString", coordinates: [[76.9558, 11.0168], [78.1198, 9.9252]] },
-            },
-            {
-              type: "Feature",
-              properties: { flow: "Tirunelveli -> Madurai Lab" },
-              geometry: { type: "LineString", coordinates: [[77.7567, 8.7139], [78.1198, 9.9252]] },
-            },
-            {
-              type: "Feature",
-              properties: { flow: "Puducherry -> Madurai Lab" },
-              geometry: { type: "LineString", coordinates: [[79.8083, 11.9416], [78.1198, 9.9252]] },
-            },
-            {
-              type: "Feature",
-              properties: { flow: "Madurai Hub -> Bengaluru Recipient Network" },
-              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] },
-            },
-            {
-              type: "Feature",
-              properties: { flow: "Madurai Hub -> Kochi Recipient Network" },
-              geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [76.2673, 9.9312]] },
-            },
+            { type: "Feature", properties: { flow: "Coimbatore -> Madurai Lab" }, geometry: { type: "LineString", coordinates: [[76.9558, 11.0168], [78.1198, 9.9252]] } },
+            { type: "Feature", properties: { flow: "Tirunelveli -> Madurai Lab" }, geometry: { type: "LineString", coordinates: [[77.7567, 8.7139], [78.1198, 9.9252]] } },
+            { type: "Feature", properties: { flow: "Puducherry -> Madurai Lab" }, geometry: { type: "LineString", coordinates: [[79.8083, 11.9416], [78.1198, 9.9252]] } },
+            { type: "Feature", properties: { flow: "Madurai Hub -> Bengaluru Recipient Network" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] } },
+            { type: "Feature", properties: { flow: "Madurai Hub -> Kochi Recipient Network" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [76.2673, 9.9312]] } },
           ],
         },
       });
@@ -259,9 +220,7 @@ export function MapEngine({
           "line-opacity": 0.9,
           "line-dasharray": [4, 2],
         },
-        layout: {
-          visibility: entityConfig.id === "eyebank" ? "visible" : "none",
-        },
+        layout: { visibility: "none" },
       });
 
       setMapLoaded(true);
@@ -282,7 +241,6 @@ export function MapEngine({
 
     const themeColor = entityConfig?.color || "#EA580C";
 
-    // Build dynamic paint expression for state fills
     const matchExpression: any[] = ["match", ["get", "ST_NM"]];
     stateAggregations.forEach((s) => {
       let opacity = 0.12;
@@ -291,21 +249,45 @@ export function MapEngine({
 
       matchExpression.push(s.stateName, hexToRgba(themeColor, opacity));
     });
-    matchExpression.push("rgba(0, 0, 0, 0)"); // Transparent default fill
+    matchExpression.push("rgba(0, 0, 0, 0)");
 
     if (map.getLayer("india-states-fill")) {
       map.setPaintProperty("india-states-fill", "fill-color", matchExpression);
     }
   }, [mapLoaded, stateAggregations, entityConfig]);
 
-  // Render Markers with concentric aura rings (matching reference sample aesthetic)
+  // Toggle Vector Grammar Layers
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
 
-    // Clear previous markers
-    stateMarkersRef.current.forEach((m) => m.remove());
-    stateMarkersRef.current = [];
+    if (map.getLayer("laico-network-layer")) {
+      map.setLayoutProperty(
+        "laico-network-layer",
+        "visibility",
+        activeGrammar === "capacity" || entityConfig.id === "laico" ? "visible" : "none"
+      );
+    }
+    if (map.getLayer("amrf-collaboration-layer")) {
+      map.setLayoutProperty(
+        "amrf-collaboration-layer",
+        "visibility",
+        activeGrammar === "collaboration" || entityConfig.id === "amrf" ? "visible" : "none"
+      );
+    }
+    if (map.getLayer("eyebank-flow-layer")) {
+      map.setLayoutProperty(
+        "eyebank-flow-layer",
+        "visibility",
+        activeGrammar === "flow" || entityConfig.id === "eyebank" ? "visible" : "none"
+      );
+    }
+  }, [mapLoaded, entityConfig.id, activeGrammar]);
+
+  // Render Restrained Pins with 48px Hit Targets and Aurolab Privacy Protection
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapLoaded) return;
 
     locationMarkersRef.current.forEach((m) => m.remove());
     locationMarkersRef.current = [];
@@ -316,8 +298,6 @@ export function MapEngine({
     }
 
     const themeColor = entityConfig?.color || "#EA580C";
-
-    // RENDER RESTRAINED, INSTITUTIONAL MAP MARKERS (48px Touch Hit Area)
     const activeLocations = selectedState
       ? locations.filter((l) => l.state === selectedState)
       : locations;
@@ -327,7 +307,6 @@ export function MapEngine({
       const el = document.createElement("div");
       el.className = "group cursor-pointer transition-all duration-200 select-none w-12 h-12 flex items-center justify-center";
 
-      // Restrained pin visual without aura/ping clutter
       el.innerHTML = `
         <div class="relative flex items-center justify-center">
           <div style="width: ${isSelected ? "18px" : "12px"}; height: ${isSelected ? "18px" : "12px"}; background-color: ${themeColor}; border: 2px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: all 0.2s ease-out;">
@@ -339,17 +318,15 @@ export function MapEngine({
         e.stopPropagation();
         onSelectLocation(loc);
 
-        // Fly map smoothly to touched pin
         map.flyTo({
           center: [loc.longitude, loc.latitude],
           zoom: Math.max(map.getZoom(), 6.8),
           duration: 1000,
         });
 
-        // Show minimal popover label with Aurolab privacy protection
         if (popupRef.current) popupRef.current.remove();
 
-        const isAurolab = entityConfig?.id === "aurolab";
+        const isAurolab = entityConfig?.id === "aurolab" || activeGrammar === "distribution";
         const popTitle = isAurolab ? `${loc.state} Aggregate Distribution` : loc.name;
         const popSub = isAurolab ? `Regional Aggregate Footprint · ${loc.state}` : `${loc.city}, ${loc.state}`;
 
@@ -373,40 +350,17 @@ export function MapEngine({
 
       locationMarkersRef.current.push(marker);
     });
-  }, [mapLoaded, selectedState, stateAggregations, locations, entityConfig, selectedLocation]);
+  }, [mapLoaded, selectedState, stateAggregations, locations, entityConfig, selectedLocation, activeGrammar]);
 
-  // Toggle story-specific vector layers dynamically based on active entity
+  // Handle Camera Transitions for Geographic Levels (World -> Country -> State -> City)
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
 
-    if (map.getLayer("laico-network-layer")) {
-      map.setLayoutProperty(
-        "laico-network-layer",
-        "visibility",
-        entityConfig.id === "laico" ? "visible" : "none"
-      );
+    if (geographicLevel === "world") {
+      map.flyTo({ center: [20.0, 15.0], zoom: 2.2, duration: 1200 });
+      return;
     }
-    if (map.getLayer("amrf-collaboration-layer")) {
-      map.setLayoutProperty(
-        "amrf-collaboration-layer",
-        "visibility",
-        entityConfig.id === "amrf" ? "visible" : "none"
-      );
-    }
-    if (map.getLayer("eyebank-flow-layer")) {
-      map.setLayoutProperty(
-        "eyebank-flow-layer",
-        "visibility",
-        entityConfig.id === "eyebank" ? "visible" : "none"
-      );
-    }
-  }, [mapLoaded, entityConfig.id]);
-
-  // Handle smooth map camera transitions when selectedState changes
-  useEffect(() => {
-    const map = mapRef.current;
-    if (!map || !mapLoaded) return;
 
     if (!selectedState) {
       map.flyTo({
@@ -422,7 +376,7 @@ export function MapEngine({
         map.flyTo({ center: agg.centroid, zoom: 7.2, duration: 1200 });
       }
     }
-  }, [selectedState, entityConfig, mapLoaded]);
+  }, [selectedState, entityConfig, mapLoaded, geographicLevel]);
 
   return (
     <div className="relative w-full h-full bg-[#E7EEF2] overflow-hidden">
