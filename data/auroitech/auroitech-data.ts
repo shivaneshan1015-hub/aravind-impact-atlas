@@ -1,4 +1,5 @@
 import { GeoLocationItem } from "@/types/geo";
+import { VCMS_LOCATIONS } from "./vcms-data";
 
 export const IHMS_LOCATIONS: GeoLocationItem[] = [
   {
@@ -5737,4 +5738,7 @@ export const AUROITECH_DATA: GeoLocationItem[] = [
 
   // 184 Eyenotes EMR Deployments
   ...EYENOTES_LOCATIONS,
+
+  // 398 VCMS Vision Centre Deployments (Bangladesh: 222, India: 170, Nepal: 6)
+  ...VCMS_LOCATIONS,
 ];

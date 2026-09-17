@@ -543,6 +543,7 @@ export function MapEngine({
       const isEyeBankLoc = loc.entityId === "eyebank";
       const isIhmsLoc = loc.subcategoryId === "ihms";
       const isEyenotesLoc = loc.subcategoryId === "eyenotes";
+      const isVcmsLoc = loc.subcategoryId === "vcms";
       const isOneSystemActive = isOneSystem || entityConfig.id === "all";
 
       if (isStaffDot) {
@@ -587,6 +588,23 @@ export function MapEngine({
               <svg class="w-3 h-3 text-white animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                 <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+        `;
+      } else if (isVcmsLoc) {
+        // VCMS Vision Centre Pin - Emerald Vision Node Pin
+        el.innerHTML = `
+          <div class="relative flex items-center justify-center pointer-events-auto group" title="VCMS Vision Centre: ${loc.rawName || loc.name} (${loc.city}, ${loc.country})">
+            <!-- Vision Scanning Pulse Rings -->
+            <div class="absolute w-7 h-7 rounded-full bg-emerald-500/40 border border-emerald-400/60 animate-ping opacity-85 pointer-events-none"></div>
+            <div class="absolute w-5 h-5 rounded-full bg-teal-400/25 border border-teal-300/40 animate-pulse pointer-events-none"></div>
+
+            <!-- VCMS Eye Pin Badge -->
+            <div class="w-5.5 h-5.5 rounded-md bg-gradient-to-br from-emerald-500 to-teal-600 border-2 border-white shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+              <svg class="w-3 h-3 text-white animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                <circle cx="12" cy="12" r="3" fill="#FFFFFF" fill-opacity="0.8" />
               </svg>
             </div>
           </div>
@@ -890,6 +908,7 @@ export function MapEngine({
 
         const isIhmsLoc = loc.subcategoryId === "ihms";
         const isEyenotesLoc = loc.subcategoryId === "eyenotes";
+        const isVcmsLoc = loc.subcategoryId === "vcms";
         if (loc.type === "Staff Dot") {
           const groupName = (loc as any).staffGroup === "employees" ? "Employee" : "Trainee";
           popTitle = `${loc.metrics?.category || loc.metadata?.category || "Staff"} (${groupName})`;
@@ -899,6 +918,9 @@ export function MapEngine({
           popSub = `${loc.city}${loc.state ? ", " + loc.state : ""}, ${loc.country}`;
         } else if (isEyenotesLoc) {
           popTitle = `Eyenotes EMR: ${loc.rawName || loc.name}`;
+          popSub = `${loc.city}${loc.state ? ", " + loc.state : ""}, ${loc.country}`;
+        } else if (isVcmsLoc) {
+          popTitle = `VCMS: ${loc.rawName || loc.name}`;
           popSub = `${loc.city}${loc.state ? ", " + loc.state : ""}, ${loc.country}`;
         } else if (isEyeBank) {
           const isMainHub = loc.metadata?.isMainHub || loc.id.startsWith("eb_hub_");

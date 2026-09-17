@@ -267,11 +267,11 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "vcms",
         name: "VCMS",
-        tagline: "Vision Centre Management System",
-        defaultScope: "state",
+        tagline: "398 Vision Centres across Bangladesh (222), India (170) & Nepal (6)",
+        defaultScope: "world",
         primaryMetricKey: "vcmsCentres",
         secondaryMetricKeys: ["teleconsultations", "ruralScreenings"],
-        legendTitle: "VCMS Rural Network",
+        legendTitle: "VCMS Rural Network (398 Centres)",
       },
       {
         id: "total_patients",
