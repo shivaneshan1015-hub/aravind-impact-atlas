@@ -41,9 +41,10 @@ export function SearchModal({
     ? DEMO_LOCATIONS.filter(
         (l) =>
           l.name.toLowerCase().includes(cleanQuery) ||
+          (l.rawName && l.rawName.toLowerCase().includes(cleanQuery)) ||
           l.city.toLowerCase().includes(cleanQuery) ||
           l.state.toLowerCase().includes(cleanQuery)
-      ).slice(0, 8)
+      ).slice(0, 20)
     : [];
 
   // Filter states

@@ -1,6 +1,6 @@
 import { EntityId } from "./entity";
 
-export type CareCentreType = "tertiary" | "secondary" | "community";
+export type CareCentreType = "tertiary" | "secondary" | "community" | "vision_centre";
 
 export interface GeoLocationItem {
   id: string;

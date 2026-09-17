@@ -4,6 +4,7 @@ import React from "react";
 import { EntityConfig, EntityId } from "@/types/entity";
 import { GeoLocationItem, StateAggregation } from "@/types/geo";
 import { IMPACT_STORIES } from "@/lib/stories/definitions";
+import { VISION_CENTRES_DATA } from "@/data/hospitals/vision-centres-data";
 import {
   ChevronRight,
   Layers,
@@ -18,18 +19,22 @@ import {
   Users,
   Award,
   Globe2,
+  Search,
+  MapPin,
 } from "lucide-react";
 
 export interface SidebarPanelProps {
   entityConfig: EntityConfig;
   locations: GeoLocationItem[];
   stateAggregations: StateAggregation[];
-  careTypeFilter: "all" | "tertiary" | "secondary" | "community";
-  onSelectCareTypeFilter: (filter: "all" | "tertiary" | "secondary" | "community") => void;
+  careTypeFilter: "all" | "tertiary" | "secondary" | "community" | "vision_centre";
+  onSelectCareTypeFilter: (filter: "all" | "tertiary" | "secondary" | "community" | "vision_centre") => void;
   selectedState: string | null;
   onSelectState: (stateName: string | null) => void;
   selectedSubcategoryId?: string;
   onSelectSubcategory?: (subcategoryId: string) => void;
+  selectedLocation?: GeoLocationItem | null;
+  onSelectLocation?: (location: GeoLocationItem | null) => void;
 }
 
 export function SidebarPanel({
@@ -42,11 +47,27 @@ export function SidebarPanel({
   onSelectState,
   selectedSubcategoryId,
   onSelectSubcategory,
+  selectedLocation,
+  onSelectLocation,
 }: SidebarPanelProps) {
   const story = IMPACT_STORIES[entityConfig.id] || IMPACT_STORIES.hospitals;
 
   // Active subcategory ID with fallback
   const activeSubId = selectedSubcategoryId || entityConfig.subcategories[0]?.id || "";
+
+  // Vision Centre search state & filtering logic
+  const [vcSearch, setVcSearch] = React.useState<string>("");
+  const filteredVcList = React.useMemo(() => {
+    if (!vcSearch.trim()) return VISION_CENTRES_DATA;
+    const q = vcSearch.toLowerCase();
+    return VISION_CENTRES_DATA.filter(
+      (vc) =>
+        vc.name.toLowerCase().includes(q) ||
+        (vc.rawName && vc.rawName.toLowerCase().includes(q)) ||
+        vc.city.toLowerCase().includes(q) ||
+        vc.state.toLowerCase().includes(q)
+    );
+  }, [vcSearch]);
 
   // Course list for LAICO Training Programmes
   const laicoCourses = [
@@ -195,22 +216,71 @@ export function SidebarPanel({
                 <button
                   onClick={() => {
                     onSelectSubcategory?.("hospitals_vision_centres");
-                    onSelectCareTypeFilter("all");
+                    onSelectCareTypeFilter("vision_centre");
                   }}
                   className={`w-full p-2.5 rounded-xl border flex items-center justify-between text-xs font-bold transition-all ${
                     activeSubId === "hospitals_vision_centres"
-                      ? "bg-blue-600 text-white border-blue-600 shadow-xs"
+                      ? "bg-teal-600 text-white border-teal-600 shadow-xs"
                       : "bg-white hover:bg-slate-100 text-slate-800 border-slate-200"
                   }`}
                 >
                   <span className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-teal-400 inline-block" />
+                    <span className="w-2 h-2 rounded-full bg-teal-300 inline-block" />
                     Vision Centres
                   </span>
                   <span className="text-[10px] px-1.5 py-0.5 bg-white/20 rounded font-black">
-                    110+
+                    120 Centres
                   </span>
                 </button>
+
+                {/* Expanded Menu for 120 Vision Centres */}
+                {activeSubId === "hospitals_vision_centres" && (
+                  <div className="pt-2 space-y-2 border-t border-slate-200/80 mt-2">
+                    <div className="relative">
+                      <Search className="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-slate-400" />
+                      <input
+                        type="text"
+                        placeholder="Search 120 Vision Centres..."
+                        value={vcSearch}
+                        onChange={(e) => setVcSearch(e.target.value)}
+                        className="w-full pl-8 pr-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-teal-500 font-medium text-slate-800"
+                      />
+                    </div>
+                    <div className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider flex justify-between px-1">
+                      <span>Vision Centre ({filteredVcList.length})</span>
+                      <span>City / State</span>
+                    </div>
+                    <div className="space-y-1 max-h-60 overflow-y-auto pr-1">
+                      {filteredVcList.map((vc, idx) => {
+                        const isSelected = selectedLocation?.id === vc.id;
+                        return (
+                          <button
+                            key={vc.id}
+                            onClick={() => {
+                              onSelectLocation?.(vc);
+                              if (vc.state) onSelectState(vc.state);
+                            }}
+                            className={`w-full text-left p-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-all border ${
+                              isSelected
+                                ? "bg-teal-700 text-white border-teal-700 shadow-xs"
+                                : "bg-white hover:bg-teal-50 hover:text-teal-900 text-slate-700 border-slate-200/70"
+                            }`}
+                          >
+                            <div className="flex items-center gap-1.5 truncate mr-2">
+                              <span className="text-[10px] font-black opacity-50 w-5 shrink-0">{idx + 1}.</span>
+                              <span className="truncate font-bold">{vc.rawName || vc.name}</span>
+                            </div>
+                            <span className={`text-[10px] font-normal shrink-0 px-1.5 py-0.5 rounded ${
+                              isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-500"
+                            }`}>
+                              {vc.city}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 

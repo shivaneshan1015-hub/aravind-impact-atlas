@@ -49,7 +49,7 @@ export const CENTRAL_IMPACT_CONFIGS: Record<EntityId, ImpactConfig> = {
     secondaryMetrics: [
       { label: "Surgeries Performed", value: "550,000+" },
       { label: "Free/Subsidized Care", value: "50%" },
-      { label: "Hospital Centers", value: "14 Main + 100+ Vision Centers" },
+      { label: "Hospital Centers", value: "24 Main + 120 Vision Centers" },
     ],
     storyNarrative: "Starting from an 11-bed clinic in 1976, Aravind now operates an integrated healthcare network treating millions regardless of ability to pay.",
   },

@@ -70,7 +70,7 @@ export function ExhibitionShell() {
     toggleFullscreen,
   } = useScene();
 
-  const [careTypeFilter, setCareTypeFilter] = React.useState<"all" | "tertiary" | "secondary" | "community">("all");
+  const [careTypeFilter, setCareTypeFilter] = React.useState<"all" | "tertiary" | "secondary" | "community" | "vision_centre">("all");
 
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isInfoOpen, setIsInfoOpen] = React.useState(false);
@@ -181,6 +181,8 @@ export function ExhibitionShell() {
             onSelectState={handleSelectStateWithInterruption}
             selectedSubcategoryId={selectedSubcategoryId}
             onSelectSubcategory={selectSubcategory}
+            selectedLocation={selectedLocation}
+            onSelectLocation={handleSelectLocationWithInterruption}
           />
         )}
 

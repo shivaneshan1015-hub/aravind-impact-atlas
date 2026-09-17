@@ -21,7 +21,7 @@ export interface MapEngineProps {
   selectedSubcategoryId?: string;
   modeGrammar?: GeographicGrammar;
   geographicLevel?: GeographicLevel;
-  careTypeFilter?: "all" | "tertiary" | "secondary" | "community";
+  careTypeFilter?: "all" | "tertiary" | "secondary" | "community" | "vision_centre";
   revealMaxYear?: number | null;
   isLabMode?: boolean;
   isOneSystem?: boolean;

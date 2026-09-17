@@ -33,7 +33,7 @@ const FOLLOW_IMPACT_STEPS: Record<EntityId, FollowImpactStep[]> = {
       stepNumber: "03",
       title: "Primary Vision Centers",
       geographyLabel: "Rural Periphery",
-      detail: "100+ Vision Centers bringing primary care to remote villages",
+      detail: "120 Vision Centers bringing primary care to remote villages",
       coordinates: [77.7567, 8.7139],
     },
     {

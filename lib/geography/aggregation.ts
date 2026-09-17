@@ -23,7 +23,8 @@ export function getFilteredLocations(
       if (subcategoryId === "hospitals_tertiary") return item.careType === "tertiary";
       if (subcategoryId === "hospitals_secondary") return item.careType === "secondary";
       if (subcategoryId === "hospitals_community") return item.careType === "community";
-      return true; // Return all 24 CARE locations for vision centres, patients, staffs, or general overview
+      if (subcategoryId === "hospitals_vision_centres") return item.careType === "vision_centre";
+      return item.careType !== "vision_centre"; // Default overview shows core hospitals network
     }
 
     // Special handling for Aurolab
