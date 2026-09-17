@@ -42,8 +42,8 @@ export const MAP_VARIETIES: MapVarietyOption[] = [
     id: "teal_coastal",
     name: "Electric Teal & Chalk",
     badge: "Vibrant Coastal",
-    desc: "Crisp white landmass with bright teal oceans & sharp slate borders",
-    borderColor: "#0284C7",
+    desc: "Crisp chalk white landmass with vibrant electric teal accents & slate borders",
+    borderColor: "#0D9488",
     isDarkTheme: false,
   },
   {
@@ -58,8 +58,8 @@ export const MAP_VARIETIES: MapVarietyOption[] = [
     id: "warm_ivory",
     name: "Warm Ivory & Cobalt",
     badge: "Healthcare Palette",
-    desc: "Humanitarian warm sand landmass with cobalt blue sea",
-    borderColor: "#2563EB",
+    desc: "Humanitarian warm ivory landmass with rich royal cobalt blue ocean",
+    borderColor: "#1D4ED8",
     isDarkTheme: false,
   },
   {
@@ -74,19 +74,30 @@ export const MAP_VARIETIES: MapVarietyOption[] = [
 
 /**
  * 55-inch Interactive Exhibition Display Master Map Style.
- * Houses raster tile sources for all 4 map varieties to enable 0ms instant switching.
  */
 export const DISPLAY_55INCH_MASTER_STYLE: StyleSpecification = {
   version: 8,
   name: "55in Exhibition Display Master Atlas",
   sources: {
-    esri_light_gray: {
+    carto_light: {
       type: "raster",
       tiles: [
-        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+        "https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
+        "https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
+        "https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
       ],
       tileSize: 256,
-      attribution: '&copy; Esri &copy; OpenStreetMap',
+      attribution: '&copy; CARTO &copy; OpenStreetMap',
+    },
+    carto_dark: {
+      type: "raster",
+      tiles: [
+        "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+        "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+        "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+      ],
+      tileSize: 256,
+      attribution: '&copy; CARTO &copy; OpenStreetMap',
     },
     esri_topo: {
       type: "raster",
@@ -96,23 +107,31 @@ export const DISPLAY_55INCH_MASTER_STYLE: StyleSpecification = {
       tileSize: 256,
       attribution: '&copy; Esri &copy; OpenStreetMap',
     },
-    esri_dark: {
+    esri_ocean: {
       type: "raster",
       tiles: [
-        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+        "https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
       ],
       tileSize: 256,
-      attribution: '&copy; Esri &copy; OpenStreetMap',
+      attribution: '&copy; Esri',
     },
   },
   layers: [
     {
-      id: "basemap-light-gray",
+      id: "basemap-light",
       type: "raster",
-      source: "esri_light_gray",
+      source: "carto_light",
       minzoom: 0,
       maxzoom: 18,
       layout: { visibility: "visible" },
+    },
+    {
+      id: "basemap-dark",
+      type: "raster",
+      source: "carto_dark",
+      minzoom: 0,
+      maxzoom: 18,
+      layout: { visibility: "none" },
     },
     {
       id: "basemap-topo",
@@ -123,9 +142,9 @@ export const DISPLAY_55INCH_MASTER_STYLE: StyleSpecification = {
       layout: { visibility: "none" },
     },
     {
-      id: "basemap-dark-glass",
+      id: "basemap-ocean",
       type: "raster",
-      source: "esri_dark",
+      source: "esri_ocean",
       minzoom: 0,
       maxzoom: 18,
       layout: { visibility: "none" },

@@ -87,7 +87,7 @@ export function MapEngine({
     });
 
     map.on("load", () => {
-      // Add local India States GeoJSON vector source for choropleth & hover fills
+      // Add local India States GeoJSON vector source
       map.addSource("india-states-source", {
         type: "geojson",
         data: "/maps/india/states.geojson",
@@ -100,7 +100,7 @@ export function MapEngine({
         source: "india-states-source",
         paint: {
           "fill-color": entityConfig?.color || "#EA580C",
-          "fill-opacity": 0.08,
+          "fill-opacity": 0.12,
         },
       });
 
@@ -110,9 +110,9 @@ export function MapEngine({
         type: "line",
         source: "india-states-source",
         paint: {
-          "line-color": "#1E293B",
-          "line-width": 1.8,
-          "line-opacity": 0.85,
+          "line-color": "#0D9488",
+          "line-width": 2.0,
+          "line-opacity": 0.90,
         },
       });
 
@@ -441,38 +441,49 @@ export function MapEngine({
     }
   }, [mapLoaded, stateAggregations, entityConfig]);
 
-  // Toggle Map Variety Raster Layers & Boundary Outline Colors
+  // Toggle Map Variety Styles, Basemaps, and Boundary Outline Colors
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
 
-    const isLightGray = activeVariety === "teal_coastal" || activeVariety === "warm_ivory";
-    const isTopo = activeVariety === "voyager_topo";
-    const isGlassmorphic = activeVariety === "glassmorphic";
+    // Hide all basemaps first
+    const basemaps = ["basemap-light", "basemap-dark", "basemap-topo", "basemap-ocean"];
+    basemaps.forEach((b) => {
+      if (map.getLayer(b)) map.setLayoutProperty(b, "visibility", "none");
+    });
 
-    if (map.getLayer("basemap-light-gray")) {
-      map.setLayoutProperty("basemap-light-gray", "visibility", isLightGray ? "visible" : "none");
-    }
-    if (map.getLayer("basemap-topo")) {
-      map.setLayoutProperty("basemap-topo", "visibility", isTopo ? "visible" : "none");
-    }
-    if (map.getLayer("basemap-dark-glass")) {
-      map.setLayoutProperty("basemap-dark-glass", "visibility", isGlassmorphic ? "visible" : "none");
-    }
-
-    if (map.getLayer("india-states-outline")) {
-      const outlineColor =
-        activeVariety === "glassmorphic"
-          ? "#38BDF8"
-          : activeVariety === "voyager_topo"
-          ? "#065F46"
-          : activeVariety === "warm_ivory"
-          ? "#1E3A8A"
-          : "#0F172A";
-
-      map.setPaintProperty("india-states-outline", "line-color", outlineColor);
-      map.setPaintProperty("india-states-outline", "line-width", 1.8);
-      map.setPaintProperty("india-states-outline", "line-opacity", isGlassmorphic ? 0.9 : 0.85);
+    if (activeVariety === "teal_coastal") {
+      // 1. Electric Teal & Chalk
+      if (map.getLayer("basemap-light")) map.setLayoutProperty("basemap-light", "visibility", "visible");
+      if (map.getLayer("india-states-outline")) {
+        map.setPaintProperty("india-states-outline", "line-color", "#0D9488");
+        map.setPaintProperty("india-states-outline", "line-width", 2.0);
+        map.setPaintProperty("india-states-outline", "line-opacity", 0.90);
+      }
+    } else if (activeVariety === "warm_ivory") {
+      // 2. Warm Ivory & Cobalt (Healthcare Palette)
+      if (map.getLayer("basemap-ocean")) map.setLayoutProperty("basemap-ocean", "visibility", "visible");
+      if (map.getLayer("india-states-outline")) {
+        map.setPaintProperty("india-states-outline", "line-color", "#1E3A8A");
+        map.setPaintProperty("india-states-outline", "line-width", 2.0);
+        map.setPaintProperty("india-states-outline", "line-opacity", 0.90);
+      }
+    } else if (activeVariety === "voyager_topo") {
+      // 3. Voyager Topo Terrain
+      if (map.getLayer("basemap-topo")) map.setLayoutProperty("basemap-topo", "visibility", "visible");
+      if (map.getLayer("india-states-outline")) {
+        map.setPaintProperty("india-states-outline", "line-color", "#059669");
+        map.setPaintProperty("india-states-outline", "line-width", 2.0);
+        map.setPaintProperty("india-states-outline", "line-opacity", 0.90);
+      }
+    } else if (activeVariety === "glassmorphic") {
+      // 4. Glassmorphic Midnight
+      if (map.getLayer("basemap-dark")) map.setLayoutProperty("basemap-dark", "visibility", "visible");
+      if (map.getLayer("india-states-outline")) {
+        map.setPaintProperty("india-states-outline", "line-color", "#38BDF8");
+        map.setPaintProperty("india-states-outline", "line-width", 2.0);
+        map.setPaintProperty("india-states-outline", "line-opacity", 0.95);
+      }
     }
   }, [mapLoaded, activeVariety]);
 
