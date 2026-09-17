@@ -28,49 +28,51 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
 
 /**
  * Premium High-Contrast Dual Basemap Style.
+ * Uses Esri World Light Gray Base & Esri World Dark Gray Base.
+ * 100% Free, 0 API key required, 100% ZERO watermark.
  * Features:
- * 1. Crisp Voyager High-Contrast Light Mode (CartoDB Voyager - high contrast coastlines, roads, typography)
- * 2. High-Contrast Dark Slate Mode (CartoDB Dark Matter - high contrast dark slate terrain & neon markers)
+ * 1. Crisp Light Mode (Esri Light Gray Base - quiet & clean)
+ * 2. High-Contrast Dark Slate Mode (Esri Dark Gray Base - dark slate terrain & neon glowing pins)
  * Allows 0-millisecond instant switching between light & dark styles with zero reload flicker.
  */
 export const HIGH_CONTRAST_ATLAS_STYLE: StyleSpecification = {
   version: 8,
   name: "High Contrast Dual Institutional Atlas",
   sources: {
-    carto_voyager: {
+    esri_light: {
       type: "raster",
       tiles: [
-        "https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png",
+        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
       ],
       tileSize: 256,
       attribution:
-        '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        '&copy; <a href="https://www.esri.com/">Esri</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     },
-    carto_dark: {
+    esri_dark: {
       type: "raster",
       tiles: [
-        "https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
       ],
       tileSize: 256,
       attribution:
-        '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        '&copy; <a href="https://www.esri.com/">Esri</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     },
   },
   layers: [
     {
-      id: "basemap-voyager",
+      id: "basemap-light",
       type: "raster",
-      source: "carto_voyager",
+      source: "esri_light",
       minzoom: 0,
-      maxzoom: 18,
+      maxzoom: 16,
       layout: { visibility: "visible" },
     },
     {
       id: "basemap-dark",
       type: "raster",
-      source: "carto_dark",
+      source: "esri_dark",
       minzoom: 0,
-      maxzoom: 18,
+      maxzoom: 16,
       layout: { visibility: "none" },
     },
   ],

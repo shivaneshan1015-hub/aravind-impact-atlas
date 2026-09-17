@@ -455,9 +455,9 @@ export function MapEngine({
     const map = mapRef.current;
     if (!map || !mapLoaded) return;
 
-    if (map.getLayer("basemap-voyager")) {
+    if (map.getLayer("basemap-light")) {
       map.setLayoutProperty(
-        "basemap-voyager",
+        "basemap-light",
         "visibility",
         activeTheme === "light" ? "visible" : "none"
       );
