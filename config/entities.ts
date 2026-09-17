@@ -249,11 +249,11 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "ihms",
         name: "IHMS",
-        tagline: "Integrated Hospital Management System",
-        defaultScope: "state",
+        tagline: "154 Global Client Deployments across 12 Nations",
+        defaultScope: "world",
         primaryMetricKey: "ihmsDeployments",
         secondaryMetricKeys: ["hospitalsConnected", "dailyTransactions"],
-        legendTitle: "IHMS Deployments",
+        legendTitle: "IHMS Global Client Deployments (154 Sites)",
       },
       {
         id: "eyenotes",

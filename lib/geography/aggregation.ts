@@ -77,6 +77,23 @@ export function getFilteredLocations(
       return true;
     }
 
+    // Special handling for AuroiTech
+    if (entityId === "auroitech") {
+      if (subcategoryId === "ihms") {
+        return item.subcategoryId === "ihms";
+      }
+      if (subcategoryId === "eyenotes") {
+        return item.subcategoryId === "tech_patients" || item.subcategoryId === "eyenotes";
+      }
+      if (subcategoryId === "vcms") {
+        return item.subcategoryId === "vcms";
+      }
+      if (subcategoryId === "total_patients") {
+        return item.subcategoryId === "tech_patients" || item.subcategoryId === "total_patients";
+      }
+      return true;
+    }
+
     if (subcategoryId && item.subcategoryId !== subcategoryId) {
       return false;
     }

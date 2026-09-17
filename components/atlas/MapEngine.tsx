@@ -541,6 +541,7 @@ export function MapEngine({
       const isStaffDot = loc.type === "Staff Dot";
       const isAurolabLoc = loc.entityId === "aurolab";
       const isEyeBankLoc = loc.entityId === "eyebank";
+      const isIhmsLoc = loc.subcategoryId === "ihms";
       const isOneSystemActive = isOneSystem || entityConfig.id === "all";
 
       if (isStaffDot) {
@@ -551,6 +552,24 @@ export function MapEngine({
         el.innerHTML = `
           <div class="relative flex items-center justify-center pointer-events-auto group" title="${catName} (${distName})">
             <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 5px ${dotColor}bb, 0 1px 2px rgba(0,0,0,0.3); transition: transform 0.15s ease-out;" class="group-hover:scale-150">
+            </div>
+          </div>
+        `;
+      } else if (isIhmsLoc) {
+        // High-Tech Cyber Amber IT Chip Node Pin for IHMS Client Location
+        el.innerHTML = `
+          <div class="relative flex items-center justify-center pointer-events-auto group" title="IHMS Client Location (${loc.city}, ${loc.country})">
+            <!-- Dual Concentric Tech Scanning Pulse Rings -->
+            <div class="absolute w-8 h-8 rounded-full bg-orange-500/35 border border-orange-400/60 animate-ping opacity-85 pointer-events-none"></div>
+            <div class="absolute w-5 h-5 rounded-full bg-amber-400/25 border border-amber-300/40 animate-pulse pointer-events-none"></div>
+
+            <!-- High-Tech Server Chip Node Badge -->
+            <div class="w-5.5 h-5.5 rounded-lg bg-gradient-to-br from-orange-500 to-amber-600 border-2 border-white shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+              <svg class="w-3.5 h-3.5 text-white animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="5" y="5" width="14" height="14" rx="2" />
+                <rect x="9" y="9" width="6" height="6" fill="#FFFFFF" fill-opacity="0.3" />
+                <path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4" stroke-linecap="round" />
+              </svg>
             </div>
           </div>
         `;
@@ -851,10 +870,14 @@ export function MapEngine({
         let popTitle = displayName;
         let popSub = `${loc.city}, ${loc.state}`;
 
+        const isIhmsLoc = loc.subcategoryId === "ihms";
         if (loc.type === "Staff Dot") {
           const groupName = (loc as any).staffGroup === "employees" ? "Employee" : "Trainee";
           popTitle = `${loc.metrics?.category || loc.metadata?.category || "Staff"} (${groupName})`;
           popSub = `District of Origin: ${(loc as any).districtName || loc.metadata?.districtName || loc.city}, Tamil Nadu`;
+        } else if (isIhmsLoc) {
+          popTitle = "IHMS Client Location";
+          popSub = `${loc.city}${loc.state ? ", " + loc.state : ""}, ${loc.country}`;
         } else if (isEyeBank) {
           const isMainHub = loc.metadata?.isMainHub || loc.id.startsWith("eb_hub_");
           if (isMainHub) {

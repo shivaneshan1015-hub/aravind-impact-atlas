@@ -554,7 +554,7 @@ export function SidebarPanel({
         {entityConfig.id === "auroitech" && (
           <div className="space-y-2">
             {[
-              { id: "ihms", name: "IHMS", desc: "Hospital Management System" },
+              { id: "ihms", name: "IHMS", desc: "154 Global Deployments across 12 Nations" },
               { id: "eyenotes", name: "Eyenotes", desc: "Electronic Medical Records" },
               { id: "vcms", name: "VCMS", desc: "Vision Centre Software" },
               { id: "total_patients", name: "Total Patients Registered", desc: "Digital Health Telemetry" },
