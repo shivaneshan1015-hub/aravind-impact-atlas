@@ -69,10 +69,10 @@ export function getFilteredLocations(
         return item.subcategoryId === "ongoing_phd";
       }
       if (subcategoryId === "collaboratives") {
-        return item.subcategoryId === "collaboratives";
+        return item.subcategoryId === "collaboratives" || item.id === "amrf_hq";
       }
       if (subcategoryId === "students_abroad") {
-        return item.subcategoryId === "students_abroad";
+        return item.subcategoryId === "students_abroad" || item.id === "amrf_hq";
       }
       return true;
     }
