@@ -57,6 +57,23 @@ export function getFilteredLocations(
       return true; // Return all Eye Bank main hubs & collection/distribution nodes for display
     }
 
+    // Special handling for AMRF
+    if (entityId === "amrf") {
+      if (!subcategoryId || subcategoryId === "doctorate" || subcategoryId === "phd_completed") {
+        return item.subcategoryId === "doctorate" || item.subcategoryId === "phd_completed" || item.id === "amrf_hq";
+      }
+      if (subcategoryId === "ongoing_phd") {
+        return item.subcategoryId === "ongoing_phd" || item.id === "amrf_hq";
+      }
+      if (subcategoryId === "collaboratives") {
+        return item.subcategoryId === "collaboratives" || item.id === "amrf_hq";
+      }
+      if (subcategoryId === "students_abroad") {
+        return item.subcategoryId === "students_abroad" || item.id === "amrf_hq";
+      }
+      return true;
+    }
+
     if (subcategoryId && item.subcategoryId !== subcategoryId) {
       return false;
     }

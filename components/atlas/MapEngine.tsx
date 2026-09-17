@@ -145,15 +145,24 @@ export function MapEngine({
         layout: { visibility: "none" },
       });
 
-      // 2. RESEARCH (AMRF Collaboration Network)
+      // 2. RESEARCH (AMRF Knowledge & Collaboration Network)
       map.addSource("amrf-collaboration-source", {
         type: "geojson",
         data: {
           type: "FeatureCollection",
           features: [
+            { type: "Feature", properties: { partner: "Tamil Nadu Scholars" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [78.7047, 10.7905]] } },
+            { type: "Feature", properties: { partner: "Bihar Scholars" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [85.1376, 25.5941]] } },
+            { type: "Feature", properties: { partner: "Andhra Pradesh Scholars" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [80.6480, 16.5062]] } },
+            { type: "Feature", properties: { partner: "Karnataka Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] } },
+            { type: "Feature", properties: { partner: "Uttar Pradesh Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [80.9462, 26.8467]] } },
+            { type: "Feature", properties: { partner: "Kerala Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [76.9366, 8.5241]] } },
+            { type: "Feature", properties: { partner: "Assam Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [91.7362, 26.1445]] } },
+            { type: "Feature", properties: { partner: "Delhi Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.2090, 28.6139]] } },
+            { type: "Feature", properties: { partner: "Jammu & Kashmir Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [74.7973, 34.0837]] } },
+            { type: "Feature", properties: { partner: "West Bengal Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [88.3639, 22.5726]] } },
             { type: "Feature", properties: { partner: "Johns Hopkins USA" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [-76.6122, 39.2904]] } },
             { type: "Feature", properties: { partner: "UCL London UK" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [-0.1278, 51.5074]] } },
-            { type: "Feature", properties: { partner: "SERI Singapore" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [103.8198, 1.3521]] } },
           ],
         },
       });
@@ -164,8 +173,9 @@ export function MapEngine({
         source: "amrf-collaboration-source",
         paint: {
           "line-color": "#7C3AED",
-          "line-width": 3.0,
+          "line-width": 2.5,
           "line-opacity": 0.85,
+          "line-dasharray": [3, 2],
         },
         layout: { visibility: "none" },
       });
@@ -495,6 +505,79 @@ export function MapEngine({
           el.innerHTML = `
             <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
               <div style="width: 7px; height: 7px; background-color: #059669; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 4px rgba(5, 150, 105, 0.7), 0 1px 3px rgba(0,0,0,0.3); transition: all 0.2s ease-out;" class="group-hover:scale-150">
+              </div>
+            </div>
+          `;
+        }
+      } else if (loc.entityId === "amrf") {
+        const isHq = loc.id === "amrf_hq";
+        const phdCount = loc.metadata?.phdCount || (loc.metrics as any)?.phdGraduates || (loc.metrics as any)?.phdCount || 1;
+        const stateName = loc.metadata?.stateName || loc.state || loc.city;
+
+        if (isHq) {
+          el.innerHTML = `
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${loc.name}">
+              <!-- Double Radar Pulse Scanning Rings for AMRF HQ -->
+              <div class="absolute w-14 h-14 rounded-full bg-purple-600/30 border border-purple-400/60 animate-ping pointer-events-none"></div>
+              <div class="absolute w-10 h-10 rounded-full bg-purple-500/25 border border-purple-400/50 animate-pulse pointer-events-none"></div>
+              
+              <!-- HQ Label Badge -->
+              ${
+                !hidePinLabels
+                  ? `<span class="mb-1 text-[10px] font-black text-white bg-slate-900/95 px-2.5 py-1 rounded-lg shadow-xl border-2 border-purple-400 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+                       <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+                       <span>AMRF Research Center</span>
+                     </span>`
+                  : ""
+              }
+
+              <!-- Central HQ Pin Badge -->
+              <div class="w-8 h-8 rounded-full bg-purple-700 border-2 border-amber-300 shadow-xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
+                <svg class="w-4 h-4 text-white animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M6 18h12M12 2v14M8 10l4-4 4 4" />
+                </svg>
+              </div>
+            </div>
+          `;
+        } else {
+          // Animated State Dot for PhD Scholars (Completed or Ongoing)
+          const isOngoing = loc.metadata?.status === "ongoing" || loc.subcategoryId === "ongoing_phd";
+          const statusText = isOngoing ? "Ongoing PhD" : "PhD Completed";
+          const badgeText = isOngoing ? `${phdCount} Ongoing PhD` : `${phdCount} PhD`;
+
+          // Size scales with scholar count: TN gets larger orb, others get prominent orb
+          let orbDiameter = "18px";
+          let fontSize = "10px";
+          if (phdCount >= 30) {
+            orbDiameter = "28px";
+            fontSize = "12px";
+          } else if (phdCount >= 2) {
+            orbDiameter = "22px";
+            fontSize = "11px";
+          } else {
+            orbDiameter = "18px";
+            fontSize = "10px";
+          }
+
+          el.innerHTML = `
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${stateName}: ${phdCount} ${statusText} Scholar(s)">
+              <!-- Pulsing Outer Ripple Ring -->
+              <div class="absolute w-10 h-10 rounded-full bg-purple-500/25 border border-purple-400/40 animate-ping opacity-75 pointer-events-none"></div>
+              <div class="absolute w-7 h-7 rounded-full bg-purple-400/20 animate-pulse pointer-events-none"></div>
+
+              <!-- Floating State Scholar Badge Label -->
+              ${
+                !hidePinLabels
+                  ? `<span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2 py-0.5 rounded-md shadow-md border border-purple-300 whitespace-nowrap tracking-wide flex items-center gap-1 transition-transform group-hover:scale-110">
+                       <span class="w-1.5 h-1.5 rounded-full bg-purple-600 animate-pulse"></span>
+                       <span>${stateName}: <strong class="text-purple-700 font-black">${badgeText}</strong></span>
+                     </span>`
+                  : ""
+              }
+
+              <!-- Scaled Glowing State Orb -->
+              <div style="width: ${orbDiameter}; height: ${orbDiameter}; background-color: #7C3AED; border: 2px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 12px rgba(124, 58, 237, 0.85), 0 2px 5px rgba(0,0,0,0.3); transition: transform 0.2s ease-out;" class="flex items-center justify-center text-white font-black group-hover:scale-125">
+                <span style="font-size: ${fontSize};" class="leading-none select-none">${phdCount}</span>
               </div>
             </div>
           `;

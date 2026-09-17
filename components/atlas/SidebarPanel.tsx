@@ -421,31 +421,91 @@ export function SidebarPanel({
         {entityConfig.id === "amrf" && (
           <div className="space-y-3">
             {/* Primary Category 1: Doctorate */}
-            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2">
+            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2.5">
               <div className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
                   <Microscope className="w-4 h-4 text-purple-600" />
-                  <span>Doctorate</span>
+                  <span>Ph.D. Doctoral Program</span>
                 </span>
                 <span className="text-[10px] bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full font-bold">
-                  Ph.D. Program
+                  54 Scholars Total
                 </span>
               </div>
 
-              {/* Subcategories under Doctorate */}
-              <div className="grid grid-cols-2 gap-2 pt-1">
+              {/* Status Switcher: Completed (46) vs Ongoing / Registered (8) */}
+              <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-200/60 rounded-xl">
                 <button
-                  onClick={() => onSelectSubcategory?.("doctorate")}
-                  className="p-2.5 rounded-xl bg-purple-600 text-white font-extrabold text-xs text-center border border-purple-600 shadow-xs hover:bg-purple-700 transition-colors"
+                  onClick={() => {
+                    onSelectSubcategory?.("doctorate");
+                  }}
+                  className={`py-1.5 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
+                    activeSubId === "doctorate" || activeSubId === "phd_completed"
+                      ? "bg-purple-700 text-white shadow-xs"
+                      : "text-slate-700 hover:bg-slate-300/50"
+                  }`}
                 >
-                  Completed
+                  <span>Completed (46)</span>
                 </button>
                 <button
-                  onClick={() => onSelectSubcategory?.("doctorate")}
-                  className="p-2.5 rounded-xl bg-purple-100 text-purple-900 font-extrabold text-xs text-center border border-purple-200 hover:bg-purple-200 transition-colors"
+                  onClick={() => {
+                    onSelectSubcategory?.("ongoing_phd");
+                  }}
+                  className={`py-1.5 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
+                    activeSubId === "ongoing_phd"
+                      ? "bg-purple-700 text-white shadow-xs"
+                      : "text-slate-700 hover:bg-slate-300/50"
+                  }`}
                 >
-                  Registered
+                  <span>Ongoing (8)</span>
                 </button>
+              </div>
+
+              {/* State-wise PhD Breakdown */}
+              <div className="space-y-1 pt-1 max-h-56 overflow-y-auto pr-1">
+                {(activeSubId === "ongoing_phd"
+                  ? [
+                      { state: "Tamil Nadu", count: 6 },
+                      { state: "Kerala", count: 2 },
+                    ]
+                  : [
+                      { state: "Tamil Nadu", count: 35 },
+                      { state: "Bihar", count: 2 },
+                      { state: "Andhra Pradesh", count: 2 },
+                      { state: "Karnataka", count: 1 },
+                      { state: "Uttar Pradesh", count: 1 },
+                      { state: "Kerala", count: 1 },
+                      { state: "Assam", count: 1 },
+                      { state: "Delhi", count: 1 },
+                      { state: "Jammu & Kashmir", count: 1 },
+                      { state: "West Bengal", count: 1 },
+                    ]
+                ).map((st) => {
+                  const isSelected = selectedState === st.state;
+                  return (
+                    <button
+                      key={st.state}
+                      onClick={() => {
+                        onSelectSubcategory?.(activeSubId === "ongoing_phd" ? "ongoing_phd" : "doctorate");
+                        onSelectState?.(isSelected ? null : st.state);
+                      }}
+                      className={`w-full p-2 rounded-xl border text-left text-xs font-bold transition-all flex items-center justify-between ${
+                        isSelected
+                          ? "bg-purple-700 text-white border-purple-700 shadow-2xs"
+                          : "bg-white hover:bg-slate-100 text-slate-800 border-slate-200"
+                      }`}
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-purple-500 inline-block" />
+                        {st.state}
+                      </span>
+                      <span className={`text-[11px] px-2 py-0.5 rounded-full font-black ${
+                        isSelected ? "bg-white/20 text-white" : "bg-purple-50 text-purple-700 border border-purple-200"
+                      }`}>
+                        {st.count} PhD
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
