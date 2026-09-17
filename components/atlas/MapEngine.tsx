@@ -370,7 +370,7 @@ export function MapEngine({
       );
     }
     if (map.getLayer("amrf-collaboration-layer")) {
-      const isCollabActive = selectedSubcategoryId === "collaboratives" || activeGrammar === "collaboration";
+      const isCollabActive = selectedSubcategoryId === "collaboratives";
       map.setLayoutProperty(
         "amrf-collaboration-layer",
         "visibility",
