@@ -5,10 +5,13 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { EntityConfig } from "@/types/entity";
 import { GeoLocationItem, StateAggregation, GeographicGrammar, GeographicLevel } from "@/types/geo";
-import { LIGHT_ATLAS_MAP_STYLE, hexToRgba } from "@/lib/map-utils";
+import { LIGHT_ATLAS_MAP_STYLE, hexToRgba, MapVarietyId } from "@/lib/map-utils";
 import { INDIA_CENTER, INDIA_DEFAULT_ZOOM } from "@/config/entities";
 import { EYEBANK_DATA } from "@/data/eyebank/eyebank-data";
 import { MapControls } from "@/components/atlas/MapControls";
+import { MapVarietySwitcher } from "@/components/atlas/MapVarietySwitcher";
+import { QuickScopeNav } from "@/components/atlas/QuickScopeNav";
+import { TouchRippleCanvas } from "@/components/atlas/TouchRippleCanvas";
 
 export interface MapEngineProps {
   entityConfig: EntityConfig;
@@ -52,6 +55,8 @@ export function MapEngine({
   const popupRef = useRef<maplibregl.Popup | null>(null);
 
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [activeVariety, setActiveVariety] = useState<MapVarietyId>("teal_coastal");
+  const [activeScope, setActiveScope] = useState<"global" | "bangladesh" | "india" | "nepal">("global");
 
   // Compute active visual grammar based on entity or explicit grammar override
   const activeGrammar: GeographicGrammar =
@@ -435,6 +440,41 @@ export function MapEngine({
       map.setPaintProperty("india-states-fill", "fill-color", matchExpression);
     }
   }, [mapLoaded, stateAggregations, entityConfig]);
+
+  // Toggle Map Variety Raster Layers & Boundary Outline Colors
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapLoaded) return;
+
+    const isLightGray = activeVariety === "teal_coastal" || activeVariety === "warm_ivory";
+    const isTopo = activeVariety === "voyager_topo";
+    const isGlassmorphic = activeVariety === "glassmorphic";
+
+    if (map.getLayer("basemap-light-gray")) {
+      map.setLayoutProperty("basemap-light-gray", "visibility", isLightGray ? "visible" : "none");
+    }
+    if (map.getLayer("basemap-topo")) {
+      map.setLayoutProperty("basemap-topo", "visibility", isTopo ? "visible" : "none");
+    }
+    if (map.getLayer("basemap-dark-glass")) {
+      map.setLayoutProperty("basemap-dark-glass", "visibility", isGlassmorphic ? "visible" : "none");
+    }
+
+    if (map.getLayer("india-states-outline")) {
+      const outlineColor =
+        activeVariety === "glassmorphic"
+          ? "#38BDF8"
+          : activeVariety === "voyager_topo"
+          ? "#065F46"
+          : activeVariety === "warm_ivory"
+          ? "#1E3A8A"
+          : "#0F172A";
+
+      map.setPaintProperty("india-states-outline", "line-color", outlineColor);
+      map.setPaintProperty("india-states-outline", "line-width", 1.8);
+      map.setPaintProperty("india-states-outline", "line-opacity", isGlassmorphic ? 0.9 : 0.85);
+    }
+  }, [mapLoaded, activeVariety]);
 
   // Toggle Vector Grammar Layers
   useEffect(() => {
@@ -1124,14 +1164,47 @@ export function MapEngine({
     }
   };
 
+  const handleSelectScope = (scope: "global" | "bangladesh" | "india" | "nepal") => {
+    setActiveScope(scope);
+    const map = mapRef.current;
+    if (!map) return;
+
+    if (scope === "global") {
+      map.flyTo({ center: [20, 20], zoom: 2.2, duration: 1400 });
+    } else if (scope === "bangladesh") {
+      map.fitBounds([[88.0, 20.7], [92.6, 26.6]], { padding: 80, duration: 1400 });
+    } else if (scope === "india") {
+      map.fitBounds([[68.1, 8.0], [97.4, 35.5]], { padding: 70, maxZoom: 5.5, duration: 1400 });
+    } else if (scope === "nepal") {
+      map.fitBounds([[80.0, 26.3], [88.2, 30.5]], { padding: 90, maxZoom: 7.5, duration: 1400 });
+    }
+  };
+
   return (
-    <div className="relative w-full h-full bg-[#E7EEF2] overflow-hidden">
+    <div className="relative w-full h-full bg-[#E7EEF2] overflow-hidden select-none">
       <div ref={mapContainerRef} className="w-full h-full" />
-      <MapControls
-        onZoomIn={handleZoomIn}
-        onZoomOut={handleZoomOut}
-        onResetView={handleResetView}
-        onToggleFullscreen={handleToggleFullscreen}
+
+      {/* 55" Touchscreen Visual Feedback */}
+      <TouchRippleCanvas />
+
+      {/* Map Controls & Map Variety Switcher */}
+      <div className="absolute top-6 left-6 flex flex-col gap-2 z-20">
+        <MapControls
+          onZoomIn={handleZoomIn}
+          onZoomOut={handleZoomOut}
+          onResetView={handleResetView}
+          onToggleFullscreen={handleToggleFullscreen}
+        />
+        <MapVarietySwitcher
+          activeVariety={activeVariety}
+          onSelectVariety={setActiveVariety}
+        />
+      </div>
+
+      {/* Quick Scope Navigation Bar */}
+      <QuickScopeNav
+        activeScope={activeScope}
+        onSelectScope={handleSelectScope}
       />
     </div>
   );

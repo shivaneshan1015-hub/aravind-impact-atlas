@@ -26,16 +26,59 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
+export type MapVarietyId = "teal_coastal" | "voyager_topo" | "warm_ivory" | "glassmorphic";
+
+export interface MapVarietyOption {
+  id: MapVarietyId;
+  name: string;
+  badge: string;
+  desc: string;
+  borderColor: string;
+  isDarkTheme: boolean;
+}
+
+export const MAP_VARIETIES: MapVarietyOption[] = [
+  {
+    id: "teal_coastal",
+    name: "Electric Teal & Chalk",
+    badge: "Vibrant Coastal",
+    desc: "Crisp white landmass with bright teal oceans & sharp slate borders",
+    borderColor: "#0284C7",
+    isDarkTheme: false,
+  },
+  {
+    id: "voyager_topo",
+    name: "Voyager Topo Terrain",
+    badge: "Natural Topo",
+    desc: "Detailed topographic terrain elevation & crisp cartography",
+    borderColor: "#059669",
+    isDarkTheme: false,
+  },
+  {
+    id: "warm_ivory",
+    name: "Warm Ivory & Cobalt",
+    badge: "Healthcare Palette",
+    desc: "Humanitarian warm sand landmass with cobalt blue sea",
+    borderColor: "#2563EB",
+    isDarkTheme: false,
+  },
+  {
+    id: "glassmorphic",
+    name: "Glassmorphic Midnight",
+    badge: "Cyber Kiosk",
+    desc: "Dark slate glassmorphic landmass with neon cyan glowing pins",
+    borderColor: "#38BDF8",
+    isDarkTheme: true,
+  },
+];
+
 /**
- * High-Contrast Light Institutional Atlas Map Style (Optimized for 55-inch Interactive Display).
- * Features:
- * - Esri World Light Gray Base raster layer
- * - 100% Free, 0 API key required, 100% ZERO watermark text
- * - Clean quiet institutional canvas style with high contrast boundaries & sharp state vectors
+ * 55-inch Interactive Exhibition Display Master Map Style.
+ * Houses raster tile sources for all 4 map varieties to enable 0ms instant switching.
  */
-export const HIGH_CONTRAST_55INCH_MAP_STYLE: StyleSpecification = {
+export const DISPLAY_55INCH_MASTER_STYLE: StyleSpecification = {
   version: 8,
-  name: "55in Interactive Display High-Contrast Institutional Atlas",
+  name: "55in Exhibition Display Master Atlas",
   sources: {
     esri_light_gray: {
       type: "raster",
@@ -43,19 +86,51 @@ export const HIGH_CONTRAST_55INCH_MAP_STYLE: StyleSpecification = {
         "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
       ],
       tileSize: 256,
-      attribution:
-        '&copy; <a href="https://www.esri.com/">Esri</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      attribution: '&copy; Esri &copy; OpenStreetMap',
+    },
+    esri_topo: {
+      type: "raster",
+      tiles: [
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+      ],
+      tileSize: 256,
+      attribution: '&copy; Esri &copy; OpenStreetMap',
+    },
+    esri_dark: {
+      type: "raster",
+      tiles: [
+        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+      ],
+      tileSize: 256,
+      attribution: '&copy; Esri &copy; OpenStreetMap',
     },
   },
   layers: [
     {
-      id: "esri-light-gray-basemap",
+      id: "basemap-light-gray",
       type: "raster",
       source: "esri_light_gray",
       minzoom: 0,
-      maxzoom: 16,
+      maxzoom: 18,
+      layout: { visibility: "visible" },
+    },
+    {
+      id: "basemap-topo",
+      type: "raster",
+      source: "esri_topo",
+      minzoom: 0,
+      maxzoom: 18,
+      layout: { visibility: "none" },
+    },
+    {
+      id: "basemap-dark-glass",
+      type: "raster",
+      source: "esri_dark",
+      minzoom: 0,
+      maxzoom: 18,
+      layout: { visibility: "none" },
     },
   ],
 };
 
-export const LIGHT_ATLAS_MAP_STYLE = HIGH_CONTRAST_55INCH_MAP_STYLE;
+export const LIGHT_ATLAS_MAP_STYLE = DISPLAY_55INCH_MASTER_STYLE;
