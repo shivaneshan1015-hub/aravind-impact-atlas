@@ -27,19 +27,17 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
 }
 
 /**
- * Premium High-Contrast Dual Basemap Style.
- * Uses Esri World Light Gray Base & Esri World Dark Gray Base.
- * 100% Free, 0 API key required, 100% ZERO watermark.
+ * High-Contrast Light Institutional Atlas Map Style (Optimized for 55-inch Interactive Display).
  * Features:
- * 1. Crisp Light Mode (Esri Light Gray Base - quiet & clean)
- * 2. High-Contrast Dark Slate Mode (Esri Dark Gray Base - dark slate terrain & neon glowing pins)
- * Allows 0-millisecond instant switching between light & dark styles with zero reload flicker.
+ * - Esri World Light Gray Base raster layer
+ * - 100% Free, 0 API key required, 100% ZERO watermark text
+ * - Clean quiet institutional canvas style with high contrast boundaries & sharp state vectors
  */
-export const HIGH_CONTRAST_ATLAS_STYLE: StyleSpecification = {
+export const HIGH_CONTRAST_55INCH_MAP_STYLE: StyleSpecification = {
   version: 8,
-  name: "High Contrast Dual Institutional Atlas",
+  name: "55in Interactive Display High-Contrast Institutional Atlas",
   sources: {
-    esri_light: {
+    esri_light_gray: {
       type: "raster",
       tiles: [
         "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
@@ -48,34 +46,16 @@ export const HIGH_CONTRAST_ATLAS_STYLE: StyleSpecification = {
       attribution:
         '&copy; <a href="https://www.esri.com/">Esri</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     },
-    esri_dark: {
-      type: "raster",
-      tiles: [
-        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-      ],
-      tileSize: 256,
-      attribution:
-        '&copy; <a href="https://www.esri.com/">Esri</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    },
   },
   layers: [
     {
-      id: "basemap-light",
+      id: "esri-light-gray-basemap",
       type: "raster",
-      source: "esri_light",
+      source: "esri_light_gray",
       minzoom: 0,
       maxzoom: 16,
-      layout: { visibility: "visible" },
-    },
-    {
-      id: "basemap-dark",
-      type: "raster",
-      source: "esri_dark",
-      minzoom: 0,
-      maxzoom: 16,
-      layout: { visibility: "none" },
     },
   ],
 };
 
-export const LIGHT_ATLAS_MAP_STYLE = HIGH_CONTRAST_ATLAS_STYLE;
+export const LIGHT_ATLAS_MAP_STYLE = HIGH_CONTRAST_55INCH_MAP_STYLE;
