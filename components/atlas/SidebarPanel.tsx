@@ -313,7 +313,10 @@ export function SidebarPanel({
             {/* Primary Category 3: Staffs */}
             <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-3">
               <button
-                onClick={() => onSelectSubcategory?.("staffs")}
+                onClick={() => {
+                  onSelectSubcategory?.("staffs");
+                  onSelectCareTypeFilter("all");
+                }}
                 className="w-full text-left flex items-center justify-between"
               >
                 <div className="flex items-center gap-2">
@@ -321,7 +324,7 @@ export function SidebarPanel({
                   <span className="text-xs font-black text-slate-900 uppercase tracking-wider">Staffs Directory</span>
                 </div>
                 <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">
-                  {staffGroup === "employees" ? "3,995 Employees" : "1,145 Trainees"}
+                  {staffGroup === "employees" ? "3,995 Employees" : "2,677 Trainees"}
                 </span>
               </button>
 
@@ -330,7 +333,9 @@ export function SidebarPanel({
                 <button
                   onClick={() => {
                     onSelectSubcategory?.("staffs");
+                    onSelectCareTypeFilter("all");
                     onSelectStaffGroup?.("employees");
+                    onSelectStaffCategory?.("all");
                   }}
                   className={`py-1.5 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
                     staffGroup === "employees"
@@ -344,7 +349,9 @@ export function SidebarPanel({
                 <button
                   onClick={() => {
                     onSelectSubcategory?.("staffs");
+                    onSelectCareTypeFilter("all");
                     onSelectStaffGroup?.("trainees");
+                    onSelectStaffCategory?.("all");
                   }}
                   className={`py-1.5 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
                     staffGroup === "trainees"
@@ -357,7 +364,7 @@ export function SidebarPanel({
                 </button>
               </div>
 
-              {/* 4 Category Filters: Admin, Doctors, AOP, Support Services */}
+              {/* Category Filters: Admin, Doctors, Post Graduates, AOP, Support Services */}
               <div className="space-y-1.5 pt-1">
                 <div className="text-[10px] font-black uppercase text-slate-400 tracking-wider flex justify-between px-1">
                   <span>Categories ({staffGroup})</span>
@@ -370,7 +377,10 @@ export function SidebarPanel({
                 </div>
 
                 <div className="grid grid-cols-2 gap-1.5">
-                  {(["admin", "doctors", "aop", "support"] as StaffCategory[]).map((catKey) => {
+                  {(staffGroup === "employees"
+                    ? (["admin", "doctors", "aop", "support"] as StaffCategory[])
+                    : (["admin", "doctors", "post_graduates", "aop", "support"] as StaffCategory[])
+                  ).map((catKey) => {
                     const catMeta = (staffGroup === "employees" ? EMPLOYEE_CATEGORIES : TRAINEE_CATEGORIES)[catKey];
                     const isCatSelected = staffCategory === catKey;
 
@@ -379,6 +389,7 @@ export function SidebarPanel({
                         key={catKey}
                         onClick={() => {
                           onSelectSubcategory?.("staffs");
+                          onSelectCareTypeFilter("all");
                           onSelectStaffCategory?.(isCatSelected ? "all" : catKey);
                         }}
                         className={`p-2 rounded-xl border text-left transition-all flex flex-col justify-between ${
@@ -409,7 +420,7 @@ export function SidebarPanel({
                   {TAMIL_NADU_DISTRICTS.map((dist) => {
                     const countsObj = staffGroup === "employees" ? dist.counts : dist.traineeCounts;
                     const distCount = staffCategory === "all"
-                      ? (countsObj.admin + countsObj.doctors + countsObj.aop + countsObj.support)
+                      ? (countsObj.admin + countsObj.doctors + (countsObj.post_graduates || 0) + countsObj.aop + countsObj.support)
                       : (countsObj[staffCategory] || 0);
 
                     if (distCount <= 0) return null;

@@ -382,9 +382,9 @@ export function MapEngine({
       ? locations.filter((l) => l.state === selectedState)
       : locations;
 
-    // 2. CARE Type filter
+    // 2. CARE Type filter (Skip for Staff Dots so staff dots always render)
     if (careTypeFilter !== "all") {
-      filtered = filtered.filter((l) => l.careType === careTypeFilter);
+      filtered = filtered.filter((l) => l.careType === careTypeFilter || l.type === "Staff Dot");
     }
 
     // 3. Reveal Max Year filter
@@ -400,11 +400,23 @@ export function MapEngine({
       el.className =
         "group cursor-pointer transition-all duration-200 select-none w-12 h-12 flex items-center justify-center";
 
+      const isStaffDot = loc.type === "Staff Dot";
       const isAurolabLoc = loc.entityId === "aurolab";
       const isEyeBankLoc = loc.entityId === "eyebank";
       const isOneSystemActive = isOneSystem || entityConfig.id === "all";
 
-      if (isOneSystemActive) {
+      if (isStaffDot) {
+        const dotColor = loc.metadata?.color || "#2563EB";
+        const dotSize = isSelected ? "10px" : "6px";
+        const catName = loc.metrics?.category || loc.metadata?.category || "Staff";
+        const distName = (loc as any).districtName || loc.metadata?.districtName || loc.city || loc.state;
+        el.innerHTML = `
+          <div class="relative flex items-center justify-center pointer-events-auto group" title="${catName} (${distName})">
+            <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 5px ${dotColor}bb, 0 1px 2px rgba(0,0,0,0.3); transition: transform 0.15s ease-out;" class="group-hover:scale-150">
+            </div>
+          </div>
+        `;
+      } else if (isOneSystemActive) {
         // Compact Micro-Orb Pins for One System view so all colors are clearly visible across the map
         const entityColors: Record<string, string> = {
           hospitals: "#2563EB",  // Royal Blue
@@ -580,7 +592,11 @@ export function MapEngine({
         let popTitle = displayName;
         let popSub = `${loc.city}, ${loc.state}`;
 
-        if (isEyeBank) {
+        if (loc.type === "Staff Dot") {
+          const groupName = (loc as any).staffGroup === "employees" ? "Employee" : "Trainee";
+          popTitle = `${loc.metrics?.category || loc.metadata?.category || "Staff"} (${groupName})`;
+          popSub = `District of Origin: ${(loc as any).districtName || loc.metadata?.districtName || loc.city}, Tamil Nadu`;
+        } else if (isEyeBank) {
           const isMainHub = loc.metadata?.isMainHub || loc.id.startsWith("eb_hub_");
           if (isMainHub) {
             popTitle = loc.name;
