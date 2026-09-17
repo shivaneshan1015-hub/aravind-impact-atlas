@@ -258,11 +258,11 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "eyenotes",
         name: "Eyenotes",
-        tagline: "Electronic Medical Records System for Ophthalmology",
-        defaultScope: "state",
+        tagline: "184 Global EMR Deployments across Nations",
+        defaultScope: "world",
         primaryMetricKey: "eyenotesUsers",
         secondaryMetricKeys: ["emrRecords", "activeDoctors"],
-        legendTitle: "Eyenotes EMR Reach",
+        legendTitle: "Eyenotes EMR Deployments (184 Sites)",
       },
       {
         id: "vcms",

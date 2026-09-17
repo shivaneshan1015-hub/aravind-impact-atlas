@@ -542,6 +542,7 @@ export function MapEngine({
       const isAurolabLoc = loc.entityId === "aurolab";
       const isEyeBankLoc = loc.entityId === "eyebank";
       const isIhmsLoc = loc.subcategoryId === "ihms";
+      const isEyenotesLoc = loc.subcategoryId === "eyenotes";
       const isOneSystemActive = isOneSystem || entityConfig.id === "all";
 
       if (isStaffDot) {
@@ -569,6 +570,23 @@ export function MapEngine({
                 <rect x="5" y="5" width="14" height="14" rx="2" />
                 <rect x="9" y="9" width="6" height="6" fill="#FFFFFF" fill-opacity="0.3" />
                 <path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+        `;
+      } else if (isEyenotesLoc) {
+        // Digital Cyan-Turquoise EMR Record Badge Pin for Eyenotes
+        el.innerHTML = `
+          <div class="relative flex items-center justify-center pointer-events-auto group" title="Eyenotes EMR: ${loc.rawName || loc.name} (${loc.city}, ${loc.country})">
+            <!-- Micro Pulse Scanning Halo Ring -->
+            <div class="absolute w-7 h-7 rounded-full bg-cyan-500/40 border border-cyan-400/60 animate-ping opacity-85 pointer-events-none"></div>
+            <div class="absolute w-5 h-5 rounded-full bg-teal-400/25 border border-teal-300/40 animate-pulse pointer-events-none"></div>
+
+            <!-- EMR Record Badge -->
+            <div class="w-5.5 h-5.5 rounded-md bg-gradient-to-br from-cyan-500 to-teal-600 border-2 border-white shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+              <svg class="w-3 h-3 text-white animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round" />
               </svg>
             </div>
           </div>
@@ -871,12 +889,16 @@ export function MapEngine({
         let popSub = `${loc.city}, ${loc.state}`;
 
         const isIhmsLoc = loc.subcategoryId === "ihms";
+        const isEyenotesLoc = loc.subcategoryId === "eyenotes";
         if (loc.type === "Staff Dot") {
           const groupName = (loc as any).staffGroup === "employees" ? "Employee" : "Trainee";
           popTitle = `${loc.metrics?.category || loc.metadata?.category || "Staff"} (${groupName})`;
           popSub = `District of Origin: ${(loc as any).districtName || loc.metadata?.districtName || loc.city}, Tamil Nadu`;
         } else if (isIhmsLoc) {
           popTitle = "IHMS Client Location";
+          popSub = `${loc.city}${loc.state ? ", " + loc.state : ""}, ${loc.country}`;
+        } else if (isEyenotesLoc) {
+          popTitle = `Eyenotes EMR: ${loc.rawName || loc.name}`;
           popSub = `${loc.city}${loc.state ? ", " + loc.state : ""}, ${loc.country}`;
         } else if (isEyeBank) {
           const isMainHub = loc.metadata?.isMainHub || loc.id.startsWith("eb_hub_");
