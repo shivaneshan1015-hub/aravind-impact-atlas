@@ -219,6 +219,72 @@ export function MapEngine({
         layout: { visibility: "none" },
       });
 
+      // 2b. INTERNATIONAL STUDENTS / FELLOWS RAYS (Gold & Emerald Flow Arcs)
+      const studentTargets: { name: string; coords: [number, number] }[] = [
+        { name: "Royal Tropical Institute, Amsterdam", coords: [4.9221, 52.3622] },
+        { name: "Drexel University College of Medicine", coords: [-75.1899, 39.9566] },
+        { name: "University of Giessen", coords: [8.6835, 50.5873] },
+        { name: "London School of Hygiene & Tropical Medicine", coords: [-0.1302, 51.5208] },
+        { name: "Institut Pasteur, Paris", coords: [2.3117, 48.8397] },
+      ];
+
+      const studentArcFeatures = studentTargets.map((t) => {
+        const numPoints = 40;
+        const coords: [number, number][] = [];
+        const [sLng, sLat] = hqCoord;
+        const [eLng, eLat] = t.coords;
+        const midLng = (sLng + eLng) / 2;
+        const midLat = (sLat + eLat) / 2;
+        const dist = Math.hypot(eLng - sLng, eLat - sLat);
+        const arcHeight = -Math.min(dist * 0.22, 18);
+
+        for (let i = 0; i <= numPoints; i++) {
+          const p = i / numPoints;
+          const lat = (1 - p) * (1 - p) * sLat + 2 * (1 - p) * p * (midLat + arcHeight) + p * p * eLat;
+          const lng = (1 - p) * (1 - p) * sLng + 2 * (1 - p) * p * midLng + p * p * eLng;
+          coords.push([Number(lng.toFixed(4)), Number(lat.toFixed(4))]);
+        }
+
+        return {
+          type: "Feature" as const,
+          properties: { name: t.name },
+          geometry: { type: "LineString" as const, coordinates: coords },
+        };
+      });
+
+      map.addSource("amrf-students-abroad-source", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: studentArcFeatures,
+        },
+      });
+
+      map.addLayer({
+        id: "amrf-students-abroad-layer",
+        type: "line",
+        source: "amrf-students-abroad-source",
+        paint: {
+          "line-color": "#F59E0B",
+          "line-width": 3,
+          "line-opacity": 0.85,
+        },
+        layout: { visibility: "none" },
+      });
+
+      map.addLayer({
+        id: "amrf-students-abroad-beam-layer",
+        type: "line",
+        source: "amrf-students-abroad-source",
+        paint: {
+          "line-color": "#10B981",
+          "line-width": 2.5,
+          "line-opacity": 0.95,
+          "line-dasharray": [4, 4],
+        },
+        layout: { visibility: "none" },
+      });
+
       // 3. VISION RESTORATION (Eye Bank Collection & Distribution Vector Networks)
       const eyeBankCollectionFeatures: any[] = [];
       const eyeBankDistributionFeatures: any[] = [];
@@ -381,6 +447,21 @@ export function MapEngine({
           "amrf-collaboration-beam-layer",
           "visibility",
           isCollabActive ? "visible" : "none"
+        );
+      }
+    }
+    if (map.getLayer("amrf-students-abroad-layer")) {
+      const isStudentsActive = selectedSubcategoryId === "students_abroad";
+      map.setLayoutProperty(
+        "amrf-students-abroad-layer",
+        "visibility",
+        isStudentsActive ? "visible" : "none"
+      );
+      if (map.getLayer("amrf-students-abroad-beam-layer")) {
+        map.setLayoutProperty(
+          "amrf-students-abroad-beam-layer",
+          "visibility",
+          isStudentsActive ? "visible" : "none"
         );
       }
     }
@@ -559,6 +640,7 @@ export function MapEngine({
       } else if (loc.entityId === "amrf") {
         const isHq = loc.id === "amrf_hq" || loc.metadata?.isHq;
         const isCollaborator = loc.metadata?.isCollaborator || loc.subcategoryId === "collaboratives";
+        const isStudentAbroad = loc.metadata?.isStudentAbroad || loc.subcategoryId === "students_abroad";
         const isOngoing = loc.metadata?.status === "ongoing" || loc.subcategoryId === "ongoing_phd";
 
         if (isHq) {
@@ -610,6 +692,33 @@ export function MapEngine({
                 <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
                   <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5" />
+                </svg>
+              </div>
+            </div>
+          `;
+        } else if (isStudentAbroad) {
+          // 3. INTERNATIONAL STUDENT / FELLOW PIN
+          const instName = loc.metadata?.institutionName || loc.rawName || loc.name;
+          el.innerHTML = `
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${instName} (${loc.city}, ${loc.country})">
+              <!-- Micro Radar Pulse Ring -->
+              <div class="absolute w-8 h-8 rounded-full bg-amber-500/35 border border-amber-400/60 animate-ping pointer-events-none"></div>
+
+              <!-- Institution Floating Label Badge -->
+              ${
+                !hidePinLabels
+                  ? `<span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1 rounded-lg shadow-xl border border-amber-400 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+                       <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                       <span>${instName}</span>
+                     </span>`
+                  : ""
+              }
+
+              <!-- International Fellow Badge -->
+              <div class="w-6.5 h-6.5 rounded-full bg-gradient-to-br from-amber-500 to-emerald-600 border-2 border-white shadow-xl flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-130">
+                <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+                  <path d="M12 6a6 6 0 0 0-6 6c0 3.31 6 9 6 9s6-5.69 6-9a6 6 0 0 0-6-6z"/>
                 </svg>
               </div>
             </div>

@@ -495,7 +495,7 @@ export function SidebarPanel({
                 <Users className="w-4 h-4 text-purple-500 shrink-0" />
                 <div>
                   <div className="font-black">Students from abroad</div>
-                  <div className="text-[10px] font-normal opacity-80">International Research Fellows</div>
+                  <div className="text-[10px] font-normal opacity-80">6 International Research Fellows</div>
                 </div>
               </div>
               <ChevronRight className="w-4 h-4 opacity-60" />

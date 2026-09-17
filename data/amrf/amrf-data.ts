@@ -20,7 +20,8 @@ export const AMRF_DATA: GeoLocationItem[] = [
       "metrics": {
           "establishedYear": 1985,
           "globalPartners": 12,
-          "phdScholars": 54
+          "phdScholars": 54,
+          "internationalFellows": 6
       },
       "address": "1, Anna Nagar, Madurai, Tamil Nadu 625020",
       "metadata": {
@@ -1523,33 +1524,129 @@ export const AMRF_DATA: GeoLocationItem[] = [
       }
   },
   {
-      "id": "amrf_student_usa",
-      "name": "International Fellow - USA",
+      "id": "amrf_student_kit_1",
+      "name": "Royal Tropical Institute (Fellow #1)",
+      "rawName": "Royal Tropical Institute",
       "entityId": "amrf",
       "subcategoryId": "students_abroad",
-      "country": "United States",
-      "state": "California",
-      "city": "San Francisco",
-      "latitude": 37.7749,
-      "longitude": -122.4194,
+      "country": "The Netherlands",
+      "state": "North Holland",
+      "city": "Amsterdam",
+      "latitude": 52.3622,
+      "longitude": 4.9221,
+      "type": "International Student / Fellow",
       "metrics": {
-          "fellowName": "Dr. Sarah Jenkins",
-          "researchTopic": "Corneal Endothelial Research"
+          "fellowCount": 1,
+          "researchFocus": "Global Tropical Ophthalmology"
+      },
+      "metadata": {
+          "isStudentAbroad": true,
+          "institutionName": "Royal Tropical Institute, Amsterdam"
       }
   },
   {
-      "id": "amrf_student_uk",
-      "name": "International Fellow - UK",
+      "id": "amrf_student_kit_2",
+      "name": "Royal Tropical Institute (Fellow #2)",
+      "rawName": "Royal Tropical Institute",
+      "entityId": "amrf",
+      "subcategoryId": "students_abroad",
+      "country": "The Netherlands",
+      "state": "North Holland",
+      "city": "Amsterdam",
+      "latitude": 52.367,
+      "longitude": 4.928,
+      "type": "International Student / Fellow",
+      "metrics": {
+          "fellowCount": 1,
+          "researchFocus": "Community Eye Care Health"
+      },
+      "metadata": {
+          "isStudentAbroad": true,
+          "institutionName": "Royal Tropical Institute, Amsterdam"
+      }
+  },
+  {
+      "id": "amrf_student_drexel",
+      "name": "Drexel University College of Medicine",
+      "rawName": "Drexel University",
+      "entityId": "amrf",
+      "subcategoryId": "students_abroad",
+      "country": "USA",
+      "state": "Pennsylvania",
+      "city": "Philadelphia",
+      "latitude": 39.9566,
+      "longitude": -75.1899,
+      "type": "International Student / Fellow",
+      "metrics": {
+          "fellowCount": 1,
+          "researchFocus": "Clinical Ophthalmic Research"
+      },
+      "metadata": {
+          "isStudentAbroad": true,
+          "institutionName": "Drexel University College of Medicine"
+      }
+  },
+  {
+      "id": "amrf_student_giessen",
+      "name": "University of Giessen",
+      "rawName": "University of Giessen",
+      "entityId": "amrf",
+      "subcategoryId": "students_abroad",
+      "country": "Germany",
+      "state": "Hesse",
+      "city": "Giessen",
+      "latitude": 50.5873,
+      "longitude": 8.6835,
+      "type": "International Student / Fellow",
+      "metrics": {
+          "fellowCount": 1,
+          "researchFocus": "Ocular Pathology & Proteomics"
+      },
+      "metadata": {
+          "isStudentAbroad": true,
+          "institutionName": "University of Giessen"
+      }
+  },
+  {
+      "id": "amrf_student_lshtm_abroad",
+      "name": "London School of Hygiene and Tropical Medicine",
+      "rawName": "LSHTM",
       "entityId": "amrf",
       "subcategoryId": "students_abroad",
       "country": "United Kingdom",
       "state": "England",
-      "city": "Oxford",
-      "latitude": 51.752,
-      "longitude": -1.2577,
+      "city": "London",
+      "latitude": 51.5208,
+      "longitude": -0.1302,
+      "type": "International Student / Fellow",
       "metrics": {
-          "fellowName": "Dr. Oliver Smith",
-          "researchTopic": "Ocular Pathology & Genomics"
+          "fellowCount": 1,
+          "researchFocus": "Epidemiological Eye Research"
+      },
+      "metadata": {
+          "isStudentAbroad": true,
+          "institutionName": "London School of Hygiene & Tropical Medicine"
+      }
+  },
+  {
+      "id": "amrf_student_pasteur_abroad",
+      "name": "Institut Pasteur",
+      "rawName": "Institut Pasteur",
+      "entityId": "amrf",
+      "subcategoryId": "students_abroad",
+      "country": "France",
+      "state": "Île-de-France",
+      "city": "Paris",
+      "latitude": 48.8397,
+      "longitude": 2.3117,
+      "type": "International Student / Fellow",
+      "metrics": {
+          "fellowCount": 1,
+          "researchFocus": "Microbiology & Mycotic Keratitis"
+      },
+      "metadata": {
+          "isStudentAbroad": true,
+          "institutionName": "Institut Pasteur, Paris"
       }
   }
 ];
