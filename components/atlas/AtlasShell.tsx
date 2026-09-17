@@ -183,14 +183,6 @@ export function AtlasShell() {
               selectedState={selectedState}
               selectedSubcategoryId={selectedSubcategoryId}
             />
-
-            {/* Unobtrusive Map Controls */}
-            <MapControls
-              onZoomIn={() => {}}
-              onZoomOut={() => {}}
-              onResetView={handleResetToIndia}
-              onToggleFullscreen={handleToggleFullscreen}
-            />
           </div>
         </main>
 

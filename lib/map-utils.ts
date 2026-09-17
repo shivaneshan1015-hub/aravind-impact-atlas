@@ -27,31 +27,53 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
 }
 
 /**
- * Premium Quiet Light Institutional Basemap Style.
- * Uses Esri World Light Gray Canvas - 100% free, 0 API key required, 100% ZERO watermark text, 
- * ultra-clean quiet institutional landmass style.
+ * Premium High-Contrast Dual Basemap Style.
+ * Features:
+ * 1. Crisp Voyager High-Contrast Light Mode (CartoDB Voyager - high contrast coastlines, roads, typography)
+ * 2. High-Contrast Dark Slate Mode (CartoDB Dark Matter - high contrast dark slate terrain & neon markers)
+ * Allows 0-millisecond instant switching between light & dark styles with zero reload flicker.
  */
-export const LIGHT_ATLAS_MAP_STYLE: StyleSpecification = {
+export const HIGH_CONTRAST_ATLAS_STYLE: StyleSpecification = {
   version: 8,
-  name: "Esri World Light Gray Institutional Atlas",
+  name: "High Contrast Dual Institutional Atlas",
   sources: {
-    esri_light_gray: {
+    carto_voyager: {
       type: "raster",
       tiles: [
-        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+        "https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png",
       ],
       tileSize: 256,
       attribution:
-        '&copy; <a href="https://www.esri.com/">Esri</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    },
+    carto_dark: {
+      type: "raster",
+      tiles: [
+        "https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+      ],
+      tileSize: 256,
+      attribution:
+        '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     },
   },
   layers: [
     {
-      id: "esri-light-gray-basemap",
+      id: "basemap-voyager",
       type: "raster",
-      source: "esri_light_gray",
+      source: "carto_voyager",
       minzoom: 0,
-      maxzoom: 16,
+      maxzoom: 18,
+      layout: { visibility: "visible" },
+    },
+    {
+      id: "basemap-dark",
+      type: "raster",
+      source: "carto_dark",
+      minzoom: 0,
+      maxzoom: 18,
+      layout: { visibility: "none" },
     },
   ],
 };
+
+export const LIGHT_ATLAS_MAP_STYLE = HIGH_CONTRAST_ATLAS_STYLE;

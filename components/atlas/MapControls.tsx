@@ -1,11 +1,13 @@
 import React from "react";
-import { Plus, Minus, RotateCcw, Maximize2 } from "lucide-react";
+import { Plus, Minus, RotateCcw, Maximize2, Sun, Moon } from "lucide-react";
 
 interface MapControlsProps {
   onZoomIn: () => void;
   onZoomOut: () => void;
   onResetView: () => void;
   onToggleFullscreen: () => void;
+  mapTheme?: "light" | "dark";
+  onToggleTheme?: () => void;
 }
 
 export function MapControls({
@@ -13,6 +15,8 @@ export function MapControls({
   onZoomOut,
   onResetView,
   onToggleFullscreen,
+  mapTheme = "light",
+  onToggleTheme,
 }: MapControlsProps) {
   return (
     <div className="absolute top-6 left-6 flex flex-col gap-1.5 z-10 select-none">
@@ -35,6 +39,20 @@ export function MapControls({
           <Minus className="w-4 h-4" />
         </button>
       </div>
+
+      {onToggleTheme && (
+        <button
+          onClick={onToggleTheme}
+          className={`p-2 rounded-lg border shadow-md backdrop-blur-sm transition-all flex items-center justify-center ${
+            mapTheme === "dark"
+              ? "bg-slate-900 border-slate-700 text-amber-400 hover:bg-slate-800"
+              : "bg-white/95 border-slate-200 text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+          }`}
+          title={mapTheme === "dark" ? "Switch to Crisp Light Mode" : "Switch to Dark Slate Mode"}
+        >
+          {mapTheme === "dark" ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
+        </button>
+      )}
 
       <button
         onClick={onResetView}

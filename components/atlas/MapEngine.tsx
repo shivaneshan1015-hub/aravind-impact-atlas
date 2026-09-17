@@ -8,6 +8,7 @@ import { GeoLocationItem, StateAggregation, GeographicGrammar, GeographicLevel }
 import { LIGHT_ATLAS_MAP_STYLE, hexToRgba } from "@/lib/map-utils";
 import { INDIA_CENTER, INDIA_DEFAULT_ZOOM } from "@/config/entities";
 import { EYEBANK_DATA } from "@/data/eyebank/eyebank-data";
+import { MapControls } from "@/components/atlas/MapControls";
 
 export interface MapEngineProps {
   entityConfig: EntityConfig;
@@ -26,6 +27,8 @@ export interface MapEngineProps {
   isLabMode?: boolean;
   isOneSystem?: boolean;
   hidePinLabels?: boolean;
+  mapTheme?: "light" | "dark";
+  onToggleTheme?: () => void;
 }
 
 export function MapEngine({
@@ -44,6 +47,8 @@ export function MapEngine({
   isLabMode = false,
   isOneSystem = false,
   hidePinLabels = false,
+  mapTheme: mapThemeProp,
+  onToggleTheme: onToggleThemeProp,
 }: MapEngineProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
@@ -51,6 +56,16 @@ export function MapEngine({
   const popupRef = useRef<maplibregl.Popup | null>(null);
 
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [internalTheme, setInternalTheme] = useState<"light" | "dark">("light");
+  const activeTheme = mapThemeProp ?? internalTheme;
+
+  const handleToggleTheme = () => {
+    if (onToggleThemeProp) {
+      onToggleThemeProp();
+    } else {
+      setInternalTheme((prev) => (prev === "light" ? "dark" : "light"));
+    }
+  };
 
   // Compute active visual grammar based on entity or explicit grammar override
   const activeGrammar: GeographicGrammar =
@@ -94,7 +109,19 @@ export function MapEngine({
         source: "india-states-source",
         paint: {
           "fill-color": entityConfig?.color || "#EA580C",
-          "fill-opacity": 0.05,
+          "fill-opacity": 0.08,
+        },
+      });
+
+      // Layer 1.5: High-Contrast Vector Line Outline layer for state & country borders
+      map.addLayer({
+        id: "india-states-outline",
+        type: "line",
+        source: "india-states-source",
+        paint: {
+          "line-color": activeTheme === "dark" ? "#94A3B8" : "#334155",
+          "line-width": activeTheme === "dark" ? 1.5 : 1.2,
+          "line-opacity": activeTheme === "dark" ? 0.9 : 0.75,
         },
       });
 
@@ -422,6 +449,44 @@ export function MapEngine({
       map.setPaintProperty("india-states-fill", "fill-color", matchExpression);
     }
   }, [mapLoaded, stateAggregations, entityConfig]);
+
+  // Toggle High Contrast Basemap Raster & Boundary Strokes
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapLoaded) return;
+
+    if (map.getLayer("basemap-voyager")) {
+      map.setLayoutProperty(
+        "basemap-voyager",
+        "visibility",
+        activeTheme === "light" ? "visible" : "none"
+      );
+    }
+    if (map.getLayer("basemap-dark")) {
+      map.setLayoutProperty(
+        "basemap-dark",
+        "visibility",
+        activeTheme === "dark" ? "visible" : "none"
+      );
+    }
+    if (map.getLayer("india-states-outline")) {
+      map.setPaintProperty(
+        "india-states-outline",
+        "line-color",
+        activeTheme === "dark" ? "#94A3B8" : "#334155"
+      );
+      map.setPaintProperty(
+        "india-states-outline",
+        "line-width",
+        activeTheme === "dark" ? 1.5 : 1.2
+      );
+      map.setPaintProperty(
+        "india-states-outline",
+        "line-opacity",
+        activeTheme === "dark" ? 0.9 : 0.75
+      );
+    }
+  }, [mapLoaded, activeTheme]);
 
   // Toggle Vector Grammar Layers
   useEffect(() => {
@@ -1094,9 +1159,34 @@ export function MapEngine({
     selectedSubcategoryId,
   ]);
 
+  const handleZoomIn = () => mapRef.current?.zoomIn();
+  const handleZoomOut = () => mapRef.current?.zoomOut();
+  const handleResetView = () => {
+    mapRef.current?.flyTo({
+      center: entityConfig?.defaultCenter || INDIA_CENTER,
+      zoom: entityConfig?.defaultZoom || INDIA_DEFAULT_ZOOM,
+      duration: 1200,
+    });
+  };
+  const handleToggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  };
+
   return (
-    <div className="relative w-full h-full bg-[#E7EEF2] overflow-hidden">
+    <div className="relative w-full h-full bg-slate-900 overflow-hidden">
       <div ref={mapContainerRef} className="w-full h-full" />
+      <MapControls
+        onZoomIn={handleZoomIn}
+        onZoomOut={handleZoomOut}
+        onResetView={handleResetView}
+        onToggleFullscreen={handleToggleFullscreen}
+        mapTheme={activeTheme}
+        onToggleTheme={handleToggleTheme}
+      />
     </div>
   );
 }
