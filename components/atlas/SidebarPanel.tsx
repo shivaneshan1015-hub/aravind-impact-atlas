@@ -464,23 +464,68 @@ export function SidebarPanel({
             </div>
 
             {/* Primary Category 2: Collaboratives */}
-            <button
-              onClick={() => onSelectSubcategory?.("collaboratives")}
-              className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between font-bold text-xs transition-all ${
-                activeSubId === "collaboratives"
-                  ? "bg-purple-800 text-white border-purple-800 shadow-md"
-                  : "bg-slate-50 hover:bg-slate-100 text-slate-800 border-slate-200"
-              }`}
-            >
-              <div className="flex items-center gap-2.5">
-                <Globe2 className="w-4 h-4 text-purple-500 shrink-0" />
-                <div>
-                  <div className="font-black">Collaboratives</div>
-                  <div className="text-[10px] font-normal opacity-80">Global University Partners</div>
+            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2">
+              <button
+                onClick={() => onSelectSubcategory?.("collaboratives")}
+                className="w-full text-left flex items-center justify-between"
+              >
+                <div className="flex items-center gap-2">
+                  <Globe2 className="w-4 h-4 text-purple-600" />
+                  <span className="text-xs font-black text-slate-900 uppercase tracking-wider">Collaboratives</span>
                 </div>
-              </div>
-              <ChevronRight className="w-4 h-4 opacity-60" />
-            </button>
+                <span className="text-[10px] bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full font-bold">
+                  12 Global Partners
+                </span>
+              </button>
+
+              {activeSubId === "collaboratives" && (
+                <div className="space-y-1 pt-1.5 max-h-64 overflow-y-auto pr-1">
+                  {[
+                    { id: "amrf_collab_ulster", name: "Ulster University", country: "United Kingdom" },
+                    { id: "amrf_collab_paris", name: "University of Paris", country: "France" },
+                    { id: "amrf_collab_liverpool", name: "University of Liverpool", country: "United Kingdom" },
+                    { id: "amrf_collab_ucl", name: "University College of London", country: "United Kingdom" },
+                    { id: "amrf_collab_mcmaster", name: "McMaster University", country: "Canada" },
+                    { id: "amrf_collab_iowa", name: "University of IOWA", country: "USA" },
+                    { id: "amrf_collab_lshtm", name: "London School of Hygiene & Tropical Medicine", country: "United Kingdom" },
+                    { id: "amrf_collab_edinburgh", name: "University of Edinburgh", country: "United Kingdom" },
+                    { id: "amrf_collab_dartmouth", name: "Dartmouth Hitchcock Medical Center", country: "USA" },
+                    { id: "amrf_collab_moorfields", name: "Moorfields Eye Hospital", country: "United Kingdom" },
+                    { id: "amrf_collab_pasteur", name: "Institut Pasteur", country: "France" },
+                    { id: "amrf_collab_ccmb", name: "CSIR-CCMB", country: "India" },
+                  ].map((partner) => {
+                    const loc = locations.find((l) => l.id === partner.id);
+                    const isSelected = selectedLocation?.id === partner.id;
+                    return (
+                      <button
+                        key={partner.id}
+                        onClick={() => {
+                          onSelectSubcategory?.("collaboratives");
+                          if (loc) onSelectLocation?.(loc);
+                        }}
+                        className={`w-full p-2 rounded-xl border text-left text-xs font-bold transition-all flex items-center justify-between ${
+                          isSelected
+                            ? "bg-purple-700 text-white border-purple-700 shadow-2xs"
+                            : "bg-white hover:bg-slate-100 text-slate-800 border-slate-200"
+                        }`}
+                      >
+                        <div className="truncate pr-1">
+                          <div className="font-extrabold text-[11px] truncate">{partner.name}</div>
+                          <div className={`text-[9px] font-medium ${isSelected ? "text-purple-200" : "text-slate-400"}`}>
+                            {partner.country}
+                          </div>
+                        </div>
+                        <span className={`text-[9px] px-1.5 py-0.5 rounded font-black shrink-0 ${
+                          isSelected ? "bg-white/20 text-white" : "bg-purple-50 text-purple-700 border border-purple-200"
+                        }`}>
+                          Partner
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
 
             {/* Primary Category 3: Students from abroad */}
             <button

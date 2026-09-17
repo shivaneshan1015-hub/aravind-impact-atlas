@@ -145,25 +145,52 @@ export function MapEngine({
         layout: { visibility: "none" },
       });
 
-      // 2. RESEARCH (AMRF Knowledge & Collaboration Network)
+      // 2. RESEARCH (AMRF Global Collaborator Arc Energy Beams)
+      const hqCoord: [number, number] = [78.1198, 9.9252];
+      const collabTargets: { name: string; coords: [number, number] }[] = [
+        { name: "Ulster University", coords: [-6.6766, 55.1487] },
+        { name: "University of Paris", coords: [2.3522, 48.8566] },
+        { name: "University of Liverpool", coords: [-2.9660, 53.4060] },
+        { name: "University College of London", coords: [-0.1340, 51.5246] },
+        { name: "McMaster University", coords: [-79.9192, 43.2609] },
+        { name: "University of IOWA", coords: [-91.5549, 41.6627] },
+        { name: "London School of Hygiene & Tropical Medicine", coords: [-0.1302, 51.5208] },
+        { name: "University of Edinburgh", coords: [-3.1892, 55.9445] },
+        { name: "Dartmouth Hitchcock Medical Center", coords: [-72.2725, 43.6706] },
+        { name: "Moorfields Eye Hospital", coords: [-0.0886, 51.5258] },
+        { name: "Institut Pasteur", coords: [2.3117, 48.8397] },
+        { name: "CSIR-CCMB", coords: [78.5446, 17.4243] },
+      ];
+
+      const collabArcFeatures = collabTargets.map((t) => {
+        const numPoints = 40;
+        const coords: [number, number][] = [];
+        const [sLng, sLat] = hqCoord;
+        const [eLng, eLat] = t.coords;
+        const midLng = (sLng + eLng) / 2;
+        const midLat = (sLat + eLat) / 2;
+        const dist = Math.hypot(eLng - sLng, eLat - sLat);
+        const arcHeight = Math.min(dist * 0.22, 18);
+
+        for (let i = 0; i <= numPoints; i++) {
+          const p = i / numPoints;
+          const lat = (1 - p) * (1 - p) * sLat + 2 * (1 - p) * p * (midLat + arcHeight) + p * p * eLat;
+          const lng = (1 - p) * (1 - p) * sLng + 2 * (1 - p) * p * midLng + p * p * eLng;
+          coords.push([Number(lng.toFixed(4)), Number(lat.toFixed(4))]);
+        }
+
+        return {
+          type: "Feature" as const,
+          properties: { name: t.name },
+          geometry: { type: "LineString" as const, coordinates: coords },
+        };
+      });
+
       map.addSource("amrf-collaboration-source", {
         type: "geojson",
         data: {
           type: "FeatureCollection",
-          features: [
-            { type: "Feature", properties: { partner: "Tamil Nadu Scholars" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [78.7047, 10.7905]] } },
-            { type: "Feature", properties: { partner: "Bihar Scholars" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [85.1376, 25.5941]] } },
-            { type: "Feature", properties: { partner: "Andhra Pradesh Scholars" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [80.6480, 16.5062]] } },
-            { type: "Feature", properties: { partner: "Karnataka Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.5946, 12.9716]] } },
-            { type: "Feature", properties: { partner: "Uttar Pradesh Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [80.9462, 26.8467]] } },
-            { type: "Feature", properties: { partner: "Kerala Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [76.9366, 8.5241]] } },
-            { type: "Feature", properties: { partner: "Assam Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [91.7362, 26.1445]] } },
-            { type: "Feature", properties: { partner: "Delhi Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [77.2090, 28.6139]] } },
-            { type: "Feature", properties: { partner: "Jammu & Kashmir Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [74.7973, 34.0837]] } },
-            { type: "Feature", properties: { partner: "West Bengal Scholar" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [88.3639, 22.5726]] } },
-            { type: "Feature", properties: { partner: "Johns Hopkins USA" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [-76.6122, 39.2904]] } },
-            { type: "Feature", properties: { partner: "UCL London UK" }, geometry: { type: "LineString", coordinates: [[78.1198, 9.9252], [-0.1278, 51.5074]] } },
-          ],
+          features: collabArcFeatures,
         },
       });
 
@@ -173,9 +200,21 @@ export function MapEngine({
         source: "amrf-collaboration-source",
         paint: {
           "line-color": "#7C3AED",
-          "line-width": 2.5,
-          "line-opacity": 0.85,
-          "line-dasharray": [3, 2],
+          "line-width": 3,
+          "line-opacity": 0.75,
+        },
+        layout: { visibility: "none" },
+      });
+
+      map.addLayer({
+        id: "amrf-collaboration-beam-layer",
+        type: "line",
+        source: "amrf-collaboration-source",
+        paint: {
+          "line-color": "#38BDF8",
+          "line-width": 2,
+          "line-opacity": 0.9,
+          "line-dasharray": [3, 4],
         },
         layout: { visibility: "none" },
       });
@@ -331,11 +370,19 @@ export function MapEngine({
       );
     }
     if (map.getLayer("amrf-collaboration-layer")) {
+      const isCollabActive = selectedSubcategoryId === "collaboratives" || activeGrammar === "collaboration";
       map.setLayoutProperty(
         "amrf-collaboration-layer",
         "visibility",
-        "none"
+        isCollabActive ? "visible" : "none"
       );
+      if (map.getLayer("amrf-collaboration-beam-layer")) {
+        map.setLayoutProperty(
+          "amrf-collaboration-beam-layer",
+          "visibility",
+          isCollabActive ? "visible" : "none"
+        );
+      }
     }
     if (map.getLayer("aurolab-network-layer")) {
       map.setLayoutProperty(
@@ -510,11 +557,65 @@ export function MapEngine({
           `;
         }
       } else if (loc.entityId === "amrf") {
-        // Eye Care Research Micro-Animated Marker for Individual Ph.D. Scholars
+        const isHq = loc.id === "amrf_hq" || loc.metadata?.isHq;
+        const isCollaborator = loc.metadata?.isCollaborator || loc.subcategoryId === "collaboratives";
         const isOngoing = loc.metadata?.status === "ongoing" || loc.subcategoryId === "ongoing_phd";
 
-        if (isOngoing) {
-          // ONGOING Ph.D. SCHOLAR: Glowing Vibrant Pink/Magenta Badge with Rotating Atomic Pupil Ring
+        if (isHq) {
+          // 1. DISTINCT AMRF RESEARCH HQ PIN AT MADURAI
+          el.innerHTML = `
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${loc.name}">
+              <!-- Double Radar Scanning Pulse Rings for AMRF HQ -->
+              <div class="absolute w-14 h-14 rounded-full bg-purple-600/35 border border-purple-400/60 animate-ping pointer-events-none"></div>
+              <div class="absolute w-10 h-10 rounded-full bg-purple-500/30 border border-purple-400/50 animate-pulse pointer-events-none"></div>
+              
+              <!-- HQ Floating Label Badge displaying AMRF Research HQ (Madurai) -->
+              ${
+                !hidePinLabels
+                  ? `<span class="mb-1 text-[11px] font-black text-white bg-purple-950/95 px-3 py-1 rounded-lg shadow-2xl border-2 border-amber-400 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+                       <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                       <span>AMRF Research HQ (Madurai)</span>
+                     </span>`
+                  : ""
+              }
+
+              <!-- Central HQ Pin Badge -->
+              <div class="w-8 h-8 rounded-full bg-purple-800 border-2 border-amber-400 shadow-2xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
+                <svg class="w-4.5 h-4.5 text-amber-300 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M6 18h12M12 2v14M8 10l4-4 4 4" />
+                </svg>
+              </div>
+            </div>
+          `;
+        } else if (isCollaborator) {
+          // 2. GLOBAL UNIVERSITY / INSTITUTION COLLABORATOR PIN
+          const instName = loc.metadata?.institutionName || loc.rawName || loc.name;
+          el.innerHTML = `
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${instName} (${loc.city}, ${loc.country})">
+              <!-- Micro Radar Pulse Ring -->
+              <div class="absolute w-8 h-8 rounded-full bg-indigo-500/35 border border-indigo-400/60 animate-ping pointer-events-none"></div>
+
+              <!-- University / Institution Floating Label -->
+              ${
+                !hidePinLabels
+                  ? `<span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1 rounded-lg shadow-xl border border-purple-300 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+                       <span class="w-1.5 h-1.5 rounded-full bg-purple-600 animate-pulse"></span>
+                       <span>${instName}</span>
+                     </span>`
+                  : ""
+              }
+
+              <!-- Academic Cap / University Badge -->
+              <div class="w-6.5 h-6.5 rounded-full bg-gradient-to-br from-purple-700 to-indigo-800 border-2 border-white shadow-xl flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-130">
+                <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5" />
+                </svg>
+              </div>
+            </div>
+          `;
+        } else if (isOngoing) {
+          // 3. ONGOING Ph.D. SCHOLAR: Glowing Vibrant Pink/Magenta Badge with Rotating Atomic Pupil Ring
           el.innerHTML = `
             <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name} (${loc.city}, ${loc.state})">
               <!-- Micro Scanning Radar Pulse Ring -->
@@ -531,7 +632,7 @@ export function MapEngine({
             </div>
           `;
         } else {
-          // COMPLETED Ph.D. SCHOLAR: Glowing Bright Cyan/Sapphire Badge with Pulsing Eye Science Lens
+          // 4. COMPLETED Ph.D. SCHOLAR: Glowing Bright Cyan/Sapphire Badge with Pulsing Eye Science Lens
           el.innerHTML = `
             <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name} (${loc.city}, ${loc.state})">
               <!-- Micro Scanning Radar Pulse Ring -->

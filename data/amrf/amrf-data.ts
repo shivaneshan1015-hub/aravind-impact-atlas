@@ -5,7 +5,29 @@ export interface AMRFPhdStateItem extends GeoLocationItem {
 }
 
 export const AMRF_DATA: GeoLocationItem[] = [
-  // Individual Ph.D. Scholars (46 Completed + 8 Ongoing)
+  {
+      "id": "amrf_hq",
+      "name": "AMRF Research HQ",
+      "rawName": "AMRF Madurai HQ",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Madurai",
+      "latitude": 9.9252,
+      "longitude": 78.1198,
+      "type": "Research Center",
+      "metrics": {
+          "establishedYear": 1985,
+          "globalPartners": 12,
+          "phdScholars": 54
+      },
+      "address": "1, Anna Nagar, Madurai, Tamil Nadu 625020",
+      "metadata": {
+          "isHq": true,
+          "color": "#7C3AED"
+      }
+  },
   {
       "id": "amrf_scholar_comp_1",
       "name": "Ph.D. Graduate Scholar #1 (Madurai)",
@@ -1248,55 +1270,286 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "color": "#EC4899"
       }
   },
-  // Global Academic Collaborators
   {
-    id: "amrf_collab_jhu",
-    name: "Johns Hopkins Wilmer Eye Institute",
-    entityId: "amrf",
-    subcategoryId: "collaboratives",
-    country: "United States",
-    state: "Maryland",
-    city: "Baltimore",
-    latitude: 39.2904,
-    longitude: -76.6122,
-    metrics: { project: "Glaucoma Genetics & Epidemiology", papersPublished: 42 },
+      "id": "amrf_collab_ulster",
+      "name": "Ulster University",
+      "rawName": "Ulster University",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "United Kingdom",
+      "state": "Northern Ireland",
+      "city": "Coleraine",
+      "latitude": 55.1487,
+      "longitude": -6.6766,
+      "type": "University Collaborator",
+      "metrics": {
+          "partnerType": "University",
+          "focus": "Ocular Research & Vision Science"
+      },
+      "metadata": {
+          "isCollaborator": true,
+          "institutionName": "Ulster University"
+      }
   },
   {
-    id: "amrf_collab_ucl",
-    name: "UCL Institute of Ophthalmology",
-    entityId: "amrf",
-    subcategoryId: "collaboratives",
-    country: "United Kingdom",
-    state: "London",
-    city: "London",
-    latitude: 51.5074,
-    longitude: -0.1278,
-    metrics: { project: "Limbal Stem Cell Deficiency Therapeutics", papersPublished: 28 },
-  },
-
-  // Students from abroad
-  {
-    id: "amrf_student_usa",
-    name: "International Fellow - USA",
-    entityId: "amrf",
-    subcategoryId: "students_abroad",
-    country: "United States",
-    state: "California",
-    city: "San Francisco",
-    latitude: 37.7749,
-    longitude: -122.4194,
-    metrics: { fellowName: "Dr. Sarah Jenkins", researchTopic: "Corneal Endothelial Research" },
+      "id": "amrf_collab_paris",
+      "name": "University of Paris",
+      "rawName": "University of Paris",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "France",
+      "state": "Île-de-France",
+      "city": "Paris",
+      "latitude": 48.8566,
+      "longitude": 2.3522,
+      "type": "University Collaborator",
+      "metrics": {
+          "partnerType": "University",
+          "focus": "Genomics & Ocular Immunology"
+      },
+      "metadata": {
+          "isCollaborator": true,
+          "institutionName": "University of Paris"
+      }
   },
   {
-    id: "amrf_student_uk",
-    name: "International Fellow - UK",
-    entityId: "amrf",
-    subcategoryId: "students_abroad",
-    country: "United Kingdom",
-    state: "England",
-    city: "Oxford",
-    latitude: 51.7520,
-    longitude: -1.2577,
-    metrics: { fellowName: "Dr. Oliver Smith", researchTopic: "Ocular Pathology & Genomics" },
+      "id": "amrf_collab_liverpool",
+      "name": "University of Liverpool",
+      "rawName": "University of Liverpool",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "United Kingdom",
+      "state": "England",
+      "city": "Liverpool",
+      "latitude": 53.406,
+      "longitude": -2.966,
+      "type": "University Collaborator",
+      "metrics": {
+          "partnerType": "University",
+          "focus": "Retinal Imaging & Therapeutics"
+      },
+      "metadata": {
+          "isCollaborator": true,
+          "institutionName": "University of Liverpool"
+      }
+  },
+  {
+      "id": "amrf_collab_ucl",
+      "name": "University College of London",
+      "rawName": "University College of London",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "United Kingdom",
+      "state": "England",
+      "city": "London",
+      "latitude": 51.5246,
+      "longitude": -0.134,
+      "type": "University Collaborator",
+      "metrics": {
+          "partnerType": "University",
+          "focus": "Limbal Stem Cell Therapy"
+      },
+      "metadata": {
+          "isCollaborator": true,
+          "institutionName": "University College of London"
+      }
+  },
+  {
+      "id": "amrf_collab_mcmaster",
+      "name": "McMaster University",
+      "rawName": "McMaster University",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "Canada",
+      "state": "Ontario",
+      "city": "Hamilton",
+      "latitude": 43.2609,
+      "longitude": -79.9192,
+      "type": "University Collaborator",
+      "metrics": {
+          "partnerType": "University",
+          "focus": "Translational Vision Genetics"
+      },
+      "metadata": {
+          "isCollaborator": true,
+          "institutionName": "McMaster University"
+      }
+  },
+  {
+      "id": "amrf_collab_iowa",
+      "name": "University of IOWA",
+      "rawName": "University of IOWA",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "USA",
+      "state": "Iowa",
+      "city": "Iowa City",
+      "latitude": 41.6627,
+      "longitude": -91.5549,
+      "type": "University Collaborator",
+      "metrics": {
+          "partnerType": "University",
+          "focus": "Glaucoma Molecular Genetics"
+      },
+      "metadata": {
+          "isCollaborator": true,
+          "institutionName": "University of IOWA"
+      }
+  },
+  {
+      "id": "amrf_collab_lshtm",
+      "name": "London School of Hygiene & Tropical Medicine",
+      "rawName": "LSHTM",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "United Kingdom",
+      "state": "England",
+      "city": "London",
+      "latitude": 51.5208,
+      "longitude": -0.1302,
+      "type": "Research Institute",
+      "metrics": {
+          "partnerType": "Institute",
+          "focus": "Ocular Epidemiology & Trachoma Control"
+      },
+      "metadata": {
+          "isCollaborator": true,
+          "institutionName": "London School of Hygiene & Tropical Medicine"
+      }
+  },
+  {
+      "id": "amrf_collab_edinburgh",
+      "name": "University of Edinburgh",
+      "rawName": "University of Edinburgh",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "United Kingdom",
+      "state": "Scotland",
+      "city": "Edinburgh",
+      "latitude": 55.9445,
+      "longitude": -3.1892,
+      "type": "University Collaborator",
+      "metrics": {
+          "partnerType": "University",
+          "focus": "Proteomics & Bio-Marker Profiling"
+      },
+      "metadata": {
+          "isCollaborator": true,
+          "institutionName": "University of Edinburgh"
+      }
+  },
+  {
+      "id": "amrf_collab_dartmouth",
+      "name": "Dartmouth Hitchcock Medical Center",
+      "rawName": "Dartmouth Hitchcock Medical Center",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "USA",
+      "state": "New Hampshire",
+      "city": "Lebanon",
+      "latitude": 43.6706,
+      "longitude": -72.2725,
+      "type": "Medical Center Collaborator",
+      "metrics": {
+          "partnerType": "Medical Center",
+          "focus": "Ocular Microbiology & Diagnostics"
+      },
+      "metadata": {
+          "isCollaborator": true,
+          "institutionName": "Dartmouth Hitchcock Medical Center"
+      }
+  },
+  {
+      "id": "amrf_collab_moorfields",
+      "name": "Moorfields Eye Hospital",
+      "rawName": "Moorfields Eye Hospital",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "United Kingdom",
+      "state": "England",
+      "city": "London",
+      "latitude": 51.5258,
+      "longitude": -0.0886,
+      "type": "Hospital & Research Center",
+      "metrics": {
+          "partnerType": "Eye Hospital",
+          "focus": "Clinical Research & Ophthalmic Surgery"
+      },
+      "metadata": {
+          "isCollaborator": true,
+          "institutionName": "Moorfields Eye Hospital"
+      }
+  },
+  {
+      "id": "amrf_collab_pasteur",
+      "name": "Institut Pasteur",
+      "rawName": "Institut Pasteur",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "France",
+      "state": "Île-de-France",
+      "city": "Paris",
+      "latitude": 48.8397,
+      "longitude": 2.3117,
+      "type": "Research Institute",
+      "metrics": {
+          "partnerType": "Research Institute",
+          "focus": "Fungal Keratitis & Pathogen Genomics"
+      },
+      "metadata": {
+          "isCollaborator": true,
+          "institutionName": "Institut Pasteur"
+      }
+  },
+  {
+      "id": "amrf_collab_ccmb",
+      "name": "CSIR-CCMB",
+      "rawName": "CSIR-CCMB",
+      "entityId": "amrf",
+      "subcategoryId": "collaboratives",
+      "country": "India",
+      "state": "Telangana",
+      "city": "Hyderabad",
+      "latitude": 17.4243,
+      "longitude": 78.5446,
+      "type": "Research Institute",
+      "metrics": {
+          "partnerType": "National Institute",
+          "focus": "Cellular & Molecular Biology"
+      },
+      "metadata": {
+          "isCollaborator": true,
+          "institutionName": "CSIR-CCMB"
+      }
+  },
+  {
+      "id": "amrf_student_usa",
+      "name": "International Fellow - USA",
+      "entityId": "amrf",
+      "subcategoryId": "students_abroad",
+      "country": "United States",
+      "state": "California",
+      "city": "San Francisco",
+      "latitude": 37.7749,
+      "longitude": -122.4194,
+      "metrics": {
+          "fellowName": "Dr. Sarah Jenkins",
+          "researchTopic": "Corneal Endothelial Research"
+      }
+  },
+  {
+      "id": "amrf_student_uk",
+      "name": "International Fellow - UK",
+      "entityId": "amrf",
+      "subcategoryId": "students_abroad",
+      "country": "United Kingdom",
+      "state": "England",
+      "city": "Oxford",
+      "latitude": 51.752,
+      "longitude": -1.2577,
+      "metrics": {
+          "fellowName": "Dr. Oliver Smith",
+          "researchTopic": "Ocular Pathology & Genomics"
+      }
   }
 ];
