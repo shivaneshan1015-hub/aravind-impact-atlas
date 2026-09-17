@@ -540,47 +540,44 @@ export function MapEngine({
             </div>
           `;
         } else {
-          // Animated State Dot for PhD Scholars (Completed or Ongoing)
+          // Eye Care Research Micro-Animated Marker for Individual Ph.D. Scholars
           const isOngoing = loc.metadata?.status === "ongoing" || loc.subcategoryId === "ongoing_phd";
-          const statusText = isOngoing ? "Ongoing PhD" : "PhD Completed";
-          const badgeText = isOngoing ? `${phdCount} Ongoing PhD` : `${phdCount} PhD`;
 
-          // Size scales with scholar count: TN gets larger orb, others get prominent orb
-          let orbDiameter = "18px";
-          let fontSize = "10px";
-          if (phdCount >= 30) {
-            orbDiameter = "28px";
-            fontSize = "12px";
-          } else if (phdCount >= 2) {
-            orbDiameter = "22px";
-            fontSize = "11px";
-          } else {
-            orbDiameter = "18px";
-            fontSize = "10px";
-          }
+          if (isOngoing) {
+            // ONGOING Ph.D. SCHOLAR: Glowing Vibrant Pink/Magenta Badge with Rotating Atomic Pupil Ring
+            el.innerHTML = `
+              <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name} (${loc.city}, ${loc.state})">
+                <!-- Micro Scanning Radar Pulse Ring -->
+                <div class="absolute w-7 h-7 rounded-full bg-pink-500/40 border border-pink-400/60 animate-ping opacity-85 pointer-events-none"></div>
+                <div class="absolute w-5 h-5 rounded-full bg-pink-400/25 border border-pink-300/40 animate-pulse pointer-events-none"></div>
 
-          el.innerHTML = `
-            <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${stateName}: ${phdCount} ${statusText} Scholar(s)">
-              <!-- Pulsing Outer Ripple Ring -->
-              <div class="absolute w-10 h-10 rounded-full bg-purple-500/25 border border-purple-400/40 animate-ping opacity-75 pointer-events-none"></div>
-              <div class="absolute w-7 h-7 rounded-full bg-purple-400/20 animate-pulse pointer-events-none"></div>
-
-              <!-- Floating State Scholar Badge Label -->
-              ${
-                !hidePinLabels
-                  ? `<span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2 py-0.5 rounded-md shadow-md border border-purple-300 whitespace-nowrap tracking-wide flex items-center gap-1 transition-transform group-hover:scale-110">
-                       <span class="w-1.5 h-1.5 rounded-full bg-purple-600 animate-pulse"></span>
-                       <span>${stateName}: <strong class="text-purple-700 font-black">${badgeText}</strong></span>
-                     </span>`
-                  : ""
-              }
-
-              <!-- Scaled Glowing State Orb -->
-              <div style="width: ${orbDiameter}; height: ${orbDiameter}; background-color: #7C3AED; border: 2px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 12px rgba(124, 58, 237, 0.85), 0 2px 5px rgba(0,0,0,0.3); transition: transform 0.2s ease-out;" class="flex items-center justify-center text-white font-black group-hover:scale-125">
-                <span style="font-size: ${fontSize};" class="leading-none select-none">${phdCount}</span>
+                <!-- Eye Care Research Atomic Pupil Badge -->
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 border-2 border-white shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+                  <svg class="w-3 h-3 text-white animate-spin" style="animation-duration: 5s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="12" cy="12" r="7" stroke-dasharray="3 2" />
+                    <circle cx="12" cy="12" r="2.5" fill="#FFFFFF" />
+                  </svg>
+                </div>
               </div>
-            </div>
-          `;
+            `;
+          } else {
+            // COMPLETED Ph.D. SCHOLAR: Glowing Bright Cyan/Sapphire Badge with Pulsing Eye Science Lens
+            el.innerHTML = `
+              <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name} (${loc.city}, ${loc.state})">
+                <!-- Micro Scanning Radar Pulse Ring -->
+                <div class="absolute w-7 h-7 rounded-full bg-cyan-500/40 border border-cyan-400/60 animate-ping opacity-85 pointer-events-none"></div>
+                <div class="absolute w-5 h-5 rounded-full bg-cyan-400/25 border border-cyan-300/40 animate-pulse pointer-events-none"></div>
+
+                <!-- Eye Science Iris / Lens Badge -->
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 border-2 border-white shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+                  <svg class="w-3 h-3 text-white animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M2 12s3-6 10-6 10 6 10 6-3 6-10 6-10-6-10-6z" />
+                    <circle cx="12" cy="12" r="2.5" fill="#FFFFFF" />
+                  </svg>
+                </div>
+              </div>
+            `;
+          }
         }
       } else if (isAurolabLoc) {
         el.innerHTML = `
