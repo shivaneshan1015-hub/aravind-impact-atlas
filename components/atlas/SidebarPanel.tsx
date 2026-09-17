@@ -407,13 +407,12 @@ export function SidebarPanel({
                 </div>
                 <div className="space-y-1 max-h-44 overflow-y-auto pr-1">
                   {TAMIL_NADU_DISTRICTS.map((dist) => {
-                    const catDict = staffGroup === "employees" ? EMPLOYEE_CATEGORIES : TRAINEE_CATEGORIES;
-                    const catKey = staffCategory === "all" ? "admin" : staffCategory;
-                    const targetTotal = staffCategory === "all"
-                      ? Object.values(catDict).reduce((a, b) => a + b.count, 0)
-                      : catDict[staffCategory]?.count || 0;
-                    const totalW = TAMIL_NADU_DISTRICTS.reduce((a, b) => a + (staffCategory === "all" ? 1 : b.weights[catKey]), 0);
-                    const distCount = Math.round((targetTotal * (staffCategory === "all" ? 1 : dist.weights[catKey])) / totalW);
+                    const countsObj = staffGroup === "employees" ? dist.counts : dist.traineeCounts;
+                    const distCount = staffCategory === "all"
+                      ? (countsObj.admin + countsObj.doctors + countsObj.aop + countsObj.support)
+                      : (countsObj[staffCategory] || 0);
+
+                    if (distCount <= 0) return null;
 
                     return (
                       <button
@@ -426,7 +425,7 @@ export function SidebarPanel({
                           <span>{dist.name}</span>
                         </div>
                         <span className="text-[10px] font-black bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded">
-                          {distCount} dots
+                          {distCount.toLocaleString()} {distCount === 1 ? "staff" : "staffs"}
                         </span>
                       </button>
                     );

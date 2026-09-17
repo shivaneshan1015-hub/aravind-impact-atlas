@@ -78,22 +78,323 @@ export interface DistrictCoords {
   state: string;
   lat: number;
   lng: number;
-  weights: Record<StaffCategory, number>; // weight out of 100
+  counts: Record<StaffCategory, number>;
+  traineeCounts: Record<StaffCategory, number>;
 }
 
 export const TAMIL_NADU_DISTRICTS: DistrictCoords[] = [
-  { name: "Madurai", state: "Tamil Nadu", lat: 9.9252, lng: 78.1198, weights: { admin: 28, doctors: 30, aop: 24, support: 26 } },
-  { name: "Tirunelveli", state: "Tamil Nadu", lat: 8.7139, lng: 77.7567, weights: { admin: 16, doctors: 18, aop: 17, support: 15 } },
-  { name: "Coimbatore", state: "Tamil Nadu", lat: 11.0168, lng: 76.9558, weights: { admin: 18, doctors: 16, aop: 16, support: 17 } },
-  { name: "Theni", state: "Tamil Nadu", lat: 10.0104, lng: 77.4768, weights: { admin: 8, doctors: 7, aop: 9, support: 8 } },
-  { name: "Dindigul", state: "Tamil Nadu", lat: 10.3673, lng: 77.9803, weights: { admin: 7, doctors: 6, aop: 8, support: 7 } },
-  { name: "Virudhunagar", state: "Tamil Nadu", lat: 9.5872, lng: 77.9578, weights: { admin: 6, doctors: 5, aop: 7, support: 6 } },
-  { name: "Sivaganga", state: "Tamil Nadu", lat: 9.8472, lng: 78.6361, weights: { admin: 5, doctors: 4, aop: 5, support: 5 } },
-  { name: "Thoothukudi", state: "Tamil Nadu", lat: 8.7642, lng: 78.1348, weights: { admin: 4, doctors: 5, aop: 4, support: 4 } },
-  { name: "Tenkasi", state: "Tamil Nadu", lat: 8.9594, lng: 77.3147, weights: { admin: 3, doctors: 3, aop: 4, support: 4 } },
-  { name: "Tiruppur", state: "Tamil Nadu", lat: 11.1085, lng: 77.3411, weights: { admin: 3, doctors: 3, aop: 3, support: 4 } },
-  { name: "Salem", state: "Tamil Nadu", lat: 11.6643, lng: 78.1460, weights: { admin: 2, doctors: 3, aop: 3, support: 4 } },
-  { name: "Puducherry", state: "Puducherry", lat: 11.9416, lng: 79.8083, weights: { admin: 0, doctors: 0, aop: 0, support: 0 } },
+  {
+    name: "Madurai",
+    state: "Tamil Nadu",
+    lat: 9.9252,
+    lng: 78.1198,
+    counts: { admin: 195, doctors: 108, aop: 581, support: 72 },
+    traineeCounts: { admin: 30, doctors: 65, aop: 152, support: 25 },
+  },
+  {
+    name: "Tirunelveli",
+    state: "Tamil Nadu",
+    lat: 8.7139,
+    lng: 77.7567,
+    counts: { admin: 112, doctors: 62, aop: 338, support: 40 },
+    traineeCounts: { admin: 18, doctors: 37, aop: 95, support: 14 },
+  },
+  {
+    name: "Coimbatore",
+    state: "Tamil Nadu",
+    lat: 11.0168,
+    lng: 76.9558,
+    counts: { admin: 121, doctors: 66, aop: 356, support: 43 },
+    traineeCounts: { admin: 18, doctors: 42, aop: 95, support: 15 },
+  },
+  {
+    name: "Puducherry",
+    state: "Puducherry",
+    lat: 11.9416,
+    lng: 79.8083,
+    counts: { admin: 79, doctors: 43, aop: 225, support: 27 },
+    traineeCounts: { admin: 12, doctors: 28, aop: 62, support: 9 },
+  },
+  {
+    name: "Tiruppur",
+    state: "Tamil Nadu",
+    lat: 11.1085,
+    lng: 77.3411,
+    counts: { admin: 42, doctors: 23, aop: 122, support: 16 },
+    traineeCounts: { admin: 7, doctors: 15, aop: 34, support: 5 },
+  },
+  {
+    name: "Salem",
+    state: "Tamil Nadu",
+    lat: 11.6643,
+    lng: 78.146,
+    counts: { admin: 38, doctors: 21, aop: 113, support: 14 },
+    traineeCounts: { admin: 6, doctors: 14, aop: 31, support: 4 },
+  },
+  {
+    name: "Theni",
+    state: "Tamil Nadu",
+    lat: 10.0104,
+    lng: 77.4768,
+    counts: { admin: 33, doctors: 17, aop: 89, support: 12 },
+    traineeCounts: { admin: 5, doctors: 12, aop: 25, support: 4 },
+  },
+  {
+    name: "Dindigul",
+    state: "Tamil Nadu",
+    lat: 10.3673,
+    lng: 77.9803,
+    counts: { admin: 28, doctors: 15, aop: 80, support: 10 },
+    traineeCounts: { admin: 4, doctors: 10, aop: 22, support: 3 },
+  },
+  {
+    name: "Virudhunagar",
+    state: "Tamil Nadu",
+    lat: 9.5872,
+    lng: 77.9578,
+    counts: { admin: 24, doctors: 13, aop: 66, support: 8 },
+    traineeCounts: { admin: 3, doctors: 9, aop: 19, support: 3 },
+  },
+  {
+    name: "Sivaganga",
+    state: "Tamil Nadu",
+    lat: 9.8472,
+    lng: 78.6361,
+    counts: { admin: 21, doctors: 11, aop: 57, support: 7 },
+    traineeCounts: { admin: 3, doctors: 8, aop: 16, support: 2 },
+  },
+  {
+    name: "Thoothukudi",
+    state: "Tamil Nadu",
+    lat: 8.7642,
+    lng: 78.1348,
+    counts: { admin: 19, doctors: 10, aop: 52, support: 7 },
+    traineeCounts: { admin: 3, doctors: 7, aop: 15, support: 2 },
+  },
+  {
+    name: "Tenkasi",
+    state: "Tamil Nadu",
+    lat: 8.9594,
+    lng: 77.3147,
+    counts: { admin: 17, doctors: 9, aop: 43, support: 5 },
+    traineeCounts: { admin: 2, doctors: 6, aop: 12, support: 2 },
+  },
+  {
+    name: "Ramanathapuram",
+    state: "Tamil Nadu",
+    lat: 9.3639,
+    lng: 78.8395,
+    counts: { admin: 12, doctors: 6, aop: 29, support: 4 },
+    traineeCounts: { admin: 2, doctors: 4, aop: 8, support: 1 },
+  },
+  {
+    name: "Thanjavur",
+    state: "Tamil Nadu",
+    lat: 10.787,
+    lng: 79.1378,
+    counts: { admin: 10, doctors: 5, aop: 24, support: 3 },
+    traineeCounts: { admin: 1, doctors: 3, aop: 7, support: 1 },
+  },
+  {
+    name: "Tiruchirappalli",
+    state: "Tamil Nadu",
+    lat: 10.7905,
+    lng: 78.7047,
+    counts: { admin: 12, doctors: 6, aop: 29, support: 4 },
+    traineeCounts: { admin: 1, doctors: 4, aop: 8, support: 1 },
+  },
+  {
+    name: "Karur",
+    state: "Tamil Nadu",
+    lat: 10.9601,
+    lng: 78.0766,
+    counts: { admin: 6, doctors: 3, aop: 15, support: 2 },
+    traineeCounts: { admin: 1, doctors: 2, aop: 4, support: 1 },
+  },
+  {
+    name: "Erode",
+    state: "Tamil Nadu",
+    lat: 11.341,
+    lng: 77.7172,
+    counts: { admin: 8, doctors: 4, aop: 19, support: 2 },
+    traineeCounts: { admin: 1, doctors: 2, aop: 5, support: 1 },
+  },
+  {
+    name: "Namakkal",
+    state: "Tamil Nadu",
+    lat: 11.2189,
+    lng: 78.1674,
+    counts: { admin: 5, doctors: 2, aop: 12, support: 1 },
+    traineeCounts: { admin: 1, doctors: 1, aop: 3, support: 0 },
+  },
+  {
+    name: "Nilgiris",
+    state: "Tamil Nadu",
+    lat: 11.4916,
+    lng: 76.7337,
+    counts: { admin: 4, doctors: 2, aop: 10, support: 1 },
+    traineeCounts: { admin: 1, doctors: 1, aop: 2, support: 0 },
+  },
+  {
+    name: "Kanyakumari",
+    state: "Tamil Nadu",
+    lat: 8.0883,
+    lng: 77.5385,
+    counts: { admin: 8, doctors: 4, aop: 18, support: 2 },
+    traineeCounts: { admin: 1, doctors: 3, aop: 5, support: 1 },
+  },
+  {
+    name: "Cuddalore",
+    state: "Tamil Nadu",
+    lat: 11.748,
+    lng: 79.7714,
+    counts: { admin: 5, doctors: 2, aop: 11, support: 1 },
+    traineeCounts: { admin: 0, doctors: 1, aop: 3, support: 0 },
+  },
+  {
+    name: "Villupuram",
+    state: "Tamil Nadu",
+    lat: 11.9401,
+    lng: 79.4861,
+    counts: { admin: 5, doctors: 2, aop: 11, support: 1 },
+    traineeCounts: { admin: 0, doctors: 1, aop: 3, support: 0 },
+  },
+  {
+    name: "Kallakurichi",
+    state: "Tamil Nadu",
+    lat: 11.7384,
+    lng: 78.9639,
+    counts: { admin: 3, doctors: 1, aop: 7, support: 1 },
+    traineeCounts: { admin: 0, doctors: 1, aop: 2, support: 0 },
+  },
+  {
+    name: "Perambalur",
+    state: "Tamil Nadu",
+    lat: 11.2342,
+    lng: 78.882,
+    counts: { admin: 2, doctors: 1, aop: 4, support: 1 },
+    traineeCounts: { admin: 0, doctors: 1, aop: 1, support: 0 },
+  },
+  {
+    name: "Ariyalur",
+    state: "Tamil Nadu",
+    lat: 11.1401,
+    lng: 79.0786,
+    counts: { admin: 1, doctors: 1, aop: 4, support: 1 },
+    traineeCounts: { admin: 0, doctors: 1, aop: 1, support: 0 },
+  },
+  {
+    name: "Mayiladuthurai",
+    state: "Tamil Nadu",
+    lat: 11.1018,
+    lng: 79.6522,
+    counts: { admin: 2, doctors: 1, aop: 7, support: 1 },
+    traineeCounts: { admin: 0, doctors: 1, aop: 2, support: 0 },
+  },
+  {
+    name: "Nagapattinam",
+    state: "Tamil Nadu",
+    lat: 10.7656,
+    lng: 79.8424,
+    counts: { admin: 2, doctors: 1, aop: 7, support: 1 },
+    traineeCounts: { admin: 0, doctors: 0, aop: 2, support: 0 },
+  },
+  {
+    name: "Tiruvarur",
+    state: "Tamil Nadu",
+    lat: 10.7726,
+    lng: 79.6365,
+    counts: { admin: 2, doctors: 1, aop: 7, support: 1 },
+    traineeCounts: { admin: 0, doctors: 0, aop: 2, support: 0 },
+  },
+  {
+    name: "Pudukkottai",
+    state: "Tamil Nadu",
+    lat: 10.3797,
+    lng: 78.8202,
+    counts: { admin: 4, doctors: 2, aop: 11, support: 1 },
+    traineeCounts: { admin: 0, doctors: 0, aop: 3, support: 0 },
+  },
+  {
+    name: "Krishnagiri",
+    state: "Tamil Nadu",
+    lat: 12.5186,
+    lng: 78.2137,
+    counts: { admin: 2, doctors: 0, aop: 6, support: 0 },
+    traineeCounts: { admin: 0, doctors: 0, aop: 1, support: 0 },
+  },
+  {
+    name: "Dharmapuri",
+    state: "Tamil Nadu",
+    lat: 12.1211,
+    lng: 78.1582,
+    counts: { admin: 2, doctors: 0, aop: 6, support: 0 },
+    traineeCounts: { admin: 0, doctors: 0, aop: 1, support: 0 },
+  },
+  {
+    name: "Vellore",
+    state: "Tamil Nadu",
+    lat: 12.9165,
+    lng: 79.1325,
+    counts: { admin: 3, doctors: 1, aop: 9, support: 0 },
+    traineeCounts: { admin: 0, doctors: 0, aop: 2, support: 0 },
+  },
+  {
+    name: "Tirupathur",
+    state: "Tamil Nadu",
+    lat: 12.4926,
+    lng: 78.5679,
+    counts: { admin: 1, doctors: 0, aop: 4, support: 0 },
+    traineeCounts: { admin: 0, doctors: 0, aop: 0, support: 0 },
+  },
+  {
+    name: "Ranipet",
+    state: "Tamil Nadu",
+    lat: 12.9246,
+    lng: 79.3332,
+    counts: { admin: 1, doctors: 0, aop: 4, support: 0 },
+    traineeCounts: { admin: 0, doctors: 0, aop: 0, support: 0 },
+  },
+  {
+    name: "Tiruvannamalai",
+    state: "Tamil Nadu",
+    lat: 12.2253,
+    lng: 79.0747,
+    counts: { admin: 2, doctors: 0, aop: 6, support: 0 },
+    traineeCounts: { admin: 0, doctors: 0, aop: 1, support: 0 },
+  },
+  {
+    name: "Chengalpattu",
+    state: "Tamil Nadu",
+    lat: 12.6819,
+    lng: 79.9888,
+    counts: { admin: 2, doctors: 0, aop: 6, support: 0 },
+    traineeCounts: { admin: 0, doctors: 0, aop: 1, support: 0 },
+  },
+  {
+    name: "Kanchipuram",
+    state: "Tamil Nadu",
+    lat: 12.8342,
+    lng: 79.7036,
+    counts: { admin: 2, doctors: 0, aop: 6, support: 0 },
+    traineeCounts: { admin: 0, doctors: 0, aop: 1, support: 0 },
+  },
+  {
+    name: "Tiruvallur",
+    state: "Tamil Nadu",
+    lat: 13.1432,
+    lng: 79.9048,
+    counts: { admin: 1, doctors: 0, aop: 4, support: 0 },
+    traineeCounts: { admin: 0, doctors: 0, aop: 0, support: 0 },
+  },
+  {
+    name: "Chennai",
+    state: "Tamil Nadu",
+    lat: 13.0827,
+    lng: 80.2707,
+    counts: { admin: 7, doctors: 3, aop: 18, support: 1 },
+    traineeCounts: { admin: 0, doctors: 1, aop: 4, support: 1 },
+  }
 ];
 
 export interface StaffDotItem extends GeoLocationItem {
@@ -116,23 +417,12 @@ export function generateStaffDots(
 
   targetCategories.forEach((catKey) => {
     const catMeta = categories[catKey];
-    const totalTarget = catMeta.count;
 
-    // Distribute total count across districts according to weights
-    const totalWeight = TAMIL_NADU_DISTRICTS.reduce((acc, d) => acc + d.weights[catKey], 0);
-
-    let createdForCat = 0;
-    TAMIL_NADU_DISTRICTS.forEach((dist, dIdx) => {
-      const isLast = dIdx === TAMIL_NADU_DISTRICTS.length - 1;
-      const countForDist = isLast
-        ? totalTarget - createdForCat
-        : Math.round((totalTarget * dist.weights[catKey]) / totalWeight);
-
-      createdForCat += countForDist;
+    TAMIL_NADU_DISTRICTS.forEach((dist) => {
+      const countForDist = group === "employees" ? dist.counts[catKey] : dist.traineeCounts[catKey];
 
       // Generate concentric micro-spiral dot offsets around district center
       for (let i = 0; i < countForDist; i++) {
-        // Golden spiral radius/angle
         const angle = i * 2.39996; // Golden angle in radians
         const radius = 0.005 + 0.0022 * Math.sqrt(i + 1); // ~500m to 3km dispersal radius
         const deltaLng = radius * Math.cos(angle);
@@ -150,7 +440,7 @@ export function generateStaffDots(
           latitude: dist.lat + deltaLat,
           longitude: dist.lng + deltaLng,
           type: "Staff Dot",
-          careType: "community", // default map fallback
+          careType: "community",
           sourceStatus: "source-supplied",
           staffGroup: group,
           category: catKey,
