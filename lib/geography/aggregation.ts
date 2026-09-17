@@ -3,16 +3,24 @@ import { GeoLocationItem, StateAggregation, CountryAggregation } from "@/types/g
 import { DEMO_LOCATIONS } from "@/data/demo-data";
 import { INDIA_STATES_META } from "@/data/india-states";
 
+import { generateStaffDots, StaffGroup, StaffCategory } from "@/data/hospitals/staff-data";
+
 /**
  * Filter locations by Entity ID and optional Subcategory ID.
  * If entityId === 'all', returns all demo locations.
  */
 export function getFilteredLocations(
   entityId: EntityId,
-  subcategoryId?: string
+  subcategoryId?: string,
+  staffGroup: StaffGroup = "employees",
+  staffCategory: StaffCategory | "all" = "all"
 ): GeoLocationItem[] {
   if (entityId === "all") {
     return DEMO_LOCATIONS;
+  }
+
+  if (entityId === "hospitals" && subcategoryId === "staffs") {
+    return generateStaffDots(staffGroup, staffCategory);
   }
 
   return DEMO_LOCATIONS.filter((item) => {

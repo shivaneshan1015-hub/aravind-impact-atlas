@@ -6,6 +6,13 @@ import { GeoLocationItem, StateAggregation } from "@/types/geo";
 import { IMPACT_STORIES } from "@/lib/stories/definitions";
 import { VISION_CENTRES_DATA } from "@/data/hospitals/vision-centres-data";
 import {
+  EMPLOYEE_CATEGORIES,
+  TRAINEE_CATEGORIES,
+  TAMIL_NADU_DISTRICTS,
+  StaffGroup,
+  StaffCategory,
+} from "@/data/hospitals/staff-data";
+import {
   ChevronRight,
   Layers,
   CheckCircle2,
@@ -21,6 +28,8 @@ import {
   Globe2,
   Search,
   MapPin,
+  UserCheck,
+  UserPlus,
 } from "lucide-react";
 
 export interface SidebarPanelProps {
@@ -35,6 +44,10 @@ export interface SidebarPanelProps {
   onSelectSubcategory?: (subcategoryId: string) => void;
   selectedLocation?: GeoLocationItem | null;
   onSelectLocation?: (location: GeoLocationItem | null) => void;
+  staffGroup?: StaffGroup;
+  onSelectStaffGroup?: (group: StaffGroup) => void;
+  staffCategory?: StaffCategory | "all";
+  onSelectStaffCategory?: (cat: StaffCategory | "all") => void;
 }
 
 export function SidebarPanel({
@@ -49,6 +62,10 @@ export function SidebarPanel({
   onSelectSubcategory,
   selectedLocation,
   onSelectLocation,
+  staffGroup = "employees",
+  onSelectStaffGroup,
+  staffCategory = "all",
+  onSelectStaffCategory,
 }: SidebarPanelProps) {
   const story = IMPACT_STORIES[entityConfig.id] || IMPACT_STORIES.hospitals;
 
@@ -236,18 +253,8 @@ export function SidebarPanel({
                 {/* Expanded Menu for 120 Vision Centres */}
                 {activeSubId === "hospitals_vision_centres" && (
                   <div className="pt-2 space-y-2 border-t border-slate-200/80 mt-2">
-                    <div className="relative">
-                      <Search className="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-slate-400" />
-                      <input
-                        type="text"
-                        placeholder="Search 120 Vision Centres..."
-                        value={vcSearch}
-                        onChange={(e) => setVcSearch(e.target.value)}
-                        className="w-full pl-8 pr-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-teal-500 font-medium text-slate-800"
-                      />
-                    </div>
                     <div className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider flex justify-between px-1">
-                      <span>Vision Centre ({filteredVcList.length})</span>
+                      <span>Vision Centre (120)</span>
                       <span>City / State</span>
                     </div>
                     <div className="space-y-1 max-h-60 overflow-y-auto pr-1">
@@ -304,23 +311,129 @@ export function SidebarPanel({
             </button>
 
             {/* Primary Category 3: Staffs */}
-            <button
-              onClick={() => onSelectSubcategory?.("staffs")}
-              className={`w-full p-3 rounded-2xl border text-left flex items-center justify-between font-bold text-xs transition-all ${
-                activeSubId === "staffs"
-                  ? "bg-blue-900 text-white border-blue-900 shadow-md"
-                  : "bg-slate-50 hover:bg-slate-100 text-slate-800 border-slate-200"
-              }`}
-            >
-              <div className="flex items-center gap-2.5">
-                <Activity className="w-4 h-4 text-blue-500 shrink-0" />
-                <div>
-                  <div className="font-black">Staffs</div>
-                  <div className="text-[10px] font-normal opacity-80">Doctors, MLOPs & Caregivers</div>
+            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-3">
+              <button
+                onClick={() => onSelectSubcategory?.("staffs")}
+                className="w-full text-left flex items-center justify-between"
+              >
+                <div className="flex items-center gap-2">
+                  <Activity className="w-4 h-4 text-blue-600" />
+                  <span className="text-xs font-black text-slate-900 uppercase tracking-wider">Staffs Directory</span>
+                </div>
+                <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">
+                  {staffGroup === "employees" ? "3,995 Employees" : "1,145 Trainees"}
+                </span>
+              </button>
+
+              {/* Sub-Menus: Employees | Trainees */}
+              <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-200/60 rounded-xl">
+                <button
+                  onClick={() => {
+                    onSelectSubcategory?.("staffs");
+                    onSelectStaffGroup?.("employees");
+                  }}
+                  className={`py-1.5 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
+                    staffGroup === "employees"
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "text-slate-700 hover:bg-slate-300/50"
+                  }`}
+                >
+                  <UserCheck className="w-3.5 h-3.5" />
+                  <span>Employees</span>
+                </button>
+                <button
+                  onClick={() => {
+                    onSelectSubcategory?.("staffs");
+                    onSelectStaffGroup?.("trainees");
+                  }}
+                  className={`py-1.5 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
+                    staffGroup === "trainees"
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "text-slate-700 hover:bg-slate-300/50"
+                  }`}
+                >
+                  <UserPlus className="w-3.5 h-3.5" />
+                  <span>Trainees</span>
+                </button>
+              </div>
+
+              {/* 4 Category Filters: Admin, Doctors, AOP, Support Services */}
+              <div className="space-y-1.5 pt-1">
+                <div className="text-[10px] font-black uppercase text-slate-400 tracking-wider flex justify-between px-1">
+                  <span>Categories ({staffGroup})</span>
+                  <button
+                    onClick={() => onSelectStaffCategory?.("all")}
+                    className={`underline text-[10px] ${staffCategory === "all" ? "text-blue-600 font-bold" : "text-slate-400"}`}
+                  >
+                    View All
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-2 gap-1.5">
+                  {(["admin", "doctors", "aop", "support"] as StaffCategory[]).map((catKey) => {
+                    const catMeta = (staffGroup === "employees" ? EMPLOYEE_CATEGORIES : TRAINEE_CATEGORIES)[catKey];
+                    const isCatSelected = staffCategory === catKey;
+
+                    return (
+                      <button
+                        key={catKey}
+                        onClick={() => {
+                          onSelectSubcategory?.("staffs");
+                          onSelectStaffCategory?.(isCatSelected ? "all" : catKey);
+                        }}
+                        className={`p-2 rounded-xl border text-left transition-all flex flex-col justify-between ${
+                          isCatSelected
+                            ? "ring-2 ring-blue-500 bg-white shadow-xs"
+                            : "bg-white hover:bg-slate-100/80 border-slate-200"
+                        }`}
+                        style={{ borderLeftColor: catMeta.color, borderLeftWidth: "4px" }}
+                      >
+                        <div className="text-[11px] font-bold text-slate-800 truncate">{catMeta.name}</div>
+                        <div className="flex items-center justify-between mt-1">
+                          <span className="text-xs font-black text-slate-900">{catMeta.count.toLocaleString()}</span>
+                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: catMeta.color }} />
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
-              <ChevronRight className="w-4 h-4 opacity-60" />
-            </button>
+
+              {/* District Origin Breakdown Summary */}
+              <div className="pt-2 border-t border-slate-200/80 space-y-1">
+                <div className="text-[10px] font-black uppercase text-slate-400 tracking-wider flex justify-between px-1">
+                  <span>District Origins</span>
+                  <span>Staff Dots</span>
+                </div>
+                <div className="space-y-1 max-h-44 overflow-y-auto pr-1">
+                  {TAMIL_NADU_DISTRICTS.map((dist) => {
+                    const catDict = staffGroup === "employees" ? EMPLOYEE_CATEGORIES : TRAINEE_CATEGORIES;
+                    const catKey = staffCategory === "all" ? "admin" : staffCategory;
+                    const targetTotal = staffCategory === "all"
+                      ? Object.values(catDict).reduce((a, b) => a + b.count, 0)
+                      : catDict[staffCategory]?.count || 0;
+                    const totalW = TAMIL_NADU_DISTRICTS.reduce((a, b) => a + (staffCategory === "all" ? 1 : b.weights[catKey]), 0);
+                    const distCount = Math.round((targetTotal * (staffCategory === "all" ? 1 : dist.weights[catKey])) / totalW);
+
+                    return (
+                      <button
+                        key={dist.name}
+                        onClick={() => onSelectState?.(dist.state)}
+                        className="w-full p-1.5 rounded-lg bg-white border border-slate-200/70 hover:bg-blue-50 text-[11px] font-semibold text-slate-700 flex items-center justify-between transition-colors"
+                      >
+                        <div className="flex items-center gap-1.5">
+                          <MapPin className="w-3 h-3 text-slate-400" />
+                          <span>{dist.name}</span>
+                        </div>
+                        <span className="text-[10px] font-black bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded">
+                          {distCount} dots
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
@@ -494,11 +607,11 @@ export function SidebarPanel({
                 <Globe2 className="w-4 h-4 text-amber-500 shrink-0" />
                 <div>
                   <div className="font-black">International</div>
-                  <div className="text-[10px] font-normal opacity-80">Global Export Network</div>
+                  <div className="text-[10px] font-normal opacity-80">83 Dealers across the world</div>
                 </div>
               </div>
               <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded font-black">
-                83 Clients
+                83 Dealers
               </span>
             </button>
           </div>

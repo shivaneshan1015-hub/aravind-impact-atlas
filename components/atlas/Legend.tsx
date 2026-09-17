@@ -20,10 +20,29 @@ export function Legend({
   return (
     <div className="absolute bottom-6 left-6 bg-white/95 border border-slate-200 rounded-lg p-3 text-xs z-10 shadow-md backdrop-blur-sm select-none max-w-xs">
       <h4 className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-2">
-        {currentSubcat?.legendTitle || "Map Legend"}
+        {selectedSubcategoryId === "staffs" ? "Staff Categories Legend" : currentSubcat?.legendTitle || "Map Legend"}
       </h4>
 
-      {selectedState ? (
+      {selectedSubcategoryId === "staffs" ? (
+        <div className="space-y-1.5 font-medium">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#2563EB] border border-white shadow-2xs" />
+            <span className="text-slate-800">Admin</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#8B5CF6] border border-white shadow-2xs" />
+            <span className="text-slate-800">Doctors</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] border border-white shadow-2xs" />
+            <span className="text-slate-800">AOP</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B] border border-white shadow-2xs" />
+            <span className="text-slate-800">Support Services</span>
+          </div>
+        </div>
+      ) : selectedState ? (
         <div className="space-y-1.5">
           <div className="flex items-center gap-2">
             <span

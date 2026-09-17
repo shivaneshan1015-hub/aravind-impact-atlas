@@ -529,6 +529,11 @@ export function MapEngine({
           markerBg = "#60A5FA"; // Light Blue
           markerBorder = "2px solid #FFFFFF";
           outerShadow = "0 1px 4px rgba(0,0,0,0.18)";
+        } else if (loc.careType === "vision_centre") {
+          markerSize = isSelected ? "12px" : "7px";
+          markerBg = "#0D9488"; // Teal
+          markerBorder = "1.5px solid #FFFFFF";
+          outerShadow = "0 0 4px rgba(13,148,136,0.6)";
         }
 
         const labelText = loc.rawName || loc.city || loc.name;
@@ -538,7 +543,8 @@ export function MapEngine({
           ? (labelText.startsWith("AEH-") ? labelText : `AEH-${labelText}`)
           : labelText;
 
-        const showLabel = !isOneSystem && !hidePinLabels && entityConfig.id !== "all";
+        const isVisionCentre = loc.careType === "vision_centre" || loc.subcategoryId === "hospitals_vision_centres";
+        const showLabel = !isOneSystem && !hidePinLabels && entityConfig.id !== "all" && !isVisionCentre;
 
         el.innerHTML = `
           <div class="relative flex flex-col items-center justify-center pointer-events-auto">

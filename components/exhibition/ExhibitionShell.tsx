@@ -11,6 +11,7 @@ import {
 } from "@/lib/geography/aggregation";
 import { filterAuroitechByProduct } from "@/lib/data/adapters";
 import { GeoLocationItem } from "@/types/geo";
+import { StaffGroup, StaffCategory } from "@/data/hospitals/staff-data";
 
 import { ExhibitionHeader } from "./ExhibitionHeader";
 import { ArrivalScene } from "./ArrivalScene";
@@ -71,6 +72,8 @@ export function ExhibitionShell() {
   } = useScene();
 
   const [careTypeFilter, setCareTypeFilter] = React.useState<"all" | "tertiary" | "secondary" | "community" | "vision_centre">("all");
+  const [staffGroup, setStaffGroup] = React.useState<StaffGroup>("employees");
+  const [staffCategory, setStaffCategory] = React.useState<StaffCategory | "all">("all");
 
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isInfoOpen, setIsInfoOpen] = React.useState(false);
@@ -134,8 +137,8 @@ export function ExhibitionShell() {
 
   // Raw Filtered Locations
   const rawLocations = useMemo(() => {
-    return getFilteredLocations(selectedEntityId, selectedSubcategoryId);
-  }, [selectedEntityId, selectedSubcategoryId]);
+    return getFilteredLocations(selectedEntityId, selectedSubcategoryId, staffGroup, staffCategory);
+  }, [selectedEntityId, selectedSubcategoryId, staffGroup, staffCategory]);
 
   // Apply Auroitech Product Filter if active
   const filteredLocations = useMemo(() => {
@@ -183,6 +186,10 @@ export function ExhibitionShell() {
             onSelectSubcategory={selectSubcategory}
             selectedLocation={selectedLocation}
             onSelectLocation={handleSelectLocationWithInterruption}
+            staffGroup={staffGroup}
+            onSelectStaffGroup={setStaffGroup}
+            staffCategory={staffCategory}
+            onSelectStaffCategory={setStaffCategory}
           />
         )}
 
