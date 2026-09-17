@@ -432,13 +432,13 @@ export function SidebarPanel({
                 </span>
               </div>
 
-              {/* Status Switcher: Completed (46) vs Ongoing / Registered (8) */}
+              {/* Status Switcher: Completed (46) vs Ongoing (8) */}
               <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-200/60 rounded-xl">
                 <button
                   onClick={() => {
                     onSelectSubcategory?.("phd_completed");
                   }}
-                  className={`py-1.5 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
+                  className={`py-2 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1.5 transition-all ${
                     activeSubId === "doctorate" || activeSubId === "phd_completed"
                       ? "bg-cyan-600 text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
@@ -451,7 +451,7 @@ export function SidebarPanel({
                   onClick={() => {
                     onSelectSubcategory?.("ongoing_phd");
                   }}
-                  className={`py-1.5 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
+                  className={`py-2 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1.5 transition-all ${
                     activeSubId === "ongoing_phd"
                       ? "bg-pink-600 text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
@@ -461,81 +461,6 @@ export function SidebarPanel({
                   <span>Ongoing (8)</span>
                 </button>
               </div>
-
-              {/* Research Metrics & Focus Summary (No state name lists) */}
-              {activeSubId === "ongoing_phd" ? (
-                <div className="space-y-2.5 pt-1 text-xs">
-                  <div className="p-3 bg-pink-50/80 border border-pink-200/90 rounded-xl space-y-1.5">
-                    <div className="flex items-center justify-between text-pink-900 font-black">
-                      <span>Active Scholars</span>
-                      <span className="px-2 py-0.5 bg-pink-600 text-white rounded-md text-[10px]">8 Candidates</span>
-                    </div>
-                    <p className="text-[11px] text-pink-800 font-medium leading-relaxed">
-                      Currently pursuing Ph.D. research across advanced ocular science laboratories.
-                    </p>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest block px-1">
-                      Active Research Frontiers
-                    </span>
-                    <div className="space-y-1 text-[11px] font-bold text-slate-700">
-                      <div className="p-2 bg-white border border-slate-200 rounded-lg flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0" />
-                        <span className="truncate">Fungal Keratitis Molecular Diagnostics</span>
-                      </div>
-                      <div className="p-2 bg-white border border-slate-200 rounded-lg flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0" />
-                        <span className="truncate">Ocular Surface Regenerative Medicine</span>
-                      </div>
-                      <div className="p-2 bg-white border border-slate-200 rounded-lg flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0" />
-                        <span className="truncate">Diabetic Retinopathy Biomarker Profiling</span>
-                      </div>
-                      <div className="p-2 bg-white border border-slate-200 rounded-lg flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-pink-500 shrink-0" />
-                        <span className="truncate">Translational Stem Cell Therapeutics</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-2.5 pt-1 text-xs">
-                  <div className="p-3 bg-cyan-50/80 border border-cyan-200/90 rounded-xl space-y-1.5">
-                    <div className="flex items-center justify-between text-cyan-900 font-black">
-                      <span>Doctoral Alumni</span>
-                      <span className="px-2 py-0.5 bg-cyan-600 text-white rounded-md text-[10px]">46 Graduates</span>
-                    </div>
-                    <p className="text-[11px] text-cyan-800 font-medium leading-relaxed">
-                      Awarded Ph.D. degrees in Ocular Microbiology, Stem Cell Biology, Proteomics & Molecular Genetics.
-                    </p>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest block px-1">
-                      Core Specializations
-                    </span>
-                    <div className="space-y-1 text-[11px] font-bold text-slate-700">
-                      <div className="p-2 bg-white border border-slate-200 rounded-lg flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shrink-0" />
-                        <span className="truncate">Molecular Genetics & Proteomics</span>
-                      </div>
-                      <div className="p-2 bg-white border border-slate-200 rounded-lg flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shrink-0" />
-                        <span className="truncate">Limbal Stem Cell Deficiency Therapy</span>
-                      </div>
-                      <div className="p-2 bg-white border border-slate-200 rounded-lg flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shrink-0" />
-                        <span className="truncate">Ocular Microbiology & Diagnostics</span>
-                      </div>
-                      <div className="p-2 bg-white border border-slate-200 rounded-lg flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shrink-0" />
-                        <span className="truncate">Glaucoma Biomarkers & Genomics</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* Primary Category 2: Collaboratives */}

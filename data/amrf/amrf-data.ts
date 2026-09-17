@@ -5,27 +5,6 @@ export interface AMRFPhdStateItem extends GeoLocationItem {
 }
 
 export const AMRF_DATA: GeoLocationItem[] = [
-  // Headquarters
-  {
-    id: "amrf_hq",
-    name: "Aravind Medical Research Foundation Center",
-    entityId: "amrf",
-    subcategoryId: "doctorate",
-    country: "India",
-    state: "Tamil Nadu",
-    city: "Madurai",
-    latitude: 9.9252,
-    longitude: 78.1198,
-    metrics: {
-      phdCount: 46,
-      ongoingScholars: 8,
-      publications: 650,
-      activeScholars: 8,
-    },
-    address: "1, Anna Nagar, Madurai, Tamil Nadu 625020",
-    establishedYear: 1985,
-  },
-
   // Individual Ph.D. Scholars (46 Completed + 8 Ongoing)
   {
       "id": "amrf_scholar_comp_1",

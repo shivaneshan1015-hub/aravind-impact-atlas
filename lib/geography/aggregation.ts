@@ -59,17 +59,20 @@ export function getFilteredLocations(
 
     // Special handling for AMRF
     if (entityId === "amrf") {
-      if (!subcategoryId || subcategoryId === "doctorate" || subcategoryId === "phd_completed") {
-        return item.subcategoryId === "doctorate" || item.subcategoryId === "phd_completed" || item.id === "amrf_hq";
+      if (!subcategoryId || subcategoryId === "doctorate") {
+        return item.subcategoryId === "phd_completed" || item.subcategoryId === "ongoing_phd";
+      }
+      if (subcategoryId === "phd_completed") {
+        return item.subcategoryId === "phd_completed";
       }
       if (subcategoryId === "ongoing_phd") {
-        return item.subcategoryId === "ongoing_phd" || item.id === "amrf_hq";
+        return item.subcategoryId === "ongoing_phd";
       }
       if (subcategoryId === "collaboratives") {
-        return item.subcategoryId === "collaboratives" || item.id === "amrf_hq";
+        return item.subcategoryId === "collaboratives";
       }
       if (subcategoryId === "students_abroad") {
-        return item.subcategoryId === "students_abroad" || item.id === "amrf_hq";
+        return item.subcategoryId === "students_abroad";
       }
       return true;
     }
