@@ -1,14 +1,12 @@
 "use client";
 
 import React from "react";
-import { EntityConfig, EntityId } from "@/types/entity";
+import { EntityConfig } from "@/types/entity";
 import { GeoLocationItem, StateAggregation } from "@/types/geo";
 import { IMPACT_STORIES } from "@/lib/stories/definitions";
-import { VISION_CENTRES_DATA } from "@/data/hospitals/vision-centres-data";
 import {
   EMPLOYEE_CATEGORIES,
   TRAINEE_CATEGORIES,
-  TAMIL_NADU_DISTRICTS,
   StaffGroup,
   StaffCategory,
 } from "@/data/hospitals/staff-data";
@@ -26,8 +24,6 @@ import {
   Users,
   Award,
   Globe2,
-  Search,
-  MapPin,
   UserCheck,
   UserPlus,
 } from "lucide-react";
@@ -71,20 +67,6 @@ export function SidebarPanel({
 
   // Active subcategory ID with fallback
   const activeSubId = selectedSubcategoryId || entityConfig.subcategories[0]?.id || "";
-
-  // Vision Centre search state & filtering logic
-  const [vcSearch, setVcSearch] = React.useState<string>("");
-  const filteredVcList = React.useMemo(() => {
-    if (!vcSearch.trim()) return VISION_CENTRES_DATA;
-    const q = vcSearch.toLowerCase();
-    return VISION_CENTRES_DATA.filter(
-      (vc) =>
-        vc.name.toLowerCase().includes(q) ||
-        (vc.rawName && vc.rawName.toLowerCase().includes(q)) ||
-        vc.city.toLowerCase().includes(q) ||
-        vc.state.toLowerCase().includes(q)
-    );
-  }, [vcSearch]);
 
   // Course list for LAICO Training Programmes
   const laicoCourses = [
@@ -249,45 +231,6 @@ export function SidebarPanel({
                     120 Centres
                   </span>
                 </button>
-
-                {/* Expanded Menu for 120 Vision Centres */}
-                {activeSubId === "hospitals_vision_centres" && (
-                  <div className="pt-2 space-y-2 border-t border-slate-200/80 mt-2">
-                    <div className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider flex justify-between px-1">
-                      <span>Vision Centre (120)</span>
-                      <span>City / State</span>
-                    </div>
-                    <div className="space-y-1 max-h-60 overflow-y-auto pr-1">
-                      {filteredVcList.map((vc, idx) => {
-                        const isSelected = selectedLocation?.id === vc.id;
-                        return (
-                          <button
-                            key={vc.id}
-                            onClick={() => {
-                              onSelectLocation?.(vc);
-                              if (vc.state) onSelectState(vc.state);
-                            }}
-                            className={`w-full text-left p-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-all border ${
-                              isSelected
-                                ? "bg-teal-700 text-white border-teal-700 shadow-xs"
-                                : "bg-white hover:bg-teal-50 hover:text-teal-900 text-slate-700 border-slate-200/70"
-                            }`}
-                          >
-                            <div className="flex items-center gap-1.5 truncate mr-2">
-                              <span className="text-[10px] font-black opacity-50 w-5 shrink-0">{idx + 1}.</span>
-                              <span className="truncate font-bold">{vc.rawName || vc.name}</span>
-                            </div>
-                            <span className={`text-[10px] font-normal shrink-0 px-1.5 py-0.5 rounded ${
-                              isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-500"
-                            }`}>
-                              {vc.city}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
 
@@ -404,40 +347,6 @@ export function SidebarPanel({
                           <span className="text-xs font-black text-slate-900">{catMeta.count.toLocaleString()}</span>
                           <span className="w-2 h-2 rounded-full" style={{ backgroundColor: catMeta.color }} />
                         </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* District Origin Breakdown Summary */}
-              <div className="pt-2 border-t border-slate-200/80 space-y-1">
-                <div className="text-[10px] font-black uppercase text-slate-400 tracking-wider flex justify-between px-1">
-                  <span>District Origins</span>
-                  <span>Staff Dots</span>
-                </div>
-                <div className="space-y-1 max-h-44 overflow-y-auto pr-1">
-                  {TAMIL_NADU_DISTRICTS.map((dist) => {
-                    const countsObj = staffGroup === "employees" ? dist.counts : dist.traineeCounts;
-                    const distCount = staffCategory === "all"
-                      ? (countsObj.admin + countsObj.doctors + (countsObj.post_graduates || 0) + countsObj.aop + countsObj.support)
-                      : (countsObj[staffCategory] || 0);
-
-                    if (distCount <= 0) return null;
-
-                    return (
-                      <button
-                        key={dist.name}
-                        onClick={() => onSelectState?.(dist.state)}
-                        className="w-full p-1.5 rounded-lg bg-white border border-slate-200/70 hover:bg-blue-50 text-[11px] font-semibold text-slate-700 flex items-center justify-between transition-colors"
-                      >
-                        <div className="flex items-center gap-1.5">
-                          <MapPin className="w-3 h-3 text-slate-400" />
-                          <span>{dist.name}</span>
-                        </div>
-                        <span className="text-[10px] font-black bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded">
-                          {distCount.toLocaleString()} {distCount === 1 ? "staff" : "staffs"}
-                        </span>
                       </button>
                     );
                   })}
