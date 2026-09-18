@@ -67,12 +67,16 @@ export function MapEngine({
 
     if (activeVariety === "teal_coastal") {
       if (map.getLayer("basemap-light")) map.setLayoutProperty("basemap-light", "visibility", "visible");
+      if (map.getLayer("basemap-labels-overlay")) map.setLayoutProperty("basemap-labels-overlay", "visibility", "visible");
     } else if (activeVariety === "warm_ivory") {
       if (map.getLayer("basemap-ocean")) map.setLayoutProperty("basemap-ocean", "visibility", "visible");
+      if (map.getLayer("basemap-labels-overlay")) map.setLayoutProperty("basemap-labels-overlay", "visibility", "visible");
     } else if (activeVariety === "voyager_topo") {
       if (map.getLayer("basemap-topo")) map.setLayoutProperty("basemap-topo", "visibility", "visible");
+      if (map.getLayer("basemap-labels-overlay")) map.setLayoutProperty("basemap-labels-overlay", "visibility", "visible");
     } else if (activeVariety === "glassmorphic") {
       if (map.getLayer("basemap-dark")) map.setLayoutProperty("basemap-dark", "visibility", "visible");
+      if (map.getLayer("basemap-labels-overlay")) map.setLayoutProperty("basemap-labels-overlay", "visibility", "none");
     }
 
     if (map.getLayer("india-states-labels")) {
@@ -128,7 +132,19 @@ export function MapEngine({
         },
       });
 
-      // Layer 2: Prominent State Names Symbol Layer (State Names Alone visible on all maps)
+      // Layer 1b: Crisp State Boundary Outline Layer (Electric Teal stroke)
+      map.addLayer({
+        id: "india-states-outline",
+        type: "line",
+        source: "india-states-source",
+        paint: {
+          "line-color": "#0D9488",
+          "line-width": 1.8,
+          "line-opacity": 0.85,
+        },
+      });
+
+      // Layer 2: Prominent State Names Symbol Layer (State Names visible on all maps)
       map.addLayer({
         id: "india-states-labels",
         type: "symbol",
@@ -140,17 +156,17 @@ export function MapEngine({
             ["linear"],
             ["zoom"],
             3, 11,
-            6, 15,
-            9, 19
+            6, 14,
+            9, 18
           ],
           "text-transform": "uppercase",
-          "text-allow-overlap": true,
+          "text-allow-overlap": false,
           "text-ignore-placement": false,
         },
         paint: {
           "text-color": "#0F172A",
           "text-halo-color": "#FFFFFF",
-          "text-halo-width": 2,
+          "text-halo-width": 2.5,
           "text-halo-blur": 1,
         },
       });
