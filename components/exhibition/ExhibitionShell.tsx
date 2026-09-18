@@ -73,6 +73,7 @@ export function ExhibitionShell() {
   const [staffGroup, setStaffGroup] = React.useState<StaffGroup>("employees");
   const [staffCategory, setStaffCategory] = React.useState<StaffCategory | "all">("all");
   const [patientFilter, setPatientFilter] = React.useState<"pay" | "free" | "camp" | "all">("all");
+  const [laicoCountryFilter, setLaicoCountryFilter] = React.useState<string>("all");
 
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isInfoOpen, setIsInfoOpen] = React.useState(false);
@@ -139,13 +140,19 @@ export function ExhibitionShell() {
     return getFilteredLocations(selectedEntityId, selectedSubcategoryId, staffGroup, staffCategory, patientFilter);
   }, [selectedEntityId, selectedSubcategoryId, staffGroup, staffCategory, patientFilter]);
 
-  // Apply Auroitech Product Filter if active
+  // Apply Auroitech Product Filter and LAICO Country Filter if active
   const filteredLocations = useMemo(() => {
+    let locs = rawLocations;
     if (selectedEntityId === "auroitech" && productFilterId) {
-      return filterAuroitechByProduct(rawLocations, productFilterId);
+      locs = filterAuroitechByProduct(locs, productFilterId);
     }
-    return rawLocations;
-  }, [selectedEntityId, rawLocations, productFilterId]);
+    if (selectedEntityId === "laico" && laicoCountryFilter && laicoCountryFilter !== "all") {
+      locs = locs.filter(
+        (l) => l.country && l.country.toLowerCase() === laicoCountryFilter.toLowerCase()
+      );
+    }
+    return locs;
+  }, [selectedEntityId, rawLocations, productFilterId, laicoCountryFilter]);
 
   // Dynamic State Aggregations derived from records
   const stateAggregations = useMemo(() => {
@@ -189,6 +196,8 @@ export function ExhibitionShell() {
             onSelectPatientFilter={setPatientFilter}
             visionCentreHubFilter={visionCentreHubFilter}
             onSelectVisionCentreHubFilter={setVisionCentreHubFilter}
+            laicoCountryFilter={laicoCountryFilter}
+            onSelectLaicoCountryFilter={setLaicoCountryFilter}
           />
         )}
 

@@ -38,6 +38,7 @@ import {
   VISION_CENTRE_HOSPITALS,
   VisionCentreHospitalCategory,
 } from "@/data/hospitals/vision-centres-data";
+import { LAICO_DATA } from "@/data/laico/laico-data";
 
 export interface SidebarPanelProps {
   entityConfig: EntityConfig;
@@ -59,6 +60,8 @@ export interface SidebarPanelProps {
   onSelectPatientFilter?: (filter: "pay" | "free" | "camp" | "all") => void;
   visionCentreHubFilter?: VisionCentreHospitalCategory;
   onSelectVisionCentreHubFilter?: (hub: VisionCentreHospitalCategory) => void;
+  laicoCountryFilter?: string;
+  onSelectLaicoCountryFilter?: (country: string) => void;
 }
 
 export function SidebarPanel({
@@ -81,6 +84,8 @@ export function SidebarPanel({
   onSelectPatientFilter,
   visionCentreHubFilter = "all",
   onSelectVisionCentreHubFilter,
+  laicoCountryFilter = "all",
+  onSelectLaicoCountryFilter,
 }: SidebarPanelProps) {
   const story = IMPACT_STORIES[entityConfig.id] || IMPACT_STORIES.hospitals;
 
@@ -99,6 +104,35 @@ export function SidebarPanel({
   ];
 
   const [activeCourse, setActiveCourse] = React.useState<string>("Ophthalmic Nursing");
+  const [countrySearchQuery, setCountrySearchQuery] = React.useState<string>("");
+
+  const laicoCountryStats = React.useMemo(() => {
+    const cbItems = LAICO_DATA.filter((item) => item.subcategoryId === "capacity_building");
+    const statsMap: Record<string, { country: string; districts: number; hospitals: number }> = {};
+    
+    let grandTotalHospitals = 0;
+    let grandTotalDistricts = cbItems.length;
+
+    cbItems.forEach((item) => {
+      const country = item.country || "India";
+      const hospCount = (item.metadata?.partnerCount as number) || (item.metrics?.hospitalCount as number) || 1;
+      if (!statsMap[country]) {
+        statsMap[country] = { country, districts: 0, hospitals: 0 };
+      }
+      statsMap[country].districts += 1;
+      statsMap[country].hospitals += hospCount;
+      grandTotalHospitals += hospCount;
+    });
+
+    const sortedList = Object.values(statsMap).sort((a, b) => b.hospitals - a.hospitals);
+    return { sortedList, grandTotalHospitals, grandTotalDistricts };
+  }, []);
+
+  const filteredCountries = React.useMemo(() => {
+    if (!countrySearchQuery.trim()) return laicoCountryStats.sortedList;
+    const q = countrySearchQuery.toLowerCase().trim();
+    return laicoCountryStats.sortedList.filter((c) => c.country.toLowerCase().includes(q));
+  }, [laicoCountryStats.sortedList, countrySearchQuery]);
 
   return (
     <aside className="w-80 h-full bg-white border-r border-slate-200/90 flex flex-col z-20 text-slate-900 select-none overflow-y-auto shrink-0 p-5 space-y-5 shadow-sm font-sans">
@@ -508,6 +542,82 @@ export function SidebarPanel({
                 400 Hospitals
               </span>
             </button>
+
+            {/* Country Wise Filter Panel for Capacity Building */}
+            {(activeSubId === "capacity_building" || activeSubId === "laico_participants" || activeSubId === "overview") && (
+              <div className="bg-emerald-950/5 border border-emerald-800/20 rounded-2xl p-3 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-black text-emerald-950 uppercase tracking-wider flex items-center gap-1.5">
+                    <Globe2 className="w-3.5 h-3.5 text-emerald-700" />
+                    <span>Country Wise Filter</span>
+                  </span>
+                  <span className="text-[10px] font-extrabold text-emerald-900 bg-emerald-100 px-2 py-0.5 rounded-full">
+                    {laicoCountryStats.sortedList.length} Countries
+                  </span>
+                </div>
+
+                {/* Country Search Box */}
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Search country..."
+                    value={countrySearchQuery}
+                    onChange={(e) => setCountrySearchQuery(e.target.value)}
+                    className="w-full text-xs font-semibold px-2.5 py-1.5 rounded-xl border border-slate-300 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-600/50"
+                  />
+                </div>
+
+                {/* Country List & Counts */}
+                <div className="space-y-1 max-h-56 overflow-y-auto pr-1">
+                  {/* ALL Countries Option */}
+                  <button
+                    onClick={() => onSelectLaicoCountryFilter?.("all")}
+                    className={`w-full px-2.5 py-1.5 rounded-xl border text-left text-[11px] font-extrabold transition-all flex items-center justify-between ${
+                      laicoCountryFilter === "all"
+                        ? "bg-[#064E3B] text-white border-[#064E3B] shadow-xs"
+                        : "bg-white hover:bg-slate-100 text-slate-700 border-slate-200"
+                    }`}
+                  >
+                    <span className="flex items-center gap-1.5">
+                      <span>ALL Countries</span>
+                    </span>
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded font-black ${
+                      laicoCountryFilter === "all" ? "bg-white/20 text-white" : "bg-emerald-100 text-emerald-900"
+                    }`}>
+                      {laicoCountryStats.grandTotalHospitals} Hosps
+                    </span>
+                  </button>
+
+                  {/* List of Filtered Countries */}
+                  {filteredCountries.map((c) => {
+                    const isSelected = laicoCountryFilter.toLowerCase() === c.country.toLowerCase();
+                    return (
+                      <button
+                        key={c.country}
+                        onClick={() => onSelectLaicoCountryFilter?.(isSelected ? "all" : c.country.toLowerCase())}
+                        className={`w-full px-2.5 py-1.5 rounded-xl border text-left text-[11px] font-bold transition-all flex items-center justify-between ${
+                          isSelected
+                            ? "bg-[#064E3B] text-white border-[#064E3B] shadow-xs ring-1 ring-emerald-900"
+                            : "bg-white hover:bg-slate-100 text-slate-700 border-slate-200"
+                        }`}
+                      >
+                        <span className="truncate pr-1">{c.country}</span>
+                        <div className="flex items-center gap-1 shrink-0">
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded font-black ${
+                            isSelected ? "bg-white/20 text-white" : "bg-emerald-100 text-emerald-900"
+                          }`}>
+                            {c.hospitals} {c.hospitals === 1 ? 'Hosp' : 'Hosps'}
+                          </span>
+                          <span className="text-[9px] text-slate-400 font-semibold">
+                            ({c.districts} {c.districts === 1 ? 'Dist' : 'Dists'})
+                          </span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             {/* Primary Category 2: Training Programmes */}
             <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2">
