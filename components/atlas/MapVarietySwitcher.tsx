@@ -26,7 +26,7 @@ export function MapVarietySwitcher({
         title="Switch Map Variety & Theme Style"
       >
         <div
-          className="w-3.5 h-3.5 rounded-full border border-white shadow-xs shrink-0 animate-pulse"
+          className="w-3.5 h-3.5 rounded-full border border-white shadow-xs shrink-0"
           style={{ backgroundColor: currentOption.borderColor }}
         />
         <div className="flex flex-col items-start leading-tight">
