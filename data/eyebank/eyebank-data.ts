@@ -9,6 +9,73 @@ export interface CollectionVector {
   toCoords: [number, number]; // [lng, lat]
 }
 
+export interface EyeBankCategoryConfig {
+  id: string;
+  name: string;
+  fullName: string;
+  color: string;
+  districts: string[];
+}
+
+export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
+  {
+    id: "madurai",
+    name: "Madurai",
+    fullName: "RAIEB , Madurai",
+    color: "#991B1B", // Dark Crimson Red
+    districts: [
+      "Madurai", "Dindigul", "Theni", "Virudhunagar", "Virdhunagar", "Sivagangai",
+      "Pudukkottai", "Ramanathapuram", "Ariyalur", "Karur", "Thanjavur",
+      "Nagapattinam", "Thiruvarur", "Trichy", "Mayaladudurai", "Mayiladuthurai", "Mayaldudurai"
+    ],
+  },
+  {
+    id: "coimbatore",
+    name: "Coimbatore",
+    fullName: "AIOB, Coimbatore",
+    color: "#065F46", // Dark Emerald Green
+    districts: ["Coimbatore", "Tirupur", "Erode", "Dindigul"],
+  },
+  {
+    id: "tirunelveli",
+    name: "Tirunelveli",
+    fullName: "RAEB ,Tirunelveli",
+    color: "#115E59", // Dark Teal
+    districts: ["Tirunelveli", "Tuticorin", "Kaniyakumari", "Tenkasi", "Virudhunagar", "Virdhunagar"],
+  },
+  {
+    id: "chennai",
+    name: "Chennai",
+    fullName: "AEB Chennai",
+    color: "#1E3A8A", // Dark Royal Blue
+    districts: ["Vellore"],
+  },
+  {
+    id: "pondicherry",
+    name: "Pondicherry",
+    fullName: "AEBAP,Pondicherry",
+    color: "#581C87", // Dark Purple
+    districts: [
+      "Cuddalore", "Vilupuram", "Viluppuram", "Puducherry", "Pondicherry",
+      "Mayaldudurai", "Mayaladudurai", "Mayiladuthurai", "Thiruvanamalai", "Thiruvannamalai", "Kallakuruchi", "Kallakurichi"
+    ],
+  },
+  {
+    id: "salem",
+    name: "Salem",
+    fullName: "AEH, Salem",
+    color: "#78350F", // Dark Burnt Chocolate
+    districts: ["Salem", "Namakkal", "Dharmapuri", "Krishanagiri", "Krishnagiri"],
+  },
+  {
+    id: "tirupathi",
+    name: "Tirupathi",
+    fullName: "Tirupathi", // "Just use Tirupathi do not use AEH Tirupathi - FOLLOW for all others"
+    color: "#0F172A", // Dark Slate Charcoal
+    districts: ["Thirupathi", "Tirupathi", "Chittoor"],
+  },
+];
+
 // Main Eye Bank Centres (Exact names from table)
 export const MAIN_EYE_BANK_HUBS = [
   {
@@ -20,6 +87,8 @@ export const MAIN_EYE_BANK_HUBS = [
     longitude: 78.1198,
     metrics: { collectionCentres: 14, corneasCollectedAnnual: 3400, transplantsAnnual: 2100 },
     establishedYear: 1998,
+    categoryId: "madurai",
+    color: "#991B1B",
   },
   {
     id: "eb_hub_coimbatore",
@@ -30,6 +99,8 @@ export const MAIN_EYE_BANK_HUBS = [
     longitude: 76.9558,
     metrics: { collectionCentres: 4, corneasCollectedAnnual: 2200, transplantsAnnual: 1450 },
     establishedYear: 2005,
+    categoryId: "coimbatore",
+    color: "#065F46",
   },
   {
     id: "eb_hub_tirunelveli",
@@ -40,6 +111,8 @@ export const MAIN_EYE_BANK_HUBS = [
     longitude: 77.7567,
     metrics: { collectionCentres: 5, corneasCollectedAnnual: 1600, transplantsAnnual: 980 },
     establishedYear: 2008,
+    categoryId: "tirunelveli",
+    color: "#115E59",
   },
   {
     id: "eb_hub_chennai",
@@ -50,6 +123,8 @@ export const MAIN_EYE_BANK_HUBS = [
     longitude: 80.2707,
     metrics: { collectionCentres: 1, corneasCollectedAnnual: 850, transplantsAnnual: 520 },
     establishedYear: 2012,
+    categoryId: "chennai",
+    color: "#1E3A8A",
   },
   {
     id: "eb_hub_pondicherry",
@@ -60,6 +135,8 @@ export const MAIN_EYE_BANK_HUBS = [
     longitude: 79.8083,
     metrics: { collectionCentres: 6, corneasCollectedAnnual: 1950, transplantsAnnual: 1250 },
     establishedYear: 2006,
+    categoryId: "pondicherry",
+    color: "#581C87",
   },
   {
     id: "eb_hub_salem",
@@ -70,16 +147,20 @@ export const MAIN_EYE_BANK_HUBS = [
     longitude: 78.1460,
     metrics: { collectionCentres: 4, corneasCollectedAnnual: 1100, transplantsAnnual: 720 },
     establishedYear: 2015,
+    categoryId: "salem",
+    color: "#78350F",
   },
   {
     id: "eb_hub_tirupathi",
-    centerName: "AEH ,Tirupathi",
+    centerName: "Tirupathi",
     city: "Thirupathi",
     state: "Andhra Pradesh",
     latitude: 13.6288,
     longitude: 79.4192,
     metrics: { collectionCentres: 2, corneasCollectedAnnual: 650, transplantsAnnual: 410 },
     establishedYear: 2018,
+    categoryId: "tirupathi",
+    color: "#0F172A",
   },
 ];
 
@@ -169,137 +250,85 @@ const MAIN_HUB_ITEMS: GeoLocationItem[] = MAIN_EYE_BANK_HUBS.map((hub) => ({
   metadata: {
     isMainHub: true,
     centerName: hub.centerName,
+    categoryId: hub.categoryId,
+    color: hub.color,
   },
 }));
 
-// 2. Collection Node Items
-const COLLECTION_CENTRE_ITEMS: GeoLocationItem[] = [
-  ...["Madurai", "Dindigul", "Theni", "Virdhunagar", "Sivagangai", "Pudukkottai", "Ramanathapuram", "Ariyalur", "Karur", "Thanjavur", "Nagapattinam", "Thiruvarur", "Trichy", "Mayaladudurai"].map((district) => {
-    const coords = DISTRICT_COORDINATES[district] || { lat: 9.9252, lng: 78.1198, state: "Tamil Nadu" };
-    return {
-      id: `eb_coll_mdu_${district.toLowerCase()}`,
-      name: `${district} Collection Centre`,
-      rawName: `${district}`,
-      entityId: "eyebank" as const,
-      subcategoryId: "collection_network",
-      country: "India",
-      state: coords.state,
-      city: district,
-      latitude: coords.lat,
-      longitude: coords.lng,
-      metrics: { attachedHub: "RAIEB , Madurai", status: "Active Network" },
-      metadata: { isMainHub: false, attachedMainCenter: "RAIEB , Madurai", district },
-    };
-  }),
+// Helper to normalize district names for deduplication
+function getNormalizedDistrictKey(district: string): string {
+  const d = district.toLowerCase().trim();
+  if (d === "virdhunagar" || d === "virudhunagar") return "virudhunagar";
+  if (d === "mayaladudurai" || d === "mayiladuthurai" || d === "mayaldudurai") return "mayiladuthurai";
+  if (d === "vilupuram" || d === "viluppuram") return "viluppuram";
+  if (d === "puducherry" || d === "pondicherry") return "puducherry";
+  if (d === "thiruvanamalai" || d === "thiruvannamalai") return "thiruvannamalai";
+  if (d === "kallakuruchi" || d === "kallakurichi") return "kallakurichi";
+  if (d === "krishanagiri" || d === "krishnagiri") return "krishnagiri";
+  if (d === "thirupathi" || d === "tirupathi") return "tirupathi";
+  return d;
+}
 
-  ...["Coimbatore", "Tirupur", "Erode", "Dindigul"].map((district) => {
-    const coords = DISTRICT_COORDINATES[district] || { lat: 11.0168, lng: 76.9558, state: "Tamil Nadu" };
-    return {
-      id: `eb_coll_cbe_${district.toLowerCase()}`,
-      name: `${district} Collection Centre`,
-      rawName: `${district}`,
-      entityId: "eyebank" as const,
-      subcategoryId: "collection_network",
-      country: "India",
-      state: coords.state,
-      city: district,
-      latitude: coords.lat,
-      longitude: coords.lng,
-      metrics: { attachedHub: "AIOB, Coimbatore", status: "Active Network" },
-      metadata: { isMainHub: false, attachedMainCenter: "AIOB, Coimbatore", district },
-    };
-  }),
+// 2. Collection Node Items derived from EYE_BANK_CATEGORIES with Shared Dual-Color support
+const collectionDistrictMap: Record<string, { district: string; categories: EyeBankCategoryConfig[] }> = {};
 
-  ...["Tirunelveli", "Tuticorin", "Kaniyakumari", "Tenkasi", "Virudhunagar"].map((district) => {
-    const coords = DISTRICT_COORDINATES[district] || { lat: 8.7139, lng: 77.7567, state: "Tamil Nadu" };
-    return {
-      id: `eb_coll_tvl_${district.toLowerCase()}`,
-      name: `${district} Collection Centre`,
-      rawName: `${district}`,
-      entityId: "eyebank" as const,
-      subcategoryId: "collection_network",
-      country: "India",
-      state: coords.state,
-      city: district,
-      latitude: coords.lat,
-      longitude: coords.lng,
-      metrics: { attachedHub: "RAEB ,Tirunelveli", status: "Active Network" },
-      metadata: { isMainHub: false, attachedMainCenter: "RAEB ,Tirunelveli", district },
-    };
-  }),
+EYE_BANK_CATEGORIES.forEach((cat) => {
+  cat.districts.forEach((dist) => {
+    const key = getNormalizedDistrictKey(dist);
+    if (!collectionDistrictMap[key]) {
+      collectionDistrictMap[key] = { district: dist, categories: [] };
+    }
+    if (!collectionDistrictMap[key].categories.find((c) => c.id === cat.id)) {
+      collectionDistrictMap[key].categories.push(cat);
+    }
+  });
+});
 
-  ...["Vellore"].map((district) => {
-    const coords = DISTRICT_COORDINATES[district] || { lat: 12.9165, lng: 79.1325, state: "Tamil Nadu" };
-    return {
-      id: `eb_coll_che_${district.toLowerCase()}`,
-      name: `${district} Collection Centre`,
-      rawName: `${district}`,
-      entityId: "eyebank" as const,
-      subcategoryId: "collection_network",
-      country: "India",
-      state: coords.state,
-      city: district,
-      latitude: coords.lat,
-      longitude: coords.lng,
-      metrics: { attachedHub: "AEB Chennai", status: "Active Network" },
-      metadata: { isMainHub: false, attachedMainCenter: "AEB Chennai", district },
-    };
-  }),
+const COLLECTION_CENTRE_ITEMS: GeoLocationItem[] = Object.values(collectionDistrictMap).map((item) => {
+  const districtName = item.district;
+  const coords = DISTRICT_COORDINATES[districtName] || DISTRICT_COORDINATES[getNormalizedDistrictKey(districtName)] || { lat: 9.9252, lng: 78.1198, state: "Tamil Nadu" };
+  
+  const primaryCat = item.categories[0];
+  const secondaryCat = item.categories[1];
+  const isShared = item.categories.length > 1;
 
-  ...["Cuddalore", "Vilupuram", "Puducherry", "Mayaldudurai", "Thiruvanamalai", "Kallakuruchi"].map((district) => {
-    const coords = DISTRICT_COORDINATES[district] || { lat: 11.9416, lng: 79.8083, state: "Puducherry" };
-    return {
-      id: `eb_coll_pdy_${district.toLowerCase()}`,
-      name: `${district} Collection Centre`,
-      rawName: `${district}`,
-      entityId: "eyebank" as const,
-      subcategoryId: "collection_network",
-      country: "India",
-      state: coords.state,
-      city: district,
-      latitude: coords.lat,
-      longitude: coords.lng,
-      metrics: { attachedHub: "AEBAP,Pondicherry", status: "Active Network" },
-      metadata: { isMainHub: false, attachedMainCenter: "AEBAP,Pondicherry", district },
-    };
-  }),
+  const categoryIds = item.categories.map((c) => c.id);
+  const attachedHubNames = item.categories.map((c) => c.fullName);
 
-  ...["Salem", "Namakkal", "Dharmapuri", "Krishanagiri"].map((district) => {
-    const coords = DISTRICT_COORDINATES[district] || { lat: 11.6643, lng: 78.1460, state: "Tamil Nadu" };
-    return {
-      id: `eb_coll_slm_${district.toLowerCase()}`,
-      name: `${district} Collection Centre`,
-      rawName: `${district}`,
-      entityId: "eyebank" as const,
-      subcategoryId: "collection_network",
-      country: "India",
-      state: coords.state,
-      city: district,
-      latitude: coords.lat,
-      longitude: coords.lng,
-      metrics: { attachedHub: "AEH, Salem", status: "Active Network" },
-      metadata: { isMainHub: false, attachedMainCenter: "AEH, Salem", district },
-    };
-  }),
+  const gradientStyle = isShared
+    ? `linear-gradient(135deg, ${primaryCat.color} 50%, ${secondaryCat.color} 50%)`
+    : primaryCat.color;
 
-  ...["Thirupathi", "Chittoor"].map((district) => {
-    const coords = DISTRICT_COORDINATES[district] || { lat: 13.6288, lng: 79.4192, state: "Andhra Pradesh" };
-    return {
-      id: `eb_coll_tpt_${district.toLowerCase()}`,
-      name: `${district} Collection Centre`,
-      rawName: `${district}`,
-      entityId: "eyebank" as const,
-      subcategoryId: "collection_network",
-      country: "India",
-      state: coords.state,
-      city: district,
-      latitude: coords.lat,
-      longitude: coords.lng,
-      metrics: { attachedHub: "AEH ,Tirupathi", status: "Active Network" },
-      metadata: { isMainHub: false, attachedMainCenter: "AEH ,Tirupathi", district },
-    };
-  }),
-];
+  return {
+    id: `eb_coll_${getNormalizedDistrictKey(districtName)}`,
+    name: `${districtName} Collection Centre`,
+    rawName: districtName,
+    entityId: "eyebank" as const,
+    subcategoryId: "collection_network",
+    country: "India",
+    state: coords.state,
+    city: districtName,
+    latitude: coords.lat,
+    longitude: coords.lng,
+    metrics: {
+      attachedHub: attachedHubNames.join(" & "),
+      status: isShared ? "Shared Multi-Category Network" : "Active Network",
+    },
+    metadata: {
+      isMainHub: false,
+      isCollectionCentre: true,
+      district: districtName,
+      attachedMainCenter: attachedHubNames[0],
+      attachedHubs: attachedHubNames,
+      categoryId: primaryCat.id,
+      categoryIds,
+      primaryColor: primaryCat.color,
+      secondaryColor: secondaryCat?.color,
+      isShared,
+      gradientStyle,
+    },
+  };
+});
 
 // 3. National Distribution Items generated from EYE_BANK_DISTRIBUTION_RECORDS
 const DISTRIBUTION_DESTINATION_ITEMS: GeoLocationItem[] = EYE_BANK_DISTRIBUTION_RECORDS.map((rec, index) => {

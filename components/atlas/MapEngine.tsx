@@ -7,7 +7,7 @@ import { EntityConfig } from "@/types/entity";
 import { GeoLocationItem, StateAggregation, GeographicGrammar, GeographicLevel } from "@/types/geo";
 import { LIGHT_ATLAS_MAP_STYLE, hexToRgba, MapVarietyId } from "@/lib/map-utils";
 import { INDIA_CENTER, INDIA_DEFAULT_ZOOM } from "@/config/entities";
-import { EYEBANK_DATA } from "@/data/eyebank/eyebank-data";
+import { EYEBANK_DATA, EYE_BANK_CATEGORIES } from "@/data/eyebank/eyebank-data";
 
 import { VisionCentreHospitalCategory } from "@/data/hospitals/vision-centres-data";
 
@@ -25,6 +25,7 @@ export interface MapEngineProps {
   geographicLevel?: GeographicLevel;
   careTypeFilter?: "all" | "tertiary" | "secondary" | "community" | "vision_centre";
   visionCentreHubFilter?: VisionCentreHospitalCategory;
+  eyeBankCategoryFilter?: string;
   revealMaxYear?: number | null;
   isLabMode?: boolean;
   isOneSystem?: boolean;
@@ -44,6 +45,7 @@ export function MapEngine({
   geographicLevel = "country",
   careTypeFilter = "all",
   visionCentreHubFilter = "all",
+  eyeBankCategoryFilter = "all",
   revealMaxYear = null,
   isLabMode = false,
   isOneSystem = false,
@@ -291,6 +293,41 @@ export function MapEngine({
       const eyeBankCollectionFeatures: any[] = [];
       const eyeBankDistributionFeatures: any[] = [];
 
+      EYE_BANK_CATEGORIES.forEach((cat) => {
+        const hub = EYEBANK_DATA.find((h) => h.metadata?.isMainHub && (h.metadata?.categoryId === cat.id || h.id.includes(cat.id)));
+        if (!hub) return;
+
+        cat.districts.forEach((distName) => {
+          const collNode = EYEBANK_DATA.find(
+            (c) =>
+              !c.metadata?.isMainHub &&
+              (c.city.toLowerCase().trim() === distName.toLowerCase().trim() ||
+                (c.rawName || c.name || "").toLowerCase().trim() === distName.toLowerCase().trim())
+          );
+          if (collNode) {
+            const dist = Math.hypot(collNode.longitude - hub.longitude, collNode.latitude - hub.latitude);
+            if (dist > 0.001) {
+              eyeBankCollectionFeatures.push({
+                type: "Feature",
+                properties: {
+                  categoryId: cat.id,
+                  color: cat.color,
+                  hubName: cat.name,
+                  collCity: collNode.city,
+                },
+                geometry: {
+                  type: "LineString",
+                  coordinates: [
+                    [collNode.longitude, collNode.latitude],
+                    [hub.longitude, hub.latitude],
+                  ],
+                },
+              });
+            }
+          }
+        });
+      });
+
       EYEBANK_DATA.forEach((item) => {
         if (item.metadata?.isDistributionDestination || item.subcategoryId === "distribution_network") {
           const mainHub = EYEBANK_DATA.find(
@@ -319,36 +356,10 @@ export function MapEngine({
               });
             }
           }
-        } else if (!item.metadata?.isMainHub && item.metadata?.attachedMainCenter) {
-          const mainHub = EYEBANK_DATA.find(
-            (h) =>
-              h.metadata?.isMainHub &&
-              (h.name === item.metadata?.attachedMainCenter ||
-                h.rawName === item.metadata?.attachedMainCenter)
-          );
-          if (mainHub) {
-            const dist = Math.hypot(item.longitude - mainHub.longitude, item.latitude - mainHub.latitude);
-            if (dist > 0.001) {
-              eyeBankCollectionFeatures.push({
-                type: "Feature",
-                properties: {
-                  hubName: mainHub.name,
-                  collCity: item.city,
-                },
-                geometry: {
-                  type: "LineString",
-                  coordinates: [
-                    [item.longitude, item.latitude],
-                    [mainHub.longitude, mainHub.latitude],
-                  ],
-                },
-              });
-            }
-          }
         }
       });
 
-      // Collection Network Source & Dotted Layer (Emerald Green)
+      // Collection Network Source & Category-colored Dotted Layer
       map.addSource("eyebank-flow-source", {
         type: "geojson",
         data: {
@@ -362,8 +373,8 @@ export function MapEngine({
         type: "line",
         source: "eyebank-flow-source",
         paint: {
-          "line-color": "#059669",
-          "line-width": 2.5,
+          "line-color": ["get", "color"],
+          "line-width": 3,
           "line-opacity": 0.85,
           "line-dasharray": [3, 3],
         },
@@ -462,6 +473,11 @@ export function MapEngine({
           "visibility",
           isDistributedOnly ? "none" : "visible"
         );
+        if (eyeBankCategoryFilter && eyeBankCategoryFilter !== "all") {
+          map.setFilter("eyebank-flow-layer", ["==", ["get", "categoryId"], eyeBankCategoryFilter]);
+        } else {
+          map.setFilter("eyebank-flow-layer", null);
+        }
       }
       if (map.getLayer("eyebank-distribution-layer")) {
         map.setLayoutProperty(
@@ -478,7 +494,7 @@ export function MapEngine({
         map.setLayoutProperty("eyebank-distribution-layer", "visibility", "none");
       }
     }
-  }, [mapLoaded, entityConfig.id, activeGrammar, selectedSubcategoryId]);
+  }, [mapLoaded, entityConfig.id, activeGrammar, selectedSubcategoryId, eyeBankCategoryFilter]);
 
   // Render Restrained Pins with 48px Hit Targets, CARE Visual Hierarchy, and Privacy Protection
   useEffect(() => {
@@ -708,56 +724,66 @@ export function MapEngine({
         const isDistribution = loc.metadata?.isDistributionDestination || loc.subcategoryId === "distribution_network";
         const isDistributedSubcategoryActive = selectedSubcategoryId === "distributed";
 
-        // Display short city name alone for Main Hubs (e.g., "Madurai", "Salem")
-        const cityOnlyName = loc.city || loc.rawName || loc.name;
-        const showLabel = !isDistributedSubcategoryActive && !isOneSystem && !hidePinLabels && entityConfig.id !== "all";
+        const distName = loc.city || loc.rawName || (loc.metadata?.district as string) || loc.name;
+        const hubColor = (loc.metadata?.color as string) || "#991B1B";
 
         if (isMainHub) {
           if (isDistributedSubcategoryActive) {
-            // Small compact Main Hub Pin when Distributed subcategory is active to prevent overlapping
+            // Small compact Main Hub Pin when Distributed subcategory is active
             el.innerHTML = `
               <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
-                <div style="width: 9px; height: 9px; background-color: #064E3B; border: 2px solid #D97706; border-radius: 9999px; box-shadow: 0 0 6px rgba(6, 78, 59, 0.8), 0 1px 3px rgba(0,0,0,0.4); transition: all 0.2s ease-out;" class="group-hover:scale-150">
+                <div style="width: 10px; height: 10px; background-color: ${hubColor}; border: 2px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 6px ${hubColor}cc, 0 1px 3px rgba(0,0,0,0.4); transition: all 0.2s ease-out;" class="group-hover:scale-150">
                 </div>
               </div>
             `;
           } else {
-            // Main Eye Bank Hub Pin with City Name Alone (Rich Dark Emerald & Gold accents)
+            // Distinct Eye Bank Base Hub Pin Badge with District Name Label over Pin
             el.innerHTML = `
-              <div class="relative flex flex-col items-center justify-center pointer-events-auto group">
-                <!-- Main Hub Badge Label displaying City Name Alone -->
-                ${
-                  showLabel
-                    ? `<span class="mb-1 text-[10px] font-black text-white bg-emerald-950/95 px-2.5 py-1 rounded-lg shadow-xl border-2 border-emerald-600 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
-                         <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                         <span>${cityOnlyName}</span>
-                       </span>`
-                    : ""
-                }
+              <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-30" title="${loc.name}">
+                <!-- Touch / Click / Hover District Name Label over Pin -->
+                <span class="mb-1 text-[11px] font-black text-white px-2.5 py-1 rounded-lg shadow-2xl border border-white/40 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform ${isSelected ? 'scale-110 ring-2 ring-white opacity-100' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'}" style="background-color: ${hubColor}">
+                  <svg class="w-3 h-3 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M9 17h6"/>
+                  </svg>
+                  <span>${distName} Base Eye Bank</span>
+                </span>
 
-                <!-- Central Main Hub Pin Badge with Eye Icon -->
-                <div class="w-7 h-7 rounded-full bg-emerald-900 border-2 border-emerald-400 shadow-xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
-                  <svg class="w-4 h-4 text-emerald-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <!-- Large Eye Bank Base Hub Building Badge Pin -->
+                <div class="w-8 h-8 rounded-xl border-2 border-white shadow-2xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125" style="background-color: ${hubColor}">
+                  <svg class="w-4.5 h-4.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
-                    <circle cx="12" cy="12" r="3" />
+                    <circle cx="12" cy="12" r="3" fill="#FFFFFF" fill-opacity="0.9" />
                   </svg>
                 </div>
               </div>
             `;
           }
         } else if (isDistribution) {
-          // Distribution Network Pin (Rich Dark Indigo Dot)
+          // Distribution Network Destination Pin (Rich Dark Indigo Dot)
           el.innerHTML = `
-            <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
-              <div style="width: 7px; height: 7px; background-color: #312E81; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 4px rgba(49, 46, 129, 0.7), 0 1px 3px rgba(0,0,0,0.3); transition: all 0.2s ease-out;" class="group-hover:scale-150">
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${distName}">
+              <!-- Hover / Touch Label over Pin -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2 py-0.5 rounded-md shadow-lg border border-slate-300 whitespace-nowrap opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity pointer-events-none">
+                ${distName}
+              </span>
+              <div style="width: 8px; height: 8px; background-color: #312E81; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 4px rgba(49, 46, 129, 0.7), 0 1px 3px rgba(0,0,0,0.3); transition: all 0.2s ease-out;" class="group-hover:scale-150">
               </div>
             </div>
           `;
         } else {
-          // Collection Centre Pin (Rich Dark Emerald Dot)
+          // Collection Centre Pin with District Name on Hover & Dual 50/50 Split Gradient for Shared Hubs
+          const isShared = loc.metadata?.isShared;
+          const bgStyle = (loc.metadata?.gradientStyle as string) || (loc.metadata?.primaryColor as string) || "#064E3B";
+
           el.innerHTML = `
-            <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
-              <div style="width: 7px; height: 7px; background-color: #064E3B; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 4px rgba(6, 78, 59, 0.7), 0 1px 3px rgba(0,0,0,0.3); transition: all 0.2s ease-out;" class="group-hover:scale-150">
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${distName}">
+              <!-- Touch / Click / Hover District Name Label directly over Pin -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1 rounded-lg shadow-xl border border-slate-300 whitespace-nowrap ${isSelected ? 'opacity-100 ring-2 ring-slate-900 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} transition-all duration-150 pointer-events-none">
+                <span class="font-extrabold">${distName}</span>${isShared ? ' <span class="text-[9px] text-amber-700 font-bold">(Shared Hub)</span>' : ''}
+              </span>
+
+              <!-- Collection Node Circular Pin Dot with Dual 50/50 CSS Split Gradient for Shared Centres -->
+              <div style="width: 14px; height: 14px; background: ${bgStyle}; border: 2px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 8px rgba(0,0,0,0.4), 0 1.5px 4px rgba(0,0,0,0.35); transition: transform 0.15s ease-out;" class="group-hover:scale-135 group-active:scale-135">
               </div>
             </div>
           `;

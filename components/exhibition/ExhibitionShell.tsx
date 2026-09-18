@@ -74,6 +74,7 @@ export function ExhibitionShell() {
   const [staffCategory, setStaffCategory] = React.useState<StaffCategory | "all">("all");
   const [patientFilter, setPatientFilter] = React.useState<"pay" | "free" | "camp" | "all">("all");
   const [laicoCountryFilter, setLaicoCountryFilter] = React.useState<string>("all");
+  const [eyeBankCategoryFilter, setEyeBankCategoryFilter] = React.useState<string>("all");
 
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isInfoOpen, setIsInfoOpen] = React.useState(false);
@@ -140,7 +141,7 @@ export function ExhibitionShell() {
     return getFilteredLocations(selectedEntityId, selectedSubcategoryId, staffGroup, staffCategory, patientFilter);
   }, [selectedEntityId, selectedSubcategoryId, staffGroup, staffCategory, patientFilter]);
 
-  // Apply Auroitech Product Filter and LAICO Country Filter if active
+  // Apply Auroitech Product Filter, LAICO Country Filter, and Eye Bank Category Filter if active
   const filteredLocations = useMemo(() => {
     let locs = rawLocations;
     if (selectedEntityId === "auroitech" && productFilterId) {
@@ -151,8 +152,18 @@ export function ExhibitionShell() {
         (l) => l.country && l.country.toLowerCase() === laicoCountryFilter.toLowerCase()
       );
     }
+    if (selectedEntityId === "eyebank" && eyeBankCategoryFilter && eyeBankCategoryFilter !== "all") {
+      locs = locs.filter((l) => {
+        const catId = l.metadata?.categoryId;
+        const catIds = l.metadata?.categoryIds as string[] | undefined;
+        if (catId === eyeBankCategoryFilter) return true;
+        if (catIds && catIds.includes(eyeBankCategoryFilter)) return true;
+        if (l.id.includes(eyeBankCategoryFilter)) return true;
+        return false;
+      });
+    }
     return locs;
-  }, [selectedEntityId, rawLocations, productFilterId, laicoCountryFilter]);
+  }, [selectedEntityId, rawLocations, productFilterId, laicoCountryFilter, eyeBankCategoryFilter]);
 
   // Dynamic State Aggregations derived from records
   const stateAggregations = useMemo(() => {
@@ -198,6 +209,8 @@ export function ExhibitionShell() {
             onSelectVisionCentreHubFilter={setVisionCentreHubFilter}
             laicoCountryFilter={laicoCountryFilter}
             onSelectLaicoCountryFilter={setLaicoCountryFilter}
+            eyeBankCategoryFilter={eyeBankCategoryFilter}
+            onSelectEyeBankCategoryFilter={setEyeBankCategoryFilter}
           />
         )}
 
@@ -219,6 +232,7 @@ export function ExhibitionShell() {
               onClearLocation={() => selectLocation(null)}
               careTypeFilter={careTypeFilter}
               visionCentreHubFilter={visionCentreHubFilter}
+              eyeBankCategoryFilter={eyeBankCategoryFilter}
               isOneSystem={currentScene === "one_system" || selectedEntityId === "all"}
             />
 
