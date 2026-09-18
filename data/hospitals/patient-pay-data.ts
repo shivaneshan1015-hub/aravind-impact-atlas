@@ -14,7 +14,8 @@ export interface PatientDataRecord {
 
 export const PATIENT_PAY_TOTAL = 3266639;
 export const PATIENT_FREE_TOTAL = 1254989;
-export const PATIENT_COMBINED_TOTAL = 4521628;
+export const PATIENT_CAMP_TOTAL = 188086;
+export const PATIENT_COMBINED_TOTAL = 4709714;
 
 export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
   {
@@ -27,8 +28,8 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "longitude": 78.6569,
     "payCount": 2715355,
     "freeCount": 999156,
-    "campCount": 0,
-    "totalPatients": 3714511
+    "campCount": 150793,
+    "totalPatients": 3865304
   },
   {
     "id": "kerala",
@@ -40,8 +41,8 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "longitude": 76.2711,
     "payCount": 271264,
     "freeCount": 76083,
-    "campCount": 0,
-    "totalPatients": 347347
+    "campCount": 15683,
+    "totalPatients": 363030
   },
   {
     "id": "andhra_pradesh",
@@ -53,8 +54,8 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "longitude": 79.74,
     "payCount": 183180,
     "freeCount": 161598,
-    "campCount": 0,
-    "totalPatients": 344778
+    "campCount": 11751,
+    "totalPatients": 356529
   },
   {
     "id": "pondicherry",
@@ -66,8 +67,8 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "longitude": 79.8083,
     "payCount": 69012,
     "freeCount": 12837,
-    "campCount": 0,
-    "totalPatients": 81849
+    "campCount": 35,
+    "totalPatients": 81884
   },
   {
     "id": "karnataka",
@@ -79,8 +80,8 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "longitude": 75.7139,
     "payCount": 6302,
     "freeCount": 2810,
-    "campCount": 0,
-    "totalPatients": 9112
+    "campCount": 9804,
+    "totalPatients": 18916
   },
   {
     "id": "andaman_nicobar",
@@ -92,8 +93,8 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "longitude": 92.6586,
     "payCount": 3929,
     "freeCount": 204,
-    "campCount": 0,
-    "totalPatients": 4133
+    "campCount": 6,
+    "totalPatients": 4139
   },
   {
     "id": "bihar",
@@ -105,8 +106,8 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "longitude": 85.3131,
     "payCount": 3336,
     "freeCount": 356,
-    "campCount": 0,
-    "totalPatients": 3692
+    "campCount": 2,
+    "totalPatients": 3694
   },
   {
     "id": "west_bengal",
@@ -118,8 +119,8 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "longitude": 87.855,
     "payCount": 2407,
     "freeCount": 294,
-    "campCount": 0,
-    "totalPatients": 2701
+    "campCount": 2,
+    "totalPatients": 2703
   },
   {
     "id": "telungana",
@@ -131,8 +132,8 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "longitude": 79.0193,
     "payCount": 1602,
     "freeCount": 705,
-    "campCount": 0,
-    "totalPatients": 2307
+    "campCount": 7,
+    "totalPatients": 2314
   },
   {
     "id": "uttar_pradesh",
@@ -157,8 +158,8 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "longitude": 75.7139,
     "payCount": 1385,
     "freeCount": 205,
-    "campCount": 0,
-    "totalPatients": 1590
+    "campCount": 3,
+    "totalPatients": 1593
   },
   {
     "id": "orissa",

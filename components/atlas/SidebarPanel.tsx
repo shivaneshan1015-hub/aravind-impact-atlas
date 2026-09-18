@@ -231,60 +231,75 @@ export function SidebarPanel({
                   <Users className="w-4 h-4 text-blue-600" />
                   <div>
                     <span className="text-xs font-black text-slate-900 uppercase tracking-wider block">Patients Reach</span>
-                    <span className="text-[10px] text-slate-500 font-medium">4,521,628 Registered Patients</span>
+                    <span className="text-[10px] text-slate-500 font-medium">4,709,714 Registered Patients</span>
                   </div>
                 </div>
                 <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">
-                  4.52M Total
+                  4.71M Total
                 </span>
               </button>
 
-              {/* Data Type Tabs: Pay (3.26M) | Free (1.25M) | All (4.52M) */}
-              <div className="grid grid-cols-3 gap-1 p-1 bg-slate-200/60 rounded-xl">
+              {/* Data Type Tabs: Pay (3.26M) | Free (1.25M) | Camp (188K) | All (4.71M) */}
+              <div className="grid grid-cols-4 gap-1 p-1 bg-slate-200/60 rounded-xl">
                 <button
                   onClick={() => {
                     onSelectSubcategory?.("patients");
                     onSelectPatientFilter?.("pay");
                   }}
-                  className={`py-1.5 px-1 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
+                  className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "pay"
                       ? "bg-blue-600 text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
                   title="3,266,639 Pay Patients"
                 >
-                  <span className="font-black text-xs">3.26M</span>
-                  <span className="text-[9px] uppercase tracking-tighter opacity-90">Pay</span>
+                  <span className="font-black text-[11px]">3.26M</span>
+                  <span className="text-[8px] uppercase tracking-tighter opacity-90">Pay</span>
                 </button>
                 <button
                   onClick={() => {
                     onSelectSubcategory?.("patients");
                     onSelectPatientFilter?.("free");
                   }}
-                  className={`py-1.5 px-1 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
+                  className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "free"
                       ? "bg-emerald-700 text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
                   title="1,254,989 Free Patients"
                 >
-                  <span className="font-black text-xs">1.25M</span>
-                  <span className="text-[9px] uppercase tracking-tighter opacity-90">Free</span>
+                  <span className="font-black text-[11px]">1.25M</span>
+                  <span className="text-[8px] uppercase tracking-tighter opacity-90">Free</span>
+                </button>
+                <button
+                  onClick={() => {
+                    onSelectSubcategory?.("patients");
+                    onSelectPatientFilter?.("camp");
+                  }}
+                  className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
+                    patientFilter === "camp"
+                      ? "bg-amber-800 text-white shadow-xs"
+                      : "text-slate-700 hover:bg-slate-300/50"
+                  }`}
+                  title="188,086 Camp Patients"
+                >
+                  <span className="font-black text-[11px]">188K</span>
+                  <span className="text-[8px] uppercase tracking-tighter opacity-90">Camp</span>
                 </button>
                 <button
                   onClick={() => {
                     onSelectSubcategory?.("patients");
                     onSelectPatientFilter?.("all");
                   }}
-                  className={`py-1.5 px-1 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
+                  className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "all"
-                      ? "bg-indigo-700 text-white shadow-xs"
+                      ? "bg-indigo-800 text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
-                  title="4,521,628 Total Patients"
+                  title="4,709,714 Total Patients"
                 >
-                  <span className="font-black text-xs">4.52M</span>
-                  <span className="text-[9px] uppercase tracking-tighter opacity-90">All</span>
+                  <span className="font-black text-[11px]">4.71M</span>
+                  <span className="text-[8px] uppercase tracking-tighter opacity-90">All</span>
                 </button>
               </div>
             </div>
