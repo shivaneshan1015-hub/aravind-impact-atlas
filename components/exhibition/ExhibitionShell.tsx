@@ -160,8 +160,10 @@ export function ExhibitionShell() {
 
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-[#0F172A] font-sans antialiased text-slate-100 flex flex-col">
-      {/* Top Six Doors Navigation Bar */}
-      <SixDoorsNav />
+      {/* Scene Overlays */}
+      {currentScene === "arrival" && <ArrivalScene />}
+      {currentScene === "dimensions" && <SixDoorsNav />}
+      {currentScene === "attract" && <AttractOverlay />}
 
       {/* Main Exhibition Stage Layout */}
       <div className="flex-1 flex overflow-hidden relative">
