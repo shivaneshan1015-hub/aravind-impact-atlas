@@ -15,6 +15,7 @@ export interface EyeBankCategoryConfig {
   fullName: string;
   color: string;
   districts: string[];
+  distributionDistricts?: string[];
 }
 
 export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
@@ -28,6 +29,13 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
       "Pudukkottai", "Ramanathapuram", "Ariyalur", "Karur", "Thanjavur",
       "Nagapattinam", "Thiruvarur", "Trichy", "Mayaladudurai", "Mayiladuthurai", "Mayaldudurai"
     ],
+    distributionDistricts: [
+      "Madurai", "Ernakulam", "Bangalore", "Chennai", "Coimbatore", "Salem",
+      "Hyderabad", "Kakinada", "Mumbai", "Haridwar", "Haryana", "Delhi",
+      "Kolkatta", "Nagpur", "Lucknow", "Chandigarh", "Ahmedabad", "Varanasi",
+      "Sivagangai", "Vellore", "Karur", "Namakkal", "Theni", "Thanjavur",
+      "Tirunelveli", "Pondicherry", "Thrissur", "Tiruvanandapuram", "Tirupathi", "Palakkad"
+    ],
   },
   {
     id: "coimbatore",
@@ -35,6 +43,7 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
     fullName: "AIOB, Coimbatore",
     color: "#065F46", // Dark Emerald Green
     districts: ["Coimbatore", "Tirupur", "Erode", "Dindigul"],
+    distributionDistricts: ["Coimbatore", "Palakadu", "Palakkad", "Tirupur", "Kozhikode", "Erode"],
   },
   {
     id: "tirunelveli",
@@ -42,6 +51,7 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
     fullName: "RAEB ,Tirunelveli",
     color: "#115E59", // Dark Teal
     districts: ["Tirunelveli", "Tuticorin", "Kaniyakumari", "Tenkasi", "Virudhunagar", "Virdhunagar"],
+    distributionDistricts: ["Tirunelveli", "Tuticorin", "Kaniyakumari"],
   },
   {
     id: "chennai",
@@ -49,6 +59,7 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
     fullName: "AEB Chennai",
     color: "#1E3A8A", // Dark Royal Blue
     districts: ["Vellore"],
+    distributionDistricts: ["Chennai", "Chengalpattu", "Vellore"],
   },
   {
     id: "pondicherry",
@@ -59,6 +70,7 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
       "Cuddalore", "Vilupuram", "Viluppuram", "Puducherry", "Pondicherry",
       "Mayaldudurai", "Mayaladudurai", "Mayiladuthurai", "Thiruvanamalai", "Thiruvannamalai", "Kallakuruchi", "Kallakurichi"
     ],
+    distributionDistricts: ["Puducherry", "Pondicherry"],
   },
   {
     id: "salem",
@@ -66,6 +78,7 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
     fullName: "AEH, Salem",
     color: "#78350F", // Dark Burnt Chocolate
     districts: ["Salem", "Namakkal", "Dharmapuri", "Krishanagiri", "Krishnagiri"],
+    distributionDistricts: ["Salem"],
   },
   {
     id: "tirupathi",
@@ -73,6 +86,7 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
     fullName: "Tirupathi", // "Just use Tirupathi do not use AEH Tirupathi - FOLLOW for all others"
     color: "#0F172A", // Dark Slate Charcoal
     districts: ["Thirupathi", "Tirupathi", "Chittoor"],
+    distributionDistricts: ["Thirupathi", "Tirupathi"],
   },
 ];
 
@@ -330,26 +344,61 @@ const COLLECTION_CENTRE_ITEMS: GeoLocationItem[] = Object.values(collectionDistr
   };
 });
 
-// 3. National Distribution Items generated from EYE_BANK_DISTRIBUTION_RECORDS
-const DISTRIBUTION_DESTINATION_ITEMS: GeoLocationItem[] = EYE_BANK_DISTRIBUTION_RECORDS.map((rec, index) => {
-  const coords = DISTRICT_COORDINATES[rec.district] || { lat: 12.9716, lng: 77.5946, state: rec.state };
+// 3. National Distribution Items generated from EYE_BANK_DISTRIBUTION_RECORDS with Shared Dual-Color support
+const distributionDistrictMap: Record<string, { district: string; state: string; categories: EyeBankCategoryConfig[] }> = {};
+
+EYE_BANK_DISTRIBUTION_RECORDS.forEach((rec) => {
+  const key = getNormalizedDistrictKey(rec.district);
+  if (!distributionDistrictMap[key]) {
+    distributionDistrictMap[key] = { district: rec.district, state: rec.state, categories: [] };
+  }
+  const hubCat = EYE_BANK_CATEGORIES.find(
+    (c) => c.fullName === rec.centerName || rec.centerName.includes(c.name)
+  );
+  if (hubCat && !distributionDistrictMap[key].categories.find((c) => c.id === hubCat.id)) {
+    distributionDistrictMap[key].categories.push(hubCat);
+  }
+});
+
+const DISTRIBUTION_DESTINATION_ITEMS: GeoLocationItem[] = Object.values(distributionDistrictMap).map((item) => {
+  const districtName = item.district;
+  const coords = DISTRICT_COORDINATES[districtName] || DISTRICT_COORDINATES[getNormalizedDistrictKey(districtName)] || { lat: 12.9716, lng: 77.5946, state: item.state };
+
+  const primaryCat = item.categories[0] || EYE_BANK_CATEGORIES[0];
+  const secondaryCat = item.categories[1];
+  const isShared = item.categories.length > 1;
+
+  const categoryIds = item.categories.map((c) => c.id);
+  const attachedHubNames = item.categories.map((c) => c.fullName);
+
+  const gradientStyle = isShared
+    ? `linear-gradient(135deg, ${primaryCat.color} 50%, ${secondaryCat.color} 50%)`
+    : primaryCat.color;
+
   return {
-    id: `eb_dist_${index}_${rec.district.toLowerCase().replace(/[^a-z0-9]/g, "")}`,
-    name: `${rec.district} Distribution Centre`,
-    rawName: rec.district,
+    id: `eb_dist_${getNormalizedDistrictKey(districtName)}`,
+    name: `${districtName} Distribution Centre`,
+    rawName: districtName,
     entityId: "eyebank" as const,
     subcategoryId: "distribution_network",
     country: "India",
-    state: rec.state,
-    city: rec.district,
+    state: coords.state || item.state,
+    city: districtName,
     latitude: coords.lat,
     longitude: coords.lng,
-    metrics: { sourceHub: rec.centerName, recipientRegion: rec.state },
+    metrics: { sourceHub: attachedHubNames.join(" & "), recipientRegion: coords.state || item.state },
     metadata: {
       isMainHub: false,
       isDistributionDestination: true,
-      sourceHubName: rec.centerName,
-      district: rec.district,
+      sourceHubName: attachedHubNames[0],
+      attachedHubs: attachedHubNames,
+      district: districtName,
+      categoryId: primaryCat.id,
+      categoryIds,
+      primaryColor: primaryCat.color,
+      secondaryColor: secondaryCat?.color,
+      isShared,
+      gradientStyle,
     },
   };
 });

@@ -328,35 +328,40 @@ export function MapEngine({
         });
       });
 
-      EYEBANK_DATA.forEach((item) => {
-        if (item.metadata?.isDistributionDestination || item.subcategoryId === "distribution_network") {
-          const mainHub = EYEBANK_DATA.find(
-            (h) =>
-              h.metadata?.isMainHub &&
-              (h.name === item.metadata?.sourceHubName ||
-                h.rawName === item.metadata?.sourceHubName ||
-                (h as any).centerName === item.metadata?.sourceHubName)
+      EYE_BANK_CATEGORIES.forEach((cat) => {
+        const hub = EYEBANK_DATA.find((h) => h.metadata?.isMainHub && (h.metadata?.categoryId === cat.id || h.id.includes(cat.id)));
+        if (!hub) return;
+
+        const catDistricts = cat.distributionDistricts || [];
+        catDistricts.forEach((distName) => {
+          const distNode = EYEBANK_DATA.find(
+            (c) =>
+              c.metadata?.isDistributionDestination &&
+              (c.city.toLowerCase().trim() === distName.toLowerCase().trim() ||
+                (c.rawName || c.name || "").toLowerCase().trim() === distName.toLowerCase().trim())
           );
-          if (mainHub) {
-            const dist = Math.hypot(item.longitude - mainHub.longitude, item.latitude - mainHub.latitude);
+          if (distNode) {
+            const dist = Math.hypot(distNode.longitude - hub.longitude, distNode.latitude - hub.latitude);
             if (dist > 0.001) {
               eyeBankDistributionFeatures.push({
                 type: "Feature",
                 properties: {
-                  hubName: mainHub.name,
-                  destCity: item.city,
+                  categoryId: cat.id,
+                  color: cat.color,
+                  hubName: cat.name,
+                  destCity: distNode.city,
                 },
                 geometry: {
                   type: "LineString",
                   coordinates: [
-                    [mainHub.longitude, mainHub.latitude],
-                    [item.longitude, item.latitude],
+                    [hub.longitude, hub.latitude],
+                    [distNode.longitude, distNode.latitude],
                   ],
                 },
               });
             }
           }
-        }
+        });
       });
 
       // Collection Network Source & Category-colored Dotted Layer
@@ -395,7 +400,7 @@ export function MapEngine({
         type: "line",
         source: "eyebank-distribution-source",
         paint: {
-          "line-color": "#0284C7",
+          "line-color": ["get", "color"],
           "line-width": 2.5,
           "line-opacity": 0.85,
           "line-dasharray": [6, 3],
@@ -485,6 +490,11 @@ export function MapEngine({
           "visibility",
           isCollectedOnly ? "none" : "visible"
         );
+        if (eyeBankCategoryFilter && eyeBankCategoryFilter !== "all") {
+          map.setFilter("eyebank-distribution-layer", ["==", ["get", "categoryId"], eyeBankCategoryFilter]);
+        } else {
+          map.setFilter("eyebank-distribution-layer", null);
+        }
       }
     } else {
       if (map.getLayer("eyebank-flow-layer")) {
@@ -759,14 +769,19 @@ export function MapEngine({
             `;
           }
         } else if (isDistribution) {
-          // Distribution Network Destination Pin (Rich Dark Indigo Dot)
+          // Distribution Destination Pin with District Name on Hover & Dual 50/50 Split Gradient for Shared Hubs
+          const isShared = loc.metadata?.isShared;
+          const bgStyle = (loc.metadata?.gradientStyle as string) || (loc.metadata?.primaryColor as string) || "#312E81";
+
           el.innerHTML = `
             <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${distName}">
-              <!-- Hover / Touch Label over Pin -->
-              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2 py-0.5 rounded-md shadow-lg border border-slate-300 whitespace-nowrap opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity pointer-events-none">
-                ${distName}
+              <!-- Touch / Click / Hover District Name Label directly over Pin -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1 rounded-lg shadow-xl border border-slate-300 whitespace-nowrap ${isSelected ? 'opacity-100 ring-2 ring-slate-900 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} transition-all duration-150 pointer-events-none">
+                <span class="font-extrabold">${distName}</span>${isShared ? ' <span class="text-[9px] text-amber-700 font-bold">(Shared Hub)</span>' : ''}
               </span>
-              <div style="width: 8px; height: 8px; background-color: #312E81; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 4px rgba(49, 46, 129, 0.7), 0 1px 3px rgba(0,0,0,0.3); transition: all 0.2s ease-out;" class="group-hover:scale-150">
+
+              <!-- Distribution Node Circular Pin Dot with Dual 50/50 CSS Split Gradient for Shared Destinations -->
+              <div style="width: 13px; height: 13px; background: ${bgStyle}; border: 2px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 8px rgba(0,0,0,0.4), 0 1.5px 4px rgba(0,0,0,0.35); transition: transform 0.15s ease-out;" class="group-hover:scale-135 group-active:scale-135">
               </div>
             </div>
           `;

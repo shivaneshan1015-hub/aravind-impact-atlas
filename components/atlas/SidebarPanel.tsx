@@ -861,22 +861,40 @@ export function SidebarPanel({
               })}
             </div>
 
-            {/* Collected Section Banner & 7 Category Filter */}
-            {(activeSubId === "collected" || activeSubId === "collection_network" || activeSubId === "overview") && (
+            {/* Eye Bank Category Filters & Banners */}
+            {(activeSubId === "collected" || activeSubId === "collection_network" || activeSubId === "distributed" || activeSubId === "distribution_network" || activeSubId === "overview") && (
               <div className="space-y-3 pt-1">
-                {/* 51888 Eyes Collected Banner */}
-                <div className="bg-emerald-950 text-white rounded-2xl p-3 border border-emerald-800 shadow-sm space-y-1">
-                  <div className="text-[10px] font-black uppercase tracking-widest text-emerald-300 flex items-center gap-1.5">
-                    <Eye className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Total Cornea Collection</span>
+                {/* 51888 Eyes Collected Banner (Shown in Collected / Overview Mode) */}
+                {(activeSubId === "collected" || activeSubId === "collection_network" || activeSubId === "overview") && (
+                  <div className="bg-emerald-950 text-white rounded-2xl p-3 border border-emerald-800 shadow-sm space-y-1">
+                    <div className="text-[10px] font-black uppercase tracking-widest text-emerald-300 flex items-center gap-1.5">
+                      <Eye className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Total Cornea Collection</span>
+                    </div>
+                    <div className="text-sm font-black text-amber-300 leading-tight">
+                      51,888 Eyes collected
+                    </div>
+                    <div className="text-[10px] text-emerald-200 font-medium">
+                      Period: <span className="font-extrabold text-white">Apr 2016 – MAR 2026</span>
+                    </div>
                   </div>
-                  <div className="text-sm font-black text-amber-300 leading-tight">
-                    51,888 Eyes collected
+                )}
+
+                {/* 23,420 Utilised Banner (Shown in Distributed Mode) */}
+                {(activeSubId === "distributed" || activeSubId === "distribution_network") && (
+                  <div className="bg-sky-950 text-white rounded-2xl p-3 border border-sky-800 shadow-sm space-y-1">
+                    <div className="text-[10px] font-black uppercase tracking-widest text-sky-300 flex items-center gap-1.5">
+                      <Eye className="w-3.5 h-3.5 text-sky-400" />
+                      <span>Total Cornea Utilization</span>
+                    </div>
+                    <div className="text-sm font-black text-amber-300 leading-tight">
+                      23,420 Corneas Utilised
+                    </div>
+                    <div className="text-[10px] text-sky-200 font-medium">
+                      Period: <span className="font-extrabold text-white">Apr 2016 to Mar 2026</span>
+                    </div>
                   </div>
-                  <div className="text-[10px] text-emerald-200 font-medium">
-                    Period: <span className="font-extrabold text-white">Apr 2016 – MAR 2026</span>
-                  </div>
-                </div>
+                )}
 
                 {/* 7 Base Eye Bank Category Filter */}
                 <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2">
@@ -907,6 +925,11 @@ export function SidebarPanel({
                   <div className="space-y-1">
                     {EYE_BANK_CATEGORIES.map((cat) => {
                       const isSelected = eyeBankCategoryFilter === cat.id;
+                      const isDistributedMode = activeSubId === "distributed" || activeSubId === "distribution_network";
+                      const distCount = isDistributedMode
+                        ? (cat.distributionDistricts?.length || cat.districts.length)
+                        : cat.districts.length;
+
                       return (
                         <button
                           key={cat.id}
@@ -933,7 +956,7 @@ export function SidebarPanel({
                               isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-700"
                             }`}
                           >
-                            {cat.districts.length} Dists
+                            {distCount} Dists
                           </span>
                         </button>
                       );
