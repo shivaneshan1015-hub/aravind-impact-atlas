@@ -586,25 +586,42 @@ export function MapEngine({
             </div>
           `;
         }
-      } else if (isPatientHub) {
+      } else if (isPatientHub || isPatientDot) {
         const displayCount = (loc.metadata?.displayCount || loc.metadata?.totalPatients || 0) as number;
-        const isFree = loc.metadata?.activeFilter === "free";
-        const dotColor = isFree ? "#064E3B" : "#312E81"; // Static dark emerald (Free) or dark indigo (Pay/All)
+        const activeFilter = (loc.metadata?.activeFilter as string) || "all";
+
+        // 3 Distinct Dark Colors:
+        // Pay / All -> #1E3A8A (Dark Royal Blue)
+        // Free -> #064E3B (Dark Emerald Green)
+        // Camp -> #78350F (Dark Burnt Amber)
+        let dotColor = "#1E3A8A";
+        if (activeFilter === "free" || loc.metadata?.isFreeDot) {
+          dotColor = "#064E3B";
+        } else if (activeFilter === "camp" || loc.metadata?.isCampDot) {
+          dotColor = "#78350F";
+        } else if (activeFilter === "pay" || activeFilter === "all") {
+          dotColor = "#1E3A8A";
+        }
+
+        // Proportional Sizing Formula (Min 10px, Max 36px based on patient volume)
+        const minSize = 10;
+        const maxSize = 36;
+        const logCount = Math.log10(Math.max(1, displayCount));
+        const logMax = Math.log10(150000);
+        const calculatedSize = Math.round(minSize + (logCount / logMax) * (maxSize - minSize));
+        const dotSize = `${Math.min(maxSize, Math.max(minSize, calculatedSize))}px`;
+
+        const distName = loc.city || loc.rawName || loc.name;
 
         el.innerHTML = `
-          <div class="relative flex items-center justify-center pointer-events-auto group z-10" title="${loc.name}: ${displayCount.toLocaleString()} Patients">
-            <div style="width: 12px; height: 12px; background-color: ${dotColor}; border: 2px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 8px ${dotColor}dd, 0 2px 4px rgba(0,0,0,0.4);" class="transition-transform duration-200 group-hover:scale-150">
-            </div>
-          </div>
-        `;
-      } else if (isPatientDot) {
-        const isFreeDot = loc.metadata?.isFreeDot;
-        const dotColor = isFreeDot ? "#064E3B" : "#1E3A8A"; // Static dark emerald (Free) or static dark blue (Pay)
-        const regName = loc.metadata?.regionName || loc.name;
+          <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${distName}: ${displayCount.toLocaleString()} Patients">
+            <!-- Touch / Click Place Name & Count Label directly over Pin -->
+            <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1 rounded-lg shadow-xl border border-slate-300 whitespace-nowrap ${isSelected ? 'opacity-100 ring-2 ring-slate-900 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} transition-all duration-150 pointer-events-none">
+              <span class="font-extrabold">${distName}:</span> <span style="color: ${dotColor}">${displayCount.toLocaleString()} Patients</span>
+            </span>
 
-        el.innerHTML = `
-          <div class="relative flex items-center justify-center pointer-events-auto group" title="${regName} (${isFreeDot ? "Free" : "Pay"} Patient)">
-            <div style="width: 7px; height: 7px; background-color: ${dotColor}; border: 1px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 5px ${dotColor}bb, 0 1px 2px rgba(0,0,0,0.3); transition: transform 0.15s ease-out;" class="group-hover:scale-150">
+            <!-- Proportional Patient Pin Marker Circle -->
+            <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 2px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 10px ${dotColor}dd, 0 2px 5px rgba(0,0,0,0.4);" class="transition-transform duration-150 group-hover:scale-125 group-active:scale-125">
             </div>
           </div>
         `;

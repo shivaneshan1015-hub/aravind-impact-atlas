@@ -59,7 +59,7 @@ export function generatePatientDots(patientFilter: "pay" | "free" | "camp" | "al
 
     if (displayCount <= 0) return;
 
-    // 1. Central Region Hub Item
+    // Single Clean District Pin Marker Item
     items.push({
       id: `patient_hub_${rec.id}_${patientFilter}`,
       entityId: "hospitals",
@@ -88,69 +88,6 @@ export function generatePatientDots(patientFilter: "pay" | "free" | "camp" | "al
         "Total Patients": rec.totalPatients,
       },
     });
-
-    // 2. Scatter Patient Dots distributed across the state area bounds
-    const numScatterDots = displayCount <= 50 ? displayCount : Math.min(120, Math.max(25, Math.floor(Math.log2(displayCount) * 5)));
-    const bounds = REGION_BOUNDS[rec.name];
-
-    for (let i = 0; i < numScatterDots; i++) {
-      let dotLat: number;
-      let dotLng: number;
-
-      if (bounds) {
-        const [[minLng, minLat], [maxLng, maxLat]] = bounds;
-        const lngPadding = (maxLng - minLng) * 0.12;
-        const latPadding = (maxLat - minLat) * 0.12;
-
-        const effectiveMinLng = minLng + lngPadding;
-        const effectiveMaxLng = maxLng - lngPadding;
-        const effectiveMinLat = minLat + latPadding;
-        const effectiveMaxLat = maxLat - latPadding;
-
-        // Pseudo-random deterministic distribution occupying full state area
-        const seed1 = Math.abs(Math.sin((i + 1) * 12.9898 + rec.latitude * 78.233) * 43758.5453) % 1;
-        const seed2 = Math.abs(Math.cos((i + 1) * 78.233 + rec.longitude * 12.9898) * 43758.5453) % 1;
-
-        dotLng = effectiveMinLng + seed1 * (effectiveMaxLng - effectiveMinLng);
-        dotLat = effectiveMinLat + seed2 * (effectiveMaxLat - effectiveMinLat);
-      } else {
-        const angle = (i * 137.5 * Math.PI) / 180;
-        const radiusFactor = (i + 1) / numScatterDots;
-        const r = Math.sqrt(radiusFactor) * 0.4;
-        dotLat = rec.latitude + r * Math.sin(angle);
-        dotLng = rec.longitude + (r * Math.cos(angle)) / Math.cos((rec.latitude * Math.PI) / 180);
-      }
-
-      const isFreeDot = patientFilter === "free" || (patientFilter === "all" && i % 3 === 0);
-
-      items.push({
-        id: `patient_dot_${rec.id}_${i}_${patientFilter}`,
-        entityId: "hospitals",
-        subcategoryId: "patients",
-        name: `${rec.name} Patient #${i + 1}`,
-        rawName: rec.name,
-        city: rec.name,
-        state: rec.isState ? rec.name : "International",
-        country: rec.country,
-        latitude: dotLat,
-        longitude: dotLng,
-        type: "Patient Dot",
-        metadata: {
-          isScatterDot: true,
-          dotIndex: i + 1,
-          regionName: rec.name,
-          isFreeDot: isFreeDot,
-          payCount: rec.payCount,
-          freeCount: rec.freeCount,
-          totalPatients: rec.totalPatients,
-        },
-        metrics: {
-          "Pay Patients": rec.payCount,
-          "Free Patients": rec.freeCount,
-          "Total Patients": rec.totalPatients,
-        },
-      });
-    }
   });
 
   return items;

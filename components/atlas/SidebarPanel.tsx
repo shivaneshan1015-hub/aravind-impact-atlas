@@ -301,10 +301,10 @@ export function SidebarPanel({
                   <Users className="w-4 h-4 text-blue-600" />
                   <div>
                     <span className="text-xs font-black text-slate-900 uppercase tracking-wider block">Patients Reach</span>
-                    <span className="text-[10px] text-slate-500 font-medium">4,709,714 Registered Patients</span>
+                    <span className="text-[10px] text-amber-700 font-black block">Data Period: Jan – Dec 2025</span>
                   </div>
                 </div>
-                <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">
+                <span className="text-[10px] bg-blue-100 text-blue-900 px-2 py-0.5 rounded-full font-bold">
                   4.71M Total
                 </span>
               </button>
@@ -318,7 +318,7 @@ export function SidebarPanel({
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "pay"
-                      ? "bg-blue-600 text-white shadow-xs"
+                      ? "bg-[#1E3A8A] text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
                   title="3,266,639 Pay Patients"
@@ -333,7 +333,7 @@ export function SidebarPanel({
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "free"
-                      ? "bg-emerald-700 text-white shadow-xs"
+                      ? "bg-[#064E3B] text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
                   title="1,254,989 Free Patients"
@@ -348,7 +348,7 @@ export function SidebarPanel({
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "camp"
-                      ? "bg-amber-800 text-white shadow-xs"
+                      ? "bg-[#78350F] text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
                   title="188,086 Camp Patients"
@@ -363,7 +363,7 @@ export function SidebarPanel({
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "all"
-                      ? "bg-indigo-800 text-white shadow-xs"
+                      ? "bg-[#1E1B4B] text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
                   title="4,709,714 Total Patients"
