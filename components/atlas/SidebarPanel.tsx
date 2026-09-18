@@ -354,7 +354,7 @@ export function SidebarPanel({
                 </span>
               </button>
 
-              {/* Data Type Tabs: Pay (759K) | Free (708K) | Camp (125K) | All (1.59M) */}
+              {/* Data Type Tabs: Pay (3.27M) | Free (1.25M) | Camp (188K) | All (4.71M) */}
               <div className="grid grid-cols-4 gap-1 p-1 bg-slate-200/60 rounded-xl">
                 <button
                   onClick={() => {
