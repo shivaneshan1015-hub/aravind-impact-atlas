@@ -82,22 +82,22 @@ export const DISPLAY_55INCH_MASTER_STYLE: StyleSpecification = {
     carto_light: {
       type: "raster",
       tiles: [
-        "https://a.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}.png",
-        "https://b.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}.png",
-        "https://c.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}.png",
+        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+        "https://cartodb-basemaps-a.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png",
+        "https://cartodb-basemaps-b.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png",
       ],
       tileSize: 256,
-      attribution: '&copy; CARTO &copy; OpenStreetMap',
+      attribution: '&copy; Esri &copy; OpenStreetMap',
     },
     carto_dark: {
       type: "raster",
       tiles: [
-        "https://a.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png",
-        "https://b.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png",
-        "https://c.basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png",
+        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+        "https://cartodb-basemaps-a.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png",
+        "https://cartodb-basemaps-b.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png",
       ],
       tileSize: 256,
-      attribution: '&copy; CARTO &copy; OpenStreetMap',
+      attribution: '&copy; Esri &copy; OpenStreetMap',
     },
     esri_topo: {
       type: "raster",
