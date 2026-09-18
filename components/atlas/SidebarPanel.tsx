@@ -350,11 +350,11 @@ export function SidebarPanel({
                   </div>
                 </div>
                 <span className="text-[10px] bg-blue-100 text-blue-900 px-2 py-0.5 rounded-full font-bold">
-                  4.71M Total
+                  {(PATIENT_COMBINED_TOTAL / 1000000).toFixed(2)}M Total
                 </span>
               </button>
 
-              {/* Data Type Tabs: Pay (3.26M) | Free (1.25M) | Camp (188K) | All (4.71M) */}
+              {/* Data Type Tabs: Pay (759K) | Free (708K) | Camp (125K) | All (1.59M) */}
               <div className="grid grid-cols-4 gap-1 p-1 bg-slate-200/60 rounded-xl">
                 <button
                   onClick={() => {
