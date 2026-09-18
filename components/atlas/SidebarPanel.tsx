@@ -215,23 +215,50 @@ export function SidebarPanel({
             </div>
 
             {/* Primary Category 2: Patients */}
-            <button
-              onClick={() => onSelectSubcategory?.("patients")}
-              className={`w-full p-3 rounded-2xl border text-left flex items-center justify-between font-bold text-xs transition-all ${
-                activeSubId === "patients"
-                  ? "bg-blue-900 text-white border-blue-900 shadow-md"
-                  : "bg-slate-50 hover:bg-slate-100 text-slate-800 border-slate-200"
-              }`}
-            >
-              <div className="flex items-center gap-2.5">
-                <Users className="w-4 h-4 text-blue-500 shrink-0" />
-                <div>
-                  <div className="font-black">Patients</div>
-                  <div className="text-[10px] font-normal opacity-80">Outpatient & Surgical Care</div>
+            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2.5">
+              <button
+                onClick={() => onSelectSubcategory?.("patients")}
+                className="w-full text-left flex items-center justify-between"
+              >
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-blue-600" />
+                  <div>
+                    <span className="text-xs font-black text-slate-900 uppercase tracking-wider block">Patients Reach</span>
+                    <span className="text-[10px] text-slate-500 font-medium">3,266,639 Pay Patients Registered</span>
+                  </div>
                 </div>
+                <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">
+                  3.26M
+                </span>
+              </button>
+
+              {/* Data Type Tabs: Pay | Free | Camp */}
+              <div className="grid grid-cols-3 gap-1 p-1 bg-slate-200/60 rounded-xl">
+                <button
+                  onClick={() => onSelectSubcategory?.("patients")}
+                  className="py-1.5 px-1 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center bg-blue-600 text-white shadow-xs"
+                >
+                  <span className="font-black text-xs">3.26M</span>
+                  <span className="text-[9px] uppercase tracking-tighter opacity-90">Pay</span>
+                </button>
+                <button
+                  onClick={() => onSelectSubcategory?.("patients")}
+                  className="py-1.5 px-1 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center text-slate-700 hover:bg-slate-300/50"
+                  title="Free patient dataset slot ready"
+                >
+                  <span className="font-black text-xs">0</span>
+                  <span className="text-[9px] uppercase tracking-tighter opacity-70">Free</span>
+                </button>
+                <button
+                  onClick={() => onSelectSubcategory?.("patients")}
+                  className="py-1.5 px-1 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center text-slate-700 hover:bg-slate-300/50"
+                  title="Camp patient dataset slot ready"
+                >
+                  <span className="font-black text-xs">0</span>
+                  <span className="text-[9px] uppercase tracking-tighter opacity-70">Camp</span>
+                </button>
               </div>
-              <ChevronRight className="w-4 h-4 opacity-60" />
-            </button>
+            </div>
 
             {/* Primary Category 3: Staffs */}
             <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-3">

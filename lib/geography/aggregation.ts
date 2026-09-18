@@ -4,6 +4,36 @@ import { DEMO_LOCATIONS } from "@/data/demo-data";
 import { INDIA_STATES_META } from "@/data/india-states";
 
 import { generateStaffDots, StaffGroup, StaffCategory } from "@/data/hospitals/staff-data";
+import { PATIENT_DATA_RECORDS } from "@/data/hospitals/patient-pay-data";
+
+export function generatePatientDots(): GeoLocationItem[] {
+  return PATIENT_DATA_RECORDS.map((rec) => ({
+    id: `patient_rec_${rec.id}`,
+    entityId: "hospitals",
+    subcategoryId: "patients",
+    name: rec.name,
+    rawName: rec.name,
+    city: rec.name,
+    state: rec.isState ? rec.name : "International",
+    country: rec.country,
+    latitude: rec.latitude,
+    longitude: rec.longitude,
+    type: "Patient Dot",
+    metadata: {
+      payCount: rec.payCount,
+      freeCount: rec.freeCount,
+      campCount: rec.campCount,
+      totalPatients: rec.totalPatients,
+      isState: rec.isState,
+    },
+    metrics: {
+      "Pay Patients": rec.payCount,
+      "Free Patients": rec.freeCount,
+      "Camp Patients": rec.campCount,
+      "Total Patients": rec.totalPatients,
+    },
+  }));
+}
 
 /**
  * Filter locations by Entity ID and optional Subcategory ID.
@@ -21,6 +51,10 @@ export function getFilteredLocations(
 
   if (entityId === "hospitals" && subcategoryId === "staffs") {
     return generateStaffDots(staffGroup, staffCategory);
+  }
+
+  if (entityId === "hospitals" && subcategoryId === "patients") {
+    return generatePatientDots();
   }
 
   return DEMO_LOCATIONS.filter((item) => {

@@ -644,6 +644,7 @@ export function MapEngine({
         "group cursor-pointer transition-all duration-200 select-none w-12 h-12 flex items-center justify-center";
 
       const isStaffDot = loc.type === "Staff Dot";
+      const isPatientDot = loc.type === "Patient Dot" || loc.subcategoryId === "patients";
       const isAurolabLoc = loc.entityId === "aurolab";
       const isEyeBankLoc = loc.entityId === "eyebank";
       const isIhmsLoc = loc.subcategoryId === "ihms";
@@ -651,7 +652,37 @@ export function MapEngine({
       const isVcmsLoc = loc.subcategoryId === "vcms";
       const isOneSystemActive = isOneSystem || entityConfig.id === "all";
 
-      if (isStaffDot) {
+      if (isPatientDot) {
+        const payCount = (loc.metadata?.payCount || 0) as number;
+        const formattedPay = payCount >= 1000000 
+          ? (payCount / 1000000).toFixed(1) + "M"
+          : payCount >= 1000 
+          ? (payCount / 1000).toFixed(payCount >= 10000 ? 0 : 1) + "K"
+          : payCount.toString();
+
+        const colors = ["#1E3A8A", "#312E81", "#065F46", "#4C1D95", "#7C2D12", "#78350F", "#831843"];
+        let hash = 0;
+        for (let i = 0; i < loc.name.length; i++) hash += loc.name.charCodeAt(i);
+        const dotColor = colors[Math.abs(hash) % colors.length];
+
+        const isLarge = payCount >= 50000;
+        const dotSize = payCount >= 1000000 ? "32px" : payCount >= 100000 ? "26px" : payCount >= 10000 ? "22px" : payCount >= 1000 ? "16px" : "10px";
+
+        el.innerHTML = `
+          <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${loc.name}: ${payCount.toLocaleString()} Pay Patients">
+            ${
+              isLarge
+                ? `<span class="mb-0.5 text-[9px] font-black text-white bg-slate-900/90 px-1.5 py-0.5 rounded shadow border border-slate-700 whitespace-nowrap">
+                     ${loc.name}
+                   </span>`
+                : ""
+            }
+            <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 8px ${dotColor}aa, 0 2px 4px rgba(0,0,0,0.4);" class="flex items-center justify-center text-white text-[9px] font-black transition-transform duration-200 group-hover:scale-130 select-none">
+              ${payCount >= 1000 ? formattedPay : ""}
+            </div>
+          </div>
+        `;
+      } else if (isStaffDot) {
         const dotColor = "#1E3A8A"; // Rich Dark Royal Blue
         const dotSize = isSelected ? "10px" : "6px";
         const catName = loc.metrics?.category || loc.metadata?.category || "Staff";
@@ -979,7 +1010,15 @@ export function MapEngine({
         const isIhmsLoc = loc.subcategoryId === "ihms";
         const isEyenotesLoc = loc.subcategoryId === "eyenotes";
         const isVcmsLoc = loc.subcategoryId === "vcms";
-        if (loc.type === "Staff Dot") {
+        if (loc.type === "Patient Dot" || loc.subcategoryId === "patients") {
+          const pay = ((loc.metadata?.payCount || 0) as number).toLocaleString();
+          const free = ((loc.metadata?.freeCount || 0) as number).toLocaleString();
+          const camp = ((loc.metadata?.campCount || 0) as number).toLocaleString();
+          const totalP = ((loc.metadata?.totalPatients || 0) as number).toLocaleString();
+
+          popTitle = `${loc.name} Patients`;
+          popSub = `Pay: ${pay} · Free: ${free} · Camp: ${camp} (Total: ${totalP})`;
+        } else if (loc.type === "Staff Dot") {
           const groupName = (loc as any).staffGroup === "employees" ? "Employee" : "Trainee";
           popTitle = `${loc.metrics?.category || loc.metadata?.category || "Staff"} (${groupName})`;
           popSub = `District of Origin: ${(loc as any).districtName || loc.metadata?.districtName || loc.city}, Tamil Nadu`;
