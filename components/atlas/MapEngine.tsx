@@ -9,6 +9,8 @@ import { LIGHT_ATLAS_MAP_STYLE, hexToRgba, MapVarietyId } from "@/lib/map-utils"
 import { INDIA_CENTER, INDIA_DEFAULT_ZOOM } from "@/config/entities";
 import { EYEBANK_DATA } from "@/data/eyebank/eyebank-data";
 
+import { VisionCentreHospitalCategory } from "@/data/hospitals/vision-centres-data";
+
 export interface MapEngineProps {
   entityConfig: EntityConfig;
   locations: GeoLocationItem[];
@@ -22,6 +24,7 @@ export interface MapEngineProps {
   modeGrammar?: GeographicGrammar;
   geographicLevel?: GeographicLevel;
   careTypeFilter?: "all" | "tertiary" | "secondary" | "community" | "vision_centre";
+  visionCentreHubFilter?: VisionCentreHospitalCategory;
   revealMaxYear?: number | null;
   isLabMode?: boolean;
   isOneSystem?: boolean;
@@ -40,6 +43,7 @@ export function MapEngine({
   modeGrammar = "auto",
   geographicLevel = "country",
   careTypeFilter = "all",
+  visionCentreHubFilter = "all",
   revealMaxYear = null,
   isLabMode = false,
   isOneSystem = false,
@@ -501,6 +505,15 @@ export function MapEngine({
       filtered = filtered.filter((l) => l.careType === careTypeFilter || l.type === "Staff Dot");
     }
 
+    // 2b. Vision Centre Hospital Hub Category filter
+    if (
+      visionCentreHubFilter &&
+      visionCentreHubFilter !== "all" &&
+      (careTypeFilter === "vision_centre" || selectedSubcategoryId === "hospitals_vision_centres")
+    ) {
+      filtered = filtered.filter((l) => l.metadata?.hospitalHub === visionCentreHubFilter);
+    }
+
     // 3. Reveal Max Year filter
     if (revealMaxYear !== null && revealMaxYear !== undefined) {
       filtered = filtered.filter(
@@ -524,8 +537,60 @@ export function MapEngine({
 
       const isPatientHub = loc.type === "Patient Hub";
       const isPatientDot = loc.type === "Patient Dot" || loc.subcategoryId === "patients";
+      const isVisionCentre = loc.careType === "vision_centre" || loc.subcategoryId === "hospitals_vision_centres";
+      const isCategoryHub = !!loc.metadata?.isCategoryHub;
 
-      if (isPatientHub) {
+      if (isVisionCentre) {
+        const hubName = (loc.metadata?.hospitalHub as string) || "Madurai";
+        const hubColors: Record<string, string> = {
+          Madurai: "#991B1B",     // Dark Crimson Red
+          Chennai: "#1E3A8A",     // Dark Royal Blue
+          Theni: "#0F172A",       // Deep Slate Black
+          Coimbatore: "#065F46",  // Dark Emerald Green
+          Tirunelveli: "#115E59",  // Dark Teal
+          Salem: "#78350F",       // Dark Chocolate
+          Pondicherry: "#581C87", // Dark Purple
+        };
+        const hubColor = hubColors[hubName] || (loc.metadata?.hubColor as string) || "#064E3B";
+        const placeName = loc.rawName || loc.city || loc.name;
+
+        if (isCategoryHub) {
+          // Category Base Hospital Hub Badge & Building Pin (larger size with Building Icon)
+          el.innerHTML = `
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-30" title="${loc.name}">
+              <!-- Hospital Name Label Badge -->
+              <span class="mb-1 text-[11px] font-black text-white px-2.5 py-1 rounded-lg shadow-2xl border border-white/40 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110" style="background-color: ${hubColor}">
+                <svg class="w-3.5 h-3.5 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M9 17h6"/>
+                </svg>
+                <span>${placeName} Base Hospital</span>
+              </span>
+
+              <!-- Large Base Hospital Building Icon Badge -->
+              <div class="w-8 h-8 rounded-xl border-2 border-white shadow-2xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125" style="background-color: ${hubColor}">
+                <svg class="w-4.5 h-4.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M9 17h6"/>
+                </svg>
+              </div>
+            </div>
+          `;
+        } else {
+          // Vision Centre Pin with Touch/Click/Hover Label over Pin
+          const dotSize = isSelected ? "14px" : "9px";
+          el.innerHTML = `
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer">
+              <!-- Touch / Click Place Name Label over Pin -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2 py-0.5 rounded-md shadow-lg border border-slate-300 whitespace-nowrap ${isSelected ? 'opacity-100 ring-2 ring-slate-900 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} transition-all duration-150 pointer-events-none">
+                ${placeName}
+              </span>
+
+              <!-- Vision Centre Dark-Colored Pin Dot -->
+              <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${hubColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 6px ${hubColor}dd, 0 1px 3px rgba(0,0,0,0.3); transition: transform 0.15s ease-out;" class="group-hover:scale-150 group-active:scale-150">
+              </div>
+            </div>
+          `;
+        }
+      } else if (isPatientHub) {
         const displayCount = (loc.metadata?.displayCount || loc.metadata?.totalPatients || 0) as number;
         const isFree = loc.metadata?.activeFilter === "free";
         const dotColor = isFree ? "#064E3B" : "#312E81"; // Static dark emerald (Free) or dark indigo (Pay/All)

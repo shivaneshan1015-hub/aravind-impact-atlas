@@ -28,6 +28,11 @@ import {
   UserPlus,
 } from "lucide-react";
 
+import {
+  VISION_CENTRE_HOSPITALS,
+  VisionCentreHospitalCategory,
+} from "@/data/hospitals/vision-centres-data";
+
 export interface SidebarPanelProps {
   entityConfig: EntityConfig;
   locations: GeoLocationItem[];
@@ -46,6 +51,8 @@ export interface SidebarPanelProps {
   onSelectStaffCategory?: (cat: StaffCategory | "all") => void;
   patientFilter?: "pay" | "free" | "camp" | "all";
   onSelectPatientFilter?: (filter: "pay" | "free" | "camp" | "all") => void;
+  visionCentreHubFilter?: VisionCentreHospitalCategory;
+  onSelectVisionCentreHubFilter?: (hub: VisionCentreHospitalCategory) => void;
 }
 
 export function SidebarPanel({
@@ -66,6 +73,8 @@ export function SidebarPanel({
   onSelectStaffCategory,
   patientFilter = "all",
   onSelectPatientFilter,
+  visionCentreHubFilter = "all",
+  onSelectVisionCentreHubFilter,
 }: SidebarPanelProps) {
   const story = IMPACT_STORIES[entityConfig.id] || IMPACT_STORIES.hospitals;
 
@@ -203,18 +212,75 @@ export function SidebarPanel({
                   }}
                   className={`w-full p-2.5 rounded-xl border flex items-center justify-between text-xs font-bold transition-all ${
                     activeSubId === "hospitals_vision_centres"
-                      ? "bg-teal-600 text-white border-teal-600 shadow-xs"
+                      ? "bg-slate-900 text-white border-slate-800 shadow-xs"
                       : "bg-white hover:bg-slate-100 text-slate-800 border-slate-200"
                   }`}
                 >
                   <span className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-teal-300 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-teal-400 inline-block" />
                     Vision Centres
                   </span>
                   <span className="text-[10px] px-1.5 py-0.5 bg-white/20 rounded font-black">
                     120 Centres
                   </span>
                 </button>
+
+                {/* 7 Hospital Hub Categories Selection UI */}
+                {(activeSubId === "hospitals_vision_centres" || careTypeFilter === "vision_centre") && (
+                  <div className="space-y-1.5 pt-2 border-t border-slate-200/80 animate-in fade-in slide-in-from-top-1 duration-150">
+                    <div className="flex items-center justify-between text-[10px] font-black uppercase text-slate-400 tracking-wider px-1">
+                      <span>Hospital Hub Categories</span>
+                      <span>7 Base Hospitals</span>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-1.5">
+                      <button
+                        onClick={() => onSelectVisionCentreHubFilter?.("all")}
+                        className={`col-span-2 py-1.5 px-2.5 rounded-xl text-xs font-bold border flex items-center justify-between transition-all ${
+                          visionCentreHubFilter === "all"
+                            ? "bg-teal-700 text-white border-teal-700 shadow-xs ring-2 ring-teal-500/30"
+                            : "bg-white text-slate-800 border-slate-200 hover:bg-slate-100"
+                        }`}
+                      >
+                        <span className="flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-teal-400" />
+                          <span>All 120 Vision Centres</span>
+                        </span>
+                        <span className="text-[10px] px-1.5 py-0.2 bg-white/20 rounded font-black">120</span>
+                      </button>
+
+                      {VISION_CENTRE_HOSPITALS.map((h) => {
+                        const isSelected = visionCentreHubFilter === h.id;
+                        return (
+                          <button
+                            key={h.id}
+                            onClick={() => onSelectVisionCentreHubFilter?.(h.id)}
+                            className={`py-1.5 px-2 rounded-xl text-xs font-bold border flex items-center justify-between transition-all ${
+                              isSelected
+                                ? "text-white shadow-xs ring-2 ring-slate-900/30"
+                                : "bg-white text-slate-800 border-slate-200 hover:bg-slate-100"
+                            }`}
+                            style={{
+                              backgroundColor: isSelected ? h.color : undefined,
+                              borderColor: isSelected ? h.color : undefined,
+                            }}
+                          >
+                            <span className="flex items-center gap-1.5 truncate">
+                              <span
+                                className="w-2.5 h-2.5 rounded-full shrink-0 border border-white/50"
+                                style={{ backgroundColor: h.color }}
+                              />
+                              <span className="truncate">{h.name}</span>
+                            </span>
+                            <span className="text-[10px] opacity-90 font-black shrink-0 ml-1">
+                              {h.count}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 

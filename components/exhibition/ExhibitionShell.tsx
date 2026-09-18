@@ -44,6 +44,8 @@ const MapEngine = dynamic(
   }
 );
 
+import { VisionCentreHospitalCategory } from "@/data/hospitals/vision-centres-data";
+
 export function ExhibitionShell() {
   const {
     currentScene,
@@ -67,6 +69,7 @@ export function ExhibitionShell() {
   } = useScene();
 
   const [careTypeFilter, setCareTypeFilter] = React.useState<"all" | "tertiary" | "secondary" | "community" | "vision_centre">("all");
+  const [visionCentreHubFilter, setVisionCentreHubFilter] = React.useState<VisionCentreHospitalCategory>("all");
   const [staffGroup, setStaffGroup] = React.useState<StaffGroup>("employees");
   const [staffCategory, setStaffCategory] = React.useState<StaffCategory | "all">("all");
   const [patientFilter, setPatientFilter] = React.useState<"pay" | "free" | "camp" | "all">("all");
@@ -149,25 +152,19 @@ export function ExhibitionShell() {
     return calculateStateAggregations(filteredLocations);
   }, [filteredLocations]);
 
-  // Locations filtered inside current selected state
+  // Derive locations in selected state for ContextPanel
   const locationsInSelectedState = useMemo(() => {
     if (!selectedState) return [];
     return filteredLocations.filter((l) => l.state === selectedState);
   }, [filteredLocations, selectedState]);
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#F7F8F6] font-sans text-slate-900 antialiased relative">
-      {/* Main Workspace (Left Sidebar + Right Map Canvas) */}
-      <div className="flex flex-1 overflow-hidden relative">
-        {/* Scene 01: Arrival Screen */}
-        {currentScene === "arrival" && <ArrivalScene />}
+    <div className="relative w-screen h-screen overflow-hidden bg-[#0F172A] font-sans antialiased text-slate-100 flex flex-col">
+      {/* Top Six Doors Navigation Bar */}
+      <SixDoorsNav />
 
-        {/* Scene 02: Six Doors Selector Overlay */}
-        {currentScene === "dimensions" && <SixDoorsNav />}
-
-        {/* Mode C: Attract Inactivity Overlay */}
-        {currentScene === "attract" && <AttractOverlay />}
-
+      {/* Main Exhibition Stage Layout */}
+      <div className="flex-1 flex overflow-hidden relative">
         {/* Left Sidebar Panel (Story Exploration & One System) */}
         {(currentScene === "story_exploration" || currentScene === "one_system") && (
           <SidebarPanel
@@ -188,6 +185,8 @@ export function ExhibitionShell() {
             onSelectStaffCategory={setStaffCategory}
             patientFilter={patientFilter}
             onSelectPatientFilter={setPatientFilter}
+            visionCentreHubFilter={visionCentreHubFilter}
+            onSelectVisionCentreHubFilter={setVisionCentreHubFilter}
           />
         )}
 
@@ -208,6 +207,7 @@ export function ExhibitionShell() {
               onSelectLocation={handleSelectLocationWithInterruption}
               onClearLocation={() => selectLocation(null)}
               careTypeFilter={careTypeFilter}
+              visionCentreHubFilter={visionCentreHubFilter}
               isOneSystem={currentScene === "one_system" || selectedEntityId === "all"}
             />
 
