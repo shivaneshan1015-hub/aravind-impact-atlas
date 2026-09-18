@@ -652,7 +652,7 @@ export function MapEngine({
       const isOneSystemActive = isOneSystem || entityConfig.id === "all";
 
       if (isStaffDot) {
-        const dotColor = "#0F172A";
+        const dotColor = "#1E3A8A"; // Rich Dark Royal Blue
         const dotSize = isSelected ? "10px" : "6px";
         const catName = loc.metrics?.category || loc.metadata?.category || "Staff";
         const distName = (loc as any).districtName || loc.metadata?.districtName || loc.city || loc.state;
@@ -663,12 +663,12 @@ export function MapEngine({
           </div>
         `;
       } else if (isIhmsLoc) {
-        // High-Tech Server Chip Node Badge Pin for IHMS Client Location
+        // Server Chip Node Badge Pin for IHMS Client Location (Rich Dark Burnt Copper)
         el.innerHTML = `
           <div class="relative flex items-center justify-center pointer-events-auto group" title="IHMS Client Location (${loc.city}, ${loc.country})">
             <!-- High-Tech Server Chip Node Badge -->
-            <div class="w-5.5 h-5.5 rounded-lg bg-gradient-to-br from-amber-950 to-orange-950 border-2 border-slate-900 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
-              <svg class="w-3.5 h-3.5 text-amber-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <div class="w-5.5 h-5.5 rounded-lg bg-gradient-to-br from-amber-900 to-orange-950 border-2 border-amber-500/40 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+              <svg class="w-3.5 h-3.5 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="5" y="5" width="14" height="14" rx="2" />
                 <rect x="9" y="9" width="6" height="6" fill="#FFFFFF" fill-opacity="0.3" />
                 <path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4" stroke-linecap="round" />
@@ -677,12 +677,12 @@ export function MapEngine({
           </div>
         `;
       } else if (isEyenotesLoc) {
-        // Digital EMR Record Badge Pin for Eyenotes
+        // Digital EMR Record Badge Pin for Eyenotes (Rich Dark Deep Sky Blue)
         el.innerHTML = `
           <div class="relative flex items-center justify-center pointer-events-auto group" title="Eyenotes EMR: ${loc.rawName || loc.name} (${loc.city}, ${loc.country})">
             <!-- EMR Record Badge -->
-            <div class="w-5.5 h-5.5 rounded-md bg-gradient-to-br from-cyan-950 to-teal-950 border-2 border-slate-900 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
-              <svg class="w-3 h-3 text-cyan-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <div class="w-5.5 h-5.5 rounded-md bg-gradient-to-br from-cyan-900 to-sky-950 border-2 border-cyan-500/40 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+              <svg class="w-3 h-3 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                 <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round" />
               </svg>
@@ -690,12 +690,12 @@ export function MapEngine({
           </div>
         `;
       } else if (isVcmsLoc) {
-        // VCMS Vision Centre Pin
+        // VCMS Vision Centre Pin (Rich Dark Deep Emerald)
         el.innerHTML = `
           <div class="relative flex items-center justify-center pointer-events-auto group" title="VCMS Vision Centre: ${loc.rawName || loc.name} (${loc.city}, ${loc.country})">
             <!-- VCMS Eye Pin Badge -->
-            <div class="w-5.5 h-5.5 rounded-md bg-gradient-to-br from-emerald-950 to-teal-950 border-2 border-slate-900 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
-              <svg class="w-3 h-3 text-emerald-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <div class="w-5.5 h-5.5 rounded-md bg-gradient-to-br from-emerald-900 to-teal-950 border-2 border-emerald-500/40 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+              <svg class="w-3 h-3 text-emerald-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
                 <circle cx="12" cy="12" r="3" fill="#FFFFFF" fill-opacity="0.8" />
               </svg>
@@ -703,16 +703,16 @@ export function MapEngine({
           </div>
         `;
       } else if (isOneSystemActive) {
-        // Compact Micro-Orb Pins for One System view with dark colors
+        // Compact Micro-Orb Pins for One System view with distinct rich dark colors
         const entityColors: Record<string, string> = {
-          hospitals: "#0F172A",  // Dark Royal Navy
-          laico: "#042F2E",      // Dark Deep Teal
-          amrf: "#3B0764",       // Dark Deep Purple
-          aurolab: "#451A03",    // Dark Deep Amber
-          auroitech: "#7C2D12",  // Dark Rust/Orange
-          eyebank: "#064E3B",    // Dark Emerald
+          hospitals: "#1E3A8A",  // Rich Dark Royal Blue
+          laico: "#042F2E",      // Rich Dark Deep Teal
+          amrf: "#4C1D95",       // Rich Dark Deep Violet
+          aurolab: "#78350F",    // Rich Dark Deep Amber/Bronze
+          auroitech: "#7C2D12",  // Rich Dark Burnt Copper
+          eyebank: "#064E3B",    // Rich Dark Emerald
         };
-        const pointColor = entityColors[loc.entityId] || "#0F172A";
+        const pointColor = entityColors[loc.entityId] || "#1E3A8A";
         const orbSize = isSelected ? "13px" : "8px";
         const orbShadow = `0 0 6px ${pointColor}, 0 1px 3px rgba(0,0,0,0.3)`;
 
@@ -736,26 +736,26 @@ export function MapEngine({
             // Small compact Main Hub Pin when Distributed subcategory is active to prevent overlapping
             el.innerHTML = `
               <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
-                <div style="width: 9px; height: 9px; background-color: #064E3B; border: 2px solid #78350F; border-radius: 9999px; box-shadow: 0 0 6px rgba(6, 78, 59, 0.8), 0 1px 3px rgba(0,0,0,0.4); transition: all 0.2s ease-out;" class="group-hover:scale-150">
+                <div style="width: 9px; height: 9px; background-color: #064E3B; border: 2px solid #D97706; border-radius: 9999px; box-shadow: 0 0 6px rgba(6, 78, 59, 0.8), 0 1px 3px rgba(0,0,0,0.4); transition: all 0.2s ease-out;" class="group-hover:scale-150">
                 </div>
               </div>
             `;
           } else {
-            // Main Eye Bank Hub Pin with City Name Alone
+            // Main Eye Bank Hub Pin with City Name Alone (Rich Dark Emerald & Gold accents)
             el.innerHTML = `
               <div class="relative flex flex-col items-center justify-center pointer-events-auto group">
                 <!-- Main Hub Badge Label displaying City Name Alone -->
                 ${
                   showLabel
-                    ? `<span class="mb-1 text-[10px] font-black text-white bg-slate-900/95 px-2.5 py-1 rounded-lg shadow-xl border-2 border-emerald-900 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
-                         <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                    ? `<span class="mb-1 text-[10px] font-black text-white bg-emerald-950/95 px-2.5 py-1 rounded-lg shadow-xl border-2 border-emerald-600 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+                         <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
                          <span>${cityOnlyName}</span>
                        </span>`
                     : ""
                 }
 
                 <!-- Central Main Hub Pin Badge with Eye Icon -->
-                <div class="w-7 h-7 rounded-full bg-emerald-950 border-2 border-emerald-700 shadow-xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
+                <div class="w-7 h-7 rounded-full bg-emerald-900 border-2 border-emerald-400 shadow-xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
                   <svg class="w-4 h-4 text-emerald-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
                     <circle cx="12" cy="12" r="3" />
@@ -765,15 +765,15 @@ export function MapEngine({
             `;
           }
         } else if (isDistribution) {
-          // Distribution Network Pin (Dark Navy Dot)
+          // Distribution Network Pin (Rich Dark Indigo Dot)
           el.innerHTML = `
             <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
-              <div style="width: 7px; height: 7px; background-color: #0F172A; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 4px rgba(15, 23, 42, 0.7), 0 1px 3px rgba(0,0,0,0.3); transition: all 0.2s ease-out;" class="group-hover:scale-150">
+              <div style="width: 7px; height: 7px; background-color: #312E81; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 4px rgba(49, 46, 129, 0.7), 0 1px 3px rgba(0,0,0,0.3); transition: all 0.2s ease-out;" class="group-hover:scale-150">
               </div>
             </div>
           `;
         } else {
-          // Collection Centre Pin (Dark Emerald Dot)
+          // Collection Centre Pin (Rich Dark Emerald Dot)
           el.innerHTML = `
             <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
               <div style="width: 7px; height: 7px; background-color: #064E3B; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 4px rgba(6, 78, 59, 0.7), 0 1px 3px rgba(0,0,0,0.3); transition: all 0.2s ease-out;" class="group-hover:scale-150">
@@ -788,13 +788,13 @@ export function MapEngine({
         const isOngoing = loc.metadata?.status === "ongoing" || loc.subcategoryId === "ongoing_phd";
 
         if (isHq) {
-          // 1. DISTINCT AMRF RESEARCH HQ PIN AT MADURAI (Dark Purple)
+          // 1. DISTINCT AMRF RESEARCH HQ PIN AT MADURAI (Rich Dark Deep Purple)
           el.innerHTML = `
             <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${loc.name}">
               <!-- HQ Floating Label Badge displaying AMRF Research HQ (Madurai) -->
               ${
                 !hidePinLabels
-                  ? `<span class="mb-1 text-[11px] font-black text-white bg-purple-950/95 px-3 py-1 rounded-lg shadow-2xl border-2 border-purple-700 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+                  ? `<span class="mb-1 text-[11px] font-black text-white bg-purple-950/95 px-3 py-1 rounded-lg shadow-2xl border-2 border-purple-500 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
                        <span class="w-2 h-2 rounded-full bg-purple-400"></span>
                        <span>AMRF Research HQ (Madurai)</span>
                      </span>`
@@ -802,7 +802,7 @@ export function MapEngine({
               }
 
               <!-- Central HQ Pin Badge -->
-              <div class="w-8 h-8 rounded-full bg-purple-950 border-2 border-purple-600 shadow-2xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
+              <div class="w-8 h-8 rounded-full bg-purple-900 border-2 border-purple-400 shadow-2xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
                 <svg class="w-4.5 h-4.5 text-purple-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M6 18h12M12 2v14M8 10l4-4 4 4" />
                 </svg>
@@ -810,14 +810,14 @@ export function MapEngine({
             </div>
           `;
         } else if (isCollaborator) {
-          // 2. GLOBAL UNIVERSITY / INSTITUTION COLLABORATOR PIN (Dark Indigo)
+          // 2. GLOBAL UNIVERSITY / INSTITUTION COLLABORATOR PIN (Rich Dark Deep Indigo)
           const instName = loc.metadata?.institutionName || loc.rawName || loc.name;
           el.innerHTML = `
             <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${instName} (${loc.city}, ${loc.country})">
               <!-- University / Institution Floating Label -->
               ${
                 !hidePinLabels
-                  ? `<span class="mb-1 text-[10px] font-black text-slate-100 bg-slate-900/95 px-2.5 py-1 rounded-lg shadow-xl border border-indigo-900 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+                  ? `<span class="mb-1 text-[10px] font-black text-slate-100 bg-indigo-950/95 px-2.5 py-1 rounded-lg shadow-xl border border-indigo-500/50 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
                        <span>${instName}</span>
                      </span>`
@@ -825,7 +825,7 @@ export function MapEngine({
               }
 
               <!-- Academic Cap / University Badge -->
-              <div class="w-6.5 h-6.5 rounded-full bg-gradient-to-br from-indigo-950 to-slate-950 border-2 border-slate-700 shadow-xl flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-130">
+              <div class="w-6.5 h-6.5 rounded-full bg-gradient-to-br from-indigo-900 to-indigo-950 border-2 border-indigo-400 shadow-xl flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-130">
                 <svg class="w-3.5 h-3.5 text-indigo-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
                   <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5" />
@@ -834,22 +834,22 @@ export function MapEngine({
             </div>
           `;
         } else if (isStudentAbroad) {
-          // 3. INTERNATIONAL STUDENT / FELLOW PIN (Dark Amber/Brown)
+          // 3. INTERNATIONAL STUDENT / FELLOW PIN (Rich Dark Deep Amber/Bronze)
           const instName = loc.metadata?.institutionName || loc.rawName || loc.name;
           el.innerHTML = `
             <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${instName} (${loc.city}, ${loc.country})">
               <!-- Institution Floating Label Badge -->
               ${
                 !hidePinLabels
-                  ? `<span class="mb-1 text-[10px] font-black text-slate-100 bg-slate-900/95 px-2.5 py-1 rounded-lg shadow-xl border border-amber-950 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
-                       <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                  ? `<span class="mb-1 text-[10px] font-black text-slate-100 bg-amber-950/95 px-2.5 py-1 rounded-lg shadow-xl border border-amber-600/50 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+                       <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
                        <span>${instName}</span>
                      </span>`
                   : ""
               }
 
               <!-- International Fellow Badge -->
-              <div class="w-6.5 h-6.5 rounded-full bg-gradient-to-br from-amber-950 to-stone-900 border-2 border-amber-800 shadow-xl flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-130">
+              <div class="w-6.5 h-6.5 rounded-full bg-gradient-to-br from-amber-900 to-stone-950 border-2 border-amber-500 shadow-xl flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-130">
                 <svg class="w-3.5 h-3.5 text-amber-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
                   <path d="M12 6a6 6 0 0 0-6 6c0 3.31 6 9 6 9s6-5.69 6-9a6 6 0 0 0-6-6z"/>
@@ -858,11 +858,11 @@ export function MapEngine({
             </div>
           `;
         } else if (isOngoing) {
-          // 3. ONGOING Ph.D. SCHOLAR (Dark Magenta/Pink)
+          // 3. ONGOING Ph.D. SCHOLAR (Rich Dark Deep Rose/Magenta)
           el.innerHTML = `
             <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name} (${loc.city}, ${loc.state})">
               <!-- Eye Care Research Atomic Pupil Badge -->
-              <div class="w-5 h-5 rounded-full bg-gradient-to-br from-pink-950 to-rose-950 border-2 border-pink-800 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+              <div class="w-5 h-5 rounded-full bg-gradient-to-br from-pink-900 to-rose-950 border-2 border-pink-400 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
                 <svg class="w-3 h-3 text-pink-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <circle cx="12" cy="12" r="7" stroke-dasharray="3 2" />
                   <circle cx="12" cy="12" r="2.5" fill="#FFFFFF" />
@@ -871,11 +871,11 @@ export function MapEngine({
             </div>
           `;
         } else {
-          // 4. COMPLETED Ph.D. SCHOLAR (Dark Slate/Navy)
+          // 4. COMPLETED Ph.D. SCHOLAR (Rich Dark Deep Cyan)
           el.innerHTML = `
             <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name} (${loc.city}, ${loc.state})">
               <!-- Eye Science Iris / Lens Badge -->
-              <div class="w-5 h-5 rounded-full bg-gradient-to-br from-slate-900 to-cyan-950 border-2 border-slate-700 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+              <div class="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-900 to-blue-950 border-2 border-cyan-400 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
                 <svg class="w-3 h-3 text-cyan-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M2 12s3-6 10-6 10 6 10 6-3 6-10 6-10-6-10-6z" />
                   <circle cx="12" cy="12" r="2.5" fill="#FFFFFF" />
@@ -889,47 +889,47 @@ export function MapEngine({
           <div class="relative flex items-center justify-center group pointer-events-auto">
             <div class="relative w-8 h-8 flex items-center justify-center">
               <!-- Left Curved Haptic Loop -->
-              <svg class="absolute -left-2 w-4 h-4 text-amber-800 opacity-90 transition-transform group-hover:-translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <svg class="absolute -left-2 w-4 h-4 text-amber-700 opacity-90 transition-transform group-hover:-translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10" />
               </svg>
               <!-- Central Optic Lens Ring -->
-              <div class="w-4 h-4 rounded-full bg-amber-950/80 border-2 border-amber-900 shadow-md flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
-                <div class="w-1.5 h-1.5 rounded-full bg-amber-700"></div>
+              <div class="w-4 h-4 rounded-full bg-amber-900 border-2 border-amber-600 shadow-md flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
+                <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
               </div>
               <!-- Right Curved Haptic Loop -->
-              <svg class="absolute -right-2 w-4 h-4 text-amber-800 opacity-90 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <svg class="absolute -right-2 w-4 h-4 text-amber-700 opacity-90 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10" />
               </svg>
             </div>
           </div>
         `;
       } else {
-        // CARE Centre & Standard Visual Hierarchy (Dark colors always)
+        // CARE Centre & Standard Visual Hierarchy (Rich Dark Color Variations)
         let markerSize = isSelected ? "20px" : "12px";
-        let markerBg = "#0F172A"; // Dark Navy default
+        let markerBg = "#1E3A8A"; // Dark Royal Blue default
         let markerBorder = "2px solid #FFFFFF";
         let outerShadow = "0 2px 6px rgba(0,0,0,0.3)";
 
         if (loc.careType === "tertiary") {
           markerSize = isSelected ? "22px" : "18px";
-          markerBg = "#0F172A"; // Dark Royal Navy/Slate 900
+          markerBg = "#1E3A8A"; // Rich Dark Royal Blue (Tertiary Care Hospital)
           markerBorder = "2.5px solid #FFFFFF";
-          outerShadow = "0 0 0 4px rgba(15,23,42,0.4), 0 3px 8px rgba(0,0,0,0.3)";
+          outerShadow = "0 0 0 4px rgba(30,58,138,0.4), 0 3px 8px rgba(0,0,0,0.3)";
         } else if (loc.careType === "secondary") {
           markerSize = isSelected ? "18px" : "14px";
-          markerBg = "#1E293B"; // Dark Slate 800
+          markerBg = "#312E81"; // Rich Dark Indigo (Secondary Care Hospital)
           markerBorder = "2px solid #FFFFFF";
-          outerShadow = "0 0 0 3px rgba(30,41,59,0.35), 0 2px 6px rgba(0,0,0,0.25)";
+          outerShadow = "0 0 0 3px rgba(49,46,129,0.35), 0 2px 6px rgba(0,0,0,0.25)";
         } else if (loc.careType === "community") {
           markerSize = isSelected ? "14px" : "10px";
-          markerBg = "#334155"; // Dark Slate 700
+          markerBg = "#065F46"; // Rich Dark Teal Green (Community Eye Clinic)
           markerBorder = "2px solid #FFFFFF";
-          outerShadow = "0 1px 4px rgba(0,0,0,0.2)";
+          outerShadow = "0 1px 4px rgba(6,95,70,0.4)";
         } else if (loc.careType === "vision_centre") {
           markerSize = isSelected ? "12px" : "7px";
-          markerBg = "#042F2E"; // Dark Deep Teal 950
+          markerBg = "#064E3B"; // Rich Dark Emerald (Vision Centre)
           markerBorder = "1.5px solid #FFFFFF";
-          outerShadow = "0 0 4px rgba(4,47,46,0.8)";
+          outerShadow = "0 0 4px rgba(6,78,59,0.8)";
         }
 
         const labelText = loc.rawName || loc.city || loc.name;
