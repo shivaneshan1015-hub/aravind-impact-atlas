@@ -8,6 +8,7 @@ import { GeoLocationItem, StateAggregation, GeographicGrammar, GeographicLevel }
 import { LIGHT_ATLAS_MAP_STYLE, hexToRgba, MapVarietyId } from "@/lib/map-utils";
 import { INDIA_CENTER, INDIA_DEFAULT_ZOOM } from "@/config/entities";
 import { EYEBANK_DATA } from "@/data/eyebank/eyebank-data";
+import { MapVarietySwitcher } from "@/components/atlas/MapVarietySwitcher";
 
 export interface MapEngineProps {
   entityConfig: EntityConfig;
@@ -53,6 +54,27 @@ export function MapEngine({
   const [mapLoaded, setMapLoaded] = useState(false);
   const [activeVariety, setActiveVariety] = useState<MapVarietyId>("teal_coastal");
   const [activeScope, setActiveScope] = useState<"global" | "bangladesh" | "india" | "nepal">("global");
+
+  // Handle Map Variety (Basemap Theme) Switching
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapLoaded) return;
+
+    const basemaps = ["basemap-light", "basemap-dark", "basemap-topo", "basemap-ocean"];
+    basemaps.forEach((b) => {
+      if (map.getLayer(b)) map.setLayoutProperty(b, "visibility", "none");
+    });
+
+    if (activeVariety === "teal_coastal") {
+      if (map.getLayer("basemap-light")) map.setLayoutProperty("basemap-light", "visibility", "visible");
+    } else if (activeVariety === "warm_ivory") {
+      if (map.getLayer("basemap-ocean")) map.setLayoutProperty("basemap-ocean", "visibility", "visible");
+    } else if (activeVariety === "voyager_topo") {
+      if (map.getLayer("basemap-topo")) map.setLayoutProperty("basemap-topo", "visibility", "visible");
+    } else if (activeVariety === "glassmorphic") {
+      if (map.getLayer("basemap-dark")) map.setLayoutProperty("basemap-dark", "visibility", "visible");
+    }
+  }, [mapLoaded, activeVariety]);
 
   // Compute active visual grammar based on entity or explicit grammar override
   const activeGrammar: GeographicGrammar =
@@ -1180,6 +1202,14 @@ export function MapEngine({
   return (
     <div className="relative w-full h-full bg-[#E7EEF2] overflow-hidden select-none">
       <div ref={mapContainerRef} className="w-full h-full" />
+
+      {/* Floating Map Variety Switcher (Top Left) */}
+      <div className="absolute top-4 left-4 z-20">
+        <MapVarietySwitcher
+          activeVariety={activeVariety}
+          onSelectVariety={setActiveVariety}
+        />
+      </div>
     </div>
   );
 }
