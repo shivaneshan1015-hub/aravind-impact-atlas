@@ -549,8 +549,7 @@ export function SidebarPanel({
             </button>
 
             {/* Country Wise Filter Panel for Capacity Building */}
-            {(activeSubId === "capacity_building" || activeSubId === "laico_participants" || activeSubId === "overview") && (
-              <div className="bg-emerald-950/5 border border-emerald-800/20 rounded-2xl p-3 space-y-2.5">
+            <div className="bg-emerald-950/5 border border-emerald-800/20 rounded-2xl p-3 space-y-2.5">
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-black text-emerald-950 uppercase tracking-wider flex items-center gap-1.5">
                     <Globe2 className="w-3.5 h-3.5 text-emerald-700" />
@@ -622,7 +621,6 @@ export function SidebarPanel({
                   })}
                 </div>
               </div>
-            )}
 
             {/* Primary Category 2: Training Programmes */}
             <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2">

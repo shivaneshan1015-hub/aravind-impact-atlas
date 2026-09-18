@@ -285,6 +285,11 @@ export function getFilteredLocations(
       return true;
     }
 
+    // Special handling for LAICO
+    if (entityId === "laico") {
+      return item.subcategoryId === "capacity_building" || item.id === "laico_hq";
+    }
+
     if (subcategoryId && item.subcategoryId !== subcategoryId) {
       return false;
     }
