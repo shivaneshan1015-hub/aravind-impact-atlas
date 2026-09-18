@@ -8,7 +8,6 @@ import { GeoLocationItem, StateAggregation, GeographicGrammar, GeographicLevel }
 import { LIGHT_ATLAS_MAP_STYLE, hexToRgba, MapVarietyId } from "@/lib/map-utils";
 import { INDIA_CENTER, INDIA_DEFAULT_ZOOM } from "@/config/entities";
 import { EYEBANK_DATA } from "@/data/eyebank/eyebank-data";
-import { MapVarietySwitcher } from "@/components/atlas/MapVarietySwitcher";
 
 export interface MapEngineProps {
   entityConfig: EntityConfig;
@@ -115,82 +114,6 @@ export function MapEngine({
     });
 
     map.on("load", () => {
-      // Add local India States GeoJSON vector source
-      map.addSource("india-states-source", {
-        type: "geojson",
-        data: "/maps/india/states.geojson",
-      });
-
-      // Layer 1: Vector Fill layer for states (subtle quiet overlay)
-      map.addLayer({
-        id: "india-states-fill",
-        type: "fill",
-        source: "india-states-source",
-        paint: {
-          "fill-color": entityConfig?.color || "#EA580C",
-          "fill-opacity": 0.12,
-        },
-      });
-
-      // Layer 1b: Crisp State Boundary Outline Layer (Electric Teal stroke)
-      map.addLayer({
-        id: "india-states-outline",
-        type: "line",
-        source: "india-states-source",
-        paint: {
-          "line-color": "#0D9488",
-          "line-width": 1.8,
-          "line-opacity": 0.85,
-        },
-      });
-
-      // Layer 2: Prominent State Names Symbol Layer (State Names visible on all maps)
-      map.addLayer({
-        id: "india-states-labels",
-        type: "symbol",
-        source: "india-states-source",
-        layout: {
-          "text-field": ["get", "ST_NM"],
-          "text-size": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            3, 11,
-            6, 14,
-            9, 18
-          ],
-          "text-transform": "uppercase",
-          "text-allow-overlap": false,
-          "text-ignore-placement": false,
-        },
-        paint: {
-          "text-color": "#0F172A",
-          "text-halo-color": "#FFFFFF",
-          "text-halo-width": 2.5,
-          "text-halo-blur": 1,
-        },
-      });
-
-
-
-      // State polygon click handler (pointer cursor only, no outline lines)
-      map.on("mousemove", "india-states-fill", () => {
-        map.getCanvas().style.cursor = "pointer";
-      });
-
-      map.on("mouseleave", "india-states-fill", () => {
-        map.getCanvas().style.cursor = "";
-      });
-
-      map.on("click", "india-states-fill", (e) => {
-        if (e.features && e.features.length > 0) {
-          const stName = e.features[0].properties?.ST_NM;
-          if (stName) {
-            onSelectState(stName);
-          }
-        }
-      });
-
       // 1. CAPACITY BUILDING (LAICO Knowledge Arcs)
       map.addSource("laico-network-source", {
         type: "geojson",
@@ -475,74 +398,6 @@ export function MapEngine({
       mapRef.current = null;
     };
   }, []);
-
-  // Update State Fill Density colors based on count aggregations
-  useEffect(() => {
-    const map = mapRef.current;
-    if (!map || !mapLoaded) return;
-
-    const themeColor = entityConfig?.color || "#EA580C";
-
-    const matchExpression: any[] = ["match", ["get", "ST_NM"]];
-    stateAggregations.forEach((s) => {
-      let opacity = 0.12;
-      if (s.count >= 6) opacity = 0.32;
-      else if (s.count >= 3) opacity = 0.22;
-
-      matchExpression.push(s.stateName, hexToRgba(themeColor, opacity));
-    });
-    matchExpression.push("rgba(0, 0, 0, 0)");
-
-    if (map.getLayer("india-states-fill")) {
-      map.setPaintProperty("india-states-fill", "fill-color", matchExpression);
-    }
-  }, [mapLoaded, stateAggregations, entityConfig]);
-
-  // Toggle Map Variety Styles, Basemaps, and Boundary Outline Colors
-  useEffect(() => {
-    const map = mapRef.current;
-    if (!map || !mapLoaded) return;
-
-    // Hide all basemaps first
-    const basemaps = ["basemap-light", "basemap-dark", "basemap-topo", "basemap-ocean"];
-    basemaps.forEach((b) => {
-      if (map.getLayer(b)) map.setLayoutProperty(b, "visibility", "none");
-    });
-
-    if (activeVariety === "teal_coastal") {
-      // 1. Electric Teal & Chalk
-      if (map.getLayer("basemap-light")) map.setLayoutProperty("basemap-light", "visibility", "visible");
-      if (map.getLayer("india-states-outline")) {
-        map.setPaintProperty("india-states-outline", "line-color", "#0D9488");
-        map.setPaintProperty("india-states-outline", "line-width", 2.0);
-        map.setPaintProperty("india-states-outline", "line-opacity", 0.90);
-      }
-    } else if (activeVariety === "warm_ivory") {
-      // 2. Warm Ivory & Cobalt (Healthcare Palette)
-      if (map.getLayer("basemap-ocean")) map.setLayoutProperty("basemap-ocean", "visibility", "visible");
-      if (map.getLayer("india-states-outline")) {
-        map.setPaintProperty("india-states-outline", "line-color", "#1E3A8A");
-        map.setPaintProperty("india-states-outline", "line-width", 2.0);
-        map.setPaintProperty("india-states-outline", "line-opacity", 0.90);
-      }
-    } else if (activeVariety === "voyager_topo") {
-      // 3. Voyager Topo Terrain
-      if (map.getLayer("basemap-topo")) map.setLayoutProperty("basemap-topo", "visibility", "visible");
-      if (map.getLayer("india-states-outline")) {
-        map.setPaintProperty("india-states-outline", "line-color", "#059669");
-        map.setPaintProperty("india-states-outline", "line-width", 2.0);
-        map.setPaintProperty("india-states-outline", "line-opacity", 0.90);
-      }
-    } else if (activeVariety === "glassmorphic") {
-      // 4. Glassmorphic Midnight
-      if (map.getLayer("basemap-dark")) map.setLayoutProperty("basemap-dark", "visibility", "visible");
-      if (map.getLayer("india-states-outline")) {
-        map.setPaintProperty("india-states-outline", "line-color", "#38BDF8");
-        map.setPaintProperty("india-states-outline", "line-width", 2.0);
-        map.setPaintProperty("india-states-outline", "line-opacity", 0.95);
-      }
-    }
-  }, [mapLoaded, activeVariety]);
 
   // Toggle Vector Grammar Layers
   useEffect(() => {
@@ -1304,14 +1159,6 @@ export function MapEngine({
   return (
     <div className="relative w-full h-full bg-[#E7EEF2] overflow-hidden select-none">
       <div ref={mapContainerRef} className="w-full h-full" />
-
-      {/* Floating Map Variety Switcher (Top Left) */}
-      <div className="absolute top-4 left-4 z-20">
-        <MapVarietySwitcher
-          activeVariety={activeVariety}
-          onSelectVariety={setActiveVariety}
-        />
-      </div>
     </div>
   );
 }
