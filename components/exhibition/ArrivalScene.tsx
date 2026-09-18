@@ -151,10 +151,7 @@ export function ArrivalScene() {
         </div>
       </div>
 
-      {/* Footer Exhibition Callout */}
-      <div className="absolute bottom-8 text-center text-xs text-slate-400 font-medium tracking-wider uppercase">
-        Touchscreen Interactive Exhibition Installation
-      </div>
+
     </div>
   );
 }

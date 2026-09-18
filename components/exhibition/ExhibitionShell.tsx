@@ -13,16 +13,11 @@ import { filterAuroitechByProduct } from "@/lib/data/adapters";
 import { GeoLocationItem } from "@/types/geo";
 import { StaffGroup, StaffCategory } from "@/data/hospitals/staff-data";
 
-import { ExhibitionHeader } from "./ExhibitionHeader";
 import { ArrivalScene } from "./ArrivalScene";
 import { SixDoorsNav } from "./SixDoorsNav";
 import { AttractOverlay } from "./AttractOverlay";
 import { ContextPanel } from "@/components/atlas/ContextPanel";
-import { MetricStrip } from "@/components/atlas/MetricStrip";
-import { SubcategoryNav } from "@/components/atlas/SubcategoryNav";
 import { Legend } from "@/components/atlas/Legend";
-import { MapControls } from "@/components/atlas/MapControls";
-import { GeographicBreadcrumb } from "@/components/geography/GeographicBreadcrumb";
 import { FollowImpactNav } from "@/components/geography/FollowImpactNav";
 import { GuidedControls } from "./GuidedControls";
 import { OneSystemFinale } from "./OneSystemFinale";
@@ -195,26 +190,7 @@ export function ExhibitionShell() {
 
         {/* Core Exploration View (Map Canvas Dominates Remaining Viewport) */}
         <main className="flex-1 flex flex-col relative overflow-hidden bg-[#F7F8F6]">
-          {/* Subcategory Focus Layer Navigation Bar */}
-          {(currentScene === "story_exploration" || currentScene === "one_system") && (
-            <SubcategoryNav
-              entityConfig={activeEntityConfig}
-              selectedSubcategoryId={selectedSubcategoryId}
-              onSelectSubcategory={selectSubcategory}
-            />
-          )}
 
-          {/* Geographic Breadcrumb Navigation bar */}
-          {(currentScene === "story_exploration" || currentScene === "one_system") && (
-            <GeographicBreadcrumb
-              entityConfig={activeEntityConfig}
-              selectedSubcategoryName={activeSubcategory.name}
-              selectedCountry={selectedCountry}
-              selectedState={selectedState}
-              onResetToIndia={() => handleSelectStateWithInterruption(null)}
-              onResetToWorld={() => handleSelectStateWithInterruption(null)}
-            />
-          )}
 
           {/* Interactive Map Canvas Engine */}
           <div className="flex-1 relative w-full h-full">

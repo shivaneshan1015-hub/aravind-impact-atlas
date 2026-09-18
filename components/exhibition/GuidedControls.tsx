@@ -55,7 +55,7 @@ export function GuidedControls() {
             </span>
           </div>
           <h4 className="text-sm font-extrabold text-slate-900">
-            {story.doorNumber}. {story.title} — “{story.question}”
+            {story.title} — “{story.question}”
           </h4>
         </div>
       </div>

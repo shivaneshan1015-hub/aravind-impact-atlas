@@ -196,23 +196,6 @@ export function ContextPanel({
               <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">
                 {entityConfig.shortName} Overall
               </span>
-              <h4 className="text-xs font-bold text-slate-600 mt-0.5">
-                {story.primaryMetric.label}
-              </h4>
-
-              {/* Big Hero Overall Metric (Reference Specimen Style: media__1789481991797.png) */}
-              <div className="mt-1">
-                <AnimatedCounter
-                  value={story.primaryMetric.value}
-                  className="text-4xl font-black tracking-tight leading-none block"
-                  style={{ color: story.accentColor }}
-                />
-                {story.primaryMetric.unit && (
-                  <p className="text-[11px] text-slate-500 font-bold mt-1">
-                    {story.primaryMetric.unit}
-                  </p>
-                )}
-              </div>
             </div>
 
             {/* Overall Secondary Breakdown */}

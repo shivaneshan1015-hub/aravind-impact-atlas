@@ -61,7 +61,7 @@ export function SixDoorsNav() {
       <div className="text-center max-w-2xl mx-auto space-y-2 mt-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-widest border border-amber-200">
           <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-          <span>Six Doors Into Six Geographic Stories</span>
+          <span>Six Geographic Stories</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
           Select an Impact Dimension
@@ -101,7 +101,7 @@ export function SixDoorsNav() {
                   </div>
                   <div>
                     <div className="text-[11px] font-black tracking-widest text-slate-400 uppercase">
-                      DOOR {story.doorNumber}
+                      {story.doorNumber}
                     </div>
                     <h3 className="font-extrabold text-slate-900 text-lg group-hover:text-amber-700 transition-colors">
                       {story.title}
@@ -113,21 +113,13 @@ export function SixDoorsNav() {
               </div>
 
               {/* Core Visitor Question */}
-              <div className="my-3">
+              <div className="mt-3">
                 <p className="text-sm font-bold text-slate-800 italic font-serif group-hover:text-slate-900">
                   “{story.question}”
                 </p>
                 <p className="text-xs text-slate-500 mt-1 line-clamp-1">
                   {story.tagline}
                 </p>
-              </div>
-
-              {/* Card Footer Metric Highlight */}
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span className="text-slate-500 font-medium">Primary Reach</span>
-                <span className="font-extrabold text-slate-900" style={{ color: story.accentColor }}>
-                  {story.primaryMetric.value}
-                </span>
               </div>
             </div>
           );

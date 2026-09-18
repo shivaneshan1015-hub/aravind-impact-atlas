@@ -8,10 +8,6 @@ import { GeoLocationItem, StateAggregation, GeographicGrammar, GeographicLevel }
 import { LIGHT_ATLAS_MAP_STYLE, hexToRgba, MapVarietyId } from "@/lib/map-utils";
 import { INDIA_CENTER, INDIA_DEFAULT_ZOOM } from "@/config/entities";
 import { EYEBANK_DATA } from "@/data/eyebank/eyebank-data";
-import { MapControls } from "@/components/atlas/MapControls";
-import { MapVarietySwitcher } from "@/components/atlas/MapVarietySwitcher";
-import { QuickScopeNav } from "@/components/atlas/QuickScopeNav";
-import { TouchRippleCanvas } from "@/components/atlas/TouchRippleCanvas";
 
 export interface MapEngineProps {
   entityConfig: EntityConfig;
@@ -104,17 +100,7 @@ export function MapEngine({
         },
       });
 
-      // Layer 1.5: High-Contrast Vector Line Outline layer for state & country borders (55in Interactive Display)
-      map.addLayer({
-        id: "india-states-outline",
-        type: "line",
-        source: "india-states-source",
-        paint: {
-          "line-color": "#0D9488",
-          "line-width": 2.0,
-          "line-opacity": 0.90,
-        },
-      });
+
 
       // State polygon click handler (pointer cursor only, no outline lines)
       map.on("mousemove", "india-states-fill", () => {
@@ -1194,29 +1180,6 @@ export function MapEngine({
   return (
     <div className="relative w-full h-full bg-[#E7EEF2] overflow-hidden select-none">
       <div ref={mapContainerRef} className="w-full h-full" />
-
-      {/* 55" Touchscreen Visual Feedback */}
-      <TouchRippleCanvas />
-
-      {/* Map Controls & Map Variety Switcher */}
-      <div className="absolute top-6 left-6 flex flex-col gap-2 z-20">
-        <MapControls
-          onZoomIn={handleZoomIn}
-          onZoomOut={handleZoomOut}
-          onResetView={handleResetView}
-          onToggleFullscreen={handleToggleFullscreen}
-        />
-        <MapVarietySwitcher
-          activeVariety={activeVariety}
-          onSelectVariety={setActiveVariety}
-        />
-      </div>
-
-      {/* Quick Scope Navigation Bar */}
-      <QuickScopeNav
-        activeScope={activeScope}
-        onSelectScope={handleSelectScope}
-      />
     </div>
   );
 }

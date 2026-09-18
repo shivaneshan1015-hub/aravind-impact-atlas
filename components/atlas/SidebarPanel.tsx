@@ -93,7 +93,7 @@ export function SidebarPanel({
             color: story.accentColor,
           }}
         >
-          {entityConfig.shortName.toUpperCase()} DOOR
+          {entityConfig.shortName.toUpperCase()}
         </span>
         <h1 className="text-xl font-black text-slate-900 leading-tight">
           {entityConfig.name}
@@ -101,26 +101,6 @@ export function SidebarPanel({
         <p className="text-xs text-slate-500 font-medium mt-1">
           {story.question}
         </p>
-      </div>
-
-      {/* Hero Primary Metric Card */}
-      <div
-        className="rounded-2xl p-4 text-white shadow-md relative overflow-hidden"
-        style={{ backgroundColor: "#0B252C" }}
-      >
-        <div
-          className="absolute -right-4 -bottom-4 w-24 h-24 rounded-full blur-xl pointer-events-none opacity-30"
-          style={{ backgroundColor: story.accentColor }}
-        />
-        <span className="text-[10px] font-extrabold text-teal-200 tracking-wider uppercase block">
-          Primary Dimension Metric
-        </span>
-        <div className="text-3xl font-black text-white tracking-tight my-1" style={{ color: story.accentColor }}>
-          {story.primaryMetric.value}
-        </div>
-        <div className="text-[11px] text-teal-100/80 font-medium">
-          {story.primaryMetric.label}
-        </div>
       </div>
 
       {/* Main Subcategories Section */}

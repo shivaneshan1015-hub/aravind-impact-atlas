@@ -130,7 +130,7 @@ export function AttractOverlay() {
                   className="inline-block px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-widest text-white shadow-xs"
                   style={{ backgroundColor: activeConfig.accent }}
                 >
-                  DOOR {activeConfig.doorNumber} · {activeConfig.label}
+                  {activeConfig.label}
                 </span>
               </div>
 
@@ -142,14 +142,7 @@ export function AttractOverlay() {
                 {activeConfig.tagline}
               </p>
 
-              <div className="pt-2 flex flex-wrap items-center justify-center gap-4 text-xs font-bold text-slate-700">
-                <span className="bg-slate-100 px-4 py-1.5 rounded-xl border border-slate-200">
-                  Grammar: <strong className="text-slate-900 font-extrabold">{activeConfig.visualGrammar}</strong>
-                </span>
-                <span className="bg-amber-50 text-amber-900 px-4 py-1.5 rounded-xl border border-amber-200">
-                  {activeConfig.primaryMetric.label}: <strong className="font-extrabold">{activeConfig.primaryMetric.value}</strong>
-                </span>
-              </div>
+
             </div>
           )}
 
@@ -212,7 +205,7 @@ export function AttractOverlay() {
         </div>
 
         <p className="text-[11px] text-slate-600 font-semibold tracking-wide uppercase">
-          Exhibition Touchscreen Interactive Installation · Touch anywhere to enter
+          Interactive Installation · Touch anywhere to enter
         </p>
       </div>
     </div>
