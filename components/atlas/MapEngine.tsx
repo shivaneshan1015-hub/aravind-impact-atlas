@@ -74,6 +74,12 @@ export function MapEngine({
     } else if (activeVariety === "glassmorphic") {
       if (map.getLayer("basemap-dark")) map.setLayoutProperty("basemap-dark", "visibility", "visible");
     }
+
+    if (map.getLayer("india-states-labels")) {
+      const isDark = activeVariety === "glassmorphic";
+      map.setPaintProperty("india-states-labels", "text-color", isDark ? "#F8FAFC" : "#0F172A");
+      map.setPaintProperty("india-states-labels", "text-halo-color", isDark ? "#0F172A" : "#FFFFFF");
+    }
   }, [mapLoaded, activeVariety]);
 
   // Compute active visual grammar based on entity or explicit grammar override
@@ -119,6 +125,33 @@ export function MapEngine({
         paint: {
           "fill-color": entityConfig?.color || "#EA580C",
           "fill-opacity": 0.12,
+        },
+      });
+
+      // Layer 2: Prominent State Names Symbol Layer (State Names Alone visible on all maps)
+      map.addLayer({
+        id: "india-states-labels",
+        type: "symbol",
+        source: "india-states-source",
+        layout: {
+          "text-field": ["get", "ST_NM"],
+          "text-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            3, 11,
+            6, 15,
+            9, 19
+          ],
+          "text-transform": "uppercase",
+          "text-allow-overlap": true,
+          "text-ignore-placement": false,
+        },
+        paint: {
+          "text-color": "#0F172A",
+          "text-halo-color": "#FFFFFF",
+          "text-halo-width": 2,
+          "text-halo-blur": 1,
         },
       });
 
