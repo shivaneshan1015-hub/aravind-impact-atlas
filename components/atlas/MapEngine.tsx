@@ -788,13 +788,27 @@ export function MapEngine({
             </div>
           `;
         } else if (isCbDot) {
-          // 2. CAPACITY BUILDING MENTORED HOSPITAL DOT (Rich Dark Deep Teal, "little large")
-          const dotColor = "#0D9488"; // Rich Dark Deep Teal
-          const dotSize = isSelected ? "14px" : "11px"; // Slightly large dot as requested
+          // 2. CAPACITY BUILDING MENTORED HOSPITAL DOT (Dark Emerald Green #064E3B)
+          const partnerCount = (loc.metadata?.partnerCount as number) || (loc.metrics?.hospitalCount as number) || 1;
+          const distName = loc.city || (loc.metadata?.district as string) || loc.name;
+          const dotColor = "#064E3B"; // Dark Emerald Green matching menu
+          
+          // Scaled dot size (11px for 1 partner up to 20px for 9 partners)
+          const baseSize = 11;
+          const calculatedSize = baseSize + Math.min(9, partnerCount - 1) * 1.2;
+          const dotSize = `${calculatedSize}px`;
+
+          const countBadge = partnerCount > 1 ? `<span style="color: ${dotColor}">: ${partnerCount}</span>` : '';
 
           el.innerHTML = `
-            <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name} (${loc.city}, ${loc.country})">
-              <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 7px ${dotColor}dd, 0 1.5px 4px rgba(0,0,0,0.35); transition: transform 0.15s ease-out;" class="group-hover:scale-150">
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${distName} (${loc.country}): ${partnerCount} Capacity Building Partner${partnerCount > 1 ? 's' : ''}">
+              <!-- Touch / Click / Hover District Name Label directly over Pin -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1 rounded-lg shadow-xl border border-slate-300 whitespace-nowrap ${isSelected ? 'opacity-100 ring-2 ring-slate-900 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} transition-all duration-150 pointer-events-none">
+                <span class="font-extrabold">${distName}</span>${countBadge}
+              </span>
+
+              <!-- Dark Emerald Pin Marker Dot -->
+              <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 8px ${dotColor}dd, 0 1.5px 4px rgba(0,0,0,0.35); transition: transform 0.15s ease-out;" class="group-hover:scale-125 group-active:scale-125">
               </div>
             </div>
           `;

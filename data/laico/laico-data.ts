@@ -1,467 +1,6688 @@
 import { GeoLocationItem } from "@/types/geo";
 
 export const LAICO_DATA: GeoLocationItem[] = [
-  // Participants & Capacity Building Headquarters
   {
-    id: "laico_hq",
-    name: "LAICO Training & Management Headquarters",
-    entityId: "laico",
-    subcategoryId: "laico_participants",
-    country: "India",
-    state: "Tamil Nadu",
-    city: "Madurai",
-    latitude: 9.9252,
-    longitude: 78.1198,
-    metrics: {
-      participantsCount: "14,500+",
-      countriesRepresented: 104,
-      partnerHospitals: 340,
+    "id": "laico_hq",
+    "name": "LAICO Training & Management Headquarters",
+    "entityId": "laico",
+    "subcategoryId": "laico_participants",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Madurai",
+    "latitude": 9.9252,
+    "longitude": 78.1198,
+    "metrics": {
+      "participantsCount": "14,500+",
+      "countriesRepresented": 104,
+      "partnerHospitals": 340
     },
-    address: "72, Kuruvikaran Salai, Madurai, Tamil Nadu 625020",
-    establishedYear: 1992,
+    "address": "72, Kuruvikaran Salai, Madurai, Tamil Nadu 625020",
+    "establishedYear": 1992
   },
   {
-    id: "laico_part_tn",
-    name: "Tamil Nadu Mentored Network",
-    entityId: "laico",
-    subcategoryId: "laico_participants",
-    country: "India",
-    state: "Tamil Nadu",
-    city: "Madurai Hub",
-    latitude: 9.9252,
-    longitude: 78.1198,
-    metrics: { participantsCount: "3,800 Trainees", MentoredClinics: 68 },
+    "id": "laico_cb_1",
+    "name": "Karimnagar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Telangana",
+    "city": "Karimnagar",
+    "latitude": 18.4386,
+    "longitude": 79.1288,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Karimnagar",
+      "index": 1,
+      "partnerCount": 1
+    }
   },
   {
-    id: "laico_part_ka",
-    name: "Karnataka Mentored Network",
-    entityId: "laico",
-    subcategoryId: "laico_participants",
-    country: "India",
-    state: "Karnataka",
-    city: "Bengaluru Hub",
-    latitude: 12.9716,
-    longitude: 77.5946,
-    metrics: { participantsCount: "1,950 Trainees", MentoredClinics: 34 },
+    "id": "laico_cb_2",
+    "name": "Mysore Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Mysore",
+    "latitude": 12.2958,
+    "longitude": 76.6394,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Mysore",
+      "index": 2,
+      "partnerCount": 2
+    }
   },
   {
-    id: "laico_part_mh",
-    name: "Maharashtra Mentored Network",
-    entityId: "laico",
-    subcategoryId: "laico_participants",
-    country: "India",
-    state: "Maharashtra",
-    city: "Mumbai Hub",
-    latitude: 19.076,
-    longitude: 72.8777,
-    metrics: { participantsCount: "2,400 Trainees", MentoredClinics: 42 },
+    "id": "laico_cb_3",
+    "name": "Nalgonda Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Telangana",
+    "city": "Nalgonda",
+    "latitude": 17.0577,
+    "longitude": 79.2684,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Nalgonda",
+      "index": 3,
+      "partnerCount": 1
+    }
   },
   {
-    id: "laico_part_dl",
-    name: "Delhi NCR Mentored Network",
-    entityId: "laico",
-    subcategoryId: "laico_participants",
-    country: "India",
-    state: "Delhi",
-    city: "New Delhi Hub",
-    latitude: 28.6139,
-    longitude: 77.209,
-    metrics: { participantsCount: "1,200 Trainees", MentoredClinics: 28 },
+    "id": "laico_cb_4",
+    "name": "West Godavari Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Andhra Pradesh",
+    "city": "West Godavari",
+    "latitude": 16.9239,
+    "longitude": 81.334,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 3,
+      "programCount": 3
+    },
+    "metadata": {
+      "district": "West Godavari",
+      "index": 4,
+      "partnerCount": 3
+    }
   },
-
-  // Capacity Building Mentored Hospital Network (394 Locations)
-  {"id":"laico_cb_1","name":"Chitwan Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nepal","state":"Chitwan","city":"Chitwan","latitude":27.50687,"longitude":84.34007,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Chitwan","index":1}},
-  {"id":"laico_cb_2","name":"Mathura Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Mathura","latitude":27.50581,"longitude":77.68441,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mathura","index":2}},
-  {"id":"laico_cb_3","name":"Krong Doun Kaev Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Cambodia","state":"Takeo","city":"Krong Doun Kaev","latitude":11.00738,"longitude":104.78358,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Krong Doun Kaev","index":3}},
-  {"id":"laico_cb_4","name":"Saharanpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Saharanpur","latitude":29.96927,"longitude":77.52922,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Saharanpur","index":4}},
-  {"id":"laico_cb_5","name":"Lakhimpur Kheri Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Lakhimpur Kheri","latitude":27.93717,"longitude":80.78052,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Lakhimpur Kheri","index":5}},
-  {"id":"laico_cb_6","name":"Jamalpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Mymensingh Division","city":"Jamalpur","latitude":24.91064,"longitude":89.91984,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jamalpur","index":6}},
-  {"id":"laico_cb_7","name":"Pilani Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Pilani","latitude":28.38349,"longitude":75.58909,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Pilani","index":7}},
-  {"id":"laico_cb_8","name":"Jalgaon Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Jalgaon","latitude":21.01121,"longitude":75.58141,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jalgaon","index":8}},
-  {"id":"laico_cb_9","name":"Bahraich Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Bahraich","latitude":27.55552,"longitude":81.58028,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bahraich","index":9}},
-  {"id":"laico_cb_10","name":"South 24 Parganas Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"South 24 Parganas","latitude":22.12401,"longitude":88.45547,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"South 24 Parganas","index":10}},
-  {"id":"laico_cb_11","name":"Adilabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Adilabad","latitude":19.68336,"longitude":78.54406,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Adilabad","index":11}},
-  {"id":"laico_cb_12","name":"Colombo Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Sri Lanka","state":"Western Province","city":"Colombo","latitude":6.9478,"longitude":79.8729,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Colombo","index":12}},
-  {"id":"laico_cb_13","name":"Burdwan Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Burdwan","latitude":23.21255,"longitude":87.87631,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Burdwan","index":13}},
-  {"id":"laico_cb_14","name":"Ratnapura Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Sri Lanka","state":"Sabaragamuwa","city":"Ratnapura","latitude":6.70517,"longitude":80.41751,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ratnapura","index":14}},
-  {"id":"laico_cb_15","name":"Ranchi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Jharkhand","city":"Ranchi","latitude":23.35828,"longitude":85.29903,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ranchi","index":15}},
-  {"id":"laico_cb_16","name":"Kottayam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Kerala","city":"Kottayam","latitude":9.59254,"longitude":76.5065,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kottayam","index":16}},
-  {"id":"laico_cb_17","name":"Jaggampeta(East Godavari) Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"Jaggampeta(East Godavari)","latitude":17.15611,"longitude":82.05811,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jaggampeta(East Godavari)","index":17}},
-  {"id":"laico_cb_18","name":"Dhule Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Dhule","latitude":20.92,"longitude":74.76955,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhule","index":18}},
-  {"id":"laico_cb_19","name":"Jodhpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Jodhpur","latitude":26.24295,"longitude":73.01485,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jodhpur","index":19}},
-  {"id":"laico_cb_20","name":"Shillong Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Meghalaya","city":"Shillong","latitude":25.59752,"longitude":91.88862,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Shillong","index":20}},
-  {"id":"laico_cb_21","name":"Patiala Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Punjab","city":"Patiala","latitude":30.35362,"longitude":76.36516,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Patiala","index":21}},
-  {"id":"laico_cb_22","name":"Udaipur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Udaipur","latitude":24.56614,"longitude":73.70044,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Udaipur","index":22}},
-  {"id":"laico_cb_23","name":"Ranchi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Jharkhand","city":"Ranchi","latitude":23.34059,"longitude":85.29079,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ranchi","index":23}},
-  {"id":"laico_cb_24","name":"Nanded Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Nanded","latitude":19.15666,"longitude":77.30516,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nanded","index":24}},
-  {"id":"laico_cb_25","name":"Mirpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Dhaka Division","city":"Mirpur","latitude":23.78584,"longitude":90.39084,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mirpur","index":25}},
-  {"id":"laico_cb_26","name":"Hooghly Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Hooghly","latitude":22.91708,"longitude":88.41528,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Hooghly","index":26}},
-  {"id":"laico_cb_27","name":"Gopalgonj Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Dhaka Division","city":"Gopalgonj","latitude":22.99888,"longitude":89.81688,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Gopalgonj","index":27}},
-  {"id":"laico_cb_28","name":"Kolkata Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Kolkata","latitude":22.58768,"longitude":88.38123,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kolkata","index":28}},
-  {"id":"laico_cb_29","name":"Mymensingh Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Mymensingh Division","city":"Mymensingh","latitude":24.76582,"longitude":90.41562,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mymensingh","index":29}},
-  {"id":"laico_cb_30","name":"Jamshedpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Jharkhand","city":"Jamshedpur","latitude":22.7848,"longitude":86.2191,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jamshedpur","index":30}},
-  {"id":"laico_cb_31","name":"Naogaon Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Rajshahi Division","city":"Naogaon","latitude":24.79991,"longitude":88.93416,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Naogaon","index":31}},
-  {"id":"laico_cb_32","name":"Purulia Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Purulia","latitude":23.32082,"longitude":86.36958,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Purulia","index":32}},
-  {"id":"laico_cb_33","name":"Banepa Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nepal","state":"Kavrepalanchok","city":"Banepa","latitude":27.65095,"longitude":85.50205,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Banepa","index":33}},
-  {"id":"laico_cb_34","name":"Ganjam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Ganjam","latitude":19.3826,"longitude":85.04546,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ganjam","index":34}},
-  {"id":"laico_cb_35","name":"Chamarajanagara Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Chamarajanagara","latitude":11.93123,"longitude":76.92273,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Chamarajanagara","index":35}},
-  {"id":"laico_cb_36","name":"Tirupur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Tirupur","latitude":11.10841,"longitude":77.33831,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Tirupur","index":36}},
-  {"id":"laico_cb_37","name":"Tirupur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Tirupur","latitude":11.1305,"longitude":77.34825,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Tirupur","index":37}},
-  {"id":"laico_cb_38","name":"Dahod Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Dahod","latitude":22.84089,"longitude":74.25154,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dahod","index":38}},
-  {"id":"laico_cb_39","name":"Darshona Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Khulna Division","city":"Darshona","latitude":23.54743,"longitude":88.78803,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Darshona","index":39}},
-  {"id":"laico_cb_40","name":"Aurangabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Aurangabad","latitude":19.88457,"longitude":75.33277,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Aurangabad","index":40}},
-  {"id":"laico_cb_41","name":"Comilla Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Chittagong Division","city":"Comilla","latitude":23.45971,"longitude":91.19521,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Comilla","index":41}},
-  {"id":"laico_cb_42","name":"Dinajpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Rangpur Division","city":"Dinajpur","latitude":25.63696,"longitude":88.61331,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dinajpur","index":42}},
-  {"id":"laico_cb_43","name":"Sangli Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Sangli","latitude":16.84803,"longitude":74.58119,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sangli","index":43}},
-  {"id":"laico_cb_44","name":"Kissi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Kenya","state":"Kisii County","city":"Kissi","latitude":-0.67801,"longitude":34.74609,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kissi","index":44}},
-  {"id":"laico_cb_45","name":"Nairobi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Kenya","state":"Nairobi County","city":"Nairobi","latitude":-1.26497,"longitude":36.80343,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nairobi","index":45}},
-  {"id":"laico_cb_46","name":"Kitwe Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Zambia","state":"Copperbelt","city":"Kitwe","latitude":-12.82117,"longitude":28.21649,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kitwe","index":46}},
-  {"id":"laico_cb_47","name":"Mekelle Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Ethiopia","state":"Tigray","city":"Mekelle","latitude":13.512,"longitude":39.449,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mekelle","index":47}},
-  {"id":"laico_cb_48","name":"Ilese-Ijebu Imushin Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nigeria","state":"Ogun State","city":"Ilese-Ijebu Imushin","latitude":6.80441,"longitude":3.91256,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ilese-Ijebu Imushin","index":48}},
-  {"id":"laico_cb_49","name":"Jorhat Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Assam","city":"Jorhat","latitude":26.76697,"longitude":94.20672,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jorhat","index":49}},
-  {"id":"laico_cb_50","name":"Imphal Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Manipur","city":"Imphal","latitude":24.80071,"longitude":93.92681,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Imphal","index":50}},
-  {"id":"laico_cb_51","name":"Patna Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Bihar","city":"Patna","latitude":25.6067,"longitude":85.1232,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Patna","index":51}},
-  {"id":"laico_cb_52","name":"Xiantao Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"China","state":"Hubei","city":"Xiantao","latitude":30.38953,"longitude":113.47438,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Xiantao","index":52}},
-  {"id":"laico_cb_53","name":"Gorakhpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Gorakhpur","latitude":26.76794,"longitude":83.37559,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Gorakhpur","index":53}},
-  {"id":"laico_cb_54","name":"Bastar Dit.CG Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Chhattisgarh","city":"Bastar Dit.CG","latitude":19.0712,"longitude":81.99935,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bastar Dit.CG","index":54}},
-  {"id":"laico_cb_55","name":"East Godavari District Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"East Godavari District","latitude":17.00801,"longitude":81.77831,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"East Godavari District","index":55}},
-  {"id":"laico_cb_56","name":"SAMBALPUR Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"SAMBALPUR","latitude":21.44539,"longitude":83.98939,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"SAMBALPUR","index":56}},
-  {"id":"laico_cb_57","name":"Tg.Priok Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Indonesia","state":"Jakarta","city":"Tg.Priok","latitude":-6.11194,"longitude":106.89901,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Tg.Priok","index":57}},
-  {"id":"laico_cb_58","name":"Sur la route d’Okola Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Cameroon","state":"Centre Region","city":"Sur la route d’Okola","latitude":3.99551,"longitude":11.40126,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sur la route d’Okola","index":58}},
-  {"id":"laico_cb_59","name":"Kurushetra Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Haryana","city":"Kurushetra","latitude":29.99029,"longitude":76.89279,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kurushetra","index":59}},
-  {"id":"laico_cb_60","name":"New Delhi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Delhi","city":"New Delhi","latitude":28.62128,"longitude":77.21278,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"New Delhi","index":60}},
-  {"id":"laico_cb_61","name":"Faridkot Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Punjab","city":"Faridkot","latitude":30.69188,"longitude":74.77284,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Faridkot","index":61}},
-  {"id":"laico_cb_62","name":"Rampur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Rampur","latitude":28.80635,"longitude":79.04111,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Rampur","index":62}},
-  {"id":"laico_cb_63","name":"Hyderabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Hyderabad","latitude":17.36948,"longitude":78.50042,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Hyderabad","index":63}},
-  {"id":"laico_cb_64","name":"Udupi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Udupi","latitude":13.32808,"longitude":74.74952,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Udupi","index":64}},
-  {"id":"laico_cb_65","name":"Thiruvarur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Thiruvarur","latitude":10.75599,"longitude":79.61953,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Thiruvarur","index":65}},
-  {"id":"laico_cb_66","name":"Nizamabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Nizamabad","latitude":18.691,"longitude":78.08244,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nizamabad","index":66}},
-  {"id":"laico_cb_67","name":"Nalgonda Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Nalgonda","latitude":17.07404,"longitude":79.27979,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nalgonda","index":67}},
-  {"id":"laico_cb_68","name":"CHINTAMANI Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"CHINTAMANI","latitude":13.38421,"longitude":78.05451,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"CHINTAMANI","index":68}},
-  {"id":"laico_cb_69","name":"Hyderabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Hyderabad","latitude":17.39603,"longitude":78.46847,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Hyderabad","index":69}},
-  {"id":"laico_cb_70","name":"Secunderabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Secunderabad","latitude":17.45736,"longitude":78.49956,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Secunderabad","index":70}},
-  {"id":"laico_cb_71","name":"Raichur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Raichur","latitude":16.19662,"longitude":77.36592,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Raichur","index":71}},
-  {"id":"laico_cb_72","name":"West Godavari Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"West Godavari","latitude":16.70329,"longitude":81.11183,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"West Godavari","index":72}},
-  {"id":"laico_cb_73","name":"Karimnagar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Karimnagar","latitude":18.45322,"longitude":79.13218,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Karimnagar","index":73}},
-  {"id":"laico_cb_74","name":"Coimbatore Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Coimbatore","latitude":11.00357,"longitude":76.95067,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Coimbatore","index":74}},
-  {"id":"laico_cb_75","name":"Kozhikode Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Kerala","city":"Kozhikode","latitude":11.26204,"longitude":75.79084,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kozhikode","index":75}},
-  {"id":"laico_cb_76","name":"West Godavari Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"West Godavari","latitude":16.68763,"longitude":81.12138,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"West Godavari","index":76}},
-  {"id":"laico_cb_77","name":"Hyderabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Hyderabad","latitude":17.37573,"longitude":78.46933,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Hyderabad","index":77}},
-  {"id":"laico_cb_78","name":"Mahabubnagar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Mahabubnagar","latitude":16.73926,"longitude":78.02276,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mahabubnagar","index":78}},
-  {"id":"laico_cb_79","name":"Secunderabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Secunderabad","latitude":17.42356,"longitude":78.48691,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Secunderabad","index":79}},
-  {"id":"laico_cb_80","name":"Bangaore Urban Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Bangaore Urban","latitude":12.9901,"longitude":77.58294,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bangaore Urban","index":80}},
-  {"id":"laico_cb_81","name":"Sundergarh Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Sundergarh","latitude":22.13571,"longitude":84.04601,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sundergarh","index":81}},
-  {"id":"laico_cb_82","name":"Burdwan Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Burdwan","latitude":23.24108,"longitude":87.86074,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Burdwan","index":82}},
-  {"id":"laico_cb_83","name":"Paschim Medinipur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Paschim Medinipur","latitude":22.43115,"longitude":87.3087,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Paschim Medinipur","index":83}},
-  {"id":"laico_cb_84","name":"Purba Medinipur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Purba Medinipur","latitude":21.96171,"longitude":87.79987,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Purba Medinipur","index":84}},
-  {"id":"laico_cb_85","name":"Anantapur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"Anantapur","latitude":14.67727,"longitude":77.59192,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Anantapur","index":85}},
-  {"id":"laico_cb_86","name":"Nadia Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Nadia","latitude":23.48086,"longitude":88.547,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nadia","index":86}},
-  {"id":"laico_cb_87","name":"Burdwan Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Burdwan","latitude":23.2207,"longitude":87.8588,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Burdwan","index":87}},
-  {"id":"laico_cb_88","name":"Augul Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Augul","latitude":20.86672,"longitude":85.16802,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Augul","index":88}},
-  {"id":"laico_cb_89","name":"Khordha Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Khordha","latitude":20.20952,"longitude":85.63022,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Khordha","index":89}},
-  {"id":"laico_cb_90","name":"Purba Medinipur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Purba Medinipur","latitude":21.94457,"longitude":87.76337,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Purba Medinipur","index":90}},
-  {"id":"laico_cb_91","name":"Hooghly Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Hooghly","latitude":22.9169,"longitude":88.4097,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Hooghly","index":91}},
-  {"id":"laico_cb_92","name":"Dhanbad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Jharkhand","city":"Dhanbad","latitude":23.77829,"longitude":86.43054,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhanbad","index":92}},
-  {"id":"laico_cb_93","name":"Cuttack Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Cuttack","latitude":20.45894,"longitude":85.86259,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Cuttack","index":93}},
-  {"id":"laico_cb_94","name":"Darjeeling Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Darjeeling","latitude":27.03227,"longitude":88.26567,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Darjeeling","index":94}},
-  {"id":"laico_cb_95","name":"JALPAIGURI Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"JALPAIGURI","latitude":26.54103,"longitude":88.73893,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"JALPAIGURI","index":95}},
-  {"id":"laico_cb_96","name":"Bardhaman Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Bardhaman","latitude":23.2445,"longitude":87.87676,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bardhaman","index":96}},
-  {"id":"laico_cb_97","name":"Paschim Medinipur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Paschim Medinipur","latitude":22.43236,"longitude":87.30136,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Paschim Medinipur","index":97}},
-  {"id":"laico_cb_98","name":"Burdwan Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Burdwan","latitude":23.23726,"longitude":87.87716,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Burdwan","index":98}},
-  {"id":"laico_cb_99","name":"Burdwan Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Burdwan","latitude":23.21894,"longitude":87.8494,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Burdwan","index":99}},
-  {"id":"laico_cb_100","name":"Calcutta Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Calcutta","latitude":22.58898,"longitude":88.37668,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Calcutta","index":100}},
-  {"id":"laico_cb_101","name":"Bankura Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Bankura","latitude":23.21213,"longitude":87.06913,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bankura","index":101}},
-  {"id":"laico_cb_102","name":"Burdwan Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Burdwan","latitude":23.25157,"longitude":87.87077,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Burdwan","index":102}},
-  {"id":"laico_cb_103","name":"Cachar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Assam","city":"Cachar","latitude":24.84752,"longitude":92.75752,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Cachar","index":103}},
-  {"id":"laico_cb_104","name":"Ratlam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Ratlam","latitude":23.35301,"longitude":75.02851,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ratlam","index":104}},
-  {"id":"laico_cb_105","name":"valsad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"valsad","latitude":20.58277,"longitude":72.92003,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"valsad","index":105}},
-  {"id":"laico_cb_106","name":"Aurangabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Aurangabad","latitude":19.87067,"longitude":75.35171,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Aurangabad","index":106}},
-  {"id":"laico_cb_107","name":"Ratnagiri Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Ratnagiri","latitude":16.97593,"longitude":73.31978,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ratnagiri","index":107}},
-  {"id":"laico_cb_108","name":"Bargarh Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Bargarh","latitude":21.35066,"longitude":83.60556,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bargarh","index":108}},
-  {"id":"laico_cb_109","name":"Manendragarh Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Chhattisgarh","city":"Manendragarh","latitude":23.20851,"longitude":82.19001,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Manendragarh","index":109}},
-  {"id":"laico_cb_110","name":"Pune Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Pune","latitude":18.53552,"longitude":73.87542,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Pune","index":110}},
-  {"id":"laico_cb_111","name":"Ahmedabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Ahmedabad","latitude":23.01197,"longitude":72.55997,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ahmedabad","index":111}},
-  {"id":"laico_cb_112","name":"Pali Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Pali","latitude":25.77326,"longitude":73.34566,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Pali","index":112}},
-  {"id":"laico_cb_113","name":"Sangli Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Sangli","latitude":16.86163,"longitude":74.59748,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sangli","index":113}},
-  {"id":"laico_cb_114","name":"Ahmedabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Ahmedabad","latitude":23.00275,"longitude":72.58899,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ahmedabad","index":114}},
-  {"id":"laico_cb_115","name":"Latur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Latur","latitude":18.42342,"longitude":76.56378,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Latur","index":115}},
-  {"id":"laico_cb_116","name":"Ahmedabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Ahmedabad","latitude":23.03785,"longitude":72.55209,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ahmedabad","index":116}},
-  {"id":"laico_cb_117","name":"Mumbai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Mumbai","latitude":19.05809,"longitude":72.86249,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mumbai","index":117}},
-  {"id":"laico_cb_118","name":"Dibrugarh Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Assam","city":"Dibrugarh","latitude":27.4791,"longitude":94.9273,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dibrugarh","index":118}},
-  {"id":"laico_cb_119","name":"East Nimar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"East Nimar","latitude":21.80966,"longitude":76.35102,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"East Nimar","index":119}},
-  {"id":"laico_cb_120","name":"Uttara Kannada Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Uttara Kannada","latitude":14.81242,"longitude":74.68222,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Uttara Kannada","index":120}},
-  {"id":"laico_cb_121","name":"CHHINDWARA Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"CHHINDWARA","latitude":22.04881,"longitude":78.94176,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"CHHINDWARA","index":121}},
-  {"id":"laico_cb_122","name":"Solapur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Solapur","latitude":17.64762,"longitude":75.88556,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Solapur","index":122}},
-  {"id":"laico_cb_123","name":"Darjeeling Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Darjeeling","latitude":27.02061,"longitude":88.26436,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Darjeeling","index":123}},
-  {"id":"laico_cb_124","name":"Hooghly Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Hooghly","latitude":22.90245,"longitude":88.4119,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Hooghly","index":124}},
-  {"id":"laico_cb_125","name":"Howrah Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Howrah","latitude":22.58387,"longitude":88.25392,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Howrah","index":125}},
-  {"id":"laico_cb_126","name":"Mysore Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Mysore","latitude":12.28761,"longitude":76.65551,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mysore","index":126}},
-  {"id":"laico_cb_127","name":"Dhausa Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Dhausa","latitude":26.88054,"longitude":76.32144,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhausa","index":127}},
-  {"id":"laico_cb_128","name":"Kalutara Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Sri Lanka","state":"Western Province","city":"Kalutara","latitude":6.56479,"longitude":79.95179,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kalutara","index":128}},
-  {"id":"laico_cb_129","name":"Mombasa Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Kenya","state":"Mombasa County","city":"Mombasa","latitude":-4.05893,"longitude":39.68471,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mombasa","index":129}},
-  {"id":"laico_cb_130","name":"Yangon Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Myanmar","state":"Yangon Region","city":"Yangon","latitude":16.87384,"longitude":96.21004,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Yangon","index":130}},
-  {"id":"laico_cb_131","name":"Kishoreganj Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Dhaka Division","city":"Kishoreganj","latitude":24.43545,"longitude":90.79865,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kishoreganj","index":131}},
-  {"id":"laico_cb_132","name":"Lagos Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nigeria","state":"Lagos State","city":"Lagos","latitude":6.52602,"longitude":3.38442,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Lagos","index":132}},
-  {"id":"laico_cb_133","name":"Dhaka Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Dhaka Division","city":"Dhaka","latitude":23.79509,"longitude":90.39099,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhaka","index":133}},
-  {"id":"laico_cb_134","name":"Jaipur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Jaipur","latitude":26.89706,"longitude":75.80661,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jaipur","index":134}},
-  {"id":"laico_cb_135","name":"SAMBALPUR Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"SAMBALPUR","latitude":21.47671,"longitude":83.97031,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"SAMBALPUR","index":135}},
-  {"id":"laico_cb_136","name":"Birbhum Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Birbhum","latitude":23.83188,"longitude":87.63053,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Birbhum","index":136}},
-  {"id":"laico_cb_137","name":"Mahender Garh Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Haryana","city":"Mahender Garh","latitude":28.26251,"longitude":76.15256,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mahender Garh","index":137}},
-  {"id":"laico_cb_138","name":"Ago Iwoye Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nigeria","state":"Ogun State","city":"Ago Iwoye","latitude":6.96035,"longitude":3.92255,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ago Iwoye","index":138}},
-  {"id":"laico_cb_139","name":"Nasik Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Nasik","latitude":19.99404,"longitude":73.77238,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nasik","index":139}},
-  {"id":"laico_cb_140","name":"Thane Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Thane","latitude":19.21951,"longitude":72.97077,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Thane","index":140}},
-  {"id":"laico_cb_141","name":"Santa Ana Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"El Salvador","state":"Santa Ana","city":"Santa Ana","latitude":13.9865,"longitude":-89.57325,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Santa Ana","index":141}},
-  {"id":"laico_cb_142","name":"Dhaka Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Dhaka Division","city":"Dhaka","latitude":23.8184,"longitude":90.3936,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhaka","index":142}},
-  {"id":"laico_cb_143","name":"Kota Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Kota","latitude":25.22302,"longitude":75.88077,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kota","index":143}},
-  {"id":"laico_cb_144","name":"Dar es Salaam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Tanzania","state":"Dar es Salaam","city":"Dar es Salaam","latitude":-6.78007,"longitude":39.23053,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dar es Salaam","index":144}},
-  {"id":"laico_cb_145","name":"Hooghly Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Hooghly","latitude":22.88198,"longitude":88.40718,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Hooghly","index":145}},
-  {"id":"laico_cb_146","name":"Abakaliki Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nigeria","state":"Ebonyi State","city":"Abakaliki","latitude":6.31977,"longitude":8.13467,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Abakaliki","index":146}},
-  {"id":"laico_cb_147","name":"Cape Metropolitan Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"South Africa","state":"Western Cape","city":"Cape Metropolitan","latitude":-33.91181,"longitude":18.42505,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Cape Metropolitan","index":147}},
-  {"id":"laico_cb_148","name":"Kolkata Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Kolkata","latitude":22.58934,"longitude":88.34284,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kolkata","index":148}},
-  {"id":"laico_cb_149","name":"Vidisha Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Vidisha","latitude":23.50413,"longitude":77.78803,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Vidisha","index":149}},
-  {"id":"laico_cb_150","name":"Dharwad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Dharwad","latitude":15.47424,"longitude":74.9885,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dharwad","index":150}},
-  {"id":"laico_cb_151","name":"Lilongwe Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Malawi","state":"Central Region","city":"Lilongwe","latitude":-13.95558,"longitude":33.76672,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Lilongwe","index":151}},
-  {"id":"laico_cb_152","name":"Ethekweni Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"South Africa","state":"KwaZulu-Natal","city":"Ethekweni","latitude":-29.87355,"longitude":31.01145,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ethekweni","index":152}},
-  {"id":"laico_cb_153","name":"Belo Sub-Division Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Cameroon","state":"North-West","city":"Belo Sub-Division","latitude":6.12511,"longitude":10.26611,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Belo Sub-Division","index":153}},
-  {"id":"laico_cb_154","name":"Gurage Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Ethiopia","state":"SNNPR","city":"Gurage","latitude":8.15738,"longitude":37.98123,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Gurage","index":154}},
-  {"id":"laico_cb_155","name":"MIFI Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Cameroon","state":"West Region","city":"MIFI","latitude":5.47569,"longitude":10.40595,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"MIFI","index":155}},
-  {"id":"laico_cb_156","name":"Mfoundi Division Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Cameroon","state":"Centre Region","city":"Mfoundi Division","latitude":3.83999,"longitude":11.52379,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mfoundi Division","index":156}},
-  {"id":"laico_cb_157","name":"Farmgate Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Dhaka Division","city":"Farmgate","latitude":23.74256,"longitude":90.40196,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Farmgate","index":157}},
-  {"id":"laico_cb_158","name":"Dhaka Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Dhaka Division","city":"Dhaka","latitude":23.82934,"longitude":90.41758,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhaka","index":158}},
-  {"id":"laico_cb_159","name":"Ibadan North Local Govt.Area Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nigeria","state":"Oyo State","city":"Ibadan North Local Govt.Area","latitude":7.41904,"longitude":3.92178,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ibadan North Local Govt.Area","index":159}},
-  {"id":"laico_cb_160","name":"De Guatemala Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Republic of Guatemala","state":"Guatemala Department","city":"De Guatemala","latitude":14.62338,"longitude":-90.50402,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"De Guatemala","index":160}},
-  {"id":"laico_cb_161","name":"Lilongwe Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Malawi","state":"Central Region","city":"Lilongwe","latitude":-13.97218,"longitude":33.79196,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Lilongwe","index":161}},
-  {"id":"laico_cb_162","name":"Kilimanjaro Region Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Tanzania","state":"Kilimanjaro","city":"Kilimanjaro Region","latitude":-3.31948,"longitude":37.31157,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kilimanjaro Region","index":162}},
-  {"id":"laico_cb_163","name":"Gorakhpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Gorakhpur","latitude":26.76397,"longitude":83.38782,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Gorakhpur","index":163}},
-  {"id":"laico_cb_164","name":"Mumbai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Mumbai","latitude":19.07285,"longitude":72.87005,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mumbai","index":164}},
-  {"id":"laico_cb_165","name":"Male Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Maldives","state":"Kaafu Atoll","city":"Male","latitude":4.19076,"longitude":73.48721,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Male","index":165}},
-  {"id":"laico_cb_166","name":"Kancheepuram Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Kancheepuram","latitude":12.83343,"longitude":79.72489,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kancheepuram","index":166}},
-  {"id":"laico_cb_167","name":"Mumbai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Mumbai","latitude":19.07353,"longitude":72.89097,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mumbai","index":167}},
-  {"id":"laico_cb_168","name":"Salem Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Salem","latitude":11.66309,"longitude":78.15333,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Salem","index":168}},
-  {"id":"laico_cb_169","name":"Bellary Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Bellary","latitude":15.15537,"longitude":76.92163,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bellary","index":169}},
-  {"id":"laico_cb_170","name":"Banke Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nepal","state":"Banke","city":"Banke","latitude":28.13578,"longitude":81.69518,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Banke","index":170}},
-  {"id":"laico_cb_171","name":"Dhanusha Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nepal","state":"Dhanusha","city":"Dhanusha","latitude":26.81989,"longitude":85.90859,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhanusha","index":171}},
-  {"id":"laico_cb_172","name":"Lucknow Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Lucknow","latitude":26.83144,"longitude":80.96829,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Lucknow","index":172}},
-  {"id":"laico_cb_173","name":"Erode Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Erode","latitude":11.3437,"longitude":77.7109,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Erode","index":173}},
-  {"id":"laico_cb_174","name":"Indore Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Indore","latitude":22.7056,"longitude":75.87385,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Indore","index":174}},
-  {"id":"laico_cb_175","name":"Perintalmanna Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Kerala","city":"Perintalmanna","latitude":10.99207,"longitude":76.22852,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Perintalmanna","index":175}},
-  {"id":"laico_cb_176","name":"Fayoum Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Egypt","state":"Faiyum Governorate","city":"Fayoum","latitude":29.28684,"longitude":30.8496,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Fayoum","index":176}},
-  {"id":"laico_cb_177","name":"Santa Cruz Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bolivia","state":"Santa Cruz","city":"Santa Cruz","latitude":-17.79293,"longitude":-63.16563,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Santa Cruz","index":177}},
-  {"id":"laico_cb_178","name":"Barisal Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Barisal Division","city":"Barisal","latitude":22.71522,"longitude":90.34432,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Barisal","index":178}},
-  {"id":"laico_cb_179","name":"Bogra Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Rajshahi Division","city":"Bogra","latitude":24.85935,"longitude":89.36175,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bogra","index":179}},
-  {"id":"laico_cb_180","name":"Bharatpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nepal","state":"Chitwan","city":"Bharatpur","latitude":27.69518,"longitude":84.41263,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bharatpur","index":180}},
-  {"id":"laico_cb_181","name":"Lubumbashi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"D R Congo","state":"Haut-Katanga","city":"Lubumbashi","latitude":-11.70349,"longitude":27.48727,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Lubumbashi","index":181}},
-  {"id":"laico_cb_182","name":"Asmara Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Eritrea","state":"Maekel","city":"Asmara","latitude":15.3036,"longitude":38.91165,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Asmara","index":182}},
-  {"id":"laico_cb_183","name":"N/A Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Paraguay","state":"Asunción","city":"N/A","latitude":-25.26204,"longitude":-57.56929,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"N/A","index":183}},
-  {"id":"laico_cb_184","name":"Kathmandu Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nepal","state":"Kathmandu","city":"Kathmandu","latitude":27.70959,"longitude":85.31324,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kathmandu","index":184}},
-  {"id":"laico_cb_185","name":"Hyderabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Hyderabad","latitude":17.36871,"longitude":78.47671,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Hyderabad","index":185}},
-  {"id":"laico_cb_186","name":"Bhuj Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Bhuj","latitude":23.25064,"longitude":69.66474,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bhuj","index":186}},
-  {"id":"laico_cb_187","name":"Dharwar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Dharwar","latitude":15.43761,"longitude":75.02296,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dharwar","index":187}},
-  {"id":"laico_cb_188","name":"Kai Feng City Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"China","state":"Henan","city":"Kai Feng City","latitude":34.77772,"longitude":114.28577,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kai Feng City","index":188}},
-  {"id":"laico_cb_189","name":"Gampaha Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Sri Lanka","state":"Western Province","city":"Gampaha","latitude":7.06694,"longitude":80.0038,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Gampaha","index":189}},
-  {"id":"laico_cb_190","name":"Nadia Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Nadia","latitude":23.48635,"longitude":88.53719,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nadia","index":190}},
-  {"id":"laico_cb_191","name":"Cambodia Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Cambodia","state":"Phnom Penh","city":"Cambodia","latitude":11.55163,"longitude":104.91533,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Cambodia","index":191}},
-  {"id":"laico_cb_192","name":"Vellore Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Vellore","latitude":12.9007,"longitude":79.13785,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Vellore","index":192}},
-  {"id":"laico_cb_193","name":"Tiruvannamalai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Tiruvannamalai","latitude":12.21248,"longitude":79.08213,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Tiruvannamalai","index":193}},
-  {"id":"laico_cb_194","name":"Kigali Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Rwanda","state":"Kigali","city":"Kigali","latitude":-1.93226,"longitude":30.06879,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kigali","index":194}},
-  {"id":"laico_cb_195","name":"Tiruchirapalli Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Tiruchirapalli","latitude":10.768,"longitude":78.6822,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Tiruchirapalli","index":195}},
-  {"id":"laico_cb_196","name":"Sangli Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Sangli","latitude":16.85627,"longitude":74.56647,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sangli","index":196}},
-  {"id":"laico_cb_197","name":"Muzaffarpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Bihar","city":"Muzaffarpur","latitude":26.12342,"longitude":85.35282,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Muzaffarpur","index":197}},
-  {"id":"laico_cb_198","name":"Bandung Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Indonesia","state":"West Java","city":"Bandung","latitude":-6.91039,"longitude":107.61451,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bandung","index":198}},
-  {"id":"laico_cb_199","name":"Rewa Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Rewa","latitude":24.54088,"longitude":81.31378,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Rewa","index":199}},
-  {"id":"laico_cb_200","name":"Muzaffarpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Bihar","city":"Muzaffarpur","latitude":26.11176,"longitude":85.35152,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Muzaffarpur","index":200}},
-  {"id":"laico_cb_201","name":"Pune Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Pune","latitude":18.53097,"longitude":73.86953,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Pune","index":201}},
-  {"id":"laico_cb_202","name":"Moulvibazar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Sylhet Division","city":"Moulvibazar","latitude":24.49289,"longitude":91.75529,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Moulvibazar","index":202}},
-  {"id":"laico_cb_203","name":"Nilgiris Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Nilgiris","latitude":11.49736,"longitude":76.73226,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nilgiris","index":203}},
-  {"id":"laico_cb_204","name":"Chennai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Chennai","latitude":13.10313,"longitude":80.27403,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Chennai","index":204}},
-  {"id":"laico_cb_205","name":"Dhaka Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Dhaka Division","city":"Dhaka","latitude":23.8094,"longitude":90.4296,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhaka","index":205}},
-  {"id":"laico_cb_206","name":"New Delhi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Delhi","city":"New Delhi","latitude":28.6139,"longitude":77.209,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"New Delhi","index":206}},
-  {"id":"laico_cb_207","name":"Rajnandgaon Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Chhattisgarh","city":"Rajnandgaon","latitude":21.09525,"longitude":81.03015,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Rajnandgaon","index":207}},
-  {"id":"laico_cb_208","name":"Karnal Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Haryana","city":"Karnal","latitude":29.67702,"longitude":76.99126,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Karnal","index":208}},
-  {"id":"laico_cb_209","name":"Koraput Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Koraput","latitude":18.81148,"longitude":82.69452,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Koraput","index":209}},
-  {"id":"laico_cb_210","name":"Faizabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Faizabad","latitude":26.79401,"longitude":82.16587,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Faizabad","index":210}},
-  {"id":"laico_cb_211","name":"Barmer Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Barmer","latitude":25.76332,"longitude":71.41697,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Barmer","index":211}},
-  {"id":"laico_cb_212","name":"Mumbai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Mumbai","latitude":19.06457,"longitude":72.88337,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mumbai","index":212}},
-  {"id":"laico_cb_213","name":"Tuticorin Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Tuticorin","latitude":8.7845,"longitude":78.13394,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Tuticorin","index":213}},
-  {"id":"laico_cb_214","name":"Sivagangai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Sivagangai","latitude":9.82147,"longitude":78.47933,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sivagangai","index":214}},
-  {"id":"laico_cb_215","name":"Chennai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Chennai","latitude":13.09071,"longitude":80.24901,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Chennai","index":215}},
-  {"id":"laico_cb_216","name":"Haidian Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"China","state":"Beijing","city":"Haidian","latitude":39.97059,"longitude":116.28865,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Haidian","index":216}},
-  {"id":"laico_cb_217","name":"Thiruvanathapuram Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Kerala","city":"Thiruvanathapuram","latitude":8.53121,"longitude":76.93201,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Thiruvanathapuram","index":217}},
-  {"id":"laico_cb_218","name":"Cuddapah Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"Cuddapah","latitude":14.45556,"longitude":78.8201,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Cuddapah","index":218}},
-  {"id":"laico_cb_219","name":"Raipur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Chhattisgarh","city":"Raipur","latitude":21.2303,"longitude":81.65035,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Raipur","index":219}},
-  {"id":"laico_cb_220","name":"Bhilwara Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Bhilwara","latitude":25.34493,"longitude":74.62743,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bhilwara","index":220}},
-  {"id":"laico_cb_221","name":"Bhopal Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Bhopal","latitude":23.26003,"longitude":77.41679,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bhopal","index":221}},
-  {"id":"laico_cb_222","name":"Blantyre Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Malawi","state":"Southern Region","city":"Blantyre","latitude":-15.76913,"longitude":34.99171,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Blantyre","index":222}},
-  {"id":"laico_cb_223","name":"24-Parganas(South) Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"24-Parganas(South)","latitude":22.14786,"longitude":88.42982,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"24-Parganas(South)","index":223}},
-  {"id":"laico_cb_224","name":"Thiruvallur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Thiruvallur","latitude":13.16458,"longitude":79.92518,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Thiruvallur","index":224}},
-  {"id":"laico_cb_225","name":"Pali Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Pali","latitude":25.75189,"longitude":73.31303,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Pali","index":225}},
-  {"id":"laico_cb_226","name":"Junagadh Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Junagadh","latitude":21.52499,"longitude":70.45439,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Junagadh","index":226}},
-  {"id":"laico_cb_227","name":"Erode Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Erode","latitude":11.35585,"longitude":77.72755,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Erode","index":227}},
-  {"id":"laico_cb_228","name":"Patna Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Bihar","city":"Patna","latitude":25.61651,"longitude":85.15731,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Patna","index":228}},
-  {"id":"laico_cb_229","name":"karad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"karad","latitude":17.29116,"longitude":74.16576,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"karad","index":229}},
-  {"id":"laico_cb_230","name":"Kanpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Kanpur","latitude":26.45629,"longitude":80.34999,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kanpur","index":230}},
-  {"id":"laico_cb_231","name":"Khulna Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Khulna Division","city":"Khulna","latitude":22.86365,"longitude":89.5597,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Khulna","index":231}},
-  {"id":"laico_cb_232","name":"Burdwan Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Burdwan","latitude":23.2441,"longitude":87.8642,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Burdwan","index":232}},
-  {"id":"laico_cb_233","name":"Nagpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Nagpur","latitude":21.16043,"longitude":79.09158,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nagpur","index":233}},
-  {"id":"laico_cb_234","name":"Khordha Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Khordha","latitude":20.18612,"longitude":85.62482,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Khordha","index":234}},
-  {"id":"laico_cb_235","name":"Subarnapur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Subarnapur","latitude":20.85059,"longitude":83.93905,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Subarnapur","index":235}},
-  {"id":"laico_cb_236","name":"Salem Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Salem","latitude":11.68118,"longitude":78.12913,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Salem","index":236}},
-  {"id":"laico_cb_237","name":"Rajkot Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Rajkot","latitude":22.29476,"longitude":70.78902,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Rajkot","index":237}},
-  {"id":"laico_cb_238","name":"Ahmedabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Ahmedabad","latitude":23.00108,"longitude":72.58238,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ahmedabad","index":238}},
-  {"id":"laico_cb_239","name":"Ajmer Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Ajmer","latitude":26.45688,"longitude":74.63112,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ajmer","index":239}},
-  {"id":"laico_cb_240","name":"Kathmandu Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nepal","state":"Kathmandu","city":"Kathmandu","latitude":27.72606,"longitude":85.32881,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kathmandu","index":240}},
-  {"id":"laico_cb_241","name":"Medak Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Medak","latitude":18.05794,"longitude":78.26938,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Medak","index":241}},
-  {"id":"laico_cb_242","name":"Lakhimpur Kheri Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Lakhimpur Kheri","latitude":27.94873,"longitude":80.77903,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Lakhimpur Kheri","index":242}},
-  {"id":"laico_cb_243","name":"Sagar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Sagar","latitude":23.85864,"longitude":78.72299,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sagar","index":243}},
-  {"id":"laico_cb_244","name":"Kathmandu Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nepal","state":"Kathmandu","city":"Kathmandu","latitude":27.72062,"longitude":85.34002,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kathmandu","index":244}},
-  {"id":"laico_cb_245","name":"Imphal Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Manipur","city":"Imphal","latitude":24.82852,"longitude":93.93392,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Imphal","index":245}},
-  {"id":"laico_cb_246","name":"Giridih Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Jharkhand","city":"Giridih","latitude":24.18951,"longitude":86.28711,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Giridih","index":246}},
-  {"id":"laico_cb_247","name":"Visakhapatnam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"Visakhapatnam","latitude":17.69486,"longitude":83.19821,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Visakhapatnam","index":247}},
-  {"id":"laico_cb_248","name":"New Delhi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Delhi","city":"New Delhi","latitude":28.61471,"longitude":77.18911,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"New Delhi","index":248}},
-  {"id":"laico_cb_249","name":"Vellore Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Vellore","latitude":12.92955,"longitude":79.13205,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Vellore","index":249}},
-  {"id":"laico_cb_250","name":"Bhavnagar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Bhavnagar","latitude":21.78336,"longitude":72.1514,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bhavnagar","index":250}},
-  {"id":"laico_cb_251","name":"Midnapore Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Midnapore","latitude":22.43393,"longitude":87.30519,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Midnapore","index":251}},
-  {"id":"laico_cb_252","name":"Burdwan Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Burdwan","latitude":23.21809,"longitude":87.86789,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Burdwan","index":252}},
-  {"id":"laico_cb_253","name":"Chitrakoot Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Chitrakoot","latitude":25.16454,"longitude":80.86294,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Chitrakoot","index":253}},
-  {"id":"laico_cb_254","name":"Pune Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Pune","latitude":18.52548,"longitude":73.83434,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Pune","index":254}},
-  {"id":"laico_cb_255","name":"Cuttack Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Cuttack","latitude":20.48288,"longitude":85.88474,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Cuttack","index":255}},
-  {"id":"laico_cb_256","name":"Jodhpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Jodhpur","latitude":26.25713,"longitude":73.00427,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jodhpur","index":256}},
-  {"id":"laico_cb_257","name":"Shan Dong Sheng Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"China","state":"Shandong","city":"Shan Dong Sheng","latitude":36.67159,"longitude":117.12203,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Shan Dong Sheng","index":257}},
-  {"id":"laico_cb_258","name":"Ernakulam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Kerala","city":"Ernakulam","latitude":9.974,"longitude":76.28914,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ernakulam","index":258}},
-  {"id":"laico_cb_259","name":"Baroda Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Baroda","latitude":22.29852,"longitude":73.18197,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Baroda","index":259}},
-  {"id":"laico_cb_260","name":"Idukki Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Kerala","city":"Idukki","latitude":9.82949,"longitude":76.98425,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Idukki","index":260}},
-  {"id":"laico_cb_261","name":"Vellore Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Vellore","latitude":12.92676,"longitude":79.13556,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Vellore","index":261}},
-  {"id":"laico_cb_262","name":"Mumbai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Mumbai","latitude":19.07614,"longitude":72.88189,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mumbai","index":262}},
-  {"id":"laico_cb_263","name":"Ernakulam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Kerala","city":"Ernakulam","latitude":9.96293,"longitude":76.30597,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ernakulam","index":263}},
-  {"id":"laico_cb_264","name":"Parsa Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nepal","state":"Parsa","city":"Parsa","latitude":27.0486,"longitude":84.8716,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Parsa","index":264}},
-  {"id":"laico_cb_265","name":"Francistown Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Botswana","state":"North-East","city":"Francistown","latitude":-21.16519,"longitude":27.52207,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Francistown","index":265}},
-  {"id":"laico_cb_266","name":"Murshidabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Murshidabad","latitude":24.15934,"longitude":88.28954,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Murshidabad","index":266}},
-  {"id":"laico_cb_267","name":"Jal Gaon Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Jal Gaon","latitude":21.02727,"longitude":75.58443,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jal Gaon","index":267}},
-  {"id":"laico_cb_268","name":"Ghaziabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Ghaziabad","latitude":28.65286,"longitude":77.44241,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ghaziabad","index":268}},
-  {"id":"laico_cb_269","name":"Ghaziabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Ghaziabad","latitude":28.6665,"longitude":77.4601,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ghaziabad","index":269}},
-  {"id":"laico_cb_270","name":"Chittoor Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"Chittoor","latitude":13.20969,"longitude":79.09234,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Chittoor","index":270}},
-  {"id":"laico_cb_271","name":"Nainital Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttarakhand","city":"Nainital","latitude":29.38687,"longitude":79.44227,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nainital","index":271}},
-  {"id":"laico_cb_272","name":"Jodhpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Jodhpur","latitude":26.25704,"longitude":73.04648,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jodhpur","index":272}},
-  {"id":"laico_cb_273","name":"Patiala Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Punjab","city":"Patiala","latitude":30.35015,"longitude":76.39275,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Patiala","index":273}},
-  {"id":"laico_cb_274","name":"Morang Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nepal","state":"Morang","city":"Morang","latitude":26.6602,"longitude":87.3529,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Morang","index":274}},
-  {"id":"laico_cb_275","name":"Paschim Midnapore Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Paschim Midnapore","latitude":22.40392,"longitude":87.31972,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Paschim Midnapore","index":275}},
-  {"id":"laico_cb_276","name":"Dhule Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Dhule","latitude":20.92368,"longitude":74.79394,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhule","index":276}},
-  {"id":"laico_cb_277","name":"Bokaro Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Jharkhand","city":"Bokaro","latitude":23.67245,"longitude":86.15875,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bokaro","index":277}},
-  {"id":"laico_cb_278","name":"Visakhapatnam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"Visakhapatnam","latitude":17.66525,"longitude":83.2253,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Visakhapatnam","index":278}},
-  {"id":"laico_cb_279","name":"Purba Medinipur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Purba Medinipur","latitude":21.92517,"longitude":87.79212,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Purba Medinipur","index":279}},
-  {"id":"laico_cb_280","name":"Dhaka Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Dhaka Division","city":"Dhaka","latitude":23.81539,"longitude":90.39014,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhaka","index":280}},
-  {"id":"laico_cb_281","name":"Nagpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Nagpur","latitude":21.12879,"longitude":79.10089,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nagpur","index":281}},
-  {"id":"laico_cb_282","name":"Uttara Kannada Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Uttara Kannada","latitude":14.80832,"longitude":74.69027,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Uttara Kannada","index":282}},
-  {"id":"laico_cb_283","name":"Anand Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Anand","latitude":22.57795,"longitude":72.94101,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Anand","index":283}},
-  {"id":"laico_cb_284","name":"Hassan Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Hassan","latitude":13.02256,"longitude":76.11246,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Hassan","index":284}},
-  {"id":"laico_cb_285","name":"Mandsaur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Mandsaur","latitude":24.07385,"longitude":75.06625,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mandsaur","index":285}},
-  {"id":"laico_cb_286","name":"Chittagong Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Chittagong Division","city":"Chittagong","latitude":22.34898,"longitude":91.76268,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Chittagong","index":286}},
-  {"id":"laico_cb_287","name":"Chennai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Chennai","latitude":13.06277,"longitude":80.28272,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Chennai","index":287}},
-  {"id":"laico_cb_288","name":"Jhansi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Jhansi","latitude":25.42801,"longitude":78.56656,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jhansi","index":288}},
-  {"id":"laico_cb_289","name":"Balrampur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Balrampur","latitude":27.42575,"longitude":82.1851,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Balrampur","index":289}},
-  {"id":"laico_cb_290","name":"Krishna Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"Krishna","latitude":16.58735,"longitude":80.8244,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Krishna","index":290}},
-  {"id":"laico_cb_291","name":"Gwanda Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Zimbabwe","state":"Matabeleland South","city":"Gwanda","latitude":-20.92331,"longitude":28.99469,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Gwanda","index":291}},
-  {"id":"laico_cb_292","name":"Burdwan Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Burdwan","latitude":23.23357,"longitude":87.85277,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Burdwan","index":292}},
-  {"id":"laico_cb_293","name":"Chennai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Chennai","latitude":13.0629,"longitude":80.2869,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Chennai","index":293}},
-  {"id":"laico_cb_294","name":"Mirzapur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Mirzapur","latitude":25.1495,"longitude":82.55905,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mirzapur","index":294}},
-  {"id":"laico_cb_295","name":"Birbhum Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Birbhum","latitude":23.82638,"longitude":87.64034,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Birbhum","index":295}},
-  {"id":"laico_cb_296","name":"Dhamtari Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Chhattisgarh","city":"Dhamtari","latitude":20.70355,"longitude":81.52949,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhamtari","index":296}},
-  {"id":"laico_cb_297","name":"Krishna Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"Krishna","latitude":16.57237,"longitude":80.85487,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Krishna","index":297}},
-  {"id":"laico_cb_298","name":"Nimach Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Nimach","latitude":24.46768,"longitude":74.88463,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nimach","index":298}},
-  {"id":"laico_cb_299","name":"Guna Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Guna","latitude":24.62759,"longitude":77.29595,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Guna","index":299}},
-  {"id":"laico_cb_300","name":"Gwaalior Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Gwaalior","latitude":26.23814,"longitude":78.168,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Gwaalior","index":300}},
-  {"id":"laico_cb_301","name":"North 24 Parganas Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"North 24 Parganas","latitude":22.7249,"longitude":88.4824,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"North 24 Parganas","index":301}},
-  {"id":"laico_cb_302","name":"Rajnandgaon Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Chhattisgarh","city":"Rajnandgaon","latitude":21.09651,"longitude":81.02421,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Rajnandgaon","index":302}},
-  {"id":"laico_cb_303","name":"24 South Parganas Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"24 South Parganas","latitude":22.157,"longitude":88.443,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"24 South Parganas","index":303}},
-  {"id":"laico_cb_304","name":"Surat Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Surat","latitude":21.14815,"longitude":72.82255,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Surat","index":304}},
-  {"id":"laico_cb_305","name":"Ado-Odo/Ota Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nigeria","state":"Ogun State","city":"Ado-Odo/Ota","latitude":6.67972,"longitude":3.23742,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ado-Odo/Ota","index":305}},
-  {"id":"laico_cb_306","name":"Kolkata Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Kolkata","latitude":22.57764,"longitude":88.38514,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kolkata","index":306}},
-  {"id":"laico_cb_307","name":"Mysore Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Mysore","latitude":12.27407,"longitude":76.64061,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mysore","index":307}},
-  {"id":"laico_cb_308","name":"Rohtas Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Bihar","city":"Rohtas","latitude":24.93986,"longitude":84.01196,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Rohtas","index":308}},
-  {"id":"laico_cb_309","name":"Dehradun Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttarakhand","city":"Dehradun","latitude":30.29522,"longitude":78.04736,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dehradun","index":309}},
-  {"id":"laico_cb_310","name":"Purulia Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Purulia","latitude":23.35381,"longitude":86.35711,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Purulia","index":310}},
-  {"id":"laico_cb_311","name":"Sri Ganganagar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Sri Ganganagar","latitude":29.90551,"longitude":73.88521,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sri Ganganagar","index":311}},
-  {"id":"laico_cb_312","name":"Jalandhar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Punjab","city":"Jalandhar","latitude":31.33316,"longitude":75.573,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jalandhar","index":312}},
-  {"id":"laico_cb_313","name":"Pali Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Pali","latitude":25.74937,"longitude":73.32492,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Pali","index":313}},
-  {"id":"laico_cb_314","name":"Dhaka Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Dhaka Division","city":"Dhaka","latitude":23.79784,"longitude":90.43108,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhaka","index":314}},
-  {"id":"laico_cb_315","name":"Nashik Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Nashik","latitude":19.99601,"longitude":73.78876,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nashik","index":315}},
-  {"id":"laico_cb_316","name":"Sabarkantha Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Sabarkantha","latitude":23.53215,"longitude":73.08345,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sabarkantha","index":316}},
-  {"id":"laico_cb_317","name":"Wayanad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Kerala","city":"Wayanad","latitude":11.68702,"longitude":76.13722,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Wayanad","index":317}},
-  {"id":"laico_cb_318","name":"Purulia Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Purulia","latitude":23.32753,"longitude":86.35243,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Purulia","index":318}},
-  {"id":"laico_cb_319","name":"Nagpur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Nagpur","latitude":21.13329,"longitude":79.10539,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nagpur","index":319}},
-  {"id":"laico_cb_320","name":"Ramnad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Ramnad","latitude":9.38001,"longitude":78.84391,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ramnad","index":320}},
-  {"id":"laico_cb_321","name":"Bharuch Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Bharuch","latitude":21.71523,"longitude":72.99478,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bharuch","index":321}},
-  {"id":"laico_cb_322","name":"Satna Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Satna","latitude":24.58826,"longitude":80.81276,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Satna","index":322}},
-  {"id":"laico_cb_323","name":"Mathura Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Mathura","latitude":27.49726,"longitude":77.68936,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mathura","index":323}},
-  {"id":"laico_cb_324","name":"Ahmednagar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Ahmednagar","latitude":19.08296,"longitude":74.74112,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ahmednagar","index":324}},
-  {"id":"laico_cb_325","name":"Tangail Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Dhaka Division","city":"Tangail","latitude":24.26615,"longitude":89.92705,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Tangail","index":325}},
-  {"id":"laico_cb_326","name":"Sylhet Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Bangladesh","state":"Sylhet Division","city":"Sylhet","latitude":24.87312,"longitude":91.86852,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sylhet","index":326}},
-  {"id":"laico_cb_327","name":"Papumpare Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Arunachal Pradesh","city":"Papumpare","latitude":27.11736,"longitude":93.60252,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Papumpare","index":327}},
-  {"id":"laico_cb_328","name":"Mayurbhanj Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Mayurbhanj","latitude":21.94266,"longitude":86.75346,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mayurbhanj","index":328}},
-  {"id":"laico_cb_329","name":"Kovilpatti Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Kovilpatti","latitude":9.15494,"longitude":77.8695,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kovilpatti","index":329}},
-  {"id":"laico_cb_330","name":"Mumbai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Mumbai","latitude":19.07353,"longitude":72.89097,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mumbai","index":330}},
-  {"id":"laico_cb_331","name":"Malegaon Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Malegaon","latitude":20.5511,"longitude":74.52325,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Malegaon","index":331}},
-  {"id":"laico_cb_332","name":"Pali Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Pali","latitude":25.78082,"longitude":73.31002,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Pali","index":332}},
-  {"id":"laico_cb_333","name":"Chittoor Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"Chittoor","latitude":13.21329,"longitude":79.11393,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Chittoor","index":333}},
-  {"id":"laico_cb_334","name":"Vietnam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Vietnam","state":"Ho Chi Minh City","city":"Vietnam","latitude":10.83606,"longitude":106.62646,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Vietnam","index":334}},
-  {"id":"laico_cb_335","name":"South Sulawesi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Indonesia","state":"South Sulawesi","city":"South Sulawesi","latitude":-5.12781,"longitude":119.41929,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"South Sulawesi","index":335}},
-  {"id":"laico_cb_336","name":"Amritsar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Punjab","city":"Amritsar","latitude":31.65484,"longitude":74.88818,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Amritsar","index":336}},
-  {"id":"laico_cb_337","name":"Bhimavaram Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"Bhimavaram","latitude":16.5597,"longitude":81.53015,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bhimavaram","index":337}},
-  {"id":"laico_cb_338","name":"Abuja Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nigeria","state":"Federal Capital Territory","city":"Abuja","latitude":9.07034,"longitude":7.38748,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Abuja","index":338}},
-  {"id":"laico_cb_339","name":"Mandvi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Mandvi","latitude":22.81888,"longitude":69.33688,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mandvi","index":339}},
-  {"id":"laico_cb_340","name":"Navsari Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Gujarat","city":"Navsari","latitude":20.93243,"longitude":72.95978,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Navsari","index":340}},
-  {"id":"laico_cb_341","name":"Erode Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Erode","latitude":11.35319,"longitude":77.73525,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Erode","index":341}},
-  {"id":"laico_cb_342","name":"Kollam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Kerala","city":"Kollam","latitude":8.90135,"longitude":76.59659,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kollam","index":342}},
-  {"id":"laico_cb_343","name":"Trissur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Kerala","city":"Trissur","latitude":10.53345,"longitude":76.21575,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Trissur","index":343}},
-  {"id":"laico_cb_344","name":"Madurai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Madurai","latitude":9.93834,"longitude":78.12214,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Madurai","index":344}},
-  {"id":"laico_cb_345","name":"Theni Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Theni","latitude":9.99798,"longitude":77.49678,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Theni","index":345}},
-  {"id":"laico_cb_346","name":"Tuticorin Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Tuticorin","latitude":8.77725,"longitude":78.13435,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Tuticorin","index":346}},
-  {"id":"laico_cb_347","name":"Coimbatore Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Coimbatore","latitude":11.00731,"longitude":76.97646,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Coimbatore","index":347}},
-  {"id":"laico_cb_348","name":"Dindigul Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Dindigul","latitude":10.34628,"longitude":77.95883,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dindigul","index":348}},
-  {"id":"laico_cb_349","name":"Chennai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Chennai","latitude":13.08324,"longitude":80.28744,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Chennai","index":349}},
-  {"id":"laico_cb_350","name":"Tirunelveli Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Tirunelveli","latitude":8.70899,"longitude":77.73964,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Tirunelveli","index":350}},
-  {"id":"laico_cb_351","name":"Pondicherry Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Puducherry","city":"Pondicherry","latitude":11.92036,"longitude":79.82486,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Pondicherry","index":351}},
-  {"id":"laico_cb_352","name":"Salem Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Salem","latitude":11.66259,"longitude":78.13799,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Salem","index":352}},
-  {"id":"laico_cb_353","name":"Sentul Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Indonesia","state":"West Java","city":"Sentul","latitude":-6.58083,"longitude":106.87003,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sentul","index":353}},
-  {"id":"laico_cb_354","name":"Nairobi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Kenya","state":"Nairobi County","city":"Nairobi","latitude":-1.26744,"longitude":36.8167,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nairobi","index":354}},
-  {"id":"laico_cb_355","name":"Medinipur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Medinipur","latitude":22.43776,"longitude":87.33376,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Medinipur","index":355}},
-  {"id":"laico_cb_356","name":"Mumbai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Mumbai","latitude":19.06759,"longitude":72.88684,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mumbai","index":356}},
-  {"id":"laico_cb_357","name":"Jhabua Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Jhabua","latitude":22.76181,"longitude":74.59401,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jhabua","index":357}},
-  {"id":"laico_cb_358","name":"Khunti Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Jharkhand","city":"Khunti","latitude":23.06471,"longitude":85.27947,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Khunti","index":358}},
-  {"id":"laico_cb_359","name":"Khunti Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Jharkhand","city":"Khunti","latitude":23.09284,"longitude":85.29634,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Khunti","index":359}},
-  {"id":"laico_cb_360","name":"Purulia Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"West Bengal","city":"Purulia","latitude":23.32928,"longitude":86.36183,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Purulia","index":360}},
-  {"id":"laico_cb_361","name":"Geta Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nepal","state":"Kailali","city":"Geta","latitude":28.80325,"longitude":80.58445,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Geta","index":361}},
-  {"id":"laico_cb_362","name":"Hirdaram Nagar, Bhopal Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Hirdaram Nagar, Bhopal","latitude":23.2473,"longitude":77.427,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Hirdaram Nagar, Bhopal","index":362}},
-  {"id":"laico_cb_363","name":"Chennai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Chennai","latitude":13.06776,"longitude":80.25756,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Chennai","index":363}},
-  {"id":"laico_cb_364","name":"Mumbai Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Mumbai","latitude":19.09508,"longitude":72.88418,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mumbai","index":364}},
-  {"id":"laico_cb_365","name":"Kasganj Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Uttar Pradesh","city":"Kasganj","latitude":27.80688,"longitude":78.66842,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kasganj","index":365}},
-  {"id":"laico_cb_366","name":"Bangalore Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Karnataka","city":"Bangalore","latitude":12.96917,"longitude":77.60927,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bangalore","index":366}},
-  {"id":"laico_cb_367","name":"Gaya Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Bihar","city":"Gaya","latitude":24.80823,"longitude":84.98193,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Gaya","index":367}},
-  {"id":"laico_cb_368","name":"Ganjam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Ganjam","latitude":19.38026,"longitude":85.06292,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Ganjam","index":368}},
-  {"id":"laico_cb_369","name":"Kumbakonam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Kumbakonam","latitude":10.97919,"longitude":79.38819,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kumbakonam","index":369}},
-  {"id":"laico_cb_370","name":"Jalandhar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Punjab","city":"Jalandhar","latitude":31.33676,"longitude":75.59461,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Jalandhar","index":370}},
-  {"id":"laico_cb_371","name":"Hyderabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Hyderabad","latitude":17.39594,"longitude":78.46568,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Hyderabad","index":371}},
-  {"id":"laico_cb_372","name":"Titilagarh Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Titilagarh","latitude":20.29648,"longitude":83.13142,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Titilagarh","index":372}},
-  {"id":"laico_cb_373","name":"Vijzakapatnam Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Andhra Pradesh","city":"Vijzakapatnam","latitude":17.67483,"longitude":83.20743,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Vijzakapatnam","index":373}},
-  {"id":"laico_cb_374","name":"Mastikchak Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Bihar","city":"Mastikchak","latitude":25.80417,"longitude":84.85327,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Mastikchak","index":374}},
-  {"id":"laico_cb_375","name":"Dhenkanal Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"Dhenkanal","latitude":20.64022,"longitude":85.58486,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Dhenkanal","index":375}},
-  {"id":"laico_cb_376","name":"Maharashtra Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Maharashtra","city":"Maharashtra","latitude":19.07528,"longitude":72.85538,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Maharashtra","index":376}},
-  {"id":"laico_cb_377","name":"Aizawl Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Mizoram","city":"Aizawl","latitude":23.71103,"longitude":92.71458,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Aizawl","index":377}},
-  {"id":"laico_cb_378","name":"Raipur Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Chhattisgarh","city":"Raipur","latitude":21.24335,"longitude":81.6499,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Raipur","index":378}},
-  {"id":"laico_cb_379","name":"Kanyakumari Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Kanyakumari","latitude":8.07813,"longitude":77.53823,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kanyakumari","index":379}},
-  {"id":"laico_cb_380","name":"Nyeri County Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Kenya","state":"Nyeri County","city":"Nyeri County","latitude":-0.43546,"longitude":36.95329,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Nyeri County","index":380}},
-  {"id":"laico_cb_381","name":"Sehore Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Madhya Pradesh","city":"Sehore","latitude":23.206,"longitude":77.0784,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sehore","index":381}},
-  {"id":"laico_cb_382","name":"Secunderabad Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Telangana","city":"Secunderabad","latitude":17.45187,"longitude":78.50937,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Secunderabad","index":382}},
-  {"id":"laico_cb_383","name":"Pokhara Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Nepal","state":"Kaski","city":"Pokhara","latitude":28.2181,"longitude":83.97926,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Pokhara","index":383}},
-  {"id":"laico_cb_384","name":"HAZARIBAG Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Jharkhand","city":"HAZARIBAG","latitude":23.997,"longitude":85.3682,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"HAZARIBAG","index":384}},
-  {"id":"laico_cb_385","name":"BALASORE Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Odisha","city":"BALASORE","latitude":21.50991,"longitude":86.93046,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"BALASORE","index":385}},
-  {"id":"laico_cb_386","name":"Tenkasi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Tamil Nadu","city":"Tenkasi","latitude":8.95337,"longitude":77.30797,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Tenkasi","index":386}},
-  {"id":"laico_cb_387","name":"Cape coast Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Ghana","state":"Central Region","city":"Cape coast","latitude":5.12082,"longitude":-1.26032,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Cape coast","index":387}},
-  {"id":"laico_cb_388","name":"GUMLA Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Jharkhand","city":"GUMLA","latitude":23.03014,"longitude":84.56078,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"GUMLA","index":388}},
-  {"id":"laico_cb_389","name":"Sirohi Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Rajasthan","city":"Sirohi","latitude":24.8781,"longitude":72.8544,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Sirohi","index":389}},
-  {"id":"laico_cb_390","name":"KATIHAR Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Bihar","city":"KATIHAR","latitude":25.56436,"longitude":87.58346,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"KATIHAR","index":390}},
-  {"id":"laico_cb_391","name":"Saran Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Bihar","city":"Saran","latitude":25.92762,"longitude":84.73342,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Saran","index":391}},
-  {"id":"laico_cb_392","name":"Kamrup Metropolitan district Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"India","state":"Assam","city":"Kamrup Metropolitan district","latitude":26.13154,"longitude":91.73944,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Kamrup Metropolitan district","index":392}},
-  {"id":"laico_cb_393","name":"Tamale Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Ghana","state":"Northern Region","city":"Tamale","latitude":9.41858,"longitude":-0.82828,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Tamale","index":393}},
-  {"id":"laico_cb_394","name":"Bahir Dar Partner Hub","entityId":"laico","subcategoryId":"capacity_building","country":"Ethiopia","state":"Amhara","city":"Bahir Dar","latitude":11.59065,"longitude":37.3706,"metrics":{"mentorshipType":"Capacity Building & Management Mentorship","capacityStatus":"Active Mentored Hospital"},"metadata":{"district":"Bahir Dar","index":394}}
+  {
+    "id": "laico_cb_5",
+    "name": "Medchal-Malkajgiri Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Telangana",
+    "city": "Medchal-Malkajgiri",
+    "latitude": 17.6294,
+    "longitude": 78.4813,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Medchal-Malkajgiri",
+      "index": 5,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_6",
+    "name": "New Delhi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "New Delhi",
+    "city": "New Delhi",
+    "latitude": 28.6139,
+    "longitude": 77.209,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "New Delhi",
+      "index": 6,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_7",
+    "name": "Krishna Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Andhra Pradesh",
+    "city": "Krishna",
+    "latitude": 16.173,
+    "longitude": 81.134,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Krishna",
+      "index": 7,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_8",
+    "name": "Coimbatore Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Coimbatore",
+    "latitude": 11.0168,
+    "longitude": 76.9558,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Coimbatore",
+      "index": 8,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_9",
+    "name": "Ahmedabad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Ahmedabad",
+    "latitude": 23.0225,
+    "longitude": 72.5714,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 4,
+      "programCount": 4
+    },
+    "metadata": {
+      "district": "Ahmedabad",
+      "index": 9,
+      "partnerCount": 4
+    }
+  },
+  {
+    "id": "laico_cb_10",
+    "name": "Darjeeling Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Darjeeling",
+    "latitude": 27.041,
+    "longitude": 88.2663,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Darjeeling",
+      "index": 10,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_11",
+    "name": "Sangli Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Sangli",
+    "latitude": 16.8524,
+    "longitude": 74.5815,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 3,
+      "programCount": 3
+    },
+    "metadata": {
+      "district": "Sangli",
+      "index": 11,
+      "partnerCount": 3
+    }
+  },
+  {
+    "id": "laico_cb_12",
+    "name": "Ramchandrapur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Ramchandrapur",
+    "latitude": 22.845,
+    "longitude": 88.351,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ramchandrapur",
+      "index": 12,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_13",
+    "name": "Kanpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Kanpur",
+    "latitude": 26.4499,
+    "longitude": 80.3319,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kanpur",
+      "index": 13,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_14",
+    "name": "Purba Medinipur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Purba Medinipur",
+    "latitude": 21.9426,
+    "longitude": 87.7788,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Purba Medinipur",
+      "index": 14,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_15",
+    "name": "Hyderabad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Telangana",
+    "city": "Hyderabad",
+    "latitude": 17.385,
+    "longitude": 78.4867,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 6,
+      "programCount": 6
+    },
+    "metadata": {
+      "district": "Hyderabad",
+      "index": 15,
+      "partnerCount": 6
+    }
+  },
+  {
+    "id": "laico_cb_16",
+    "name": "Mahabubnagar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Telangana",
+    "city": "Mahabubnagar",
+    "latitude": 16.7488,
+    "longitude": 77.9836,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Mahabubnagar",
+      "index": 16,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_17",
+    "name": "Giridih Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Jharkhand",
+    "city": "Giridih",
+    "latitude": 24.1878,
+    "longitude": 81.6038,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Giridih",
+      "index": 17,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_18",
+    "name": "Bokaro Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Jharkhand",
+    "city": "Bokaro",
+    "latitude": 23.6693,
+    "longitude": 86.1511,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bokaro",
+      "index": 18,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_19",
+    "name": "Howrah Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Howrah",
+    "latitude": 22.5958,
+    "longitude": 88.2636,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Howrah",
+      "index": 19,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_20",
+    "name": "Raichur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Raichur",
+    "latitude": 16.2076,
+    "longitude": 77.3463,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Raichur",
+      "index": 20,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_21",
+    "name": "Thiruvarur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Thiruvarur",
+    "latitude": 10.7709,
+    "longitude": 79.6367,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Thiruvarur",
+      "index": 21,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_22",
+    "name": "Kolkata Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Kolkata",
+    "latitude": 22.5726,
+    "longitude": 88.3639,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 5,
+      "programCount": 5
+    },
+    "metadata": {
+      "district": "Kolkata",
+      "index": 22,
+      "partnerCount": 5
+    }
+  },
+  {
+    "id": "laico_cb_23",
+    "name": "Trichy Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Trichy",
+    "latitude": 10.7905,
+    "longitude": 78.7047,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Trichy",
+      "index": 23,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_24",
+    "name": "Mumbai Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Mumbai",
+    "latitude": 19.076,
+    "longitude": 72.8777,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 9,
+      "programCount": 9
+    },
+    "metadata": {
+      "district": "Mumbai",
+      "index": 24,
+      "partnerCount": 9
+    }
+  },
+  {
+    "id": "laico_cb_25",
+    "name": "Tiruvanamalai Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Tiruvanamalai",
+    "latitude": 12.2253,
+    "longitude": 79.0747,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Tiruvanamalai",
+      "index": 25,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_26",
+    "name": "Purulia Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Purulia",
+    "latitude": 23.3323,
+    "longitude": 86.3653,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 3,
+      "programCount": 3
+    },
+    "metadata": {
+      "district": "Purulia",
+      "index": 26,
+      "partnerCount": 3
+    }
+  },
+  {
+    "id": "laico_cb_27",
+    "name": "Kadapa Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Andhra Pradesh",
+    "city": "Kadapa",
+    "latitude": 14.4673,
+    "longitude": 78.8242,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kadapa",
+      "index": 27,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_28",
+    "name": "Trivandrum Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Kerala",
+    "city": "Trivandrum",
+    "latitude": 8.5241,
+    "longitude": 76.9366,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Trivandrum",
+      "index": 28,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_29",
+    "name": "Ernakulam Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Kerala",
+    "city": "Ernakulam",
+    "latitude": 9.9816,
+    "longitude": 76.2999,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Ernakulam",
+      "index": 29,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_30",
+    "name": "Idukki Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Kerala",
+    "city": "Idukki",
+    "latitude": 9.8497,
+    "longitude": 76.9806,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Idukki",
+      "index": 30,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_31",
+    "name": "Ramanathapuram Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Ramanathapuram",
+    "latitude": 9.3639,
+    "longitude": 78.8395,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ramanathapuram",
+      "index": 31,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_32",
+    "name": "Dharwar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Dharwar",
+    "latitude": 15.4589,
+    "longitude": 75.0078,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Dharwar",
+      "index": 32,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_33",
+    "name": "Muzaffarpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Bihar",
+    "city": "Muzaffarpur",
+    "latitude": 26.1209,
+    "longitude": 85.3647,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Muzaffarpur",
+      "index": 33,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_34",
+    "name": "Vishakapatnam Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Andhra Pradesh",
+    "city": "Vishakapatnam",
+    "latitude": 17.6868,
+    "longitude": 83.2185,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Vishakapatnam",
+      "index": 34,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_35",
+    "name": "Karnal Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Haryana",
+    "city": "Karnal",
+    "latitude": 29.6857,
+    "longitude": 76.9905,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Karnal",
+      "index": 35,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_36",
+    "name": "Kutch Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Kutch",
+    "latitude": 23.7337,
+    "longitude": 69.8597,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kutch",
+      "index": 36,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_37",
+    "name": "Salem Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Salem",
+    "latitude": 11.6643,
+    "longitude": 78.146,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 3,
+      "programCount": 3
+    },
+    "metadata": {
+      "district": "Salem",
+      "index": 37,
+      "partnerCount": 3
+    }
+  },
+  {
+    "id": "laico_cb_38",
+    "name": "Faridkot Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Punjab",
+    "city": "Faridkot",
+    "latitude": 30.6769,
+    "longitude": 74.7584,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Faridkot",
+      "index": 38,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_39",
+    "name": "Kheda Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Kheda",
+    "latitude": 22.7513,
+    "longitude": 72.6858,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kheda",
+      "index": 39,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_40",
+    "name": "Kolar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Kolar",
+    "latitude": 13.1367,
+    "longitude": 78.1292,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kolar",
+      "index": 40,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_41",
+    "name": "Rajnandgaon Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Rajnandgaon",
+    "latitude": 21.1026,
+    "longitude": 81.0343,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Rajnandgaon",
+      "index": 41,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_42",
+    "name": "Kathmandu Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nepal",
+    "state": "Kathmandu",
+    "city": "Kathmandu",
+    "latitude": 27.7172,
+    "longitude": 85.324,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Kathmandu",
+      "index": 42,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_43",
+    "name": "Hassan Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Hassan",
+    "latitude": 13.0033,
+    "longitude": 76.1004,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Hassan",
+      "index": 43,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_44",
+    "name": "Tirupur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Tirupur",
+    "latitude": 11.1085,
+    "longitude": 77.3411,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 3,
+      "programCount": 3
+    },
+    "metadata": {
+      "district": "Tirupur",
+      "index": 44,
+      "partnerCount": 3
+    }
+  },
+  {
+    "id": "laico_cb_45",
+    "name": "Wayanad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Kerala",
+    "city": "Wayanad",
+    "latitude": 11.6854,
+    "longitude": 76.132,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Wayanad",
+      "index": 45,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_46",
+    "name": "Ranipet Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Ranipet",
+    "latitude": 12.9272,
+    "longitude": 79.3328,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ranipet",
+      "index": 46,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_47",
+    "name": "Sivagangai Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Sivagangai",
+    "latitude": 9.8433,
+    "longitude": 78.4809,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sivagangai",
+      "index": 47,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_48",
+    "name": "Jalpaiguri Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Jalpaiguri",
+    "latitude": 26.5415,
+    "longitude": 88.7196,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Jalpaiguri",
+      "index": 48,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_49",
+    "name": "Dhanbad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Jharkhand",
+    "city": "Dhanbad",
+    "latitude": 23.7957,
+    "longitude": 86.4304,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Dhanbad",
+      "index": 49,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_50",
+    "name": "Ratlam Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Ratlam",
+    "latitude": 23.3315,
+    "longitude": 75.0367,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ratlam",
+      "index": 50,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_51",
+    "name": "Rampur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Rampur",
+    "latitude": 28.8041,
+    "longitude": 79.0264,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Rampur",
+      "index": 51,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_52",
+    "name": "Nagpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Nagpur",
+    "latitude": 21.1458,
+    "longitude": 79.0882,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 3,
+      "programCount": 3
+    },
+    "metadata": {
+      "district": "Nagpur",
+      "index": 52,
+      "partnerCount": 3
+    }
+  },
+  {
+    "id": "laico_cb_53",
+    "name": "Bhubaneshwar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Orissa",
+    "city": "Bhubaneshwar",
+    "latitude": 20.2961,
+    "longitude": 85.8245,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bhubaneshwar",
+      "index": 53,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_54",
+    "name": "Balrampur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Balrampur",
+    "latitude": 27.4287,
+    "longitude": 82.1793,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Balrampur",
+      "index": 54,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_55",
+    "name": "Cachur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Assam",
+    "city": "Cachur",
+    "latitude": 24.8333,
+    "longitude": 92.7667,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Cachur",
+      "index": 55,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_56",
+    "name": "Raipur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Chhattisgarh",
+    "city": "Raipur",
+    "latitude": 21.2514,
+    "longitude": 81.6296,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Raipur",
+      "index": 56,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_57",
+    "name": "Lilongwe Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Malawi",
+    "state": "Lilongwe",
+    "city": "Lilongwe",
+    "latitude": -13.9626,
+    "longitude": 33.7741,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Lilongwe",
+      "index": 57,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_58",
+    "name": "Bhopal Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Bhopal",
+    "latitude": 23.2599,
+    "longitude": 77.4126,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Bhopal",
+      "index": 58,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_59",
+    "name": "Midnapur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Midnapur",
+    "latitude": 22.4257,
+    "longitude": 87.3199,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Midnapur",
+      "index": 59,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_60",
+    "name": "Bharatpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nepal",
+    "state": "Bharatpur",
+    "city": "Bharatpur",
+    "latitude": 27.6833,
+    "longitude": 84.4333,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bharatpur",
+      "index": 60,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_61",
+    "name": "Sihor Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Sihor",
+    "latitude": 21.7058,
+    "longitude": 71.9774,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sihor",
+      "index": 61,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_62",
+    "name": "Baroda Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Baroda",
+    "latitude": 22.3072,
+    "longitude": 73.1812,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Baroda",
+      "index": 62,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_63",
+    "name": "Sitapur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Sitapur",
+    "latitude": 27.5686,
+    "longitude": 80.6819,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sitapur",
+      "index": 63,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_64",
+    "name": "Uttar-Kannada Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Uttar-Kannada",
+    "latitude": 14.7937,
+    "longitude": 74.6869,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Uttar-Kannada",
+      "index": 64,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_65",
+    "name": "Rani Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Rani",
+    "latitude": 25.3562,
+    "longitude": 73.3082,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Rani",
+      "index": 65,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_66",
+    "name": "Burdwan Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Burdwan",
+    "latitude": 23.2324,
+    "longitude": 87.8615,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 9,
+      "programCount": 9
+    },
+    "metadata": {
+      "district": "Burdwan",
+      "index": 66,
+      "partnerCount": 9
+    }
+  },
+  {
+    "id": "laico_cb_67",
+    "name": "Bhilwara Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Bhilwara",
+    "latitude": 25.3475,
+    "longitude": 74.6364,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bhilwara",
+      "index": 67,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_68",
+    "name": "Malwa Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Malwa",
+    "latitude": 24.1333,
+    "longitude": 76.2,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Malwa",
+      "index": 68,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_69",
+    "name": "Jalandhar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Punjab",
+    "city": "Jalandhar",
+    "latitude": 31.326,
+    "longitude": 75.5762,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Jalandhar",
+      "index": 69,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_70",
+    "name": "Jhansi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Jhansi",
+    "latitude": 25.4484,
+    "longitude": 78.5685,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Jhansi",
+      "index": 70,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_71",
+    "name": "Narayanganj Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Dhaka",
+    "city": "Narayanganj",
+    "latitude": 23.6238,
+    "longitude": 90.5,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Narayanganj",
+      "index": 71,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_72",
+    "name": "Satara Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Satara",
+    "latitude": 17.6805,
+    "longitude": 74.0183,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Satara",
+      "index": 72,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_73",
+    "name": "Chennai Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Chennai",
+    "latitude": 13.0827,
+    "longitude": 80.2707,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 5,
+      "programCount": 5
+    },
+    "metadata": {
+      "district": "Chennai",
+      "index": 73,
+      "partnerCount": 5
+    }
+  },
+  {
+    "id": "laico_cb_74",
+    "name": "Pune Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Pune",
+    "latitude": 18.5204,
+    "longitude": 73.8567,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Pune",
+      "index": 74,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_75",
+    "name": "Nilgiris Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Nilgiris",
+    "latitude": 11.4916,
+    "longitude": 76.7337,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Nilgiris",
+      "index": 75,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_76",
+    "name": "Vellore Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Vellore",
+    "latitude": 12.9165,
+    "longitude": 79.1325,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Vellore",
+      "index": 76,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_77",
+    "name": "Tuticorin Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Tuticorin",
+    "latitude": 8.7642,
+    "longitude": 78.1348,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Tuticorin",
+      "index": 77,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_78",
+    "name": "Mombasa Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Mombasa",
+    "city": "Mombasa",
+    "latitude": -4.0435,
+    "longitude": 39.6682,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Mombasa",
+      "index": 78,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_79",
+    "name": "Mirzapur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Mirzapur",
+    "latitude": 25.1337,
+    "longitude": 82.5644,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Mirzapur",
+      "index": 79,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_80",
+    "name": "West Delhi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "New Delhi",
+    "city": "West Delhi",
+    "latitude": 28.6667,
+    "longitude": 77.0667,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "West Delhi",
+      "index": 80,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_81",
+    "name": "Nairobi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Nairobi",
+    "city": "Nairobi",
+    "latitude": -1.2921,
+    "longitude": 36.8219,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 4,
+      "programCount": 4
+    },
+    "metadata": {
+      "district": "Nairobi",
+      "index": 81,
+      "partnerCount": 4
+    }
+  },
+  {
+    "id": "laico_cb_82",
+    "name": "Dolakha Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nepal",
+    "state": "Dolakha",
+    "city": "Dolakha",
+    "latitude": 27.7667,
+    "longitude": 86.0667,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Dolakha",
+      "index": 82,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_83",
+    "name": "Rajkot Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Rajkot",
+    "latitude": 22.3039,
+    "longitude": 70.8022,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Rajkot",
+      "index": 83,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_84",
+    "name": "Sagar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Sagar",
+    "latitude": 23.8388,
+    "longitude": 78.7378,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sagar",
+      "index": 84,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_85",
+    "name": "Lakhimpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Lakhimpur",
+    "latitude": 27.9482,
+    "longitude": 80.7777,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Lakhimpur",
+      "index": 85,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_86",
+    "name": "Mayurbhanj Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Orissa",
+    "city": "Mayurbhanj",
+    "latitude": 21.9351,
+    "longitude": 86.7356,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Mayurbhanj",
+      "index": 86,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_87",
+    "name": "Jorhat Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Assam",
+    "city": "Jorhat",
+    "latitude": 26.7509,
+    "longitude": 94.2037,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Jorhat",
+      "index": 87,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_88",
+    "name": "Sunder Gram Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Orissa",
+    "city": "Sunder Gram",
+    "latitude": 22.1167,
+    "longitude": 84.0333,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sunder Gram",
+      "index": 88,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_89",
+    "name": "Dhaka Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Dhaka",
+    "city": "Dhaka",
+    "latitude": 23.8103,
+    "longitude": 90.4125,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 3,
+      "programCount": 3
+    },
+    "metadata": {
+      "district": "Dhaka",
+      "index": 89,
+      "partnerCount": 3
+    }
+  },
+  {
+    "id": "laico_cb_90",
+    "name": "Medak Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Telangana",
+    "city": "Medak",
+    "latitude": 18.045,
+    "longitude": 78.2625,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Medak",
+      "index": 90,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_91",
+    "name": "Birganj Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nepal",
+    "state": "Parsa",
+    "city": "Birganj",
+    "latitude": 27,
+    "longitude": 84.8667,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Birganj",
+      "index": 91,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_92",
+    "name": "Idar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Idar",
+    "latitude": 23.8396,
+    "longitude": 73.0031,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Idar",
+      "index": 92,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_93",
+    "name": "Ghaziabad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Ghaziabad",
+    "latitude": 28.6692,
+    "longitude": 77.4538,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ghaziabad",
+      "index": 93,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_94",
+    "name": "Cuttack Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Orissa",
+    "city": "Cuttack",
+    "latitude": 20.4625,
+    "longitude": 85.8828,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Cuttack",
+      "index": 94,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_95",
+    "name": "Maryland Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bulgaria",
+    "state": "Sofia",
+    "city": "Maryland",
+    "latitude": 42.6977,
+    "longitude": 23.3219,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Maryland",
+      "index": 95,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_96",
+    "name": "Dharmavaram Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Andhra Pradesh",
+    "city": "Dharmavaram",
+    "latitude": 14.414,
+    "longitude": 77.721,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Dharmavaram",
+      "index": 96,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_97",
+    "name": "Imphal Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Manipur",
+    "city": "Imphal",
+    "latitude": 24.817,
+    "longitude": 93.9368,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Imphal",
+      "index": 97,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_98",
+    "name": "Nokha Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Nokha",
+    "latitude": 27.6015,
+    "longitude": 73.4216,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Nokha",
+      "index": 98,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_99",
+    "name": "Chhidwara Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Chhidwara",
+    "latitude": 22.0574,
+    "longitude": 78.9382,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Chhidwara",
+      "index": 99,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_100",
+    "name": "Tiruvallur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Tiruvallur",
+    "latitude": 13.1432,
+    "longitude": 79.9079,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Tiruvallur",
+      "index": 100,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_101",
+    "name": "Kitwe Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Zambia",
+    "state": "Copperbelt Province",
+    "city": "Kitwe",
+    "latitude": -12.8024,
+    "longitude": 28.2132,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kitwe",
+      "index": 101,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_102",
+    "name": "Nadia Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Nadia",
+    "latitude": 23.471,
+    "longitude": 88.5565,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Nadia",
+      "index": 102,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_103",
+    "name": "Korriya Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Chhattisgarh",
+    "city": "Korriya",
+    "latitude": 23.2646,
+    "longitude": 82.5513,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Korriya",
+      "index": 103,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_104",
+    "name": "Ajmer Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Ajmer",
+    "latitude": 26.4499,
+    "longitude": 74.6399,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ajmer",
+      "index": 104,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_105",
+    "name": "Dhausa Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Dhausa",
+    "latitude": 26.8929,
+    "longitude": 76.334,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Dhausa",
+      "index": 105,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_106",
+    "name": "Erode Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Erode",
+    "latitude": 11.341,
+    "longitude": 77.7172,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Erode",
+      "index": 106,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_107",
+    "name": "Barmer Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Barmer",
+    "latitude": 25.7532,
+    "longitude": 71.4181,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Barmer",
+      "index": 107,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_108",
+    "name": "Dhamtari Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Chhattisgarh",
+    "city": "Dhamtari",
+    "latitude": 20.7071,
+    "longitude": 81.5497,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Dhamtari",
+      "index": 108,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_109",
+    "name": "Pali Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Pali",
+    "latitude": 25.7711,
+    "longitude": 73.3237,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 3,
+      "programCount": 3
+    },
+    "metadata": {
+      "district": "Pali",
+      "index": 109,
+      "partnerCount": 3
+    }
+  },
+  {
+    "id": "laico_cb_110",
+    "name": "Paschim Mednipur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Paschim Mednipur",
+    "latitude": 22.4257,
+    "longitude": 87.3199,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Paschim Mednipur",
+      "index": 110,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_111",
+    "name": "Jodhpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Jodhpur",
+    "latitude": 26.2389,
+    "longitude": 73.0243,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 3,
+      "programCount": 3
+    },
+    "metadata": {
+      "district": "Jodhpur",
+      "index": 111,
+      "partnerCount": 3
+    }
+  },
+  {
+    "id": "laico_cb_112",
+    "name": "Matabeleland South Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Zimbabwe",
+    "state": "Gwanda",
+    "city": "Matabeleland South",
+    "latitude": -20.9333,
+    "longitude": 29,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Matabeleland South",
+      "index": 112,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_113",
+    "name": "Biratnagar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nepal",
+    "state": "Purbanchal",
+    "city": "Biratnagar",
+    "latitude": 26.4525,
+    "longitude": 87.2718,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Biratnagar",
+      "index": 113,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_114",
+    "name": "Rohtas Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Bihar",
+    "city": "Rohtas",
+    "latitude": 24.9575,
+    "longitude": 84.0189,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Rohtas",
+      "index": 114,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_115",
+    "name": "Jawa Barat Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Indonesia",
+    "state": "West Java",
+    "city": "Jawa Barat",
+    "latitude": -6.9175,
+    "longitude": 107.6191,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Jawa Barat",
+      "index": 115,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_116",
+    "name": "De Guatemala Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Republic of Guatemala",
+    "state": "De Guatemala",
+    "city": "De Guatemala",
+    "latitude": 14.6349,
+    "longitude": -90.5069,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "De Guatemala",
+      "index": 116,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_117",
+    "name": "Indore Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Indore",
+    "latitude": 22.7196,
+    "longitude": 75.8577,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Indore",
+      "index": 117,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_118",
+    "name": "Santa Ana Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "El Salvador",
+    "state": "Santa Ana",
+    "city": "Santa Ana",
+    "latitude": 13.9942,
+    "longitude": -89.5597,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Santa Ana",
+      "index": 118,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_119",
+    "name": "Gazipur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Dhaka",
+    "city": "Gazipur",
+    "latitude": 24.0023,
+    "longitude": 90.4264,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Gazipur",
+      "index": 119,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_120",
+    "name": "Siem Reap Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Cambodia",
+    "state": "Siem Reap",
+    "city": "Siem Reap",
+    "latitude": 13.3671,
+    "longitude": 103.8448,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Siem Reap",
+      "index": 120,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_121",
+    "name": "Satna Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Satna",
+    "latitude": 24.6005,
+    "longitude": 80.8322,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Satna",
+      "index": 121,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_122",
+    "name": "Chittagong Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Chittagong",
+    "city": "Chittagong",
+    "latitude": 22.3569,
+    "longitude": 91.7832,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Chittagong",
+      "index": 122,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_123",
+    "name": "Kilimanjaro Region Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Tanzania",
+    "state": "Northern Tanzania",
+    "city": "Kilimanjaro Region",
+    "latitude": -3.3333,
+    "longitude": 37.3333,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kilimanjaro Region",
+      "index": 123,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_124",
+    "name": "Jagdalpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Chhattisgarh",
+    "city": "Jagdalpur",
+    "latitude": 19.0744,
+    "longitude": 82.0084,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Jagdalpur",
+      "index": 124,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_125",
+    "name": "Polerhat Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Polerhat",
+    "latitude": 22.47,
+    "longitude": 88.48,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Polerhat",
+      "index": 125,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_126",
+    "name": "Gwalior Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Gwalior",
+    "latitude": 26.2183,
+    "longitude": 78.1828,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Gwalior",
+      "index": 126,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_127",
+    "name": "Jhabua Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Jhabua",
+    "latitude": 22.7698,
+    "longitude": 74.5947,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Jhabua",
+      "index": 127,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_128",
+    "name": "Dhule Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Dhule",
+    "latitude": 20.9042,
+    "longitude": 74.7749,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Dhule",
+      "index": 128,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_129",
+    "name": "Bhangar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Bhangar",
+    "latitude": 22.4833,
+    "longitude": 88.5917,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bhangar",
+      "index": 129,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_130",
+    "name": "Malappuram Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Kerala",
+    "city": "Malappuram",
+    "latitude": 11.072,
+    "longitude": 76.074,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Malappuram",
+      "index": 130,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_131",
+    "name": "Sonbhadra Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Sonbhadra",
+    "latitude": 24.6861,
+    "longitude": 83.0674,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sonbhadra",
+      "index": 131,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_132",
+    "name": "Angul Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Orissa",
+    "city": "Angul",
+    "latitude": 20.84,
+    "longitude": 85.1,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Angul",
+      "index": 132,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_133",
+    "name": "Farmgate Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Dhaka",
+    "city": "Farmgate",
+    "latitude": 23.7567,
+    "longitude": 90.3872,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Farmgate",
+      "index": 133,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_134",
+    "name": "Karad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Karad",
+    "latitude": 17.2858,
+    "longitude": 74.1837,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Karad",
+      "index": 134,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_135",
+    "name": "Santa Cruz de la Sierra Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bolivia",
+    "state": "Santa Cruz de la Sierra",
+    "city": "Santa Cruz de la Sierra",
+    "latitude": -17.7833,
+    "longitude": -63.1821,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Santa Cruz de la Sierra",
+      "index": 135,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_136",
+    "name": "Blantyre Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Malawi",
+    "state": "Blantyre",
+    "city": "Blantyre",
+    "latitude": -15.7861,
+    "longitude": 35.0058,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Blantyre",
+      "index": 136,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_137",
+    "name": "Dinajpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Rangpur",
+    "city": "Dinajpur",
+    "latitude": 25.6217,
+    "longitude": 88.6354,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Dinajpur",
+      "index": 137,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_138",
+    "name": "Shiromoni Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Khulna",
+    "city": "Shiromoni",
+    "latitude": 22.88,
+    "longitude": 89.5,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Shiromoni",
+      "index": 138,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_139",
+    "name": "Moulvibazar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Moulvibazar",
+    "city": "Moulvibazar",
+    "latitude": 24.4829,
+    "longitude": 91.7774,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Moulvibazar",
+      "index": 139,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_140",
+    "name": "Hooghly Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Hooghly",
+    "latitude": 22.9038,
+    "longitude": 88.397,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 4,
+      "programCount": 4
+    },
+    "metadata": {
+      "district": "Hooghly",
+      "index": 140,
+      "partnerCount": 4
+    }
+  },
+  {
+    "id": "laico_cb_141",
+    "name": "Kalna Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Kalna",
+    "latitude": 23.2185,
+    "longitude": 88.3667,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kalna",
+      "index": 141,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_142",
+    "name": "Bankura Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Bankura",
+    "latitude": 23.2313,
+    "longitude": 87.0784,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bankura",
+      "index": 142,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_143",
+    "name": "East Godavari Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Andhra Pradesh",
+    "city": "East Godavari",
+    "latitude": 17.2473,
+    "longitude": 81.777,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "East Godavari",
+      "index": 143,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_144",
+    "name": "Haldia Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Haldia",
+    "latitude": 22.0667,
+    "longitude": 88.0667,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Haldia",
+      "index": 144,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_145",
+    "name": "Sri Ganganagar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Sri Ganganagar",
+    "latitude": 29.9038,
+    "longitude": 73.8772,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sri Ganganagar",
+      "index": 145,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_146",
+    "name": "Bargarh Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Orissa",
+    "city": "Bargarh",
+    "latitude": 21.3323,
+    "longitude": 83.6212,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bargarh",
+      "index": 146,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_147",
+    "name": "Suri Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Suri",
+    "latitude": 23.9056,
+    "longitude": 87.5281,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Suri",
+      "index": 147,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_148",
+    "name": "Patna Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Bihar",
+    "city": "Patna",
+    "latitude": 25.5941,
+    "longitude": 85.1376,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Patna",
+      "index": 148,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_149",
+    "name": "Nashik Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Nashik",
+    "latitude": 19.9975,
+    "longitude": 73.7898,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Nashik",
+      "index": 149,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_150",
+    "name": "Koraput Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Orissa",
+    "city": "Koraput",
+    "latitude": 18.8135,
+    "longitude": 82.7123,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Koraput",
+      "index": 150,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_151",
+    "name": "Nainital Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttarakhand",
+    "city": "Nainital",
+    "latitude": 29.3919,
+    "longitude": 79.4542,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Nainital",
+      "index": 151,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_152",
+    "name": "Neemuch Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Neemuch",
+    "latitude": 24.4746,
+    "longitude": 74.8722,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Neemuch",
+      "index": 152,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_153",
+    "name": "Sultanpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Sultanpur",
+    "latitude": 26.2648,
+    "longitude": 82.0727,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sultanpur",
+      "index": 153,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_154",
+    "name": "Udupi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Udupi",
+    "latitude": 13.3409,
+    "longitude": 74.7421,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Udupi",
+      "index": 154,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_155",
+    "name": "Kai Feng Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "China",
+    "state": "He Nan Province",
+    "city": "Kai Feng",
+    "latitude": 34.7973,
+    "longitude": 114.3072,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kai Feng",
+      "index": 155,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_156",
+    "name": "Haidian Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "China",
+    "state": "Bejing",
+    "city": "Haidian",
+    "latitude": 39.9594,
+    "longitude": 116.2981,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Haidian",
+      "index": 156,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_157",
+    "name": "Ji Nan Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "China",
+    "state": "Shan Dong",
+    "city": "Ji Nan",
+    "latitude": 36.6512,
+    "longitude": 117.1201,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ji Nan",
+      "index": 157,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_158",
+    "name": "Dahod Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Dahod",
+    "latitude": 22.8347,
+    "longitude": 74.2564,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Dahod",
+      "index": 158,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_159",
+    "name": "Nasik Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Nasik",
+    "latitude": 19.9975,
+    "longitude": 73.7898,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Nasik",
+      "index": 159,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_160",
+    "name": "Faizabad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Faizabad",
+    "latitude": 26.773,
+    "longitude": 82.1458,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Faizabad",
+      "index": 160,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_161",
+    "name": "Patiala Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Punjab",
+    "city": "Patiala",
+    "latitude": 30.3398,
+    "longitude": 76.3869,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Patiala",
+      "index": 161,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_162",
+    "name": "Bharuch Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Bharuch",
+    "latitude": 21.7051,
+    "longitude": 72.9959,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bharuch",
+      "index": 162,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_163",
+    "name": "Vizag Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Andhra Pradesh",
+    "city": "Vizag",
+    "latitude": 17.6868,
+    "longitude": 83.2185,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Vizag",
+      "index": 163,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_164",
+    "name": "Danusha Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nepal",
+    "state": "Danusha",
+    "city": "Danusha",
+    "latitude": 26.73,
+    "longitude": 85.93,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Danusha",
+      "index": 164,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_165",
+    "name": "Bangalore Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Bangalore",
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Bangalore",
+      "index": 165,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_166",
+    "name": "Banke Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nepal",
+    "state": "Bheri Zone",
+    "city": "Banke",
+    "latitude": 28.1,
+    "longitude": 81.65,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Banke",
+      "index": 166,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_167",
+    "name": "Bellary Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Bellary",
+    "latitude": 15.1394,
+    "longitude": 76.9214,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bellary",
+      "index": 167,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_168",
+    "name": "Ibadan Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nigeria",
+    "state": "Oyo State",
+    "city": "Ibadan",
+    "latitude": 7.3775,
+    "longitude": 3.947,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ibadan",
+      "index": 168,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_169",
+    "name": "Kalutara Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Sri Lanka",
+    "state": "Kalutara",
+    "city": "Kalutara",
+    "latitude": 6.5854,
+    "longitude": 79.9607,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kalutara",
+      "index": 169,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_170",
+    "name": "Paschim Medinipur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Paschim Medinipur",
+    "latitude": 22.4257,
+    "longitude": 87.3199,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 3,
+      "programCount": 3
+    },
+    "metadata": {
+      "district": "Paschim Medinipur",
+      "index": 170,
+      "partnerCount": 3
+    }
+  },
+  {
+    "id": "laico_cb_171",
+    "name": "Gampaha Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Sri Lanka",
+    "state": "Basnahira Palata",
+    "city": "Gampaha",
+    "latitude": 7.084,
+    "longitude": 79.9939,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Gampaha",
+      "index": 171,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_172",
+    "name": "Kozhikode Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Kerala",
+    "city": "Kozhikode",
+    "latitude": 11.2588,
+    "longitude": 75.7804,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kozhikode",
+      "index": 172,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_173",
+    "name": "Shillong Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Meghalaya",
+    "city": "Shillong",
+    "latitude": 25.5788,
+    "longitude": 91.8933,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Shillong",
+      "index": 173,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_174",
+    "name": "Chengalpattu Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Chengalpattu",
+    "latitude": 12.6841,
+    "longitude": 79.9836,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Chengalpattu",
+      "index": 174,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_175",
+    "name": "Male Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Maldives",
+    "state": "Male",
+    "city": "Male",
+    "latitude": 4.1755,
+    "longitude": 73.5093,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Male",
+      "index": 175,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_176",
+    "name": "Lucknow Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Lucknow",
+    "latitude": 26.8467,
+    "longitude": 80.9462,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Lucknow",
+      "index": 176,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_177",
+    "name": "Bogura Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Bogura",
+    "city": "Bogura",
+    "latitude": 24.8481,
+    "longitude": 89.373,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Bogura",
+      "index": 177,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_178",
+    "name": "Kurushetra Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Haryana",
+    "city": "Kurushetra",
+    "latitude": 29.9695,
+    "longitude": 76.8783,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kurushetra",
+      "index": 178,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_179",
+    "name": "Parasia Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Parasia",
+    "latitude": 22.1867,
+    "longitude": 78.761,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Parasia",
+      "index": 179,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_180",
+    "name": "East Nimar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "East Nimar",
+    "latitude": 21.8311,
+    "longitude": 76.3498,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "East Nimar",
+      "index": 180,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_181",
+    "name": "Solapur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Solapur",
+    "latitude": 17.6599,
+    "longitude": 75.9064,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Solapur",
+      "index": 181,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_182",
+    "name": "Gorakhpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Gorakhpur",
+    "latitude": 26.7606,
+    "longitude": 83.3732,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Gorakhpur",
+      "index": 182,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_183",
+    "name": "Lubumbashi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "D R Congo",
+    "state": "Lubumbashi",
+    "city": "Lubumbashi",
+    "latitude": -11.6873,
+    "longitude": 27.4847,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Lubumbashi",
+      "index": 183,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_184",
+    "name": "Francistown Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Botswana",
+    "state": "East Botswana",
+    "city": "Francistown",
+    "latitude": -21.1736,
+    "longitude": 27.5126,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Francistown",
+      "index": 184,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_185",
+    "name": "Ota Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nigeria",
+    "state": "Ogun State",
+    "city": "Ota",
+    "latitude": 6.6906,
+    "longitude": 3.2355,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ota",
+      "index": 185,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_186",
+    "name": "Nkhoma Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Malawi",
+    "state": "Lilongwe",
+    "city": "Nkhoma",
+    "latitude": -14.041,
+    "longitude": 34.103,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Nkhoma",
+      "index": 186,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_187",
+    "name": "Mekele Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Ethiopia",
+    "state": "Mekele",
+    "city": "Mekele",
+    "latitude": 13.4967,
+    "longitude": 39.4753,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Mekele",
+      "index": 187,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_188",
+    "name": "Gurage Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Ethiopia",
+    "state": "Southern Nations Nationalities Peoples' Region",
+    "city": "Gurage",
+    "latitude": 8.1,
+    "longitude": 38,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Gurage",
+      "index": 188,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_189",
+    "name": "Belo Sub-Division Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Cameroon",
+    "state": "Bamenda",
+    "city": "Belo Sub-Division",
+    "latitude": 6.1333,
+    "longitude": 10.25,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Belo Sub-Division",
+      "index": 189,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_190",
+    "name": "MIFI Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Cameroon",
+    "state": "West Cameroon",
+    "city": "MIFI",
+    "latitude": 5.4667,
+    "longitude": 10.4167,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "MIFI",
+      "index": 190,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_191",
+    "name": "Kigali Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Rwanda",
+    "state": "Kigali",
+    "city": "Kigali",
+    "latitude": -1.9441,
+    "longitude": 30.0619,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kigali",
+      "index": 191,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_192",
+    "name": "Ranchi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Jharkhand",
+    "city": "Ranchi",
+    "latitude": 23.3441,
+    "longitude": 85.3096,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Ranchi",
+      "index": 192,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_193",
+    "name": "Kota Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Kota",
+    "latitude": 25.2138,
+    "longitude": 75.8648,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kota",
+      "index": 193,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_194",
+    "name": "Yaounde Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Cameroon",
+    "state": "Mbingo",
+    "city": "Yaounde",
+    "latitude": 3.848,
+    "longitude": 11.5021,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Yaounde",
+      "index": 194,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_195",
+    "name": "Cape Metropolitan Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "South Africa",
+    "state": "Western Cape",
+    "city": "Cape Metropolitan",
+    "latitude": -33.9249,
+    "longitude": 18.4241,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Cape Metropolitan",
+      "index": 195,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_196",
+    "name": "Fernando de la Mora Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Paraguay",
+    "state": "Central State",
+    "city": "Fernando de la Mora",
+    "latitude": -25.3256,
+    "longitude": -57.5469,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Fernando de la Mora",
+      "index": 196,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_197",
+    "name": "Ethekweni Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "South Africa",
+    "state": "KwaZulu-Natal",
+    "city": "Ethekweni",
+    "latitude": -29.8587,
+    "longitude": 31.0218,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ethekweni",
+      "index": 197,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_198",
+    "name": "Asmara Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Eritrea",
+    "state": "Asmara",
+    "city": "Asmara",
+    "latitude": 15.3229,
+    "longitude": 38.9251,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Asmara",
+      "index": 198,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_199",
+    "name": "Abakaliki Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nigeria",
+    "state": "Ebonyi",
+    "city": "Abakaliki",
+    "latitude": 6.3249,
+    "longitude": 8.1137,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Abakaliki",
+      "index": 199,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_200",
+    "name": "Barisal Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Dhaka",
+    "city": "Barisal",
+    "latitude": 22.701,
+    "longitude": 90.3535,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Barisal",
+      "index": 200,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_201",
+    "name": "Ago Iwoye Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nigeria",
+    "state": "Ogun State",
+    "city": "Ago Iwoye",
+    "latitude": 6.9442,
+    "longitude": 3.9242,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ago Iwoye",
+      "index": 201,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_202",
+    "name": "Junagadh Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Junagadh",
+    "latitude": 21.5222,
+    "longitude": 70.4579,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Junagadh",
+      "index": 202,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_203",
+    "name": "Jalgaon Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Jalgaon",
+    "latitude": 21.0077,
+    "longitude": 75.5626,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Jalgaon",
+      "index": 203,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_204",
+    "name": "Surat Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Surat",
+    "latitude": 21.1702,
+    "longitude": 72.8311,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Surat",
+      "index": 204,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_205",
+    "name": "Shariatpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Dhaka",
+    "city": "Shariatpur",
+    "latitude": 23.2423,
+    "longitude": 90.4348,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Shariatpur",
+      "index": 205,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_206",
+    "name": "Dharwad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Dharwad",
+    "latitude": 15.4589,
+    "longitude": 75.0078,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Dharwad",
+      "index": 206,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_207",
+    "name": "Vidisha Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Vidisha",
+    "latitude": 23.5251,
+    "longitude": 77.8081,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Vidisha",
+      "index": 207,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_208",
+    "name": "Mahendragarh Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Haryana",
+    "city": "Mahendragarh",
+    "latitude": 28.2713,
+    "longitude": 76.1506,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Mahendragarh",
+      "index": 208,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_209",
+    "name": "Guna Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Guna",
+    "latitude": 24.6467,
+    "longitude": 77.309,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Guna",
+      "index": 209,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_210",
+    "name": "Murshidabad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Murshidabad",
+    "latitude": 24.175,
+    "longitude": 88.28,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Murshidabad",
+      "index": 210,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_211",
+    "name": "Birbhum Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Birbhum",
+    "latitude": 23.8404,
+    "longitude": 87.6186,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Birbhum",
+      "index": 211,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_212",
+    "name": "Dehradun Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttarakhand",
+    "city": "Dehradun",
+    "latitude": 30.3165,
+    "longitude": 78.0322,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Dehradun",
+      "index": 212,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_213",
+    "name": "Jajpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Orissa",
+    "city": "Jajpur",
+    "latitude": 20.85,
+    "longitude": 86.3333,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Jajpur",
+      "index": 213,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_214",
+    "name": "Sambalpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Orissa",
+    "city": "Sambalpur",
+    "latitude": 21.4669,
+    "longitude": 83.9812,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Sambalpur",
+      "index": 214,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_215",
+    "name": "Sabaragamuwa Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Sri Lanka",
+    "state": "Sabaragamuwa",
+    "city": "Sabaragamuwa",
+    "latitude": 6.7,
+    "longitude": 80.4,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sabaragamuwa",
+      "index": 215,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_216",
+    "name": "Kishoreganj Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Dhaka",
+    "city": "Kishoreganj",
+    "latitude": 24.4449,
+    "longitude": 90.7766,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kishoreganj",
+      "index": 216,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_217",
+    "name": "Nizamabad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Telangana",
+    "city": "Nizamabad",
+    "latitude": 18.6725,
+    "longitude": 78.0941,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Nizamabad",
+      "index": 217,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_218",
+    "name": "Valsad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Valsad",
+    "latitude": 20.5992,
+    "longitude": 72.9342,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Valsad",
+      "index": 218,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_219",
+    "name": "Latur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Latur",
+    "latitude": 18.4088,
+    "longitude": 76.5604,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Latur",
+      "index": 219,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_220",
+    "name": "Lagos Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nigeria",
+    "state": "Lagos",
+    "city": "Lagos",
+    "latitude": 6.5244,
+    "longitude": 3.3792,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Lagos",
+      "index": 220,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_221",
+    "name": "Aurangabad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Aurangabad",
+    "latitude": 19.8762,
+    "longitude": 75.3433,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Aurangabad",
+      "index": 221,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_222",
+    "name": "Ratnagiri Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Ratnagiri",
+    "latitude": 16.9902,
+    "longitude": 73.312,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ratnagiri",
+      "index": 222,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_223",
+    "name": "Bhuvaneswar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Orissa",
+    "city": "Bhuvaneswar",
+    "latitude": 20.2961,
+    "longitude": 85.8245,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bhuvaneswar",
+      "index": 223,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_224",
+    "name": "Gurudwara Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Assam",
+    "city": "Gurudwara",
+    "latitude": 20.993699999999997,
+    "longitude": 79.36290000000001,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Gurudwara",
+      "index": 224,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_225",
+    "name": "Dar es Salaam Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Tanzania",
+    "state": "Dar es Salaam",
+    "city": "Dar es Salaam",
+    "latitude": -6.7924,
+    "longitude": 39.2083,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Dar es Salaam",
+      "index": 225,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_226",
+    "name": "Chittoor Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Andhra Pradesh",
+    "city": "Chittoor",
+    "latitude": 13.2172,
+    "longitude": 79.1003,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Chittoor",
+      "index": 226,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_227",
+    "name": "Lakhimpur Kheri Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Lakhimpur Kheri",
+    "latitude": 27.9482,
+    "longitude": 80.7777,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Lakhimpur Kheri",
+      "index": 227,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_228",
+    "name": "Fayoum Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Egypt",
+    "state": "Fayoum",
+    "city": "Fayoum",
+    "latitude": 29.3084,
+    "longitude": 30.8428,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Fayoum",
+      "index": 228,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_229",
+    "name": "Bahraich Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Bahraich",
+    "latitude": 27.5746,
+    "longitude": 81.5976,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bahraich",
+      "index": 229,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_230",
+    "name": "Chandi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Chandi",
+    "latitude": 22.35,
+    "longitude": 88.25,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Chandi",
+      "index": 230,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_231",
+    "name": "Ijebu Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nigeria",
+    "state": "Ogun",
+    "city": "Ijebu",
+    "latitude": 6.8225,
+    "longitude": 3.9169,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ijebu",
+      "index": 231,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_232",
+    "name": "Pattiala Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Punjab",
+    "city": "Pattiala",
+    "latitude": 30.3398,
+    "longitude": 76.3869,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Pattiala",
+      "index": 232,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_233",
+    "name": "Jakarta Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Indonesia",
+    "state": "North Jakarta",
+    "city": "Jakarta",
+    "latitude": -6.2088,
+    "longitude": 106.8456,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Jakarta",
+      "index": 233,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_234",
+    "name": "Darshona Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Rangpur",
+    "city": "Darshona",
+    "latitude": 23.5333,
+    "longitude": 88.8167,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Darshona",
+      "index": 234,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_235",
+    "name": "Naogaon Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Bangladesh",
+    "city": "Naogaon",
+    "latitude": 24.8103,
+    "longitude": 88.9414,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Naogaon",
+      "index": 235,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_236",
+    "name": "Mathura Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Mathura",
+    "latitude": 27.4924,
+    "longitude": 77.6737,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Mathura",
+      "index": 236,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_237",
+    "name": "Saharanpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Saharanpur",
+    "latitude": 29.964,
+    "longitude": 77.546,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Saharanpur",
+      "index": 237,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_238",
+    "name": "Comilla Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Chhittagong",
+    "city": "Comilla",
+    "latitude": 23.4607,
+    "longitude": 91.1809,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Comilla",
+      "index": 238,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_239",
+    "name": "Chitwan Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nepal",
+    "state": "Bagmati Pradesh",
+    "city": "Chitwan",
+    "latitude": 27.5333,
+    "longitude": 84.45,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Chitwan",
+      "index": 239,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_240",
+    "name": "Parsa Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nepal",
+    "state": "Bhojpura",
+    "city": "Parsa",
+    "latitude": 27.1,
+    "longitude": 84.85,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Parsa",
+      "index": 240,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_241",
+    "name": "Krong Doun Kaev Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Cambodia",
+    "state": "Takeo",
+    "city": "Krong Doun Kaev",
+    "latitude": 10.9833,
+    "longitude": 104.7833,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Krong Doun Kaev",
+      "index": 241,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_242",
+    "name": "Pilani Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Pilani",
+    "latitude": 28.3636,
+    "longitude": 75.6026,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Pilani",
+      "index": 242,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_243",
+    "name": "Adilabad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Telangana",
+    "city": "Adilabad",
+    "latitude": 19.6834,
+    "longitude": 78.5441,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Adilabad",
+      "index": 243,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_244",
+    "name": "Colombo Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Sri Lanka",
+    "state": "Sri Lanka",
+    "city": "Colombo",
+    "latitude": 6.9271,
+    "longitude": 79.8612,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Colombo",
+      "index": 244,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_245",
+    "name": "Sur la route d’Okola Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Cameroon",
+    "state": "Center Region",
+    "city": "Sur la route d’Okola",
+    "latitude": 3.95,
+    "longitude": 11.38,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sur la route d’Okola",
+      "index": 245,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_246",
+    "name": "Kottayam Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Kerala",
+    "city": "Kottayam",
+    "latitude": 9.5916,
+    "longitude": 76.5222,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kottayam",
+      "index": 246,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_247",
+    "name": "Godavari Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Andhra Pradesh",
+    "city": "Godavari",
+    "latitude": 17.2473,
+    "longitude": 81.777,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Godavari",
+      "index": 247,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_248",
+    "name": "Yangon Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Myanmar",
+    "state": "Yangon",
+    "city": "Yangon",
+    "latitude": 16.8661,
+    "longitude": 96.1951,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Yangon",
+      "index": 248,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_249",
+    "name": "Ahmednagar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Ahmednagar",
+    "latitude": 19.0952,
+    "longitude": 74.7496,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Ahmednagar",
+      "index": 249,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_250",
+    "name": "Mymensingh Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Mymensingh",
+    "city": "Mymensingh",
+    "latitude": 24.7471,
+    "longitude": 90.4203,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Mymensingh",
+      "index": 250,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_251",
+    "name": "Jamalpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Mymensingh",
+    "city": "Jamalpur",
+    "latitude": 24.9197,
+    "longitude": 89.9481,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Jamalpur",
+      "index": 251,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_252",
+    "name": "Singhbhum Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Jharkhand",
+    "city": "Singhbhum",
+    "latitude": 20.793699999999998,
+    "longitude": 79.16290000000001,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Singhbhum",
+      "index": 252,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_253",
+    "name": "Nanded Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Maharashtra",
+    "city": "Nanded",
+    "latitude": 19.1528,
+    "longitude": 77.3187,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Nanded",
+      "index": 253,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_254",
+    "name": "Mirpur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Dhaka",
+    "city": "Mirpur",
+    "latitude": 23.8042,
+    "longitude": 90.3667,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Mirpur",
+      "index": 254,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_255",
+    "name": "Gopalganj Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Dhaka",
+    "city": "Gopalganj",
+    "latitude": 23.0051,
+    "longitude": 89.8266,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Gopalganj",
+      "index": 255,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_256",
+    "name": "Kisii Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Kisii",
+    "city": "Kisii",
+    "latitude": -0.6817,
+    "longitude": 34.7667,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kisii",
+      "index": 256,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_257",
+    "name": "Ganjam Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Orissa",
+    "city": "Ganjam",
+    "latitude": 19.3826,
+    "longitude": 85.0455,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Ganjam",
+      "index": 257,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_258",
+    "name": "Udaipur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Udaipur",
+    "latitude": 24.5854,
+    "longitude": 73.7125,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Udaipur",
+      "index": 258,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_259",
+    "name": "Kavrepalanchok Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nepal",
+    "state": "Nepal",
+    "city": "Kavrepalanchok",
+    "latitude": 27.55,
+    "longitude": 85.55,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kavrepalanchok",
+      "index": 259,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_260",
+    "name": "Chamraj Nagar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Karnataka",
+    "city": "Chamraj Nagar",
+    "latitude": 11.9261,
+    "longitude": 76.9437,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Chamraj Nagar",
+      "index": 260,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_261",
+    "name": "Xiantao Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "China",
+    "state": "Hubei",
+    "city": "Xiantao",
+    "latitude": 30.3758,
+    "longitude": 113.4533,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Xiantao",
+      "index": 261,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_262",
+    "name": "Papumpare Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Arunachal Pradesh",
+    "city": "Papumpare",
+    "latitude": 27.1,
+    "longitude": 93.6,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Papumpare",
+      "index": 262,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_263",
+    "name": "Sylhet Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Sylhet",
+    "city": "Sylhet",
+    "latitude": 24.8949,
+    "longitude": 91.8687,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sylhet",
+      "index": 263,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_264",
+    "name": "Tangail Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Bangladesh",
+    "state": "Bangladesh",
+    "city": "Tangail",
+    "latitude": 24.2513,
+    "longitude": 89.9167,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Tangail",
+      "index": 264,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_265",
+    "name": "Gowa Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Indonesia",
+    "state": "South Sulawesi",
+    "city": "Gowa",
+    "latitude": -5.3333,
+    "longitude": 119.75,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Gowa",
+      "index": 265,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_266",
+    "name": "Abuja Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nigeria",
+    "state": "Abuja",
+    "city": "Abuja",
+    "latitude": 9.0765,
+    "longitude": 7.3986,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Abuja",
+      "index": 266,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_267",
+    "name": "Navsari Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Gujarat",
+    "city": "Navsari",
+    "latitude": 20.95,
+    "longitude": 72.93,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Navsari",
+      "index": 267,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_268",
+    "name": "Amritsar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Punjab",
+    "city": "Amritsar",
+    "latitude": 31.634,
+    "longitude": 74.8723,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Amritsar",
+      "index": 268,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_269",
+    "name": "Kollam Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Kerala",
+    "city": "Kollam",
+    "latitude": 8.8932,
+    "longitude": 76.6141,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kollam",
+      "index": 269,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_270",
+    "name": "Thrissur Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Kerala",
+    "city": "Thrissur",
+    "latitude": 10.5276,
+    "longitude": 76.2144,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Thrissur",
+      "index": 270,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_271",
+    "name": "Hanoi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Vietnam",
+    "state": "Hanoi",
+    "city": "Hanoi",
+    "latitude": 21.0285,
+    "longitude": 105.8542,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Hanoi",
+      "index": 271,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_272",
+    "name": "Tangerang Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Indonesia",
+    "state": "Banten",
+    "city": "Tangerang",
+    "latitude": -6.1783,
+    "longitude": 106.6319,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Tangerang",
+      "index": 272,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_273",
+    "name": "Bogor Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Indonesia",
+    "state": "Jawa Barat",
+    "city": "Bogor",
+    "latitude": -6.5971,
+    "longitude": 106.806,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bogor",
+      "index": 273,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_274",
+    "name": "Geta Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nepal",
+    "state": "Dhangadhi",
+    "city": "Geta",
+    "latitude": 28.8,
+    "longitude": 80.56,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Geta",
+      "index": 274,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_275",
+    "name": "Midnapore Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "West Bengal",
+    "city": "Midnapore",
+    "latitude": 22.4257,
+    "longitude": 87.3199,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Midnapore",
+      "index": 275,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_276",
+    "name": "Kasganj Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Uttar Pradesh",
+    "city": "Kasganj",
+    "latitude": 27.808,
+    "longitude": 78.6472,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kasganj",
+      "index": 276,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_277",
+    "name": "Gaya Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Bihar",
+    "city": "Gaya",
+    "latitude": 24.7914,
+    "longitude": 85.0002,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Gaya",
+      "index": 277,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_278",
+    "name": "Mastikchak Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Bihar",
+    "city": "Mastikchak",
+    "latitude": 25.8,
+    "longitude": 85,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Mastikchak",
+      "index": 278,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_279",
+    "name": "Vishakapanam Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Andhra Pradesh",
+    "city": "Vishakapanam",
+    "latitude": 17.6868,
+    "longitude": 83.2185,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Vishakapanam",
+      "index": 279,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_280",
+    "name": "Kumbakonam Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Kumbakonam",
+    "latitude": 10.9602,
+    "longitude": 79.3845,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kumbakonam",
+      "index": 280,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_281",
+    "name": "Titilagarh Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Odisha",
+    "city": "Titilagarh",
+    "latitude": 20.3014,
+    "longitude": 83.1491,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Titilagarh",
+      "index": 281,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_282",
+    "name": "Khunti Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Jharkhand",
+    "city": "Khunti",
+    "latitude": 23.0763,
+    "longitude": 85.2787,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Khunti",
+      "index": 282,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_283",
+    "name": "Dhenkanal Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Odisha",
+    "city": "Dhenkanal",
+    "latitude": 20.6625,
+    "longitude": 85.5975,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Dhenkanal",
+      "index": 283,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_284",
+    "name": "Aizawl Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Mizoram",
+    "city": "Aizawl",
+    "latitude": 23.7271,
+    "longitude": 92.7176,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Aizawl",
+      "index": 284,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_285",
+    "name": "Kanyakumari Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamil Nadu",
+    "city": "Kanyakumari",
+    "latitude": 8.0883,
+    "longitude": 77.5385,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kanyakumari",
+      "index": 285,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_286",
+    "name": "Nyeri Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Kenya",
+    "city": "Nyeri",
+    "latitude": -0.4167,
+    "longitude": 36.95,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Nyeri",
+      "index": 286,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_287",
+    "name": "Sehore Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Madhya Pradesh",
+    "city": "Sehore",
+    "latitude": 23.2031,
+    "longitude": 77.0844,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sehore",
+      "index": 287,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_288",
+    "name": "Secunderabad Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Telangana",
+    "city": "Secunderabad",
+    "latitude": 17.4399,
+    "longitude": 78.4983,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Secunderabad",
+      "index": 288,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_289",
+    "name": "Pokhara Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Nepal",
+    "state": "Gandaki",
+    "city": "Pokhara",
+    "latitude": 28.2096,
+    "longitude": 83.9856,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Pokhara",
+      "index": 289,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_290",
+    "name": "Balasore Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Odisha",
+    "city": "Balasore",
+    "latitude": 21.4934,
+    "longitude": 86.9135,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Balasore",
+      "index": 290,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_291",
+    "name": "Tenkasi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Tamilnadu",
+    "city": "Tenkasi",
+    "latitude": 8.9594,
+    "longitude": 77.3134,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Tenkasi",
+      "index": 291,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_292",
+    "name": "Cape coast Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Ghana",
+    "state": "Ghana",
+    "city": "Cape coast",
+    "latitude": 5.1053,
+    "longitude": -1.2466,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Cape coast",
+      "index": 292,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_293",
+    "name": "Gumla Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Jharkhand",
+    "city": "Gumla",
+    "latitude": 23.0441,
+    "longitude": 84.5422,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Gumla",
+      "index": 293,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_294",
+    "name": "Sirohi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Rajasthan",
+    "city": "Sirohi",
+    "latitude": 24.8826,
+    "longitude": 72.8589,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Sirohi",
+      "index": 294,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_295",
+    "name": "Katihar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Bihar",
+    "city": "Katihar",
+    "latitude": 25.5413,
+    "longitude": 87.5739,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Katihar",
+      "index": 295,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_296",
+    "name": "Tamale Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Ghana",
+    "state": "Ghana",
+    "city": "Tamale",
+    "latitude": 9.4008,
+    "longitude": -0.8393,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Tamale",
+      "index": 296,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_297",
+    "name": "Bahir Dar Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Ethiopia",
+    "state": "Bahir Dar",
+    "city": "Bahir Dar",
+    "latitude": 11.5936,
+    "longitude": 37.3908,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bahir Dar",
+      "index": 297,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_298",
+    "name": "Guwahati Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "India",
+    "state": "Assam",
+    "city": "Guwahati",
+    "latitude": 26.1445,
+    "longitude": 91.7362,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Guwahati",
+      "index": 298,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_299",
+    "name": "Eldoret Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Rift valley",
+    "city": "Eldoret",
+    "latitude": 0.5143,
+    "longitude": 35.2698,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Eldoret",
+      "index": 299,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_300",
+    "name": "Loresho Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Nairobi",
+    "city": "Loresho",
+    "latitude": -1.2567,
+    "longitude": 36.7556,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Loresho",
+      "index": 300,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_301",
+    "name": "Kisumu Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Kisumu",
+    "city": "Kisumu",
+    "latitude": -0.0917,
+    "longitude": 34.768,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 2,
+      "programCount": 2
+    },
+    "metadata": {
+      "district": "Kisumu",
+      "index": 301,
+      "partnerCount": 2
+    }
+  },
+  {
+    "id": "laico_cb_302",
+    "name": "Kwale Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Kwale",
+    "city": "Kwale",
+    "latitude": -4.1739,
+    "longitude": 39.4521,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kwale",
+      "index": 302,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_303",
+    "name": "Kitale Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Kitale",
+    "city": "Kitale",
+    "latitude": 1.0157,
+    "longitude": 35.0062,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kitale",
+      "index": 303,
+      "partnerCount": 1
+    }
+  }
 ];

@@ -491,21 +491,21 @@ export function SidebarPanel({
               onClick={() => onSelectSubcategory?.("capacity_building")}
               className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between font-bold text-xs transition-all ${
                 activeSubId === "capacity_building"
-                  ? "bg-teal-700 text-white border-teal-700 shadow-md"
+                  ? "bg-[#064E3B] text-white border-[#064E3B] shadow-md"
                   : "bg-slate-50 hover:bg-slate-100 text-slate-800 border-slate-200"
               }`}
             >
               <div className="flex items-center gap-2.5">
-                <GraduationCap className="w-4 h-4 text-teal-500 shrink-0" />
+                <GraduationCap className="w-4 h-4 text-emerald-400 shrink-0" />
                 <div>
                   <div className="font-black">Capacity Building</div>
-                  <div className="text-[10px] font-normal opacity-80">Mentored Eye Hospitals Worldwide</div>
+                  <div className="text-[10px] font-normal opacity-90">Mentored Eye Hospitals Worldwide • <span className="font-bold underline decoration-emerald-400/50">As of Sep 2026</span></div>
                 </div>
               </div>
               <span className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
-                activeSubId === "capacity_building" ? "bg-white/20 text-white" : "bg-teal-100 text-teal-800"
+                activeSubId === "capacity_building" ? "bg-white/20 text-white" : "bg-emerald-100 text-emerald-900"
               }`}>
-                394 Hospitals
+                400 Hospitals
               </span>
             </button>
 
