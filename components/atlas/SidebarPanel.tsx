@@ -368,7 +368,7 @@ export function SidebarPanel({
                   }`}
                   title={`${PATIENT_PAY_TOTAL.toLocaleString()} Pay Patients`}
                 >
-                  <span className="font-black text-[11px]">{(PATIENT_PAY_TOTAL / 1000).toFixed(0)}K</span>
+                  <span className="font-black text-[11px]">{(PATIENT_PAY_TOTAL / 1000000).toFixed(2)}M</span>
                   <span className="text-[8px] uppercase tracking-tighter opacity-90">Pay</span>
                 </button>
                 <button
@@ -383,7 +383,7 @@ export function SidebarPanel({
                   }`}
                   title={`${PATIENT_FREE_TOTAL.toLocaleString()} Free Patients`}
                 >
-                  <span className="font-black text-[11px]">{(PATIENT_FREE_TOTAL / 1000).toFixed(0)}K</span>
+                  <span className="font-black text-[11px]">{(PATIENT_FREE_TOTAL / 1000000).toFixed(2)}M</span>
                   <span className="text-[8px] uppercase tracking-tighter opacity-90">Free</span>
                 </button>
                 <button

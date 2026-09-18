@@ -12,10 +12,10 @@ export interface PatientDataRecord {
   totalPatients: number;
 }
 
-export const PATIENT_PAY_TOTAL = 758702;
-export const PATIENT_FREE_TOTAL = 708398;
-export const PATIENT_CAMP_TOTAL = 124905;
-export const PATIENT_COMBINED_TOTAL = 1592005;
+export const PATIENT_PAY_TOTAL = 3266639;
+export const PATIENT_FREE_TOTAL = 1254989;
+export const PATIENT_CAMP_TOTAL = 188086;
+export const PATIENT_COMBINED_TOTAL = 4709714;
 
 export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
   // ==========================================
