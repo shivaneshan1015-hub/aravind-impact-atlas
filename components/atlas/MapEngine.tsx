@@ -644,7 +644,6 @@ export function MapEngine({
         "group cursor-pointer transition-all duration-200 select-none w-12 h-12 flex items-center justify-center";
 
       const isStaffDot = loc.type === "Staff Dot";
-      const isPatientDot = loc.type === "Patient Dot" || loc.subcategoryId === "patients";
       const isAurolabLoc = loc.entityId === "aurolab";
       const isEyeBankLoc = loc.entityId === "eyebank";
       const isIhmsLoc = loc.subcategoryId === "ihms";
@@ -652,33 +651,36 @@ export function MapEngine({
       const isVcmsLoc = loc.subcategoryId === "vcms";
       const isOneSystemActive = isOneSystem || entityConfig.id === "all";
 
-      if (isPatientDot) {
-        const payCount = (loc.metadata?.payCount || 0) as number;
-        const formattedPay = payCount >= 1000000 
-          ? (payCount / 1000000).toFixed(1) + "M"
-          : payCount >= 1000 
-          ? (payCount / 1000).toFixed(payCount >= 10000 ? 0 : 1) + "K"
-          : payCount.toString();
+      const isPatientHub = loc.type === "Patient Hub";
+      const isPatientDot = loc.type === "Patient Dot" || loc.subcategoryId === "patients";
 
-        const colors = ["#1E3A8A", "#312E81", "#065F46", "#4C1D95", "#7C2D12", "#78350F", "#831843"];
-        let hash = 0;
-        for (let i = 0; i < loc.name.length; i++) hash += loc.name.charCodeAt(i);
-        const dotColor = colors[Math.abs(hash) % colors.length];
+      if (isPatientHub) {
+        const displayCount = (loc.metadata?.displayCount || loc.metadata?.totalPatients || 0) as number;
+        const formatted = displayCount >= 1000000
+          ? (displayCount / 1000000).toFixed(2) + "M"
+          : displayCount >= 1000
+          ? (displayCount / 1000).toFixed(displayCount >= 10000 ? 0 : 1) + "K"
+          : displayCount.toLocaleString();
 
-        const isLarge = payCount >= 50000;
-        const dotSize = payCount >= 1000000 ? "32px" : payCount >= 100000 ? "26px" : payCount >= 10000 ? "22px" : payCount >= 1000 ? "16px" : "10px";
+        const filterLabel = (loc.metadata?.activeFilter || "all").toUpperCase();
+        const badgeBg = loc.metadata?.activeFilter === "free" ? "#064E3B" : "#1E3A8A";
 
         el.innerHTML = `
-          <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${loc.name}: ${payCount.toLocaleString()} Pay Patients">
-            ${
-              isLarge
-                ? `<span class="mb-0.5 text-[9px] font-black text-white bg-slate-900/90 px-1.5 py-0.5 rounded shadow border border-slate-700 whitespace-nowrap">
-                     ${loc.name}
-                   </span>`
-                : ""
-            }
-            <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 8px ${dotColor}aa, 0 2px 4px rgba(0,0,0,0.4);" class="flex items-center justify-center text-white text-[9px] font-black transition-transform duration-200 group-hover:scale-130 select-none">
-              ${payCount >= 1000 ? formattedPay : ""}
+          <div class="relative flex flex-col items-center justify-center pointer-events-auto group z-10" title="${loc.name}: ${displayCount.toLocaleString()} Patients (${filterLabel})">
+            <span class="text-[10px] font-black text-white bg-slate-950/95 px-2.5 py-1 rounded-xl shadow-2xl border-2 border-amber-400 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+              <span class="w-2 h-2 rounded-full" style="background-color: ${badgeBg};"></span>
+              <span>${loc.name} · ${formatted}</span>
+            </span>
+          </div>
+        `;
+      } else if (isPatientDot) {
+        const isFreeDot = loc.metadata?.isFreeDot;
+        const dotColor = isFreeDot ? "#064E3B" : "#1E3A8A"; // Static dark emerald (Free) or static dark blue (Pay)
+        const regName = loc.metadata?.regionName || loc.name;
+
+        el.innerHTML = `
+          <div class="relative flex items-center justify-center pointer-events-auto group" title="${regName} (${isFreeDot ? "Free" : "Pay"} Patient)">
+            <div style="width: 7px; height: 7px; background-color: ${dotColor}; border: 1px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 5px ${dotColor}bb, 0 1px 2px rgba(0,0,0,0.3); transition: transform 0.15s ease-out;" class="group-hover:scale-150">
             </div>
           </div>
         `;

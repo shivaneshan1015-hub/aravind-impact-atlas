@@ -69,6 +69,7 @@ export function ExhibitionShell() {
   const [careTypeFilter, setCareTypeFilter] = React.useState<"all" | "tertiary" | "secondary" | "community" | "vision_centre">("all");
   const [staffGroup, setStaffGroup] = React.useState<StaffGroup>("employees");
   const [staffCategory, setStaffCategory] = React.useState<StaffCategory | "all">("all");
+  const [patientFilter, setPatientFilter] = React.useState<"pay" | "free" | "camp" | "all">("all");
 
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isInfoOpen, setIsInfoOpen] = React.useState(false);
@@ -132,8 +133,8 @@ export function ExhibitionShell() {
 
   // Raw Filtered Locations
   const rawLocations = useMemo(() => {
-    return getFilteredLocations(selectedEntityId, selectedSubcategoryId, staffGroup, staffCategory);
-  }, [selectedEntityId, selectedSubcategoryId, staffGroup, staffCategory]);
+    return getFilteredLocations(selectedEntityId, selectedSubcategoryId, staffGroup, staffCategory, patientFilter);
+  }, [selectedEntityId, selectedSubcategoryId, staffGroup, staffCategory, patientFilter]);
 
   // Apply Auroitech Product Filter if active
   const filteredLocations = useMemo(() => {
@@ -185,6 +186,8 @@ export function ExhibitionShell() {
             onSelectStaffGroup={setStaffGroup}
             staffCategory={staffCategory}
             onSelectStaffCategory={setStaffCategory}
+            patientFilter={patientFilter}
+            onSelectPatientFilter={setPatientFilter}
           />
         )}
 

@@ -6,33 +6,92 @@ import { INDIA_STATES_META } from "@/data/india-states";
 import { generateStaffDots, StaffGroup, StaffCategory } from "@/data/hospitals/staff-data";
 import { PATIENT_DATA_RECORDS } from "@/data/hospitals/patient-pay-data";
 
-export function generatePatientDots(): GeoLocationItem[] {
-  return PATIENT_DATA_RECORDS.map((rec) => ({
-    id: `patient_rec_${rec.id}`,
-    entityId: "hospitals",
-    subcategoryId: "patients",
-    name: rec.name,
-    rawName: rec.name,
-    city: rec.name,
-    state: rec.isState ? rec.name : "International",
-    country: rec.country,
-    latitude: rec.latitude,
-    longitude: rec.longitude,
-    type: "Patient Dot",
-    metadata: {
-      payCount: rec.payCount,
-      freeCount: rec.freeCount,
-      campCount: rec.campCount,
-      totalPatients: rec.totalPatients,
-      isState: rec.isState,
-    },
-    metrics: {
-      "Pay Patients": rec.payCount,
-      "Free Patients": rec.freeCount,
-      "Camp Patients": rec.campCount,
-      "Total Patients": rec.totalPatients,
-    },
-  }));
+export function generatePatientDots(patientFilter: "pay" | "free" | "camp" | "all" = "all"): GeoLocationItem[] {
+  const items: GeoLocationItem[] = [];
+
+  PATIENT_DATA_RECORDS.forEach((rec) => {
+    let displayCount = rec.totalPatients;
+    if (patientFilter === "pay") displayCount = rec.payCount;
+    else if (patientFilter === "free") displayCount = rec.freeCount;
+    else if (patientFilter === "camp") displayCount = rec.campCount;
+
+    if (displayCount <= 0) return;
+
+    // 1. Central Region Hub Badge Item
+    items.push({
+      id: `patient_hub_${rec.id}_${patientFilter}`,
+      entityId: "hospitals",
+      subcategoryId: "patients",
+      name: rec.name,
+      rawName: rec.name,
+      city: rec.name,
+      state: rec.isState ? rec.name : "International",
+      country: rec.country,
+      latitude: rec.latitude,
+      longitude: rec.longitude,
+      type: "Patient Hub",
+      metadata: {
+        isPatientHub: true,
+        payCount: rec.payCount,
+        freeCount: rec.freeCount,
+        campCount: rec.campCount,
+        totalPatients: rec.totalPatients,
+        activeFilter: patientFilter,
+        displayCount: displayCount,
+      },
+      metrics: {
+        "Pay Patients": rec.payCount,
+        "Free Patients": rec.freeCount,
+        "Camp Patients": rec.campCount,
+        "Total Patients": rec.totalPatients,
+      },
+    });
+
+    // 2. Scatter Patient Dots (Exact count if <= 50, or proportional cloud if > 50)
+    const numScatterDots = displayCount <= 50 ? displayCount : Math.min(100, Math.max(25, Math.floor(Math.log2(displayCount) * 5)));
+
+    for (let i = 0; i < numScatterDots; i++) {
+      const angle = (i * 137.5 * Math.PI) / 180;
+      const radiusFactor = (i + 1) / numScatterDots;
+      const maxSpread = rec.isState ? (displayCount > 50000 ? 1.1 : 0.5) : 0.35;
+      const r = Math.sqrt(radiusFactor) * maxSpread;
+
+      const dotLat = rec.latitude + r * Math.sin(angle);
+      const dotLng = rec.longitude + (r * Math.cos(angle)) / Math.cos((rec.latitude * Math.PI) / 180);
+
+      const isFreeDot = patientFilter === "free" || (patientFilter === "all" && i % 3 === 0);
+
+      items.push({
+        id: `patient_dot_${rec.id}_${i}_${patientFilter}`,
+        entityId: "hospitals",
+        subcategoryId: "patients",
+        name: `${rec.name} Patient #${i + 1}`,
+        rawName: rec.name,
+        city: rec.name,
+        state: rec.isState ? rec.name : "International",
+        country: rec.country,
+        latitude: dotLat,
+        longitude: dotLng,
+        type: "Patient Dot",
+        metadata: {
+          isScatterDot: true,
+          dotIndex: i + 1,
+          regionName: rec.name,
+          isFreeDot: isFreeDot,
+          payCount: rec.payCount,
+          freeCount: rec.freeCount,
+          totalPatients: rec.totalPatients,
+        },
+        metrics: {
+          "Pay Patients": rec.payCount,
+          "Free Patients": rec.freeCount,
+          "Total Patients": rec.totalPatients,
+        },
+      });
+    }
+  });
+
+  return items;
 }
 
 /**
@@ -43,7 +102,8 @@ export function getFilteredLocations(
   entityId: EntityId,
   subcategoryId?: string,
   staffGroup: StaffGroup = "employees",
-  staffCategory: StaffCategory | "all" = "all"
+  staffCategory: StaffCategory | "all" = "all",
+  patientFilter: "pay" | "free" | "camp" | "all" = "all"
 ): GeoLocationItem[] {
   if (entityId === "all") {
     return DEMO_LOCATIONS;
@@ -54,7 +114,7 @@ export function getFilteredLocations(
   }
 
   if (entityId === "hospitals" && subcategoryId === "patients") {
-    return generatePatientDots();
+    return generatePatientDots(patientFilter);
   }
 
   return DEMO_LOCATIONS.filter((item) => {

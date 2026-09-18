@@ -13,6 +13,8 @@ export interface PatientDataRecord {
 }
 
 export const PATIENT_PAY_TOTAL = 3266639;
+export const PATIENT_FREE_TOTAL = 1254989;
+export const PATIENT_COMBINED_TOTAL = 4521628;
 
 export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
   {
@@ -24,9 +26,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 11.1271,
     "longitude": 78.6569,
     "payCount": 2715355,
-    "freeCount": 0,
+    "freeCount": 999156,
     "campCount": 0,
-    "totalPatients": 2715355
+    "totalPatients": 3714511
   },
   {
     "id": "kerala",
@@ -37,9 +39,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 10.8505,
     "longitude": 76.2711,
     "payCount": 271264,
-    "freeCount": 0,
+    "freeCount": 76083,
     "campCount": 0,
-    "totalPatients": 271264
+    "totalPatients": 347347
   },
   {
     "id": "andhra_pradesh",
@@ -50,9 +52,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 15.9129,
     "longitude": 79.74,
     "payCount": 183180,
-    "freeCount": 0,
+    "freeCount": 161598,
     "campCount": 0,
-    "totalPatients": 183180
+    "totalPatients": 344778
   },
   {
     "id": "pondicherry",
@@ -63,9 +65,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 11.9416,
     "longitude": 79.8083,
     "payCount": 69012,
-    "freeCount": 0,
+    "freeCount": 12837,
     "campCount": 0,
-    "totalPatients": 69012
+    "totalPatients": 81849
   },
   {
     "id": "karnataka",
@@ -76,9 +78,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 15.3173,
     "longitude": 75.7139,
     "payCount": 6302,
-    "freeCount": 0,
+    "freeCount": 2810,
     "campCount": 0,
-    "totalPatients": 6302
+    "totalPatients": 9112
   },
   {
     "id": "andaman_nicobar",
@@ -89,9 +91,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 11.7401,
     "longitude": 92.6586,
     "payCount": 3929,
-    "freeCount": 0,
+    "freeCount": 204,
     "campCount": 0,
-    "totalPatients": 3929
+    "totalPatients": 4133
   },
   {
     "id": "bihar",
@@ -102,9 +104,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 25.0961,
     "longitude": 85.3131,
     "payCount": 3336,
-    "freeCount": 0,
+    "freeCount": 356,
     "campCount": 0,
-    "totalPatients": 3336
+    "totalPatients": 3692
   },
   {
     "id": "west_bengal",
@@ -115,22 +117,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 22.9868,
     "longitude": 87.855,
     "payCount": 2407,
-    "freeCount": 0,
+    "freeCount": 294,
     "campCount": 0,
-    "totalPatients": 2407
-  },
-  {
-    "id": "uttar_pradesh",
-    "name": "UTTAR PRADESH",
-    "state": "UTTAR PRADESH",
-    "country": "India",
-    "isState": true,
-    "latitude": 26.8467,
-    "longitude": 80.9462,
-    "payCount": 1993,
-    "freeCount": 0,
-    "campCount": 0,
-    "totalPatients": 1993
+    "totalPatients": 2701
   },
   {
     "id": "telungana",
@@ -141,9 +130,22 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 18.1124,
     "longitude": 79.0193,
     "payCount": 1602,
-    "freeCount": 0,
+    "freeCount": 705,
     "campCount": 0,
-    "totalPatients": 1602
+    "totalPatients": 2307
+  },
+  {
+    "id": "uttar_pradesh",
+    "name": "UTTAR PRADESH",
+    "state": "UTTAR PRADESH",
+    "country": "India",
+    "isState": true,
+    "latitude": 26.8467,
+    "longitude": 80.9462,
+    "payCount": 1993,
+    "freeCount": 192,
+    "campCount": 0,
+    "totalPatients": 2185
   },
   {
     "id": "maharashtra",
@@ -154,9 +156,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 19.7515,
     "longitude": 75.7139,
     "payCount": 1385,
-    "freeCount": 0,
+    "freeCount": 205,
     "campCount": 0,
-    "totalPatients": 1385
+    "totalPatients": 1590
   },
   {
     "id": "orissa",
@@ -167,9 +169,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 20.9517,
     "longitude": 85.0985,
     "payCount": 1112,
-    "freeCount": 0,
+    "freeCount": 60,
     "campCount": 0,
-    "totalPatients": 1112
+    "totalPatients": 1172
   },
   {
     "id": "maldives",
@@ -193,9 +195,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 26.2006,
     "longitude": 92.9376,
     "payCount": 690,
-    "freeCount": 0,
+    "freeCount": 72,
     "campCount": 0,
-    "totalPatients": 690
+    "totalPatients": 762
   },
   {
     "id": "jharkhand",
@@ -206,9 +208,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 23.6102,
     "longitude": 85.2799,
     "payCount": 614,
-    "freeCount": 0,
+    "freeCount": 55,
     "campCount": 0,
-    "totalPatients": 614
+    "totalPatients": 669
   },
   {
     "id": "rajasthan",
@@ -219,9 +221,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 27.0238,
     "longitude": 74.2179,
     "payCount": 593,
-    "freeCount": 0,
+    "freeCount": 56,
     "campCount": 0,
-    "totalPatients": 593
+    "totalPatients": 649
   },
   {
     "id": "madhya_pradesh",
@@ -232,9 +234,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 22.9734,
     "longitude": 78.6569,
     "payCount": 497,
-    "freeCount": 0,
+    "freeCount": 54,
     "campCount": 0,
-    "totalPatients": 497
+    "totalPatients": 551
   },
   {
     "id": "new_delhi",
@@ -245,22 +247,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 28.6139,
     "longitude": 77.209,
     "payCount": 292,
-    "freeCount": 0,
+    "freeCount": 36,
     "campCount": 0,
-    "totalPatients": 292
-  },
-  {
-    "id": "srilanka",
-    "name": "SRILANKA",
-    "state": "International",
-    "country": "Sri Lanka",
-    "isState": false,
-    "latitude": 7.8731,
-    "longitude": 80.7718,
-    "payCount": 181,
-    "freeCount": 0,
-    "campCount": 0,
-    "totalPatients": 181
+    "totalPatients": 328
   },
   {
     "id": "gujarat",
@@ -271,35 +260,22 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 22.2587,
     "longitude": 71.1924,
     "payCount": 180,
-    "freeCount": 0,
+    "freeCount": 34,
     "campCount": 0,
-    "totalPatients": 180
+    "totalPatients": 214
   },
   {
-    "id": "haryana",
-    "name": "HARYANA",
-    "state": "HARYANA",
-    "country": "India",
-    "isState": true,
-    "latitude": 29.0588,
-    "longitude": 76.0856,
-    "payCount": 159,
-    "freeCount": 0,
+    "id": "srilanka",
+    "name": "SRILANKA",
+    "state": "International",
+    "country": "Sri Lanka",
+    "isState": false,
+    "latitude": 7.8731,
+    "longitude": 80.7718,
+    "payCount": 181,
+    "freeCount": 11,
     "campCount": 0,
-    "totalPatients": 159
-  },
-  {
-    "id": "goa",
-    "name": "GOA",
-    "state": "GOA",
-    "country": "India",
-    "isState": true,
-    "latitude": 15.2993,
-    "longitude": 74.124,
-    "payCount": 158,
-    "freeCount": 0,
-    "campCount": 0,
-    "totalPatients": 158
+    "totalPatients": 192
   },
   {
     "id": "chattishgarh",
@@ -310,9 +286,35 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 21.2787,
     "longitude": 81.8661,
     "payCount": 154,
-    "freeCount": 0,
+    "freeCount": 19,
     "campCount": 0,
-    "totalPatients": 154
+    "totalPatients": 173
+  },
+  {
+    "id": "goa",
+    "name": "GOA",
+    "state": "GOA",
+    "country": "India",
+    "isState": true,
+    "latitude": 15.2993,
+    "longitude": 74.124,
+    "payCount": 158,
+    "freeCount": 9,
+    "campCount": 0,
+    "totalPatients": 167
+  },
+  {
+    "id": "haryana",
+    "name": "HARYANA",
+    "state": "HARYANA",
+    "country": "India",
+    "isState": true,
+    "latitude": 29.0588,
+    "longitude": 76.0856,
+    "payCount": 159,
+    "freeCount": 8,
+    "campCount": 0,
+    "totalPatients": 167
   },
   {
     "id": "manipur",
@@ -323,9 +325,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 24.6637,
     "longitude": 93.9063,
     "payCount": 143,
-    "freeCount": 0,
+    "freeCount": 10,
     "campCount": 0,
-    "totalPatients": 143
+    "totalPatients": 153
   },
   {
     "id": "malaysia",
@@ -339,6 +341,19 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "freeCount": 0,
     "campCount": 0,
     "totalPatients": 141
+  },
+  {
+    "id": "bangladesh",
+    "name": "BANGLADESH",
+    "state": "International",
+    "country": "Bangladesh",
+    "isState": false,
+    "latitude": 23.685,
+    "longitude": 90.3563,
+    "payCount": 111,
+    "freeCount": 20,
+    "campCount": 0,
+    "totalPatients": 131
   },
   {
     "id": "punjab",
@@ -362,35 +377,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 20.5937,
     "longitude": 78.9629,
     "payCount": 114,
-    "freeCount": 0,
+    "freeCount": 3,
     "campCount": 0,
-    "totalPatients": 114
-  },
-  {
-    "id": "bangladesh",
-    "name": "BANGLADESH",
-    "state": "International",
-    "country": "Bangladesh",
-    "isState": false,
-    "latitude": 23.685,
-    "longitude": 90.3563,
-    "payCount": 111,
-    "freeCount": 0,
-    "campCount": 0,
-    "totalPatients": 111
-  },
-  {
-    "id": "tripura",
-    "name": "TRIPURA",
-    "state": "TRIPURA",
-    "country": "India",
-    "isState": true,
-    "latitude": 23.9408,
-    "longitude": 91.9882,
-    "payCount": 86,
-    "freeCount": 0,
-    "campCount": 0,
-    "totalPatients": 86
+    "totalPatients": 117
   },
   {
     "id": "lakshadweep",
@@ -401,9 +390,35 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 10.5667,
     "longitude": 72.6417,
     "payCount": 84,
-    "freeCount": 0,
+    "freeCount": 25,
     "campCount": 0,
-    "totalPatients": 84
+    "totalPatients": 109
+  },
+  {
+    "id": "tripura",
+    "name": "TRIPURA",
+    "state": "TRIPURA",
+    "country": "India",
+    "isState": true,
+    "latitude": 23.9408,
+    "longitude": 91.9882,
+    "payCount": 86,
+    "freeCount": 2,
+    "campCount": 0,
+    "totalPatients": 88
+  },
+  {
+    "id": "nagland",
+    "name": "NAGLAND",
+    "state": "NAGLAND",
+    "country": "India",
+    "isState": true,
+    "latitude": 26.1584,
+    "longitude": 94.5624,
+    "payCount": 57,
+    "freeCount": 12,
+    "campCount": 0,
+    "totalPatients": 69
   },
   {
     "id": "oman",
@@ -419,17 +434,17 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "totalPatients": 59
   },
   {
-    "id": "nagland",
-    "name": "NAGLAND",
-    "state": "NAGLAND",
-    "country": "India",
-    "isState": true,
-    "latitude": 26.1584,
-    "longitude": 94.5624,
-    "payCount": 57,
-    "freeCount": 0,
+    "id": "nephal",
+    "name": "NEPHAL",
+    "state": "International",
+    "country": "Nepal",
+    "isState": false,
+    "latitude": 28.3949,
+    "longitude": 84.124,
+    "payCount": 47,
+    "freeCount": 8,
     "campCount": 0,
-    "totalPatients": 57
+    "totalPatients": 55
   },
   {
     "id": "singapore",
@@ -453,35 +468,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 33.7782,
     "longitude": 76.5762,
     "payCount": 47,
-    "freeCount": 0,
+    "freeCount": 5,
     "campCount": 0,
-    "totalPatients": 47
-  },
-  {
-    "id": "nephal",
-    "name": "NEPHAL",
-    "state": "International",
-    "country": "Nepal",
-    "isState": false,
-    "latitude": 28.3949,
-    "longitude": 84.124,
-    "payCount": 47,
-    "freeCount": 0,
-    "campCount": 0,
-    "totalPatients": 47
-  },
-  {
-    "id": "dubai",
-    "name": "DUBAI",
-    "state": "International",
-    "country": "United Arab Emirates",
-    "isState": false,
-    "latitude": 25.2048,
-    "longitude": 55.2708,
-    "payCount": 33,
-    "freeCount": 0,
-    "campCount": 0,
-    "totalPatients": 33
+    "totalPatients": 52
   },
   {
     "id": "arunachal_pradesh",
@@ -492,9 +481,9 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 28.218,
     "longitude": 94.7278,
     "payCount": 30,
-    "freeCount": 0,
+    "freeCount": 14,
     "campCount": 0,
-    "totalPatients": 30
+    "totalPatients": 44
   },
   {
     "id": "himachal_pradesh",
@@ -505,22 +494,22 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 31.1048,
     "longitude": 77.1734,
     "payCount": 28,
-    "freeCount": 0,
+    "freeCount": 12,
     "campCount": 0,
-    "totalPatients": 28
+    "totalPatients": 40
   },
   {
-    "id": "meghalaya",
-    "name": "MEGHALAYA",
-    "state": "MEGHALAYA",
-    "country": "India",
-    "isState": true,
-    "latitude": 25.467,
-    "longitude": 91.3662,
-    "payCount": 28,
-    "freeCount": 0,
+    "id": "dubai",
+    "name": "DUBAI",
+    "state": "International",
+    "country": "United Arab Emirates",
+    "isState": false,
+    "latitude": 25.2048,
+    "longitude": 55.2708,
+    "payCount": 33,
+    "freeCount": 1,
     "campCount": 0,
-    "totalPatients": 28
+    "totalPatients": 34
   },
   {
     "id": "u_s_a",
@@ -530,6 +519,19 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "isState": false,
     "latitude": 37.0902,
     "longitude": -95.7129,
+    "payCount": 28,
+    "freeCount": 1,
+    "campCount": 0,
+    "totalPatients": 29
+  },
+  {
+    "id": "meghalaya",
+    "name": "MEGHALAYA",
+    "state": "MEGHALAYA",
+    "country": "India",
+    "isState": true,
+    "latitude": 25.467,
+    "longitude": 91.3662,
     "payCount": 28,
     "freeCount": 0,
     "campCount": 0,
@@ -560,6 +562,19 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "freeCount": 0,
     "campCount": 0,
     "totalPatients": 24
+  },
+  {
+    "id": "dadra_nagar_haveli",
+    "name": "DADRA & NAGAR HAVELI",
+    "state": "DADRA & NAGAR HAVELI",
+    "country": "India",
+    "isState": true,
+    "latitude": 20.1809,
+    "longitude": 73.0169,
+    "payCount": 10,
+    "freeCount": 13,
+    "campCount": 0,
+    "totalPatients": 23
   },
   {
     "id": "nigeria",
@@ -614,19 +629,6 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "totalPatients": 11
   },
   {
-    "id": "dadra_nagar_haveli",
-    "name": "DADRA & NAGAR HAVELI",
-    "state": "DADRA & NAGAR HAVELI",
-    "country": "India",
-    "isState": true,
-    "latitude": 20.1809,
-    "longitude": 73.0169,
-    "payCount": 10,
-    "freeCount": 0,
-    "campCount": 0,
-    "totalPatients": 10
-  },
-  {
     "id": "uttranjal",
     "name": "UTTRANJAL",
     "state": "UTTRANJAL",
@@ -679,6 +681,19 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "totalPatients": 6
   },
   {
+    "id": "swedan",
+    "name": "SWEDAN",
+    "state": "International",
+    "country": "Sweden",
+    "isState": false,
+    "latitude": 60.1282,
+    "longitude": 18.6435,
+    "payCount": 0,
+    "freeCount": 6,
+    "campCount": 0,
+    "totalPatients": 6
+  },
+  {
     "id": "south_africa",
     "name": "SOUTH AFRICA",
     "state": "International",
@@ -688,6 +703,19 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "longitude": 22.9375,
     "payCount": 4,
     "freeCount": 0,
+    "campCount": 0,
+    "totalPatients": 4
+  },
+  {
+    "id": "union_teritory",
+    "name": "UNION TERITORY",
+    "state": "UNION TERITORY",
+    "country": "India",
+    "isState": true,
+    "latitude": 20,
+    "longitude": 77,
+    "payCount": 3,
+    "freeCount": 1,
     "campCount": 0,
     "totalPatients": 4
   },
@@ -705,17 +733,17 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "totalPatients": 3
   },
   {
-    "id": "union_teritory",
-    "name": "UNION TERITORY",
-    "state": "UNION TERITORY",
-    "country": "India",
-    "isState": true,
-    "latitude": 20,
-    "longitude": 77,
-    "payCount": 3,
-    "freeCount": 0,
+    "id": "germany",
+    "name": "GERMANY",
+    "state": "International",
+    "country": "Germany",
+    "isState": false,
+    "latitude": 51.1657,
+    "longitude": 10.4515,
+    "payCount": 1,
+    "freeCount": 1,
     "campCount": 0,
-    "totalPatients": 3
+    "totalPatients": 2
   },
   {
     "id": "mizoram",
@@ -770,19 +798,6 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "totalPatients": 1
   },
   {
-    "id": "germany",
-    "name": "GERMANY",
-    "state": "International",
-    "country": "Germany",
-    "isState": false,
-    "latitude": 51.1657,
-    "longitude": 10.4515,
-    "payCount": 1,
-    "freeCount": 0,
-    "campCount": 0,
-    "totalPatients": 1
-  },
-  {
     "id": "riyadth",
     "name": "RIYADTH",
     "state": "International",
@@ -817,21 +832,8 @@ export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
     "latitude": 6.9271,
     "longitude": 79.8612,
     "payCount": 0,
-    "freeCount": 0,
+    "freeCount": 1,
     "campCount": 0,
-    "totalPatients": 0
-  },
-  {
-    "id": "swedan",
-    "name": "SWEDAN",
-    "state": "International",
-    "country": "Sweden",
-    "isState": false,
-    "latitude": 60.1282,
-    "longitude": 18.6435,
-    "payCount": 0,
-    "freeCount": 0,
-    "campCount": 0,
-    "totalPatients": 0
+    "totalPatients": 1
   }
 ];

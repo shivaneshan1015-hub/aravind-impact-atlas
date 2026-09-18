@@ -44,6 +44,8 @@ export interface SidebarPanelProps {
   onSelectStaffGroup?: (group: StaffGroup) => void;
   staffCategory?: StaffCategory | "all";
   onSelectStaffCategory?: (cat: StaffCategory | "all") => void;
+  patientFilter?: "pay" | "free" | "camp" | "all";
+  onSelectPatientFilter?: (filter: "pay" | "free" | "camp" | "all") => void;
 }
 
 export function SidebarPanel({
@@ -62,6 +64,8 @@ export function SidebarPanel({
   onSelectStaffGroup,
   staffCategory = "all",
   onSelectStaffCategory,
+  patientFilter = "all",
+  onSelectPatientFilter,
 }: SidebarPanelProps) {
   const story = IMPACT_STORIES[entityConfig.id] || IMPACT_STORIES.hospitals;
 
@@ -217,45 +221,70 @@ export function SidebarPanel({
             {/* Primary Category 2: Patients */}
             <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2.5">
               <button
-                onClick={() => onSelectSubcategory?.("patients")}
+                onClick={() => {
+                  onSelectSubcategory?.("patients");
+                  onSelectPatientFilter?.("all");
+                }}
                 className="w-full text-left flex items-center justify-between"
               >
                 <div className="flex items-center gap-2">
                   <Users className="w-4 h-4 text-blue-600" />
                   <div>
                     <span className="text-xs font-black text-slate-900 uppercase tracking-wider block">Patients Reach</span>
-                    <span className="text-[10px] text-slate-500 font-medium">3,266,639 Pay Patients Registered</span>
+                    <span className="text-[10px] text-slate-500 font-medium">4,521,628 Registered Patients</span>
                   </div>
                 </div>
                 <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">
-                  3.26M
+                  4.52M Total
                 </span>
               </button>
 
-              {/* Data Type Tabs: Pay | Free | Camp */}
+              {/* Data Type Tabs: Pay (3.26M) | Free (1.25M) | All (4.52M) */}
               <div className="grid grid-cols-3 gap-1 p-1 bg-slate-200/60 rounded-xl">
                 <button
-                  onClick={() => onSelectSubcategory?.("patients")}
-                  className="py-1.5 px-1 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center bg-blue-600 text-white shadow-xs"
+                  onClick={() => {
+                    onSelectSubcategory?.("patients");
+                    onSelectPatientFilter?.("pay");
+                  }}
+                  className={`py-1.5 px-1 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
+                    patientFilter === "pay"
+                      ? "bg-blue-600 text-white shadow-xs"
+                      : "text-slate-700 hover:bg-slate-300/50"
+                  }`}
+                  title="3,266,639 Pay Patients"
                 >
                   <span className="font-black text-xs">3.26M</span>
                   <span className="text-[9px] uppercase tracking-tighter opacity-90">Pay</span>
                 </button>
                 <button
-                  onClick={() => onSelectSubcategory?.("patients")}
-                  className="py-1.5 px-1 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center text-slate-700 hover:bg-slate-300/50"
-                  title="Free patient dataset slot ready"
+                  onClick={() => {
+                    onSelectSubcategory?.("patients");
+                    onSelectPatientFilter?.("free");
+                  }}
+                  className={`py-1.5 px-1 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
+                    patientFilter === "free"
+                      ? "bg-emerald-700 text-white shadow-xs"
+                      : "text-slate-700 hover:bg-slate-300/50"
+                  }`}
+                  title="1,254,989 Free Patients"
                 >
-                  <span className="font-black text-xs">0</span>
-                  <span className="text-[9px] uppercase tracking-tighter opacity-70">Free</span>
+                  <span className="font-black text-xs">1.25M</span>
+                  <span className="text-[9px] uppercase tracking-tighter opacity-90">Free</span>
                 </button>
                 <button
-                  onClick={() => onSelectSubcategory?.("patients")}
-                  className="py-1.5 px-1 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center text-slate-700 hover:bg-slate-300/50"
-                  title="Camp patient dataset slot ready"
+                  onClick={() => {
+                    onSelectSubcategory?.("patients");
+                    onSelectPatientFilter?.("all");
+                  }}
+                  className={`py-1.5 px-1 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
+                    patientFilter === "all"
+                      ? "bg-indigo-700 text-white shadow-xs"
+                      : "text-slate-700 hover:bg-slate-300/50"
+                  }`}
+                  title="4,521,628 Total Patients"
                 >
-                  <span className="font-black text-xs">0</span>
-                  <span className="text-[9px] uppercase tracking-tighter opacity-70">Camp</span>
+                  <span className="font-black text-xs">4.52M</span>
+                  <span className="text-[9px] uppercase tracking-tighter opacity-90">All</span>
                 </button>
               </div>
             </div>
