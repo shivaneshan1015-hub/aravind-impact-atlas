@@ -254,7 +254,11 @@ export function SidebarPanel({
                         return (
                           <button
                             key={h.id}
-                            onClick={() => onSelectVisionCentreHubFilter?.(h.id)}
+                            onClick={() => {
+                              onSelectSubcategory?.("hospitals_vision_centres");
+                              onSelectCareTypeFilter?.("vision_centre");
+                              onSelectVisionCentreHubFilter?.(h.id);
+                            }}
                             className={`py-1.5 px-2 rounded-xl text-xs font-bold border flex items-center justify-between transition-all ${
                               isSelected
                                 ? "text-white shadow-xs ring-2 ring-slate-900/30"

@@ -506,11 +506,7 @@ export function MapEngine({
     }
 
     // 2b. Vision Centre Hospital Hub Category filter
-    if (
-      visionCentreHubFilter &&
-      visionCentreHubFilter !== "all" &&
-      (careTypeFilter === "vision_centre" || selectedSubcategoryId === "hospitals_vision_centres")
-    ) {
+    if (visionCentreHubFilter && visionCentreHubFilter !== "all") {
       filtered = filtered.filter((l) => l.metadata?.hospitalHub === visionCentreHubFilter);
     }
 
@@ -563,7 +559,7 @@ export function MapEngine({
                 <svg class="w-3.5 h-3.5 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M9 17h6"/>
                 </svg>
-                <span>${placeName} Base Hospital</span>
+                <span>${loc.city || placeName.replace(/\s*Base Hospital\s*/gi, '')}</span>
               </span>
 
               <!-- Large Base Hospital Building Icon Badge -->
@@ -1080,6 +1076,7 @@ export function MapEngine({
     isOneSystem,
     hidePinLabels,
     selectedSubcategoryId,
+    visionCentreHubFilter,
   ]);
 
   // Handle Camera Transitions for Geographic Levels (World -> Country -> State -> City)
@@ -1128,6 +1125,9 @@ export function MapEngine({
       let filtered = locations;
       if (careTypeFilter && careTypeFilter !== "all") {
         filtered = filtered.filter((l) => l.careType === careTypeFilter);
+      }
+      if (visionCentreHubFilter && visionCentreHubFilter !== "all") {
+        filtered = filtered.filter((l) => l.metadata?.hospitalHub === visionCentreHubFilter);
       }
       if (revealMaxYear !== null && revealMaxYear !== undefined) {
         filtered = filtered.filter(
@@ -1186,6 +1186,7 @@ export function MapEngine({
     careTypeFilter,
     revealMaxYear,
     selectedSubcategoryId,
+    visionCentreHubFilter,
   ]);
 
   const handleZoomIn = () => mapRef.current?.zoomIn();
