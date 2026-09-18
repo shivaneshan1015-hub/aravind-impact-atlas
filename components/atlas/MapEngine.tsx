@@ -806,6 +806,52 @@ export function MapEngine({
             </div>
           `;
         }
+      } else if (loc.entityId === "laico") {
+        const isHq = loc.id === "laico_hq";
+        const isCbDot = loc.subcategoryId === "capacity_building";
+
+        if (isHq) {
+          // 1. LAICO TRAINING & MANAGEMENT HEADQUARTERS AT MADURAI (Rich Dark Teal)
+          el.innerHTML = `
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${loc.name}">
+              ${
+                !hidePinLabels
+                  ? `<span class="mb-1 text-[11px] font-black text-white bg-teal-950/95 px-3 py-1 rounded-lg shadow-2xl border-2 border-teal-400 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
+                       <span class="w-2 h-2 rounded-full bg-teal-300"></span>
+                       <span>LAICO Training HQ (Madurai)</span>
+                     </span>`
+                  : ""
+              }
+
+              <div class="w-8 h-8 rounded-full bg-teal-900 border-2 border-teal-300 shadow-2xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
+                <svg class="w-4.5 h-4.5 text-teal-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5" />
+                </svg>
+              </div>
+            </div>
+          `;
+        } else if (isCbDot) {
+          // 2. CAPACITY BUILDING MENTORED HOSPITAL DOT (Rich Dark Deep Teal, "little large")
+          const dotColor = "#0D9488"; // Rich Dark Deep Teal
+          const dotSize = isSelected ? "14px" : "11px"; // Slightly large dot as requested
+
+          el.innerHTML = `
+            <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name} (${loc.city}, ${loc.country})">
+              <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 7px ${dotColor}dd, 0 1.5px 4px rgba(0,0,0,0.35); transition: transform 0.15s ease-out;" class="group-hover:scale-150">
+              </div>
+            </div>
+          `;
+        } else {
+          // 3. LAICO PARTICIPANT NETWORK HUB
+          const dotColor = "#0F766E";
+          el.innerHTML = `
+            <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
+              <div style="width: 10px; height: 10px; background-color: ${dotColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 6px ${dotColor}cc, 0 1px 3px rgba(0,0,0,0.3);" class="group-hover:scale-150">
+              </div>
+            </div>
+          `;
+        }
       } else if (loc.entityId === "amrf") {
         const isHq = loc.id === "amrf_hq" || loc.metadata?.isHq;
         const isCollaborator = loc.metadata?.isCollaborator || loc.subcategoryId === "collaboratives";
@@ -1037,6 +1083,15 @@ export function MapEngine({
         } else if (isAurolab) {
           popTitle = `${loc.state} Aggregate Distribution`;
           popSub = `Regional Aggregate Footprint · ${loc.state}`;
+        } else if (loc.entityId === "laico") {
+          const isCb = loc.subcategoryId === "capacity_building";
+          if (isCb) {
+            popTitle = `${loc.city} Partner Hub`;
+            popSub = `Mentored Hospital · ${loc.state ? loc.state + ", " : ""}${loc.country}`;
+          } else {
+            popTitle = loc.name;
+            popSub = `${loc.city}, ${loc.country}`;
+          }
         }
           
         if (loc.establishedYear && !isAurolab && !isEyeBank) {

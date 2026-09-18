@@ -426,7 +426,11 @@ export function SidebarPanel({
                   <div className="text-[10px] font-normal opacity-80">Mentored Eye Hospitals Worldwide</div>
                 </div>
               </div>
-              <ChevronRight className="w-4 h-4 opacity-60" />
+              <span className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
+                activeSubId === "capacity_building" ? "bg-white/20 text-white" : "bg-teal-100 text-teal-800"
+              }`}>
+                394 Hospitals
+              </span>
             </button>
 
             {/* Primary Category 2: Training Programmes */}
