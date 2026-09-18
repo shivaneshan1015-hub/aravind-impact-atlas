@@ -52,42 +52,140 @@ export function generatePatientDots(patientFilter: "pay" | "free" | "camp" | "al
   const items: GeoLocationItem[] = [];
 
   PATIENT_DATA_RECORDS.forEach((rec) => {
-    let displayCount = rec.totalPatients;
-    if (patientFilter === "pay") displayCount = rec.payCount;
-    else if (patientFilter === "free") displayCount = rec.freeCount;
-    else if (patientFilter === "camp") displayCount = rec.campCount;
+    if (patientFilter === "all") {
+      // 1. Pay Dot (Dark Royal Blue #1E3A8A) - Slightly shifted West
+      if (rec.payCount > 0) {
+        items.push({
+          id: `patient_hub_${rec.id}_pay`,
+          entityId: "hospitals",
+          subcategoryId: "patients",
+          name: rec.name,
+          rawName: rec.name,
+          city: rec.name,
+          state: rec.state,
+          country: rec.country,
+          latitude: rec.latitude,
+          longitude: rec.longitude - 0.012,
+          type: "Patient Hub",
+          metadata: {
+            isPatientHub: true,
+            payCount: rec.payCount,
+            freeCount: rec.freeCount,
+            campCount: rec.campCount,
+            totalPatients: rec.totalPatients,
+            activeFilter: "pay",
+            displayCount: rec.payCount,
+          },
+          metrics: {
+            "Pay Patients": rec.payCount,
+            "Free Patients": rec.freeCount,
+            "Camp Patients": rec.campCount,
+            "Total Patients": rec.totalPatients,
+          },
+        });
+      }
 
-    if (displayCount <= 0) return;
+      // 2. Free Dot (Dark Emerald Green #064E3B) - Centered
+      if (rec.freeCount > 0) {
+        items.push({
+          id: `patient_hub_${rec.id}_free`,
+          entityId: "hospitals",
+          subcategoryId: "patients",
+          name: rec.name,
+          rawName: rec.name,
+          city: rec.name,
+          state: rec.state,
+          country: rec.country,
+          latitude: rec.latitude,
+          longitude: rec.longitude,
+          type: "Patient Hub",
+          metadata: {
+            isPatientHub: true,
+            payCount: rec.payCount,
+            freeCount: rec.freeCount,
+            campCount: rec.campCount,
+            totalPatients: rec.totalPatients,
+            activeFilter: "free",
+            displayCount: rec.freeCount,
+          },
+          metrics: {
+            "Pay Patients": rec.payCount,
+            "Free Patients": rec.freeCount,
+            "Camp Patients": rec.campCount,
+            "Total Patients": rec.totalPatients,
+          },
+        });
+      }
 
-    // Single Clean District Pin Marker Item
-    items.push({
-      id: `patient_hub_${rec.id}_${patientFilter}`,
-      entityId: "hospitals",
-      subcategoryId: "patients",
-      name: rec.name,
-      rawName: rec.name,
-      city: rec.name,
-      state: rec.isState ? rec.name : "International",
-      country: rec.country,
-      latitude: rec.latitude,
-      longitude: rec.longitude,
-      type: "Patient Hub",
-      metadata: {
-        isPatientHub: true,
-        payCount: rec.payCount,
-        freeCount: rec.freeCount,
-        campCount: rec.campCount,
-        totalPatients: rec.totalPatients,
-        activeFilter: patientFilter,
-        displayCount: displayCount,
-      },
-      metrics: {
-        "Pay Patients": rec.payCount,
-        "Free Patients": rec.freeCount,
-        "Camp Patients": rec.campCount,
-        "Total Patients": rec.totalPatients,
-      },
-    });
+      // 3. Camp Dot (Dark Burnt Amber #78350F) - Slightly shifted East
+      if (rec.campCount > 0) {
+        items.push({
+          id: `patient_hub_${rec.id}_camp`,
+          entityId: "hospitals",
+          subcategoryId: "patients",
+          name: rec.name,
+          rawName: rec.name,
+          city: rec.name,
+          state: rec.state,
+          country: rec.country,
+          latitude: rec.latitude,
+          longitude: rec.longitude + 0.012,
+          type: "Patient Hub",
+          metadata: {
+            isPatientHub: true,
+            payCount: rec.payCount,
+            freeCount: rec.freeCount,
+            campCount: rec.campCount,
+            totalPatients: rec.totalPatients,
+            activeFilter: "camp",
+            displayCount: rec.campCount,
+          },
+          metrics: {
+            "Pay Patients": rec.payCount,
+            "Free Patients": rec.freeCount,
+            "Camp Patients": rec.campCount,
+            "Total Patients": rec.totalPatients,
+          },
+        });
+      }
+    } else {
+      let displayCount = rec.totalPatients;
+      if (patientFilter === "pay") displayCount = rec.payCount;
+      else if (patientFilter === "free") displayCount = rec.freeCount;
+      else if (patientFilter === "camp") displayCount = rec.campCount;
+
+      if (displayCount <= 0) return;
+
+      // Single Clean District Pin Marker Item
+      items.push({
+        id: `patient_hub_${rec.id}_${patientFilter}`,
+        entityId: "hospitals",
+        subcategoryId: "patients",
+        name: rec.name,
+        rawName: rec.name,
+        city: rec.name,
+        state: rec.state,
+        country: rec.country,
+        latitude: rec.latitude,
+        longitude: rec.longitude,
+        type: "Patient Hub",
+        metadata: {
+          isPatientHub: true,
+          payCount: rec.payCount,
+          freeCount: rec.freeCount,
+          campCount: rec.campCount,
+          totalPatients: rec.totalPatients,
+          activeFilter: patientFilter,
+          displayCount: displayCount,
+        },
+        metrics: {
+          "Pay Patients": rec.payCount,
+          "Free Patients": rec.freeCount,
+          "Camp Patients": rec.campCount,
+          "Total Patients": rec.totalPatients,
+        },
+      });
+    }
   });
 
   return items;

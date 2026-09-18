@@ -363,7 +363,7 @@ export function SidebarPanel({
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "all"
-                      ? "bg-[#1E1B4B] text-white shadow-xs"
+                      ? "bg-slate-900 text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
                   title="4,709,714 Total Patients"

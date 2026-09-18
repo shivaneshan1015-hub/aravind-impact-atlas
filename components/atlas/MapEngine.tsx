@@ -591,16 +591,23 @@ export function MapEngine({
         const activeFilter = (loc.metadata?.activeFilter as string) || "all";
 
         // 3 Distinct Dark Colors:
-        // Pay / All -> #1E3A8A (Dark Royal Blue)
+        // Pay -> #1E3A8A (Dark Royal Blue)
         // Free -> #064E3B (Dark Emerald Green)
         // Camp -> #78350F (Dark Burnt Amber)
         let dotColor = "#1E3A8A";
+        let categoryLabel = "Patients";
         if (activeFilter === "free" || loc.metadata?.isFreeDot) {
           dotColor = "#064E3B";
+          categoryLabel = "Free";
         } else if (activeFilter === "camp" || loc.metadata?.isCampDot) {
           dotColor = "#78350F";
-        } else if (activeFilter === "pay" || activeFilter === "all") {
+          categoryLabel = "Camp";
+        } else if (activeFilter === "pay") {
           dotColor = "#1E3A8A";
+          categoryLabel = "Pay";
+        } else {
+          dotColor = "#1E3A8A";
+          categoryLabel = "Total";
         }
 
         // Proportional Sizing Formula (Min 10px, Max 36px based on patient volume)
@@ -614,10 +621,10 @@ export function MapEngine({
         const distName = loc.city || loc.rawName || loc.name;
 
         el.innerHTML = `
-          <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${distName}: ${displayCount.toLocaleString()} Patients">
+          <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${distName} (${categoryLabel}): ${displayCount.toLocaleString()} Patients">
             <!-- Touch / Click Place Name & Count Label directly over Pin -->
             <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1 rounded-lg shadow-xl border border-slate-300 whitespace-nowrap ${isSelected ? 'opacity-100 ring-2 ring-slate-900 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} transition-all duration-150 pointer-events-none">
-              <span class="font-extrabold">${distName}:</span> <span style="color: ${dotColor}">${displayCount.toLocaleString()} Patients</span>
+              <span class="font-extrabold">${distName}:</span> <span style="color: ${dotColor}">${displayCount.toLocaleString()} (${categoryLabel})</span>
             </span>
 
             <!-- Proportional Patient Pin Marker Circle -->

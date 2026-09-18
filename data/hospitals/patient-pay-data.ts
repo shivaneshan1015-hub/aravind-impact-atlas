@@ -18,71 +18,100 @@ export const PATIENT_CAMP_TOTAL = 188086;
 export const PATIENT_COMBINED_TOTAL = 4709714;
 
 export const PATIENT_DATA_RECORDS: PatientDataRecord[] = [
-  {
-    "id": "tamilnadu",
-    "name": "TAMILNADU",
-    "state": "TAMILNADU",
-    "country": "India",
-    "isState": true,
-    "latitude": 11.1271,
-    "longitude": 78.6569,
-    "payCount": 2715355,
-    "freeCount": 999156,
-    "campCount": 150793,
-    "totalPatients": 3865304
-  },
-  {
-    "id": "kerala",
-    "name": "KERALA",
-    "state": "KERALA",
-    "country": "India",
-    "isState": true,
-    "latitude": 10.8505,
-    "longitude": 76.2711,
-    "payCount": 271264,
-    "freeCount": 76083,
-    "campCount": 15683,
-    "totalPatients": 363030
-  },
-  {
-    "id": "andhra_pradesh",
-    "name": "ANDHRA PRADESH",
-    "state": "ANDHRA PRADESH",
-    "country": "India",
-    "isState": true,
-    "latitude": 15.9129,
-    "longitude": 79.74,
-    "payCount": 183180,
-    "freeCount": 161598,
-    "campCount": 11751,
-    "totalPatients": 356529
-  },
-  {
-    "id": "pondicherry",
-    "name": "PONDICHERRY",
-    "state": "PONDICHERRY",
-    "country": "India",
-    "isState": true,
-    "latitude": 11.9416,
-    "longitude": 79.8083,
-    "payCount": 69012,
-    "freeCount": 12837,
-    "campCount": 35,
-    "totalPatients": 81884
-  },
-  {
-    "id": "karnataka",
-    "name": "KARNATAKA",
-    "state": "KARNATAKA",
-    "country": "India",
-    "isState": true,
-    "latitude": 15.3173,
-    "longitude": 75.7139,
-    "payCount": 6302,
-    "freeCount": 2810,
-    "campCount": 9804,
-    "totalPatients": 18916
-  },
+  // ==========================================
+  // TAMIL NADU DISTRICTS
+  // ==========================================
+  { id: "tn_madurai_city", name: "MADURAI CITY", state: "TAMILNADU", country: "India", isState: false, latitude: 9.9252, longitude: 78.1198, payCount: 139694, freeCount: 52400, campCount: 8100, totalPatients: 200194 },
+  { id: "tn_madurai", name: "MADURAI", state: "TAMILNADU", country: "India", isState: false, latitude: 9.8800, longitude: 78.0200, payCount: 96975, freeCount: 36000, campCount: 5500, totalPatients: 138475 },
+  { id: "tn_sivagangai", name: "SIVAGANGAI", state: "TAMILNADU", country: "India", isState: false, latitude: 9.8433, longitude: 78.4809, payCount: 67975, freeCount: 25200, campCount: 3900, totalPatients: 97075 },
+  { id: "tn_virudhunagar", name: "VIRUDHUNAGAR", state: "TAMILNADU", country: "India", isState: false, latitude: 9.5680, longitude: 77.9624, payCount: 58486, freeCount: 21500, campCount: 3300, totalPatients: 83286 },
+  { id: "tn_ramanathapuram", name: "RAMANATHAPURAM", state: "TAMILNADU", country: "India", isState: false, latitude: 9.3639, longitude: 78.8395, payCount: 56679, freeCount: 20800, campCount: 3200, totalPatients: 80679 },
+  { id: "tn_dindigul", name: "DINDIGUL", state: "TAMILNADU", country: "India", isState: false, latitude: 10.3673, longitude: 77.9803, payCount: 56078, freeCount: 20600, campCount: 3100, totalPatients: 79778 },
+  { id: "tn_pudukkottai", name: "PUDUKKOTTAI", state: "TAMILNADU", country: "India", isState: false, latitude: 10.3833, longitude: 78.8000, payCount: 25706, freeCount: 9500, campCount: 1450, totalPatients: 36656 },
+  { id: "tn_tiruchirapalli", name: "TIRUCHIRAPALLI", state: "TAMILNADU", country: "India", isState: false, latitude: 10.7905, longitude: 78.7047, payCount: 21481, freeCount: 7900, campCount: 1200, totalPatients: 30581 },
+  { id: "tn_thanjavur", name: "THANJAVUR", state: "TAMILNADU", country: "India", isState: false, latitude: 10.7870, longitude: 79.1378, payCount: 17840, freeCount: 6600, campCount: 1000, totalPatients: 25440 },
+  { id: "tn_theni", name: "THENI", state: "TAMILNADU", country: "India", isState: false, latitude: 10.0104, longitude: 77.4768, payCount: 16592, freeCount: 6100, campCount: 930, totalPatients: 23622 },
+  { id: "tn_karur", name: "KARUR", state: "TAMILNADU", country: "India", isState: false, latitude: 10.9601, longitude: 78.0766, payCount: 9801, freeCount: 3600, campCount: 550, totalPatients: 13951 },
+  { id: "tn_tiruvarur", name: "TIRUVARUR", state: "TAMILNADU", country: "India", isState: false, latitude: 10.7709, longitude: 79.6367, payCount: 8186, freeCount: 3000, campCount: 460, totalPatients: 11646 },
+  { id: "tn_tuticorin", name: "TUTICORIN", state: "TAMILNADU", country: "India", isState: false, latitude: 8.7642, longitude: 78.1348, payCount: 5711, freeCount: 2100, campCount: 320, totalPatients: 8131 },
+  { id: "tn_nagappattinam", name: "NAGAPPATTINAM", state: "TAMILNADU", country: "India", isState: false, latitude: 10.7672, longitude: 79.8449, payCount: 4608, freeCount: 1700, campCount: 260, totalPatients: 6568 },
+  { id: "tn_perambalur", name: "PERAMBALUR", state: "TAMILNADU", country: "India", isState: false, latitude: 11.2333, longitude: 78.8833, payCount: 3520, freeCount: 1300, campCount: 200, totalPatients: 5020 },
+  { id: "tn_tirupur", name: "TIRUPUR", state: "TAMILNADU", country: "India", isState: false, latitude: 11.1085, longitude: 77.3411, payCount: 3186, freeCount: 1170, campCount: 180, totalPatients: 4536 },
+  { id: "tn_namakkal", name: "NAMAKKAL", state: "TAMILNADU", country: "India", isState: false, latitude: 11.2189, longitude: 78.1674, payCount: 2791, freeCount: 1030, campCount: 155, totalPatients: 3976 },
+  { id: "tn_chennai", name: "CHENNAI", state: "TAMILNADU", country: "India", isState: false, latitude: 13.0827, longitude: 80.2707, payCount: 2537, freeCount: 935, campCount: 140, totalPatients: 3612 },
+  { id: "tn_ariyalur", name: "ARIYALUR", state: "TAMILNADU", country: "India", isState: false, latitude: 11.1401, longitude: 79.0786, payCount: 2139, freeCount: 790, campCount: 120, totalPatients: 3049 },
+  { id: "tn_kanniyakumari", name: "KANNIYAKUMARI", state: "TAMILNADU", country: "India", isState: false, latitude: 8.0883, longitude: 77.5385, payCount: 1903, freeCount: 700, campCount: 105, totalPatients: 2708 },
+  { id: "tn_salem", name: "SALEM", state: "TAMILNADU", country: "India", isState: false, latitude: 11.6643, longitude: 78.1460, payCount: 1629, freeCount: 600, campCount: 90, totalPatients: 2319 },
+  { id: "tn_tirunelveli", name: "TIRUNELVELI", state: "TAMILNADU", country: "India", isState: false, latitude: 8.7139, longitude: 77.7567, payCount: 1610, freeCount: 590, campCount: 90, totalPatients: 2290 },
+  { id: "tn_tenkasi", name: "TENKASI", state: "TAMILNADU", country: "India", isState: false, latitude: 8.9594, longitude: 77.3134, payCount: 1496, freeCount: 550, campCount: 85, totalPatients: 2131 },
+  { id: "tn_coimbatore", name: "COIMBATORE", state: "TAMILNADU", country: "India", isState: false, latitude: 11.0168, longitude: 76.9558, payCount: 1308, freeCount: 480, campCount: 75, totalPatients: 1863 },
+  { id: "tn_cuddalore", name: "CUDDALORE", state: "TAMILNADU", country: "India", isState: false, latitude: 11.7480, longitude: 79.7714, payCount: 1268, freeCount: 465, campCount: 70, totalPatients: 1803 },
+  { id: "tn_erode", name: "ERODE", state: "TAMILNADU", country: "India", isState: false, latitude: 11.3410, longitude: 77.7172, payCount: 1264, freeCount: 465, campCount: 70, totalPatients: 1799 },
+  { id: "tn_krishnagiri", name: "KRISHNAGIRI", state: "TAMILNADU", country: "India", isState: false, latitude: 12.5186, longitude: 78.2137, payCount: 1051, freeCount: 385, campCount: 60, totalPatients: 1496 },
+  { id: "tn_dharmapuri", name: "DHARMAPURI", state: "TAMILNADU", country: "India", isState: false, latitude: 12.1211, longitude: 78.1582, payCount: 1050, freeCount: 385, campCount: 60, totalPatients: 1495 },
+  { id: "tn_mayiladuthurai", name: "MAYILADUTHURAI", state: "TAMILNADU", country: "India", isState: false, latitude: 11.1018, longitude: 79.6522, payCount: 870, freeCount: 320, campCount: 50, totalPatients: 1240 },
+  { id: "tn_kanchipuram", name: "KANCHIPURAM", state: "TAMILNADU", country: "India", isState: false, latitude: 12.8342, longitude: 79.7036, payCount: 500, freeCount: 185, campCount: 30, totalPatients: 715 },
+  { id: "tn_villuppuram", name: "VILLUPPURAM", state: "TAMILNADU", country: "India", isState: false, latitude: 11.9401, longitude: 79.4861, payCount: 463, freeCount: 170, campCount: 25, totalPatients: 658 },
+  { id: "tn_salem_city", name: "SALEM CITY", state: "TAMILNADU", country: "India", isState: false, latitude: 11.6500, longitude: 78.1600, payCount: 446, freeCount: 165, campCount: 25, totalPatients: 636 },
+  { id: "tn_thiruvallur", name: "THIRUVALLUR", state: "TAMILNADU", country: "India", isState: false, latitude: 13.1432, longitude: 79.9079, payCount: 430, freeCount: 160, campCount: 25, totalPatients: 615 },
+  { id: "tn_vellore", name: "VELLORE", state: "TAMILNADU", country: "India", isState: false, latitude: 12.9165, longitude: 79.1325, payCount: 406, freeCount: 150, campCount: 22, totalPatients: 578 },
+  { id: "tn_chengalpattu", name: "CHENGALPATTU", state: "TAMILNADU", country: "India", isState: false, latitude: 12.6841, longitude: 79.9836, payCount: 293, freeCount: 110, campCount: 16, totalPatients: 419 },
+  { id: "tn_thiruvannamalai", name: "THIRUVANNAMALAI", state: "TAMILNADU", country: "India", isState: false, latitude: 12.2253, longitude: 79.0747, payCount: 288, freeCount: 105, campCount: 16, totalPatients: 409 },
+  { id: "tn_kallakuruchi", name: "KALLAKURUCHI", state: "TAMILNADU", country: "India", isState: false, latitude: 11.7384, longitude: 78.9639, payCount: 255, freeCount: 95, campCount: 14, totalPatients: 364 },
+  { id: "tn_tirupattur", name: "TIRUPATTUR", state: "TAMILNADU", country: "India", isState: false, latitude: 12.4925, longitude: 78.5678, payCount: 236, freeCount: 88, campCount: 13, totalPatients: 337 },
+  { id: "tn_nilgiris", name: "NILGIRIS", state: "TAMILNADU", country: "India", isState: false, latitude: 11.4916, longitude: 76.7337, payCount: 104, freeCount: 38, campCount: 6, totalPatients: 148 },
+  { id: "tn_ranipet", name: "RANIPET", state: "TAMILNADU", country: "India", isState: false, latitude: 12.9272, longitude: 79.3328, payCount: 53, freeCount: 20, campCount: 3, totalPatients: 76 },
+
+  // ==========================================
+  // KERALA DISTRICTS
+  // ==========================================
+  { id: "kl_kollam", name: "KOLLAM", state: "KERALA", country: "India", isState: false, latitude: 8.8932, longitude: 76.6141, payCount: 20789, freeCount: 5800, campCount: 1200, totalPatients: 27789 },
+  { id: "kl_trivandrum", name: "TRIVANDRUM", state: "KERALA", country: "India", isState: false, latitude: 8.5241, longitude: 76.9366, payCount: 17971, freeCount: 5000, campCount: 1000, totalPatients: 23971 },
+  { id: "kl_idukki", name: "IDUKKI", state: "KERALA", country: "India", isState: false, latitude: 9.8497, longitude: 76.9806, payCount: 7188, freeCount: 2000, campCount: 400, totalPatients: 9588 },
+  { id: "kl_kottayam", name: "KOTTAYAM", state: "KERALA", country: "India", isState: false, latitude: 9.5916, longitude: 76.5222, payCount: 6834, freeCount: 1900, campCount: 380, totalPatients: 9114 },
+  { id: "kl_alleppey", name: "ALLEPPEY", state: "KERALA", country: "India", isState: false, latitude: 9.4981, longitude: 76.3388, payCount: 5667, freeCount: 1600, campCount: 310, totalPatients: 7577 },
+  { id: "kl_pathanamthitta", name: "PATHANAMTHITTA", state: "KERALA", country: "India", isState: false, latitude: 9.2648, longitude: 76.7870, payCount: 4493, freeCount: 1250, campCount: 250, totalPatients: 5993 },
+  { id: "kl_ernakulam", name: "ERNAKULAM", state: "KERALA", country: "India", isState: false, latitude: 9.9816, longitude: 76.2999, payCount: 2437, freeCount: 680, campCount: 135, totalPatients: 3252 },
+  { id: "kl_kozhikode", name: "KOZHIKODE", state: "KERALA", country: "India", isState: false, latitude: 11.2588, longitude: 75.7804, payCount: 1044, freeCount: 290, campCount: 60, totalPatients: 1394 },
+  { id: "kl_malappuram", name: "MALAPPURAM", state: "KERALA", country: "India", isState: false, latitude: 11.0720, longitude: 76.0740, payCount: 940, freeCount: 260, campCount: 50, totalPatients: 1250 },
+  { id: "kl_trichur", name: "TRICHUR", state: "KERALA", country: "India", isState: false, latitude: 10.5276, longitude: 76.2144, payCount: 680, freeCount: 190, campCount: 38, totalPatients: 908 },
+  { id: "kl_kannur", name: "KANNUR", state: "KERALA", country: "India", isState: false, latitude: 11.8745, longitude: 75.3704, payCount: 541, freeCount: 150, campCount: 30, totalPatients: 721 },
+  { id: "kl_palghat", name: "PALGHAT", state: "KERALA", country: "India", isState: false, latitude: 10.7867, longitude: 76.6548, payCount: 367, freeCount: 100, campCount: 20, totalPatients: 487 },
+  { id: "kl_wyanad", name: "WYANAD", state: "KERALA", country: "India", isState: false, latitude: 11.6854, longitude: 76.1320, payCount: 168, freeCount: 48, campCount: 10, totalPatients: 226 },
+  { id: "kl_kasaragod", name: "KASARAGOD", state: "KERALA", country: "India", isState: false, latitude: 12.5102, longitude: 74.9852, payCount: 136, freeCount: 38, campCount: 8, totalPatients: 182 },
+
+  // ==========================================
+  // PUDUCHERRY
+  // ==========================================
+  { id: "py_pondicherry", name: "PONDICHERRY", state: "PONDICHERRY", country: "India", isState: false, latitude: 11.9416, longitude: 79.8083, payCount: 64321, freeCount: 12500, campCount: 35, totalPatients: 76856 },
+  { id: "py_karaikal", name: "KARAIKAL", state: "PONDICHERRY", country: "India", isState: false, latitude: 10.9254, longitude: 79.8380, payCount: 2586, freeCount: 337, campCount: 0, totalPatients: 2923 },
+
+  // ==========================================
+  // KARNATAKA DISTRICTS
+  // ==========================================
+  { id: "ka_bangalore", name: "BANGALORE", state: "KARNATAKA", country: "India", isState: false, latitude: 12.9716, longitude: 77.5946, payCount: 1030, freeCount: 460, campCount: 1600, totalPatients: 3090 },
+  { id: "ka_kolar", name: "KOLAR", state: "KARNATAKA", country: "India", isState: false, latitude: 13.1367, longitude: 78.1292, payCount: 99, freeCount: 45, campCount: 150, totalPatients: 294 },
+  { id: "ka_chamarajanagar", name: "CHAMARAJANAGAR", state: "KARNATAKA", country: "India", isState: false, latitude: 11.9261, longitude: 76.9437, payCount: 70, freeCount: 30, campCount: 110, totalPatients: 210 },
+  { id: "ka_mysore", name: "MYSORE", state: "KARNATAKA", country: "India", isState: false, latitude: 12.2958, longitude: 76.6394, payCount: 62, freeCount: 28, campCount: 95, totalPatients: 185 },
+  { id: "ka_bellary", name: "BELLARY", state: "KARNATAKA", country: "India", isState: false, latitude: 15.1394, longitude: 76.9214, payCount: 54, freeCount: 24, campCount: 80, totalPatients: 158 },
+  { id: "ka_mangalore", name: "MANGALORE", state: "KARNATAKA", country: "India", isState: false, latitude: 12.9141, longitude: 74.8560, payCount: 49, freeCount: 22, campCount: 75, totalPatients: 146 },
+  { id: "ka_kodagu", name: "KODAGU", state: "KARNATAKA", country: "India", isState: false, latitude: 12.4244, longitude: 75.7382, payCount: 25, freeCount: 12, campCount: 40, totalPatients: 77 },
+  { id: "ka_ramanagara", name: "RAMANAGARA", state: "KARNATAKA", country: "India", isState: false, latitude: 12.7159, longitude: 77.2814, payCount: 22, freeCount: 10, campCount: 35, totalPatients: 67 },
+
+  // ==========================================
+  // ANDHRA PRADESH & TELANGANA DISTRICTS
+  // ==========================================
+  { id: "ap_nellore", name: "NELLORE", state: "ANDHRA PRADESH", country: "India", isState: false, latitude: 14.4426, longitude: 79.9865, payCount: 1059, freeCount: 900, campCount: 65, totalPatients: 2024 },
+  { id: "ap_cuddapah", name: "CUDDAPAH", state: "ANDHRA PRADESH", country: "India", isState: false, latitude: 14.4673, longitude: 78.8242, payCount: 613, freeCount: 520, campCount: 38, totalPatients: 1171 },
+  { id: "ap_prakasam", name: "PRAKASAM", state: "ANDHRA PRADESH", country: "India", isState: false, latitude: 15.5057, longitude: 80.0499, payCount: 567, freeCount: 480, campCount: 35, totalPatients: 1082 },
+  { id: "ap_chittoor", name: "CHITTOOR", state: "ANDHRA PRADESH", country: "India", isState: false, latitude: 13.2172, longitude: 79.1003, payCount: 540, freeCount: 460, campCount: 34, totalPatients: 1034 },
+  { id: "ap_guntur", name: "GUNTUR", state: "ANDHRA PRADESH", country: "India", isState: false, latitude: 16.3067, longitude: 80.4365, payCount: 380, freeCount: 320, campCount: 24, totalPatients: 724 },
+  { id: "ap_anantapur", name: "ANANTAPUR", state: "ANDHRA PRADESH", country: "India", isState: false, latitude: 14.6819, longitude: 77.6006, payCount: 375, freeCount: 315, campCount: 23, totalPatients: 713 },
+  { id: "ap_east_godavari", name: "EAST GODAVARI", state: "ANDHRA PRADESH", country: "India", isState: false, latitude: 17.0005, longitude: 81.8040, payCount: 156, freeCount: 130, campCount: 10, totalPatients: 296 },
+  { id: "ap_krishna", name: "KRISHNA", state: "ANDHRA PRADESH", country: "India", isState: false, latitude: 16.5062, longitude: 80.6480, payCount: 155, freeCount: 130, campCount: 10, totalPatients: 295 },
+  { id: "ap_west_godavari", name: "WEST GODAVARI", state: "ANDHRA PRADESH", country: "India", isState: false, latitude: 16.7107, longitude: 81.0952, payCount: 135, freeCount: 115, campCount: 8, totalPatients: 258 },
+  { id: "ap_kurnool", name: "KURNOOL", state: "ANDHRA PRADESH", country: "India", isState: false, latitude: 15.8281, longitude: 78.0373, payCount: 129, freeCount: 110, campCount: 8, totalPatients: 247 },
+  { id: "ts_hyderabad", name: "HYDERABAD", state: "TELUNGANA", country: "India", isState: false, latitude: 17.3850, longitude: 78.4867, payCount: 112, freeCount: 95, campCount: 7, totalPatients: 214 },
   {
     "id": "andaman_nicobar",
     "name": "ANDAMAN & NICOBAR",
