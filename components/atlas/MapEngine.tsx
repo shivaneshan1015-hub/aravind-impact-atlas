@@ -656,21 +656,13 @@ export function MapEngine({
 
       if (isPatientHub) {
         const displayCount = (loc.metadata?.displayCount || loc.metadata?.totalPatients || 0) as number;
-        const formatted = displayCount >= 1000000
-          ? (displayCount / 1000000).toFixed(2) + "M"
-          : displayCount >= 1000
-          ? (displayCount / 1000).toFixed(displayCount >= 10000 ? 0 : 1) + "K"
-          : displayCount.toLocaleString();
-
-        const filterLabel = (loc.metadata?.activeFilter || "all").toUpperCase();
-        const badgeBg = loc.metadata?.activeFilter === "free" ? "#064E3B" : "#1E3A8A";
+        const isFree = loc.metadata?.activeFilter === "free";
+        const dotColor = isFree ? "#064E3B" : "#312E81"; // Static dark emerald (Free) or dark indigo (Pay/All)
 
         el.innerHTML = `
-          <div class="relative flex flex-col items-center justify-center pointer-events-auto group z-10" title="${loc.name}: ${displayCount.toLocaleString()} Patients (${filterLabel})">
-            <span class="text-[10px] font-black text-white bg-slate-950/95 px-2.5 py-1 rounded-xl shadow-2xl border-2 border-amber-400 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
-              <span class="w-2 h-2 rounded-full" style="background-color: ${badgeBg};"></span>
-              <span>${loc.name} · ${formatted}</span>
-            </span>
+          <div class="relative flex items-center justify-center pointer-events-auto group z-10" title="${loc.name}: ${displayCount.toLocaleString()} Patients">
+            <div style="width: 12px; height: 12px; background-color: ${dotColor}; border: 2px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 8px ${dotColor}dd, 0 2px 4px rgba(0,0,0,0.4);" class="transition-transform duration-200 group-hover:scale-150">
+            </div>
           </div>
         `;
       } else if (isPatientDot) {
