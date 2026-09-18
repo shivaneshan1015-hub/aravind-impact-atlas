@@ -11,6 +11,12 @@ import {
   StaffCategory,
 } from "@/data/hospitals/staff-data";
 import {
+  PATIENT_PAY_TOTAL,
+  PATIENT_FREE_TOTAL,
+  PATIENT_CAMP_TOTAL,
+  PATIENT_COMBINED_TOTAL,
+} from "@/data/hospitals/patient-pay-data";
+import {
   ChevronRight,
   Layers,
   CheckCircle2,
@@ -321,9 +327,9 @@ export function SidebarPanel({
                       ? "bg-[#1E3A8A] text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
-                  title="3,266,639 Pay Patients"
+                  title={`${PATIENT_PAY_TOTAL.toLocaleString()} Pay Patients`}
                 >
-                  <span className="font-black text-[11px]">3.26M</span>
+                  <span className="font-black text-[11px]">{(PATIENT_PAY_TOTAL / 1000).toFixed(0)}K</span>
                   <span className="text-[8px] uppercase tracking-tighter opacity-90">Pay</span>
                 </button>
                 <button
@@ -336,9 +342,9 @@ export function SidebarPanel({
                       ? "bg-[#064E3B] text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
-                  title="1,254,989 Free Patients"
+                  title={`${PATIENT_FREE_TOTAL.toLocaleString()} Free Patients`}
                 >
-                  <span className="font-black text-[11px]">1.25M</span>
+                  <span className="font-black text-[11px]">{(PATIENT_FREE_TOTAL / 1000).toFixed(0)}K</span>
                   <span className="text-[8px] uppercase tracking-tighter opacity-90">Free</span>
                 </button>
                 <button
@@ -351,9 +357,9 @@ export function SidebarPanel({
                       ? "bg-[#78350F] text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
-                  title="188,086 Camp Patients"
+                  title={`${PATIENT_CAMP_TOTAL.toLocaleString()} Camp Patients`}
                 >
-                  <span className="font-black text-[11px]">188K</span>
+                  <span className="font-black text-[11px]">{(PATIENT_CAMP_TOTAL / 1000).toFixed(0)}K</span>
                   <span className="text-[8px] uppercase tracking-tighter opacity-90">Camp</span>
                 </button>
                 <button
@@ -366,9 +372,9 @@ export function SidebarPanel({
                       ? "bg-slate-900 text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
-                  title="4,709,714 Total Patients"
+                  title={`${PATIENT_COMBINED_TOTAL.toLocaleString()} Total Patients`}
                 >
-                  <span className="font-black text-[11px]">4.71M</span>
+                  <span className="font-black text-[11px]">{(PATIENT_COMBINED_TOTAL / 1000000).toFixed(2)}M</span>
                   <span className="text-[8px] uppercase tracking-tighter opacity-90">All</span>
                 </button>
               </div>
