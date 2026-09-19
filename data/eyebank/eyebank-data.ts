@@ -23,7 +23,7 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
   {
     id: "madurai",
     name: "Madurai",
-    fullName: "RAIEB , Madurai",
+    fullName: "Madurai",
     color: "#991B1B", // Dark Crimson Red
     isDistributionCenter: true,
     districts: [
@@ -42,7 +42,7 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
   {
     id: "coimbatore",
     name: "Coimbatore",
-    fullName: "AIOB, Coimbatore",
+    fullName: "Coimbatore",
     color: "#065F46", // Dark Emerald Green
     isDistributionCenter: true,
     districts: ["Coimbatore", "Tirupur", "Erode", "Dindigul"],
@@ -51,7 +51,7 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
   {
     id: "tirunelveli",
     name: "Tirunelveli",
-    fullName: "RAEB ,Tirunelveli",
+    fullName: "Tirunelveli",
     color: "#115E59", // Dark Teal
     isDistributionCenter: true,
     districts: ["Tirunelveli", "Tuticorin", "Kaniyakumari", "Tenkasi", "Virudhunagar", "Virdhunagar"],
@@ -60,7 +60,7 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
   {
     id: "chennai",
     name: "Chennai",
-    fullName: "AEB Chennai",
+    fullName: "Chennai",
     color: "#1E3A8A", // Dark Royal Blue
     isDistributionCenter: true,
     districts: ["Vellore"],
@@ -69,19 +69,19 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
   {
     id: "pondicherry",
     name: "Pondicherry",
-    fullName: "AEBAP,Pondicherry",
+    fullName: "Pondicherry",
     color: "#581C87", // Dark Purple
     isDistributionCenter: true,
     districts: [
       "Cuddalore", "Vilupuram", "Viluppuram", "Puducherry", "Pondicherry",
       "Mayaldudurai", "Mayaladudurai", "Mayiladuthurai", "Thiruvanamalai", "Thiruvannamalai", "Kallakuruchi", "Kallakurichi"
     ],
-    distributionDistricts: ["Pudhucherry", "Puducherry", "Pondicherry"],
+    distributionDistricts: ["Pudhucherry"],
   },
   {
     id: "salem",
     name: "Salem",
-    fullName: "AEH, Salem",
+    fullName: "Salem",
     color: "#78350F", // Dark Burnt Chocolate
     isDistributionCenter: false,
     districts: ["Salem", "Namakkal", "Dharmapuri", "Krishanagiri", "Krishnagiri"],
@@ -100,11 +100,11 @@ export const EYE_BANK_CATEGORIES: EyeBankCategoryConfig[] = [
 
 export const EYE_BANK_DISTRIBUTION_CATEGORIES = EYE_BANK_CATEGORIES.filter((c) => c.isDistributionCenter);
 
-// Main Eye Bank Centres (Exact names from table)
+// Main Eye Bank Centres
 export const MAIN_EYE_BANK_HUBS = [
   {
     id: "eb_hub_madurai",
-    centerName: "RAIEB , Madurai",
+    centerName: "Madurai",
     city: "Madurai",
     state: "Tamil Nadu",
     latitude: 9.9252,
@@ -116,7 +116,7 @@ export const MAIN_EYE_BANK_HUBS = [
   },
   {
     id: "eb_hub_coimbatore",
-    centerName: "AIOB, Coimbatore",
+    centerName: "Coimbatore",
     city: "Coimbatore",
     state: "Tamil Nadu",
     latitude: 11.0168,
@@ -128,7 +128,7 @@ export const MAIN_EYE_BANK_HUBS = [
   },
   {
     id: "eb_hub_tirunelveli",
-    centerName: "RAEB ,Tirunelveli",
+    centerName: "Tirunelveli",
     city: "Tirunelveli",
     state: "Tamil Nadu",
     latitude: 8.7139,
@@ -140,7 +140,7 @@ export const MAIN_EYE_BANK_HUBS = [
   },
   {
     id: "eb_hub_chennai",
-    centerName: "AEB Chennai",
+    centerName: "Chennai",
     city: "Chennai",
     state: "Tamil Nadu",
     latitude: 13.0827,
@@ -152,7 +152,7 @@ export const MAIN_EYE_BANK_HUBS = [
   },
   {
     id: "eb_hub_pondicherry",
-    centerName: "AEBAP,Pondicherry",
+    centerName: "Pondicherry",
     city: "Puducherry",
     state: "Puducherry",
     latitude: 11.9416,
@@ -164,7 +164,7 @@ export const MAIN_EYE_BANK_HUBS = [
   },
   {
     id: "eb_hub_salem",
-    centerName: "AEH, Salem",
+    centerName: "Salem",
     city: "Salem",
     state: "Tamil Nadu",
     latitude: 11.6643,

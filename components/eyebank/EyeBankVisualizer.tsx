@@ -21,7 +21,7 @@ export function EyeBankVisualizer({
   selectedCenterName,
   onSelectCenterName,
 }: EyeBankVisualizerProps) {
-  const [internalCenter, setInternalCenter] = useState<string>("RAIEB , Madurai");
+  const [internalCenter, setInternalCenter] = useState<string>("Madurai");
 
   const selectedCenter = selectedCenterName || internalCenter;
 

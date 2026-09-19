@@ -742,7 +742,7 @@ export function MapEngine({
                 <svg class="w-3 h-3 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M9 17h6"/>
                 </svg>
-                <span>${distName} Base Eye Bank</span>
+                <span>${distName}</span>
               </span>
 
               <!-- Large Eye Bank Base Hub Building Badge Pin -->

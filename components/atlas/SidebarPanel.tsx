@@ -855,7 +855,7 @@ export function SidebarPanel({
             {/* Primary Subcategory Switcher: Collected vs Distributed */}
             <div className="space-y-2">
               {[
-                { id: "collected", name: "Collected", desc: "7 Base Eye Bank Collection Networks" },
+                { id: "collected", name: "Collected", desc: "7 Collection Centres" },
                 { id: "distributed", name: "Distributed", desc: "National Distribution Network" },
               ].map((m) => {
                 const isSelected = activeSubId === m.id || (m.id === "collected" && activeSubId === "collection_network");
@@ -917,7 +917,7 @@ export function SidebarPanel({
                   </div>
                 )}
 
-                {/* Base Eye Bank Category Filter (5 Centres for Distribution, 7 for Collection) */}
+                {/* Category Filter (5 Centres for Distribution, 7 for Collection) */}
                 {(() => {
                   const isDistributedMode = activeSubId === "distributed" || activeSubId === "distribution_network";
                   const availableCategories = isDistributedMode ? EYE_BANK_DISTRIBUTION_CATEGORIES : EYE_BANK_CATEGORIES;
@@ -928,7 +928,7 @@ export function SidebarPanel({
                       <div className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center justify-between">
                         <span className="flex items-center gap-1.5">
                           <Layers className="w-3.5 h-3.5 text-emerald-700" />
-                          <span>{categoryCount} Base Eye Banks</span>
+                          <span>{categoryCount} Centres</span>
                         </span>
                         <span className="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full font-extrabold">
                           Filter
