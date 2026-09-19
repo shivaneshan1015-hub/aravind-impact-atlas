@@ -132,7 +132,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "management_courses",
         name: "Management Courses",
-        tagline: "Hospital management & executive leadership",
+        tagline: "Hospital management & executive leadership (2,048 Alumni)",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],
@@ -141,7 +141,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "long_term_trainees",
         name: "Long Term Trainees",
-        tagline: "Long term clinical fellowships",
+        tagline: "Long term clinical fellowships (2,167 Fellows)",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],
@@ -159,7 +159,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "post_graduates",
         name: "Post Graduates",
-        tagline: "Post graduate residency & academic specialization",
+        tagline: "Post graduate residency & academic specialization (1,136 Scholars)",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],
@@ -168,7 +168,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "technicians",
         name: "Technicians",
-        tagline: "Ophthalmic & instrument maintenance technicians",
+        tagline: "Ophthalmic & instrument maintenance technicians (512 Techs)",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],
@@ -177,7 +177,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "paramedics",
         name: "Paramedics",
-        tagline: "Mid-level ophthalmic personnel & nursing",
+        tagline: "Mid-level ophthalmic personnel & nursing (505 Paramedics)",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],

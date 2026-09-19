@@ -628,12 +628,12 @@ export function SidebarPanel({
               {/* 6 Category Divisions with Matching Colors */}
               <div className="space-y-1.5 pt-1">
                 {[
-                  { id: "management_courses", name: "Management Courses", color: "#0D9488", desc: "Executive Leadership & Management" },
-                  { id: "long_term_trainees", name: "Long Term Trainees", color: "#3B82F6", desc: "Clinical Fellowships" },
+                  { id: "management_courses", name: "Management Courses", color: "#0D9488", desc: "Executive Leadership & Management", countBadge: "2,048 Alumni" },
+                  { id: "long_term_trainees", name: "Long Term Trainees", color: "#3B82F6", desc: "Clinical Fellowships", countBadge: "2,167 Fellows" },
                   { id: "short_term_trainees", name: "Short Term Trainees", color: "#F59E0B", desc: "Specialized Clinical Training", countBadge: "1,759 Trainees" },
-                  { id: "post_graduates", name: "Post Graduates", color: "#8B5CF6", desc: "Residency & Specialization", countBadge: "544 Scholars" },
-                  { id: "technicians", name: "Technicians", color: "#E11D48", desc: "Ophthalmic & Instrument Techs" },
-                  { id: "paramedics", name: "Paramedics", color: "#06B6D4", desc: "Mid-level Personnel & Nursing" },
+                  { id: "post_graduates", name: "Post Graduates", color: "#8B5CF6", desc: "Residency & Specialization", countBadge: "1,136 Scholars" },
+                  { id: "technicians", name: "Technicians", color: "#E11D48", desc: "Ophthalmic & Instrument Techs", countBadge: "512 Techs" },
+                  { id: "paramedics", name: "Paramedics", color: "#06B6D4", desc: "Mid-level Personnel & Nursing", countBadge: "505 Paramedics" },
                 ].map((cat) => {
                   const isSelected = activeSubId === cat.id;
                   return (
