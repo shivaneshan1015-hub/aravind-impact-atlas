@@ -666,12 +666,12 @@ export function MapEngine({
           </div>
         `;
       } else if (isIhmsLoc) {
-        // Server Chip Node Badge Pin for IHMS Client Location (Rich Dark Burnt Copper)
+        // Server Chip Node Badge Pin for IHMS Client Location (Sky 700 #0369A1)
         el.innerHTML = `
           <div class="relative flex items-center justify-center pointer-events-auto group" title="IHMS Client Location (${loc.city}, ${loc.country})">
             <!-- High-Tech Server Chip Node Badge -->
-            <div class="w-5.5 h-5.5 rounded-lg bg-gradient-to-br from-amber-900 to-orange-950 border-2 border-amber-500/40 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
-              <svg class="w-3.5 h-3.5 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <div class="w-5.5 h-5.5 rounded-lg bg-[#0369A1] border-2 border-white shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+              <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="5" y="5" width="14" height="14" rx="2" />
                 <rect x="9" y="9" width="6" height="6" fill="#FFFFFF" fill-opacity="0.3" />
                 <path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4" stroke-linecap="round" />
@@ -680,12 +680,12 @@ export function MapEngine({
           </div>
         `;
       } else if (isEyenotesLoc) {
-        // Digital EMR Record Badge Pin for Eyenotes (Rich Dark Deep Sky Blue)
+        // Digital EMR Record Badge Pin for Eyenotes (Sky 700 #0369A1)
         el.innerHTML = `
           <div class="relative flex items-center justify-center pointer-events-auto group" title="Eyenotes EMR: ${loc.rawName || loc.name} (${loc.city}, ${loc.country})">
             <!-- EMR Record Badge -->
-            <div class="w-5.5 h-5.5 rounded-md bg-gradient-to-br from-cyan-900 to-sky-950 border-2 border-cyan-500/40 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
-              <svg class="w-3 h-3 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <div class="w-5.5 h-5.5 rounded-md bg-[#0369A1] border-2 border-white shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+              <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                 <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke-linecap="round" />
               </svg>
@@ -693,12 +693,12 @@ export function MapEngine({
           </div>
         `;
       } else if (isVcmsLoc) {
-        // VCMS Vision Centre Pin (Rich Dark Deep Emerald)
+        // VCMS Vision Centre Pin (Sky 700 #0369A1)
         el.innerHTML = `
           <div class="relative flex items-center justify-center pointer-events-auto group" title="VCMS Vision Centre: ${loc.rawName || loc.name} (${loc.city}, ${loc.country})">
             <!-- VCMS Eye Pin Badge -->
-            <div class="w-5.5 h-5.5 rounded-md bg-gradient-to-br from-emerald-900 to-teal-950 border-2 border-emerald-500/40 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
-              <svg class="w-3 h-3 text-emerald-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <div class="w-5.5 h-5.5 rounded-md bg-[#0369A1] border-2 border-white shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+              <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
                 <circle cx="12" cy="12" r="3" fill="#FFFFFF" fill-opacity="0.8" />
               </svg>

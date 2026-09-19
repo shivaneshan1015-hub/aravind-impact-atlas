@@ -37,8 +37,8 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
   hospitals: {
     id: "hospitals",
     name: "Aravind Eye Hospitals",
-    shortName: "Eye Hospitals",
-    tagline: "Care",
+    shortName: "Aravind Eye Hospitals",
+    tagline: "Aravind Eye Hospitals",
     description:
       "Network of tertiary, secondary, outpatient eye care hospitals and vision centres providing high-quality, compassionate eye care.",
     color: "#2563EB", // Deep Blue
@@ -104,9 +104,9 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
     id: "laico",
     name: "Lions Aravind Institute of Community Ophthalmology",
     shortName: "LAICO",
-    tagline: "Capacity Building",
+    tagline: "LAICO",
     description:
-      "Global consultancy and training institute expanding high-volume, high-quality eye care through partner hospitals across 30+ nations.",
+      "Global consultancy and training institute expanding high-volume, high-quality eye care through 399 partner hospitals across 30+ nations.",
     color: "#0D9488", // Teal
     colorLight: "#2DD4BF",
     bgGlow: "rgba(13, 148, 136, 0.15)",
@@ -114,11 +114,11 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "capacity_building",
         name: "Capacity Building",
-        tagline: "Mentored partner hospitals worldwide",
+        tagline: "Mentored partner hospitals worldwide (399 Hospitals)",
         defaultScope: "world",
         primaryMetricKey: "partnerHospitals",
         secondaryMetricKeys: ["surgeriesMentored", "efficiencyGain"],
-        legendTitle: "Partner Network",
+        legendTitle: "Partner Network (399 Hospitals)",
       },
       {
         id: "management_courses",
@@ -176,7 +176,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       },
     ],
     metrics: [
-      { id: "partnerHospitals", label: "Mentored Hospitals" },
+      { id: "partnerHospitals", label: "Mentored Hospitals (399)" },
       { id: "participantsCount", label: "Trained Executives" },
       { id: "countriesCount", label: "Countries Engaged" },
       { id: "coursesCount", label: "Training Programs" },
@@ -188,7 +188,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
     id: "amrf",
     name: "Aravind Medical Research Foundation",
     shortName: "AMRF",
-    tagline: "Research",
+    tagline: "AMRF",
     description:
       "Premieres basic research in ocular science, molecular genetics, proteomics, stem cells, and clinical research.",
     color: "#7C3AED", // Purple
@@ -206,7 +206,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       },
       {
         id: "collaboratives",
-        name: "Collaboratives",
+        name: "Collaboration",
         tagline: "Global academic & institutional research partners",
         defaultScope: "world",
         primaryMetricKey: "collaborationsCount",
@@ -236,7 +236,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
     id: "aurolab",
     name: "Aurolab",
     shortName: "Aurolab",
-    tagline: "Access",
+    tagline: "Aurolab",
     description:
       "Manufacturing division producing high-quality intraocular lenses, suture materials, pharmaceutical eye drops, and surgical equipment for worldwide blindness prevention.",
     color: "#EA580C", // Warm Orange
@@ -273,11 +273,11 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
   },
   auroitech: {
     id: "auroitech",
-    name: "Auroitech",
-    shortName: "Auroitech",
-    tagline: "Technology",
+    name: "AuroiTech",
+    shortName: "AuroiTech",
+    tagline: "AuroiTech",
     description:
-      "Technology arm innovating digital health solutions, telemedicine platforms, vision screening AI, and hospital management software.",
+      "Technology arm innovating digital health solutions, EMR systems, vision screening AI, and hospital management software.",
     color: "#0284C7", // Cyan/Blue
     colorLight: "#38BDF8",
     bgGlow: "rgba(2, 132, 199, 0.15)",
@@ -294,11 +294,11 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "eyenotes",
         name: "Eyenotes",
-        tagline: "184 Global EMR Deployments across Nations",
+        tagline: "8970 patients are registered daily across 185 centres",
         defaultScope: "world",
         primaryMetricKey: "eyenotesUsers",
         secondaryMetricKeys: ["emrRecords", "activeDoctors"],
-        legendTitle: "Eyenotes EMR Deployments (184 Sites)",
+        legendTitle: "8970 patients are registered daily across 185 centres",
       },
       {
         id: "vcms",
@@ -309,19 +309,10 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
         secondaryMetricKeys: ["teleconsultations", "ruralScreenings"],
         legendTitle: "VCMS Rural Network (398 Centres)",
       },
-      {
-        id: "total_patients",
-        name: "Total Patients Registered",
-        tagline: "Digital health patient registration & screenings",
-        defaultScope: "state",
-        primaryMetricKey: "totalPatientsRegistered",
-        secondaryMetricKeys: ["screeningRecords", "digitalPrescriptions"],
-        legendTitle: "Digital Patient Registry",
-      },
     ],
     metrics: [
       { id: "clientInstitutionsCount", label: "Client Hospitals" },
-      { id: "digitalPatientsCount", label: "Patients Registered" },
+      { id: "digitalPatientsCount", label: "Patients Registered Daily" },
       { id: "productsDeployedCount", label: "Software Solutions" },
       { id: "teleconsultsCount", label: "Telemedicine Consults" },
     ],
@@ -331,8 +322,8 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
   eyebank: {
     id: "eyebank",
     name: "Rotary Aravind International Eye Bank",
-    shortName: "Eye Bank",
-    tagline: "Vision Restoration",
+    shortName: "Eye bank",
+    tagline: "Eye bank",
     description:
       "Premier eye bank network dedicated to corneal tissue retrieval, processing, evaluation, distribution, and corneal blindness eradication.",
     color: "#059669", // Emerald Green

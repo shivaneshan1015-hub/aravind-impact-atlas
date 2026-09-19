@@ -552,7 +552,7 @@ export function SidebarPanel({
               <span className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
                 activeSubId === "capacity_building" ? "bg-white/20 text-white" : "bg-emerald-100 text-emerald-900"
               }`}>
-                400 Hospitals
+                399 Hospitals
               </span>
             </button>
 
@@ -729,7 +729,7 @@ export function SidebarPanel({
               </div>
             </div>
 
-            {/* Primary Category 2: Collaboratives */}
+            {/* Primary Category 2: Collaboration */}
             <button
               onClick={() => onSelectSubcategory?.("collaboratives")}
               className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between font-bold text-xs transition-all ${
@@ -741,7 +741,7 @@ export function SidebarPanel({
               <div className="flex items-center gap-2.5">
                 <Globe2 className="w-4 h-4 text-purple-500 shrink-0" />
                 <div>
-                  <div className="font-black">Collaboratives</div>
+                  <div className="font-black">Collaboration</div>
                   <div className="text-[10px] font-normal opacity-80">12 Global University Partners</div>
                 </div>
               </div>
@@ -821,9 +821,8 @@ export function SidebarPanel({
           <div className="space-y-2">
             {[
               { id: "ihms", name: "IHMS", desc: "154 Global Deployments across 12 Nations" },
-              { id: "eyenotes", name: "Eyenotes", desc: "184 EMR Deployments across Nations" },
+              { id: "eyenotes", name: "Eyenotes", desc: "8970 patients are registered daily across 185 centres" },
               { id: "vcms", name: "VCMS", desc: "398 Vision Centres across Bangladesh, India & Nepal" },
-              { id: "total_patients", name: "Total Patients Registered", desc: "Digital Health Telemetry" },
             ].map((m) => {
               const isSelected = activeSubId === m.id;
               return (
