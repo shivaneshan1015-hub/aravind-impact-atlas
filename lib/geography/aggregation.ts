@@ -206,7 +206,7 @@ export function getFilteredLocations(
     return DEMO_LOCATIONS;
   }
 
-  if (entityId === "hospitals" && subcategoryId === "staffs") {
+  if (entityId === "staffs" || (entityId === "hospitals" && subcategoryId === "staffs")) {
     return generateStaffDots(staffGroup, staffCategory);
   }
 

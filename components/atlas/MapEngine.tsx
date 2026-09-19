@@ -863,6 +863,39 @@ export function MapEngine({
             </div>
           `;
         }
+      } else if (loc.entityId === "staffs" || loc.type === "Staff State Dot") {
+        const staffCategoryColors: Record<string, string> = {
+          admin: "#1E293B",
+          doctors: "#065F46",
+          post_graduates: "#3730A3",
+          aop: "#312E81",
+          support: "#701A75",
+        };
+        const dotColor = (loc.metadata?.color as string) || staffCategoryColors[loc.metadata?.category as string] || "#1E293B";
+        const count = (loc.metadata?.traineeCount as number) || (loc.metrics?.["Employees Count"] as number) || (loc.metrics?.["Trainees Count"] as number) || 1;
+        const stateName = loc.rawName || loc.state || loc.city || loc.name;
+        const catName = (loc.metadata?.categoryName as string) || (loc.metrics?.Category as string) || "Staff";
+
+        // Scaled dot size (12px to 28px based on staff volume)
+        const minSize = 12;
+        const maxSize = 28;
+        const logCount = Math.log10(Math.max(1, count));
+        const logMax = Math.log10(2500);
+        const calculatedSize = Math.round(minSize + (logCount / logMax) * (maxSize - minSize));
+        const dotSize = `${Math.min(maxSize, Math.max(minSize, calculatedSize))}px`;
+
+        el.innerHTML = `
+          <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${stateName}: ${count.toLocaleString()} ${catName}">
+            <!-- Touch / Click / Hover State Name & Count Label directly over Pin -->
+            <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1 rounded-lg shadow-xl border border-slate-300 whitespace-nowrap ${isSelected ? 'opacity-100 ring-2 ring-slate-900 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} transition-all duration-150 pointer-events-none">
+              <span class="font-extrabold">${stateName}:</span> <span style="color: ${dotColor}" class="font-black">${count.toLocaleString()} ${catName}</span>
+            </span>
+
+            <!-- Staff Pin Marker Dot with matching Category Dark Color -->
+            <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 10px ${dotColor}dd, 0 2px 5px rgba(0,0,0,0.35); transition: transform 0.15s ease-out;" class="group-hover:scale-130 group-active:scale-130">
+            </div>
+          </div>
+        `;
       } else if (loc.entityId === "amrf") {
         const isHq = loc.id === "amrf_hq" || loc.metadata?.isHq;
         const isCollaborator = loc.metadata?.isCollaborator || loc.subcategoryId === "collaboratives";
@@ -1122,6 +1155,12 @@ export function MapEngine({
             popTitle = `${placeName}: ${count} Trainees`;
             popSub = `LAICO ${catName} · ${loc.country}`;
           }
+        } else if (loc.entityId === "staffs" || loc.type === "Staff State Dot") {
+          const stateName = loc.rawName || loc.state || loc.city || loc.name;
+          const count = (loc.metadata?.traineeCount as number) || (loc.metrics?.["Employees Count"] as number) || (loc.metrics?.["Trainees Count"] as number) || 1;
+          const catName = (loc.metadata?.categoryName as string) || (loc.metrics?.Category as string) || "Staff";
+          popTitle = `${stateName}: ${count.toLocaleString()} ${catName}`;
+          popSub = `Aravind Staffs Directory · ${loc.country || "India"}`;
         }
           
         if (loc.establishedYear && !isAurolab && !isEyeBank) {

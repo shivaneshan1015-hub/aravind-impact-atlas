@@ -15,6 +15,7 @@ const ICON_MAP: Record<EntityId, React.ElementType> = {
   aurolab: Package,
   auroitech: Cpu,
   eyebank: Eye,
+  staffs: Sparkles,
   all: Globe2,
 };
 
@@ -30,6 +31,7 @@ export function SixDoorsNav() {
     IMPACT_STORIES.aurolab,
     IMPACT_STORIES.auroitech,
     IMPACT_STORIES.eyebank,
+    IMPACT_STORIES.staffs,
   ];
 
   useGSAP(

@@ -418,74 +418,73 @@ export function SidebarPanel({
                 </button>
               </div>
             </div>
+          </div>
+        )}
 
-            {/* Primary Category 3: Staffs */}
-            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-3">
-              <button
-                onClick={() => {
-                  onSelectSubcategory?.("staffs");
-                  onSelectCareTypeFilter("all");
-                }}
-                className="w-full text-left flex items-center justify-between"
-              >
+        {/* STANDALONE ENTITY: STAFFS DIRECTORY */}
+        {entityConfig.id === "staffs" && (
+          <div className="space-y-3">
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 text-white shadow-lg space-y-3">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
                 <div className="flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-blue-600" />
-                  <span className="text-xs font-black text-slate-900 uppercase tracking-wider">Staffs Directory</span>
+                  <Users className="w-5 h-5 text-slate-300" />
+                  <div>
+                    <h3 className="text-xs font-black uppercase tracking-wider text-slate-100">Staffs Directory</h3>
+                    <p className="text-[10px] text-slate-400 font-medium">Aravind Eye Care System Workforce</p>
+                  </div>
                 </div>
-                <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">
+                <span className="text-[10px] bg-slate-800 text-slate-200 px-2.5 py-1 rounded-full font-black">
                   {staffGroup === "employees" ? "3,995 Employees" : "2,677 Trainees"}
                 </span>
-              </button>
+              </div>
 
               {/* Sub-Menus: Employees | Trainees */}
-              <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-200/60 rounded-xl">
+              <div className="grid grid-cols-2 gap-2 p-1 bg-slate-800/80 rounded-xl">
                 <button
                   onClick={() => {
-                    onSelectSubcategory?.("staffs");
-                    onSelectCareTypeFilter("all");
+                    onSelectSubcategory?.("employees");
                     onSelectStaffGroup?.("employees");
                     onSelectStaffCategory?.("all");
                   }}
-                  className={`py-1.5 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
+                  className={`py-2 px-3 rounded-lg text-xs font-black flex items-center justify-center gap-1.5 transition-all ${
                     staffGroup === "employees"
-                      ? "bg-blue-600 text-white shadow-xs"
-                      : "text-slate-700 hover:bg-slate-300/50"
+                      ? "bg-slate-700 text-white shadow-sm ring-1 ring-white/20"
+                      : "text-slate-400 hover:text-slate-200 hover:bg-slate-800"
                   }`}
                 >
                   <UserCheck className="w-3.5 h-3.5" />
-                  <span>Employees</span>
+                  <span>Employees (3,995)</span>
                 </button>
                 <button
                   onClick={() => {
-                    onSelectSubcategory?.("staffs");
-                    onSelectCareTypeFilter("all");
+                    onSelectSubcategory?.("trainees");
                     onSelectStaffGroup?.("trainees");
                     onSelectStaffCategory?.("all");
                   }}
-                  className={`py-1.5 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
+                  className={`py-2 px-3 rounded-lg text-xs font-black flex items-center justify-center gap-1.5 transition-all ${
                     staffGroup === "trainees"
-                      ? "bg-blue-600 text-white shadow-xs"
-                      : "text-slate-700 hover:bg-slate-300/50"
+                      ? "bg-slate-700 text-white shadow-sm ring-1 ring-white/20"
+                      : "text-slate-400 hover:text-slate-200 hover:bg-slate-800"
                   }`}
                 >
                   <UserPlus className="w-3.5 h-3.5" />
-                  <span>Trainees</span>
+                  <span>Trainees (2,677)</span>
                 </button>
               </div>
 
-              {/* Category Filters: Admin, Doctors, Post Graduates, AOP, Support Services */}
-              <div className="space-y-1.5 pt-1">
+              {/* Category Filters for Active Group */}
+              <div className="space-y-2 pt-1">
                 <div className="text-[10px] font-black uppercase text-slate-400 tracking-wider flex justify-between px-1">
-                  <span>Categories ({staffGroup})</span>
+                  <span>Categories ({staffGroup === "employees" ? "Employees" : "Trainees"})</span>
                   <button
                     onClick={() => onSelectStaffCategory?.("all")}
-                    className={`underline text-[10px] ${staffCategory === "all" ? "text-blue-600 font-bold" : "text-slate-400"}`}
+                    className={`underline text-[10px] ${staffCategory === "all" ? "text-slate-200 font-bold" : "text-slate-400 hover:text-slate-200"}`}
                   >
                     View All
                   </button>
                 </div>
 
-                <div className="grid grid-cols-2 gap-1.5">
+                <div className="grid grid-cols-2 gap-2">
                   {(staffGroup === "employees"
                     ? (["admin", "doctors", "aop", "support"] as StaffCategory[])
                     : (["admin", "doctors", "post_graduates", "aop", "support"] as StaffCategory[])
@@ -497,21 +496,28 @@ export function SidebarPanel({
                       <button
                         key={catKey}
                         onClick={() => {
-                          onSelectSubcategory?.("staffs");
-                          onSelectCareTypeFilter("all");
+                          onSelectSubcategory?.(staffGroup === "employees" ? "employees" : "trainees");
                           onSelectStaffCategory?.(isCatSelected ? "all" : catKey);
                         }}
-                        className={`p-2 rounded-xl border text-left transition-all flex flex-col justify-between ${
+                        className={`p-2.5 rounded-xl border text-left transition-all flex flex-col justify-between ${
                           isCatSelected
-                            ? "ring-2 ring-blue-500 bg-white shadow-xs"
-                            : "bg-white hover:bg-slate-100/80 border-slate-200"
+                            ? "text-white shadow-md font-black ring-2 ring-white/30"
+                            : "bg-slate-800/80 hover:bg-slate-800 text-slate-200 border-slate-700 font-bold"
                         }`}
-                        style={{ borderLeftColor: catMeta.color, borderLeftWidth: "4px" }}
+                        style={{
+                          backgroundColor: isCatSelected ? catMeta.color : undefined,
+                          borderColor: isCatSelected ? catMeta.color : undefined,
+                          borderLeftColor: isCatSelected ? undefined : catMeta.color,
+                          borderLeftWidth: isCatSelected ? undefined : "4px",
+                        }}
                       >
-                        <div className="text-[11px] font-bold text-slate-800 truncate">{catMeta.name}</div>
-                        <div className="flex items-center justify-between mt-1">
-                          <span className="text-xs font-black text-slate-900">{catMeta.count.toLocaleString()}</span>
-                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: catMeta.color }} />
+                        <div className="text-[11px] font-bold truncate">{catMeta.name}</div>
+                        <div className="flex items-center justify-between mt-1.5">
+                          <span className="text-xs font-black">{catMeta.count.toLocaleString()}</span>
+                          <span
+                            className="w-2.5 h-2.5 rounded-full border border-white/40"
+                            style={{ backgroundColor: isCatSelected ? "#FFFFFF" : catMeta.color }}
+                          />
                         </div>
                       </button>
                     );

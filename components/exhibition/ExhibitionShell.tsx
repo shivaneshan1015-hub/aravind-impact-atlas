@@ -258,7 +258,7 @@ export function ExhibitionShell() {
             {/* Quick Six Doors Switcher Bar at Bottom of Map */}
             {(currentScene === "story_exploration" || currentScene === "one_system") && (
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md p-2 rounded-2xl shadow-xl border border-slate-200/80 flex items-center gap-2 z-20">
-                {(["hospitals", "laico", "amrf", "aurolab", "auroitech", "eyebank", "all"] as EntityId[]).map(
+                {(["hospitals", "laico", "amrf", "aurolab", "auroitech", "eyebank", "staffs", "all"] as EntityId[]).map(
                   (entityId) => {
                     const story = IMPACT_STORIES[entityId];
                     const isSelected = selectedEntityId === entityId;

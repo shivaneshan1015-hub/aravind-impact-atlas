@@ -175,6 +175,15 @@ const FOLLOW_IMPACT_STEPS: Record<EntityId, FollowImpactStep[]> = {
       coordinates: [78.9629, 20.5937],
     },
   ],
+  staffs: [
+    {
+      stepNumber: "01",
+      title: "Workforce Footprint",
+      geographyLabel: "South India Network",
+      detail: "3,995 Healthcare Employees & 2,677 Trainees across administrative, medical, paramedical, and support teams",
+      coordinates: [78.6569, 11.1271],
+    },
+  ],
 };
 
 interface FollowImpactNavProps {

@@ -90,15 +90,6 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
         secondaryMetricKeys: ["surgeriesCount", "freeCarePercent"],
         legendTitle: "Patient Density",
       },
-      {
-        id: "staffs",
-        name: "Staffs",
-        tagline: "Ophthalmologists, MLOPs & administrative workforce",
-        defaultScope: "state",
-        primaryMetricKey: "staffCount",
-        secondaryMetricKeys: ["doctorsCount", "mlopCount"],
-        legendTitle: "Workforce Strength",
-      },
     ],
     metrics: [
       { id: "hospitalsCount", label: "Eye Care Centres" },
@@ -384,5 +375,45 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
     ],
     defaultCenter: [78.1198, 9.9252],
     defaultZoom: 6.0,
+  },
+  staffs: {
+    id: "staffs",
+    name: "Staffs Directory",
+    shortName: "Staffs",
+    tagline: "Workforce",
+    description:
+      "Comprehensive workforce directory of Aravind Eye Care System including Employees and Trainees across administrative, medical, paramedical, and support departments.",
+    color: "#1E293B", // Dark Slate
+    colorLight: "#475569",
+    bgGlow: "rgba(30, 41, 59, 0.15)",
+    subcategories: [
+      {
+        id: "employees",
+        name: "Employees",
+        tagline: "3,995 Healthcare & Administrative Employees",
+        defaultScope: "state",
+        primaryMetricKey: "employeeCount",
+        secondaryMetricKeys: ["adminCount", "doctorsCount", "aopCount", "supportCount"],
+        legendTitle: "Employee State Distribution",
+      },
+      {
+        id: "trainees",
+        name: "Trainees",
+        tagline: "2,677 Clinical & Paramedical Trainees",
+        defaultScope: "state",
+        primaryMetricKey: "traineeCount",
+        secondaryMetricKeys: ["adminTrainees", "doctorTrainees", "aopTrainees"],
+        legendTitle: "Trainees State Distribution",
+      },
+    ],
+    metrics: [
+      { id: "totalEmployees", label: "Total Employees (3,995)" },
+      { id: "aopCount", label: "AOP Personnel (2,416)" },
+      { id: "adminCount", label: "Admin Staff (843)" },
+      { id: "doctorsCount", label: "Doctors (446)" },
+      { id: "supportCount", label: "Support Services (290)" },
+    ],
+    defaultCenter: INDIA_CENTER,
+    defaultZoom: 4.8,
   },
 };

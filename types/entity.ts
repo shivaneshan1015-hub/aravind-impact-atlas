@@ -5,6 +5,7 @@ export type EntityId =
   | "aurolab"
   | "auroitech"
   | "eyebank"
+  | "staffs"
   | "all";
 
 export type SubcategoryId = string;
