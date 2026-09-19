@@ -188,7 +188,7 @@ export const CENTRAL_IMPACT_CONFIGS: Record<EntityId, ImpactConfig> = {
     label: "STAFFS DIRECTORY",
     entity: "Staffs Directory",
     shortName: "Staffs",
-    question: "Where is our healthcare workforce located?",
+    question: "Where does our healthcare workforce come from?",
     description: "Comprehensive directory of Aravind Eye Care System workforce across healthcare facilities.",
     accent: "#1E293B",
     mapMode: "markers",

@@ -424,32 +424,34 @@ export function SidebarPanel({
         {/* STANDALONE ENTITY: STAFFS DIRECTORY */}
         {entityConfig.id === "staffs" && (
           <div className="space-y-3">
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 text-white shadow-lg space-y-3">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
-                <div className="flex items-center gap-2">
-                  <Users className="w-5 h-5 text-slate-300" />
-                  <div>
-                    <h3 className="text-xs font-black uppercase tracking-wider text-slate-100">Staffs Directory</h3>
-                    <p className="text-[10px] text-slate-400 font-medium">Aravind Eye Care System Workforce</p>
-                  </div>
+            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-3">
+              <div className="flex items-center justify-between border-b border-slate-200/60 pb-2">
+                <div>
+                  <span className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
+                    <Users className="w-4 h-4 text-slate-700" />
+                    <span>Staffs Directory</span>
+                  </span>
+                  <span className="text-[10px] text-slate-600 font-extrabold block mt-0.5">
+                    Aravind Workforce • <span className="font-bold underline decoration-slate-400/50">As of Sep 2026</span>
+                  </span>
                 </div>
-                <span className="text-[10px] bg-slate-800 text-slate-200 px-2.5 py-1 rounded-full font-black">
+                <span className="text-[10px] bg-slate-200 text-slate-900 px-2 py-0.5 rounded-full font-black">
                   {staffGroup === "employees" ? "3,995 Employees" : "2,677 Trainees"}
                 </span>
               </div>
 
               {/* Sub-Menus: Employees | Trainees */}
-              <div className="grid grid-cols-2 gap-2 p-1 bg-slate-800/80 rounded-xl">
+              <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-200/60 rounded-xl">
                 <button
                   onClick={() => {
                     onSelectSubcategory?.("employees");
                     onSelectStaffGroup?.("employees");
                     onSelectStaffCategory?.("all");
                   }}
-                  className={`py-2 px-3 rounded-lg text-xs font-black flex items-center justify-center gap-1.5 transition-all ${
+                  className={`py-1.5 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
                     staffGroup === "employees"
-                      ? "bg-slate-700 text-white shadow-sm ring-1 ring-white/20"
-                      : "text-slate-400 hover:text-slate-200 hover:bg-slate-800"
+                      ? "bg-slate-900 text-white shadow-xs"
+                      : "text-slate-700 hover:bg-slate-300/50"
                   }`}
                 >
                   <UserCheck className="w-3.5 h-3.5" />
@@ -461,10 +463,10 @@ export function SidebarPanel({
                     onSelectStaffGroup?.("trainees");
                     onSelectStaffCategory?.("all");
                   }}
-                  className={`py-2 px-3 rounded-lg text-xs font-black flex items-center justify-center gap-1.5 transition-all ${
+                  className={`py-1.5 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
                     staffGroup === "trainees"
-                      ? "bg-slate-700 text-white shadow-sm ring-1 ring-white/20"
-                      : "text-slate-400 hover:text-slate-200 hover:bg-slate-800"
+                      ? "bg-slate-900 text-white shadow-xs"
+                      : "text-slate-700 hover:bg-slate-300/50"
                   }`}
                 >
                   <UserPlus className="w-3.5 h-3.5" />
@@ -473,18 +475,18 @@ export function SidebarPanel({
               </div>
 
               {/* Category Filters for Active Group */}
-              <div className="space-y-2 pt-1">
+              <div className="space-y-1.5 pt-1">
                 <div className="text-[10px] font-black uppercase text-slate-400 tracking-wider flex justify-between px-1">
                   <span>Categories ({staffGroup === "employees" ? "Employees" : "Trainees"})</span>
                   <button
                     onClick={() => onSelectStaffCategory?.("all")}
-                    className={`underline text-[10px] ${staffCategory === "all" ? "text-slate-200 font-bold" : "text-slate-400 hover:text-slate-200"}`}
+                    className={`underline text-[10px] ${staffCategory === "all" ? "text-slate-900 font-bold" : "text-slate-400"}`}
                   >
                     View All
                   </button>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-1.5">
                   {(staffGroup === "employees"
                     ? (["admin", "doctors", "aop", "support"] as StaffCategory[])
                     : (["admin", "doctors", "post_graduates", "aop", "support"] as StaffCategory[])
@@ -499,10 +501,10 @@ export function SidebarPanel({
                           onSelectSubcategory?.(staffGroup === "employees" ? "employees" : "trainees");
                           onSelectStaffCategory?.(isCatSelected ? "all" : catKey);
                         }}
-                        className={`p-2.5 rounded-xl border text-left transition-all flex flex-col justify-between ${
+                        className={`p-2 rounded-xl border text-left transition-all flex flex-col justify-between ${
                           isCatSelected
-                            ? "text-white shadow-md font-black ring-2 ring-white/30"
-                            : "bg-slate-800/80 hover:bg-slate-800 text-slate-200 border-slate-700 font-bold"
+                            ? "text-white shadow-md font-black ring-2 ring-slate-900/20"
+                            : "bg-white hover:bg-slate-100 text-slate-800 border-slate-200 font-bold"
                         }`}
                         style={{
                           backgroundColor: isCatSelected ? catMeta.color : undefined,
@@ -512,10 +514,10 @@ export function SidebarPanel({
                         }}
                       >
                         <div className="text-[11px] font-bold truncate">{catMeta.name}</div>
-                        <div className="flex items-center justify-between mt-1.5">
+                        <div className="flex items-center justify-between mt-1">
                           <span className="text-xs font-black">{catMeta.count.toLocaleString()}</span>
                           <span
-                            className="w-2.5 h-2.5 rounded-full border border-white/40"
+                            className="w-2.5 h-2.5 rounded-full border border-white/40 shrink-0"
                             style={{ backgroundColor: isCatSelected ? "#FFFFFF" : catMeta.color }}
                           />
                         </div>
