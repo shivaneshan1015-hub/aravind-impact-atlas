@@ -31,1059 +31,1335 @@ export const AMRF_DATA: GeoLocationItem[] = [
   },
   {
       "id": "amrf_scholar_comp_1",
-      "name": "Ph.D. Graduate Scholar #1 (Madurai)",
-      "rawName": "Scholar #1",
+      "name": "Molecular Analysis of PAX6 Gene in Indian Aniridic patients",
+      "rawName": "Molecular Analysis of PAX6 Gene in Indian Aniridic patients",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Tamil Nadu",
-      "city": "Madurai",
-      "latitude": 9.9378,
-      "longitude": 78.1279,
+      "city": "Vellore",
+      "latitude": 12.9165,
+      "longitude": 79.1325,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Molecular Analysis of PAX6 Gene in Indian Aniridic patients",
+          "city": "Vellore",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2013
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 1,
+          "thesisTitle": "Molecular Analysis of PAX6 Gene in Indian Aniridic patients",
+          "city": "Vellore",
+          "state": "Tamil Nadu",
+          "displayLocation": "Vellore",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_2",
-      "name": "Ph.D. Graduate Scholar #2 (Madurai)",
-      "rawName": "Scholar #2",
+      "name": "Aetiology and pathogenic Mechanism of Uveitis associated with Leptospirosis",
+      "rawName": "Aetiology and pathogenic Mechanism of Uveitis associated with Leptospirosis",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Tamil Nadu",
       "city": "Madurai",
-      "latitude": 9.9033,
-      "longitude": 78.1127,
+      "latitude": 9.9252,
+      "longitude": 78.1198,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Aetiology and pathogenic Mechanism of Uveitis associated with Leptospirosis",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2014
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 2,
+          "thesisTitle": "Aetiology and pathogenic Mechanism of Uveitis associated with Leptospirosis",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_3",
-      "name": "Ph.D. Graduate Scholar #3 (Madurai)",
-      "rawName": "Scholar #3",
+      "name": "Studies on Myocilin TIGR/MYOC) gene mutations and Myocilin protein in Indian patients with Primary Open Angle Glaucoma",
+      "rawName": "Studies on Myocilin TIGR/MYOC) gene mutations and Myocilin protein in Indian patients with Primary Open Angle Glaucoma",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Tamil Nadu",
-      "city": "Madurai",
-      "latitude": 9.9562,
-      "longitude": 78.1215,
+      "city": "Karur",
+      "latitude": 10.9601,
+      "longitude": 78.0816,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Studies on Myocilin TIGR/MYOC) gene mutations and Myocilin protein in Indian patients with Primary Open Angle Glaucoma",
+          "city": "Karur",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2015
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 3,
+          "thesisTitle": "Studies on Myocilin TIGR/MYOC) gene mutations and Myocilin protein in Indian patients with Primary Open Angle Glaucoma",
+          "city": "Karur",
+          "state": "Tamil Nadu",
+          "displayLocation": "Karur",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_4",
-      "name": "Ph.D. Graduate Scholar #4 (Madurai)",
-      "rawName": "Scholar #4",
+      "name": "Involvement of Transcription Factor genes PAX6/FOXL2 in various ocular anomalies",
+      "rawName": "Involvement of Transcription Factor genes PAX6/FOXL2 in various ocular anomalies",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Tamil Nadu",
-      "city": "Madurai",
-      "latitude": 9.887,
-      "longitude": 78.1277,
+      "city": "Samayanallur",
+      "latitude": 9.9881,
+      "longitude": 78.0494,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Involvement of Transcription Factor genes PAX6/FOXL2 in various ocular anomalies",
+          "city": "Samayanallur",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2016
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 4,
+          "thesisTitle": "Involvement of Transcription Factor genes PAX6/FOXL2 in various ocular anomalies",
+          "city": "Samayanallur",
+          "state": "Tamil Nadu",
+          "displayLocation": "Samayanallur",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_5",
-      "name": "Ph.D. Graduate Scholar #5 (Madurai)",
-      "rawName": "Scholar #5",
+      "name": "Understanding the Molecular Genetics of Cataract",
+      "rawName": "Understanding the Molecular Genetics of Cataract",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Tamil Nadu",
       "city": "Madurai",
-      "latitude": 9.9673,
-      "longitude": 78.0988,
+      "latitude": 9.9124,
+      "longitude": 78.1326,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Understanding the Molecular Genetics of Cataract",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2017
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 5,
+          "thesisTitle": "Understanding the Molecular Genetics of Cataract",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_6",
-      "name": "Ph.D. Graduate Scholar #6 (Madurai)",
-      "rawName": "Scholar #6",
+      "name": "Identification, Characterization, Enrichment and in vitro maintenance of Human Corneal Epithelial Stem Cells",
+      "rawName": "Identification, Characterization, Enrichment and in vitro maintenance of Human Corneal Epithelial Stem Cells",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Madurai",
-      "latitude": 9.8839,
-      "longitude": 78.1561,
+      "state": "Karnataka",
+      "city": "Karnataka",
+      "latitude": 12.9716,
+      "longitude": 77.5946,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Identification, Characterization, Enrichment and in vitro maintenance of Human Corneal Epithelial Stem Cells",
+          "city": "Karnataka",
+          "state": "Karnataka",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2018
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 6,
+          "thesisTitle": "Identification, Characterization, Enrichment and in vitro maintenance of Human Corneal Epithelial Stem Cells",
+          "city": "",
+          "state": "Karnataka",
+          "displayLocation": "Karnataka",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_7",
-      "name": "Ph.D. Graduate Scholar #7 (Madurai)",
-      "rawName": "Scholar #7",
+      "name": "Serological and Molecular characterization of Rubella virus in children with Ocular defects of Congenital Rubella Syndrome",
+      "rawName": "Serological and Molecular characterization of Rubella virus in children with Ocular defects of Congenital Rubella Syndrome",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Tamil Nadu",
       "city": "Madurai",
-      "latitude": 9.9603,
-      "longitude": 78.0675,
+      "latitude": 9.9412,
+      "longitude": 78.1038,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Serological and Molecular characterization of Rubella virus in children with Ocular defects of Congenital Rubella Syndrome",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2019
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 7,
+          "thesisTitle": "Serological and Molecular characterization of Rubella virus in children with Ocular defects of Congenital Rubella Syndrome",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_8",
-      "name": "Ph.D. Graduate Scholar #8 (Madurai)",
-      "rawName": "Scholar #8",
+      "name": "Molecular Genetics of Diabetic Retinopathy",
+      "rawName": "Molecular Genetics of Diabetic Retinopathy",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Tamil Nadu",
-      "city": "Madurai",
-      "latitude": 9.902,
-      "longitude": 78.1869,
+      "city": "Sattur",
+      "latitude": 9.3562,
+      "longitude": 77.9255,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Molecular Genetics of Diabetic Retinopathy",
+          "city": "Sattur",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2020
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 8,
+          "thesisTitle": "Molecular Genetics of Diabetic Retinopathy",
+          "city": "Sattur",
+          "state": "Tamil Nadu",
+          "displayLocation": "Sattur",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_9",
-      "name": "Ph.D. Graduate Scholar #9 (Madurai)",
-      "rawName": "Scholar #9",
+      "name": "Molecular Mechanisms of Diabetic Retinopathy",
+      "rawName": "Molecular Mechanisms of Diabetic Retinopathy",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Tamil Nadu",
       "city": "Madurai",
-      "latitude": 9.9311,
-      "longitude": 78.041,
+      "latitude": 9.906,
+      "longitude": 78.1198,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Molecular Mechanisms of Diabetic Retinopathy",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2021
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 9,
+          "thesisTitle": "Molecular Mechanisms of Diabetic Retinopathy",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_10",
-      "name": "Ph.D. Graduate Scholar #10 (Madurai)",
-      "rawName": "Scholar #10",
+      "name": "Genetic and functional analysis of Fuchs Endothelial Corneal Dystrophy (FECD) and Congenital hereditary endothelial dystrophy (CHED) in Indian patients",
+      "rawName": "Genetic and functional analysis of Fuchs Endothelial Corneal Dystrophy (FECD) and Congenital hereditary endothelial dystrophy (CHED) in Indian patients",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Tamil Nadu",
-      "city": "Madurai",
-      "latitude": 9.9411,
-      "longitude": 78.2053,
+      "city": "Dindigul",
+      "latitude": 10.3673,
+      "longitude": 77.9803,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Genetic and functional analysis of Fuchs Endothelial Corneal Dystrophy (FECD) and Congenital hereditary endothelial dystrophy (CHED) in Indian patients",
+          "city": "Dindigul",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2022
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 10,
+          "thesisTitle": "Genetic and functional analysis of Fuchs Endothelial Corneal Dystrophy (FECD) and Congenital hereditary endothelial dystrophy (CHED) in Indian patients",
+          "city": "Dindigul",
+          "state": "Tamil Nadu",
+          "displayLocation": "Dindigul",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_11",
-      "name": "Ph.D. Graduate Scholar #11 (Chennai)",
-      "rawName": "Scholar #11",
+      "name": "Understanding Pathogenesis of Human Mycotic Keratitis - A Proteome wide analysis",
+      "rawName": "Understanding Pathogenesis of Human Mycotic Keratitis - A Proteome wide analysis",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Tamil Nadu",
-      "city": "Chennai",
-      "latitude": 13.0677,
-      "longitude": 80.2708,
+      "city": "Tenkasi",
+      "latitude": 8.9594,
+      "longitude": 77.3,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Understanding Pathogenesis of Human Mycotic Keratitis - A Proteome wide analysis",
+          "city": "Tenkasi",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2023
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 11,
+          "thesisTitle": "Understanding Pathogenesis of Human Mycotic Keratitis - A Proteome wide analysis",
+          "city": "Tenkasi",
+          "state": "Tamil Nadu",
+          "displayLocation": "Tenkasi",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_12",
-      "name": "Ph.D. Graduate Scholar #12 (Chennai)",
-      "rawName": "Scholar #12",
+      "name": "Molecular Genetics and Functional Analysis of Albinism Patients in India",
+      "rawName": "Molecular Genetics and Functional Analysis of Albinism Patients in India",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Tamil Nadu",
-      "city": "Chennai",
-      "latitude": 13.1049,
-      "longitude": 80.2647,
+      "city": "Madurai",
+      "latitude": 9.9476,
+      "longitude": 78.1422,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Molecular Genetics and Functional Analysis of Albinism Patients in India",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2012
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 12,
+          "thesisTitle": "Molecular Genetics and Functional Analysis of Albinism Patients in India",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_13",
-      "name": "Ph.D. Graduate Scholar #13 (Chennai)",
-      "rawName": "Scholar #13",
+      "name": "Characterization Of The Immunopathogenic Mechanism In Human Mycotic Keratitis",
+      "rawName": "Characterization Of The Immunopathogenic Mechanism In Human Mycotic Keratitis",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Tamil Nadu",
-      "city": "Chennai",
-      "latitude": 13.0558,
-      "longitude": 80.2861,
+      "city": "Madurai",
+      "latitude": 9.8996,
+      "longitude": 78.0942,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Characterization Of The Immunopathogenic Mechanism In Human Mycotic Keratitis",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2013
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 13,
+          "thesisTitle": "Characterization Of The Immunopathogenic Mechanism In Human Mycotic Keratitis",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
           "color": "#06B6D4"
       }
   },
   {
       "id": "amrf_scholar_comp_14",
-      "name": "Ph.D. Graduate Scholar #14 (Chennai)",
-      "rawName": "Scholar #14",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Chennai",
-      "latitude": 13.1104,
-      "longitude": 80.2433,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2014
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 14,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_15",
-      "name": "Ph.D. Graduate Scholar #15 (Chennai)",
-      "rawName": "Scholar #15",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Chennai",
-      "latitude": 13.0588,
-      "longitude": 80.3112,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2015
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 15,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_16",
-      "name": "Ph.D. Graduate Scholar #16 (Chennai)",
-      "rawName": "Scholar #16",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Chennai",
-      "latitude": 13.0976,
-      "longitude": 80.2178,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2016
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 16,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_17",
-      "name": "Ph.D. Graduate Scholar #17 (Coimbatore)",
-      "rawName": "Scholar #17",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Coimbatore",
-      "latitude": 11.0024,
-      "longitude": 76.9517,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2017
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 17,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_18",
-      "name": "Ph.D. Graduate Scholar #18 (Coimbatore)",
-      "rawName": "Scholar #18",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Coimbatore",
-      "latitude": 11.0398,
-      "longitude": 76.9563,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2018
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 18,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_19",
-      "name": "Ph.D. Graduate Scholar #19 (Coimbatore)",
-      "rawName": "Scholar #19",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Coimbatore",
-      "latitude": 10.9867,
-      "longitude": 76.9631,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2019
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 19,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_20",
-      "name": "Ph.D. Graduate Scholar #20 (Coimbatore)",
-      "rawName": "Scholar #20",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Coimbatore",
-      "latitude": 11.0511,
-      "longitude": 76.9372,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2020
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 20,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_21",
-      "name": "Ph.D. Graduate Scholar #21 (Coimbatore)",
-      "rawName": "Scholar #21",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Coimbatore",
-      "latitude": 10.9826,
-      "longitude": 76.988,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2021
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 21,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_22",
-      "name": "Ph.D. Graduate Scholar #22 (Tiruchirappalli)",
-      "rawName": "Scholar #22",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Tiruchirappalli",
-      "latitude": 10.7904,
-      "longitude": 78.6897,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2022
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 22,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_23",
-      "name": "Ph.D. Graduate Scholar #23 (Tiruchirappalli)",
-      "rawName": "Scholar #23",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Tiruchirappalli",
-      "latitude": 10.7966,
-      "longitude": 78.7269,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2023
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 23,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_24",
-      "name": "Ph.D. Graduate Scholar #24 (Tiruchirappalli)",
-      "rawName": "Scholar #24",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Tiruchirappalli",
-      "latitude": 10.7749,
-      "longitude": 78.6779,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2012
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 24,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_25",
-      "name": "Ph.D. Graduate Scholar #25 (Tiruchirappalli)",
-      "rawName": "Scholar #25",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Tiruchirappalli",
-      "latitude": 10.818,
-      "longitude": 78.7323,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2013
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 25,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_26",
-      "name": "Ph.D. Graduate Scholar #26 (Salem)",
-      "rawName": "Scholar #26",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Salem",
-      "latitude": 11.6757,
-      "longitude": 78.1557,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2014
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 26,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_27",
-      "name": "Ph.D. Graduate Scholar #27 (Salem)",
-      "rawName": "Scholar #27",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Salem",
-      "latitude": 11.6435,
-      "longitude": 78.1361,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2015
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 27,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_28",
-      "name": "Ph.D. Graduate Scholar #28 (Salem)",
-      "rawName": "Scholar #28",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Salem",
-      "latitude": 11.6948,
-      "longitude": 78.1518,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2016
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 28,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_29",
-      "name": "Ph.D. Graduate Scholar #29 (Tirunelveli)",
-      "rawName": "Scholar #29",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Tirunelveli",
-      "latitude": 8.7039,
-      "longitude": 77.7455,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2017
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 29,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_30",
-      "name": "Ph.D. Graduate Scholar #30 (Tirunelveli)",
-      "rawName": "Scholar #30",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Tirunelveli",
-      "latitude": 8.7331,
-      "longitude": 77.7694,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2018
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 30,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_31",
-      "name": "Ph.D. Graduate Scholar #31 (Tirunelveli)",
-      "rawName": "Scholar #31",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Tirunelveli",
-      "latitude": 8.6846,
-      "longitude": 77.7467,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2019
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 31,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_32",
-      "name": "Ph.D. Graduate Scholar #32 (Thanjavur)",
-      "rawName": "Scholar #32",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Thanjavur",
-      "latitude": 10.7953,
-      "longitude": 79.1503,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2020
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 32,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_33",
-      "name": "Ph.D. Graduate Scholar #33 (Thanjavur)",
-      "rawName": "Scholar #33",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Thanjavur",
-      "latitude": 10.7698,
-      "longitude": 79.1225,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2021
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 33,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_34",
-      "name": "Ph.D. Graduate Scholar #34 (Dindigul)",
-      "rawName": "Scholar #34",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Dindigul",
-      "latitude": 10.3752,
-      "longitude": 77.9676,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2022
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 34,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_35",
-      "name": "Ph.D. Graduate Scholar #35 (Dindigul)",
-      "rawName": "Scholar #35",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Tamil Nadu",
-      "city": "Dindigul",
-      "latitude": 10.3605,
-      "longitude": 78.0023,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2023
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 35,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_36",
-      "name": "Ph.D. Graduate Scholar #36 (Patna)",
-      "rawName": "Scholar #36",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Bihar",
-      "city": "Patna",
-      "latitude": 25.5792,
-      "longitude": 85.1357,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2012
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 36,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_37",
-      "name": "Ph.D. Graduate Scholar #37 (Gaya)",
-      "rawName": "Scholar #37",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Bihar",
-      "city": "Gaya",
-      "latitude": 24.7817,
-      "longitude": 85.0117,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2013
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 37,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_38",
-      "name": "Ph.D. Graduate Scholar #38 (Vijayawada)",
-      "rawName": "Scholar #38",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Andhra Pradesh",
-      "city": "Vijayawada",
-      "latitude": 16.5106,
-      "longitude": 80.6623,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2014
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 38,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_39",
-      "name": "Ph.D. Graduate Scholar #39 (Visakhapatnam)",
-      "rawName": "Scholar #39",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Andhra Pradesh",
-      "city": "Visakhapatnam",
-      "latitude": 17.7013,
-      "longitude": 83.2225,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2015
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 39,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_40",
-      "name": "Ph.D. Graduate Scholar #40 (Bengaluru)",
-      "rawName": "Scholar #40",
-      "entityId": "amrf",
-      "subcategoryId": "phd_completed",
-      "country": "India",
-      "state": "Karnataka",
-      "city": "Bengaluru",
-      "latitude": 12.9828,
-      "longitude": 77.5846,
-      "type": "PhD Scholar",
-      "metrics": {
-          "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2016
-      },
-      "metadata": {
-          "status": "completed",
-          "scholarNo": 40,
-          "color": "#06B6D4"
-      }
-  },
-  {
-      "id": "amrf_scholar_comp_41",
-      "name": "Ph.D. Graduate Scholar #41 (Lucknow)",
-      "rawName": "Scholar #41",
+      "name": "Identification and Characterization of Mutations in Candidate Genes involved in major Congenital Globe Anomalies",
+      "rawName": "Identification and Characterization of Mutations in Candidate Genes involved in major Congenital Globe Anomalies",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Uttar Pradesh",
       "city": "Lucknow",
-      "latitude": 26.8443,
-      "longitude": 80.9314,
+      "latitude": 26.8467,
+      "longitude": 80.9462,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Identification and Characterization of Mutations in Candidate Genes involved in major Congenital Globe Anomalies",
+          "city": "Lucknow",
+          "state": "Uttar Pradesh",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2017
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
-          "scholarNo": 41,
+          "scholarNo": 14,
+          "thesisTitle": "Identification and Characterization of Mutations in Candidate Genes involved in major Congenital Globe Anomalies",
+          "city": "Lucknow",
+          "state": "Uttar Pradesh",
+          "displayLocation": "Lucknow",
           "color": "#06B6D4"
       }
   },
   {
-      "id": "amrf_scholar_comp_42",
-      "name": "Ph.D. Graduate Scholar #42 (Thiruvananthapuram)",
-      "rawName": "Scholar #42",
+      "id": "amrf_scholar_comp_15",
+      "name": "Etiology and immunopathogenesis of subconjunctival and Anterior Chamber Granulomatous Uveitis in children of South India",
+      "rawName": "Etiology and immunopathogenesis of subconjunctival and Anterior Chamber Granulomatous Uveitis in children of South India",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Bihar",
+      "city": "Bihar",
+      "latitude": 25.5941,
+      "longitude": 85.1376,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Etiology and immunopathogenesis of subconjunctival and Anterior Chamber Granulomatous Uveitis in children of South India",
+          "city": "Bihar",
+          "state": "Bihar",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 15,
+          "thesisTitle": "Etiology and immunopathogenesis of subconjunctival and Anterior Chamber Granulomatous Uveitis in children of South India",
+          "city": "",
+          "state": "Bihar",
+          "displayLocation": "Bihar",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_16",
+      "name": "Molecular studies of Leber Congenital Amaurosis (LCA) in Indian population",
+      "rawName": "Molecular studies of Leber Congenital Amaurosis (LCA) in Indian population",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Bihar",
+      "city": "Chapra",
+      "latitude": 25.7831,
+      "longitude": 84.7483,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Molecular studies of Leber Congenital Amaurosis (LCA) in Indian population",
+          "city": "Chapra",
+          "state": "Bihar",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 16,
+          "thesisTitle": "Molecular studies of Leber Congenital Amaurosis (LCA) in Indian population",
+          "city": "Chapra",
+          "state": "Bihar",
+          "displayLocation": "Chapra",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_17",
+      "name": "Identification of genetic variants in genes associated with Primary Open Angle Glaucoma in Indian population",
+      "rawName": "Identification of genetic variants in genes associated with Primary Open Angle Glaucoma in Indian population",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Andhra Pradesh",
+      "city": "Tenali",
+      "latitude": 16.243,
+      "longitude": 80.64,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Identification of genetic variants in genes associated with Primary Open Angle Glaucoma in Indian population",
+          "city": "Tenali",
+          "state": "Andhra Pradesh",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 17,
+          "thesisTitle": "Identification of genetic variants in genes associated with Primary Open Angle Glaucoma in Indian population",
+          "city": "Tenali",
+          "state": "Andhra Pradesh",
+          "displayLocation": "Tenali",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_18",
+      "name": "Investigating the role of Nuclear, Mitochondrial Genome and microRNA in the pathogenesis of Diabetic retinopathy",
+      "rawName": "Investigating the role of Nuclear, Mitochondrial Genome and microRNA in the pathogenesis of Diabetic retinopathy",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Madurai",
+      "latitude": 9.954,
+      "longitude": 78.1198,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Investigating the role of Nuclear, Mitochondrial Genome and microRNA in the pathogenesis of Diabetic retinopathy",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 18,
+          "thesisTitle": "Investigating the role of Nuclear, Mitochondrial Genome and microRNA in the pathogenesis of Diabetic retinopathy",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_19",
+      "name": "Studies on the characterization of limbal niche- their role in maintenance and ex vivo expansion of human corneal epithelial stem cells",
+      "rawName": "Studies on the characterization of limbal niche- their role in maintenance and ex vivo expansion of human corneal epithelial stem cells",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Kerala",
-      "city": "Thiruvananthapuram",
-      "latitude": 8.5104,
-      "longitude": 76.9306,
+      "city": "Kerala",
+      "latitude": 8.5241,
+      "longitude": 76.9366,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Studies on the characterization of limbal niche- their role in maintenance and ex vivo expansion of human corneal epithelial stem cells",
+          "city": "Kerala",
+          "state": "Kerala",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2018
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
-          "scholarNo": 42,
+          "scholarNo": 19,
+          "thesisTitle": "Studies on the characterization of limbal niche- their role in maintenance and ex vivo expansion of human corneal epithelial stem cells",
+          "city": "",
+          "state": "Kerala",
+          "displayLocation": "Kerala",
           "color": "#06B6D4"
       }
   },
   {
-      "id": "amrf_scholar_comp_43",
-      "name": "Ph.D. Graduate Scholar #43 (Guwahati)",
-      "rawName": "Scholar #43",
+      "id": "amrf_scholar_comp_20",
+      "name": "Mitochondrial Genes Involvement in Leber's Hereditary Optic Neuropathy (LHON)",
+      "rawName": "Mitochondrial Genes Involvement in Leber's Hereditary Optic Neuropathy (LHON)",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Assam",
-      "city": "Guwahati",
-      "latitude": 26.132,
-      "longitude": 91.7445,
+      "city": "Assam",
+      "latitude": 26.1445,
+      "longitude": 91.7362,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Mitochondrial Genes Involvement in Leber's Hereditary Optic Neuropathy (LHON)",
+          "city": "Assam",
+          "state": "Assam",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2019
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
-          "scholarNo": 43,
+          "scholarNo": 20,
+          "thesisTitle": "Mitochondrial Genes Involvement in Leber's Hereditary Optic Neuropathy (LHON)",
+          "city": "",
+          "state": "Assam",
+          "displayLocation": "Assam",
           "color": "#06B6D4"
       }
   },
   {
-      "id": "amrf_scholar_comp_44",
-      "name": "Ph.D. Graduate Scholar #44 (New Delhi)",
-      "rawName": "Scholar #44",
+      "id": "amrf_scholar_comp_21",
+      "name": "Genotypic characterization and analysis of virulence factors in Methicillin resistant Staphylococcus aureus causing ocular infections",
+      "rawName": "Genotypic characterization and analysis of virulence factors in Methicillin resistant Staphylococcus aureus causing ocular infections",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
-      "state": "Delhi",
+      "state": "Tamil Nadu",
+      "city": "Kovilpatti",
+      "latitude": 9.1723,
+      "longitude": 77.8687,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Genotypic characterization and analysis of virulence factors in Methicillin resistant Staphylococcus aureus causing ocular infections",
+          "city": "Kovilpatti",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 21,
+          "thesisTitle": "Genotypic characterization and analysis of virulence factors in Methicillin resistant Staphylococcus aureus causing ocular infections",
+          "city": "Kovilpatti",
+          "state": "Tamil Nadu",
+          "displayLocation": "Kovilpatti",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_22",
+      "name": "Molecular Genetics and Cytokine Profiling in South Indian patients with Primary Angle Closure Glaucoma",
+      "rawName": "Molecular Genetics and Cytokine Profiling in South Indian patients with Primary Angle Closure Glaucoma",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "New Delhi",
       "city": "New Delhi",
-      "latitude": 28.6142,
-      "longitude": 77.224,
+      "latitude": 28.6139,
+      "longitude": 77.209,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Molecular Genetics and Cytokine Profiling in South Indian patients with Primary Angle Closure Glaucoma",
+          "city": "New Delhi",
+          "state": "New Delhi",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2020
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
-          "scholarNo": 44,
+          "scholarNo": 22,
+          "thesisTitle": "Molecular Genetics and Cytokine Profiling in South Indian patients with Primary Angle Closure Glaucoma",
+          "city": "",
+          "state": "New Delhi",
+          "displayLocation": "New Delhi",
           "color": "#06B6D4"
       }
   },
   {
-      "id": "amrf_scholar_comp_45",
-      "name": "Ph.D. Graduate Scholar #45 (Srinagar)",
-      "rawName": "Scholar #45",
+      "id": "amrf_scholar_comp_23",
+      "name": "Molecular Analyses of various risk factors involved in Pseudoexfoliation Syndrome",
+      "rawName": "Molecular Analyses of various risk factors involved in Pseudoexfoliation Syndrome",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
-      "state": "Jammu & Kashmir",
-      "city": "Srinagar",
-      "latitude": 34.0965,
-      "longitude": 74.8052,
+      "state": "Tamil Nadu",
+      "city": "Trichy",
+      "latitude": 10.7905,
+      "longitude": 78.7047,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Molecular Analyses of various risk factors involved in Pseudoexfoliation Syndrome",
+          "city": "Trichy",
+          "state": "Tamil Nadu",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2021
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
-          "scholarNo": 45,
+          "scholarNo": 23,
+          "thesisTitle": "Molecular Analyses of various risk factors involved in Pseudoexfoliation Syndrome",
+          "city": "Trichy",
+          "state": "Tamil Nadu",
+          "displayLocation": "Trichy",
           "color": "#06B6D4"
       }
   },
   {
-      "id": "amrf_scholar_comp_46",
-      "name": "Ph.D. Graduate Scholar #46 (Kolkata)",
-      "rawName": "Scholar #46",
+      "id": "amrf_scholar_comp_24",
+      "name": "Genetics and functional approaches to understand the pathogenicity of Primary Open Angle Glaucoma",
+      "rawName": "Genetics and functional approaches to understand the pathogenicity of Primary Open Angle Glaucoma",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Kashmir",
+      "city": "Kashmir",
+      "latitude": 34.0837,
+      "longitude": 74.7973,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Genetics and functional approaches to understand the pathogenicity of Primary Open Angle Glaucoma",
+          "city": "Kashmir",
+          "state": "Kashmir",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 24,
+          "thesisTitle": "Genetics and functional approaches to understand the pathogenicity of Primary Open Angle Glaucoma",
+          "city": "",
+          "state": "Kashmir",
+          "displayLocation": "Kashmir",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_25",
+      "name": "Molecular Signature of Human Limbal Epithelial Stem Cells",
+      "rawName": "Molecular Signature of Human Limbal Epithelial Stem Cells",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Karaikudi",
+      "latitude": 10.0735,
+      "longitude": 78.7732,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Molecular Signature of Human Limbal Epithelial Stem Cells",
+          "city": "Karaikudi",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 25,
+          "thesisTitle": "Molecular Signature of Human Limbal Epithelial Stem Cells",
+          "city": "Karaikudi",
+          "state": "Tamil Nadu",
+          "displayLocation": "Karaikudi",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_26",
+      "name": "Understanding the role of trabecular meshwork stem cells in the maintenance of tissue homeostasis in normal and glaucomatous human eyes",
+      "rawName": "Understanding the role of trabecular meshwork stem cells in the maintenance of tissue homeostasis in normal and glaucomatous human eyes",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Madurai",
+      "latitude": 9.8932,
+      "longitude": 78.1518,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Understanding the role of trabecular meshwork stem cells in the maintenance of tissue homeostasis in normal and glaucomatous human eyes",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 26,
+          "thesisTitle": "Understanding the role of trabecular meshwork stem cells in the maintenance of tissue homeostasis in normal and glaucomatous human eyes",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_27",
+      "name": "Characterization of genetic and transcriptional alterations in retinoblastoma",
+      "rawName": "Characterization of genetic and transcriptional alterations in retinoblastoma",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Madurai",
+      "latitude": 9.9604,
+      "longitude": 78.0846,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Characterization of genetic and transcriptional alterations in retinoblastoma",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 27,
+          "thesisTitle": "Characterization of genetic and transcriptional alterations in retinoblastoma",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_28",
+      "name": "Molecular Genetics of Macular Corneal Dystrophy (MCD) in Indian population",
+      "rawName": "Molecular Genetics of Macular Corneal Dystrophy (MCD) in Indian population",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Madurai",
+      "latitude": 9.8868,
+      "longitude": 78.1198,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Molecular Genetics of Macular Corneal Dystrophy (MCD) in Indian population",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 28,
+          "thesisTitle": "Molecular Genetics of Macular Corneal Dystrophy (MCD) in Indian population",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_29",
+      "name": "Understanding the Molecular Mechanisms of Chemoresistance in Retinoblastoma",
+      "rawName": "Understanding the Molecular Mechanisms of Chemoresistance in Retinoblastoma",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Madurai",
+      "latitude": 9.9668,
+      "longitude": 78.1614,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Understanding the Molecular Mechanisms of Chemoresistance in Retinoblastoma",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 29,
+          "thesisTitle": "Understanding the Molecular Mechanisms of Chemoresistance in Retinoblastoma",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_30",
+      "name": "Micro RNAs Specific to Corneal Epithelial Stem Cells",
+      "rawName": "Micro RNAs Specific to Corneal Epithelial Stem Cells",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Dindigul",
+      "latitude": 10.3545,
+      "longitude": 77.9931,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Micro RNAs Specific to Corneal Epithelial Stem Cells",
+          "city": "Dindigul",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 30,
+          "thesisTitle": "Micro RNAs Specific to Corneal Epithelial Stem Cells",
+          "city": "Dindigul",
+          "state": "Tamil Nadu",
+          "displayLocation": "Dindigul",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_31",
+      "name": "Identification of modifier genes involved in Tumorigenesis of Retinoblastoma",
+      "rawName": "Identification of modifier genes involved in Tumorigenesis of Retinoblastoma",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Sholavandan",
+      "latitude": 10.0212,
+      "longitude": 78.0069,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Identification of modifier genes involved in Tumorigenesis of Retinoblastoma",
+          "city": "Sholavandan",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 31,
+          "thesisTitle": "Identification of modifier genes involved in Tumorigenesis of Retinoblastoma",
+          "city": "Sholavandan",
+          "state": "Tamil Nadu",
+          "displayLocation": "Sholavandan",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_32",
+      "name": "Interaction of Pathogenic Fungi with Human Corneal Epithelial cells",
+      "rawName": "Interaction of Pathogenic Fungi with Human Corneal Epithelial cells",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Tamil Nadu",
+      "latitude": 10.7905,
+      "longitude": 78.7047,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Interaction of Pathogenic Fungi with Human Corneal Epithelial cells",
+          "city": "Tamil Nadu",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 32,
+          "thesisTitle": "Interaction of Pathogenic Fungi with Human Corneal Epithelial cells",
+          "city": "",
+          "state": "Tamil Nadu",
+          "displayLocation": "Tamil Nadu",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_33",
+      "name": "Identification of Pathogenic variants associated with Genetic Eye diseases in whole Exome and Genome data",
+      "rawName": "Identification of Pathogenic variants associated with Genetic Eye diseases in whole Exome and Genome data",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Thirumangalam",
+      "latitude": 9.8252,
+      "longitude": 77.9894,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Identification of Pathogenic variants associated with Genetic Eye diseases in whole Exome and Genome data",
+          "city": "Thirumangalam",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 33,
+          "thesisTitle": "Identification of Pathogenic variants associated with Genetic Eye diseases in whole Exome and Genome data",
+          "city": "Thirumangalam",
+          "state": "Tamil Nadu",
+          "displayLocation": "Thirumangalam",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_34",
+      "name": "Characterization of Antimicrobial Resistance and virulence in ocular Pseudomonas aeruginosa and Methicillin-Resistant Staphylococcus aureus strains through comparative genomic analysis",
+      "rawName": "Characterization of Antimicrobial Resistance and virulence in ocular Pseudomonas aeruginosa and Methicillin-Resistant Staphylococcus aureus strains through comparative genomic analysis",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Tamil Nadu",
+      "latitude": 10.7777,
+      "longitude": 78.7175,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Characterization of Antimicrobial Resistance and virulence in ocular Pseudomonas aeruginosa and Methicillin-Resistant Staphylococcus aureus strains through comparative genomic analysis",
+          "city": "Tamil Nadu",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 34,
+          "thesisTitle": "Characterization of Antimicrobial Resistance and virulence in ocular Pseudomonas aeruginosa and Methicillin-Resistant Staphylococcus aureus strains through comparative genomic analysis",
+          "city": "",
+          "state": "Tamil Nadu",
+          "displayLocation": "Tamil Nadu",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_35",
+      "name": "Molecular Genetics and Functional Studies of Mitochondrial Genes Associated with Leber's Hereditary Optic Neuropathy",
+      "rawName": "Molecular Genetics and Functional Studies of Mitochondrial Genes Associated with Leber's Hereditary Optic Neuropathy",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Aruppukkottai",
+      "latitude": 9.5103,
+      "longitude": 78.0984,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Molecular Genetics and Functional Studies of Mitochondrial Genes Associated with Leber's Hereditary Optic Neuropathy",
+          "city": "Aruppukkottai",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 35,
+          "thesisTitle": "Molecular Genetics and Functional Studies of Mitochondrial Genes Associated with Leber's Hereditary Optic Neuropathy",
+          "city": "Aruppukkottai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Aruppukkottai",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_36",
+      "name": "Genomic Characterization of Kinome Related Genes in Retinoblastoma",
+      "rawName": "Genomic Characterization of Kinome Related Genes in Retinoblastoma",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Madurai",
+      "latitude": 9.8804,
+      "longitude": 78.075,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Genomic Characterization of Kinome Related Genes in Retinoblastoma",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 36,
+          "thesisTitle": "Genomic Characterization of Kinome Related Genes in Retinoblastoma",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_37",
+      "name": "Molecular Characterization Of Tumor Progression In Retinoblastoma",
+      "rawName": "Molecular Characterization Of Tumor Progression In Retinoblastoma",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Madurai",
+      "latitude": 9.9732,
+      "longitude": 78.1198,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Molecular Characterization Of Tumor Progression In Retinoblastoma",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 37,
+          "thesisTitle": "Molecular Characterization Of Tumor Progression In Retinoblastoma",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_38",
+      "name": "Molecular Genetics of ABCA4 Gene in Patients with Retinal Dystrophies",
+      "rawName": "Molecular Genetics of ABCA4 Gene in Patients with Retinal Dystrophies",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Rajapalayam",
+      "latitude": 9.4533,
+      "longitude": 77.5544,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Molecular Genetics of ABCA4 Gene in Patients with Retinal Dystrophies",
+          "city": "Rajapalayam",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 38,
+          "thesisTitle": "Molecular Genetics of ABCA4 Gene in Patients with Retinal Dystrophies",
+          "city": "Rajapalayam",
+          "state": "Tamil Nadu",
+          "displayLocation": "Rajapalayam",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_39",
+      "name": "Molecular Characterization of Leber's Congenital Amaurosis in South Indian Cohort",
+      "rawName": "Molecular Characterization of Leber's Congenital Amaurosis in South Indian Cohort",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Coimbatore",
+      "latitude": 11.0168,
+      "longitude": 76.9558,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Molecular Characterization of Leber's Congenital Amaurosis in South Indian Cohort",
+          "city": "Coimbatore",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 39,
+          "thesisTitle": "Molecular Characterization of Leber's Congenital Amaurosis in South Indian Cohort",
+          "city": "Coimbatore",
+          "state": "Tamil Nadu",
+          "displayLocation": "Coimbatore",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_40",
+      "name": "Investigating the Cross Talk Between Nuclear and Mitochondrial Genome in Patients with Leber's Hereditary Optic Neuropathy",
+      "rawName": "Investigating the Cross Talk Between Nuclear and Mitochondrial Genome in Patients with Leber's Hereditary Optic Neuropathy",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Sivakasi",
+      "latitude": 9.4533,
+      "longitude": 77.7973,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Investigating the Cross Talk Between Nuclear and Mitochondrial Genome in Patients with Leber's Hereditary Optic Neuropathy",
+          "city": "Sivakasi",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 40,
+          "thesisTitle": "Investigating the Cross Talk Between Nuclear and Mitochondrial Genome in Patients with Leber's Hereditary Optic Neuropathy",
+          "city": "Sivakasi",
+          "state": "Tamil Nadu",
+          "displayLocation": "Sivakasi",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_41",
+      "name": "Molecular genetics of Juvenile X-linked Retinoschisis in South Indian population",
+      "rawName": "Molecular genetics of Juvenile X-linked Retinoschisis in South Indian population",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "West Bengal",
       "city": "Kolkata",
-      "latitude": 22.5861,
-      "longitude": 88.3574,
+      "latitude": 22.5726,
+      "longitude": 88.3639,
       "type": "PhD Scholar",
       "metrics": {
+          "thesisTitle": "Molecular genetics of Juvenile X-linked Retinoschisis in South Indian population",
+          "city": "Kolkata",
+          "state": "West Bengal",
           "status": "Completed",
-          "degree": "Ph.D. Ocular Sciences",
-          "year": 2022
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 41,
+          "thesisTitle": "Molecular genetics of Juvenile X-linked Retinoschisis in South Indian population",
+          "city": "Kolkata",
+          "state": "West Bengal",
+          "displayLocation": "Kolkata",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_42",
+      "name": "Characterization of Adult Human Lens Epithelial Stem Cells in the Maintenance of Tissue Homeostasis and their Functional Status in Cataractous Lens",
+      "rawName": "Characterization of Adult Human Lens Epithelial Stem Cells in the Maintenance of Tissue Homeostasis and their Functional Status in Cataractous Lens",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Usilampatti",
+      "latitude": 10.0101,
+      "longitude": 77.7911,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Characterization of Adult Human Lens Epithelial Stem Cells in the Maintenance of Tissue Homeostasis and their Functional Status in Cataractous Lens",
+          "city": "Usilampatti",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 42,
+          "thesisTitle": "Characterization of Adult Human Lens Epithelial Stem Cells in the Maintenance of Tissue Homeostasis and their Functional Status in Cataractous Lens",
+          "city": "Usilampatti",
+          "state": "Tamil Nadu",
+          "displayLocation": "Usilampatti",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_43",
+      "name": "Identification of dysregulated microRNAs in ocular fluids as diagnostic markers for intraocular tuberculosis",
+      "rawName": "Identification of dysregulated microRNAs in ocular fluids as diagnostic markers for intraocular tuberculosis",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Andhra Pradesh",
+      "city": "Andhra Pradesh",
+      "latitude": 16.5062,
+      "longitude": 80.648,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Identification of dysregulated microRNAs in ocular fluids as diagnostic markers for intraocular tuberculosis",
+          "city": "Andhra Pradesh",
+          "state": "Andhra Pradesh",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 43,
+          "thesisTitle": "Identification of dysregulated microRNAs in ocular fluids as diagnostic markers for intraocular tuberculosis",
+          "city": "",
+          "state": "Andhra Pradesh",
+          "displayLocation": "Andhra Pradesh",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_44",
+      "name": "Identification, Characterization and Maintenance of Stem Cells in Adult Human Retinal Pigment Epithelium",
+      "rawName": "Identification, Characterization and Maintenance of Stem Cells in Adult Human Retinal Pigment Epithelium",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Madurai",
+      "latitude": 9.874,
+      "longitude": 78.171,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Identification, Characterization and Maintenance of Stem Cells in Adult Human Retinal Pigment Epithelium",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 44,
+          "thesisTitle": "Identification, Characterization and Maintenance of Stem Cells in Adult Human Retinal Pigment Epithelium",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_45",
+      "name": "Molecular Characterization of Ocular Lymphoma for improved Disease prognosis",
+      "rawName": "Molecular Characterization of Ocular Lymphoma for improved Disease prognosis",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Madurai",
+      "latitude": 9.9796,
+      "longitude": 78.0654,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Molecular Characterization of Ocular Lymphoma for improved Disease prognosis",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "scholarNo": 45,
+          "thesisTitle": "Molecular Characterization of Ocular Lymphoma for improved Disease prognosis",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
+          "color": "#06B6D4"
+      }
+  },
+  {
+      "id": "amrf_scholar_comp_46",
+      "name": "Human Adult Stem Cell Derived Small Extracellular Vesicles for Trabecular Meshwork Regeneration in Glaucoma",
+      "rawName": "Human Adult Stem Cell Derived Small Extracellular Vesicles for Trabecular Meshwork Regeneration in Glaucoma",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Madurai",
+      "latitude": 9.8676,
+      "longitude": 78.1198,
+      "type": "PhD Scholar",
+      "metrics": {
+          "thesisTitle": "Human Adult Stem Cell Derived Small Extracellular Vesicles for Trabecular Meshwork Regeneration in Glaucoma",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
       },
       "metadata": {
           "status": "completed",
           "scholarNo": 46,
+          "thesisTitle": "Human Adult Stem Cell Derived Small Extracellular Vesicles for Trabecular Meshwork Regeneration in Glaucoma",
+          "city": "Madurai",
+          "state": "Tamil Nadu",
+          "displayLocation": "Madurai",
           "color": "#06B6D4"
       }
   },

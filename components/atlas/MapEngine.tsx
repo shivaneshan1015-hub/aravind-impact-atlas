@@ -977,10 +977,26 @@ export function MapEngine({
           `;
         } else {
           // 4. COMPLETED Ph.D. SCHOLAR (Rich Dark Deep Cyan)
+          const cityName = loc.city || loc.metadata?.city || loc.state;
+          const thesisTitle = loc.metadata?.thesisTitle || loc.name || loc.rawName;
+
           el.innerHTML = `
-            <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name} (${loc.city}, ${loc.state})">
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${cityName}: ${thesisTitle}">
+              <!-- Touch / Click / Hover City Name & Thesis Title Floating Label over Pin -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1.5 rounded-lg shadow-xl border border-cyan-400 max-w-[260px] text-left transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-cyan-600 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} pointer-events-none">
+                <span class="font-black text-cyan-900 flex items-center gap-1">
+                  <svg class="w-3 h-3 text-cyan-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  </svg>
+                  <span>${cityName}</span>
+                </span>
+                <span class="text-[9px] text-slate-700 font-bold block mt-0.5 line-clamp-2 leading-tight">
+                  ${thesisTitle}
+                </span>
+              </span>
+
               <!-- Eye Science Iris / Lens Badge -->
-              <div class="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-900 to-blue-950 border-2 border-cyan-400 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
+              <div class="w-5.5 h-5.5 rounded-full bg-gradient-to-br from-cyan-900 to-blue-950 border-2 border-cyan-400 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
                 <svg class="w-3 h-3 text-cyan-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M2 12s3-6 10-6 10 6 10 6-3 6-10 6-10-6-10-6z" />
                   <circle cx="12" cy="12" r="2.5" fill="#FFFFFF" />
@@ -1145,6 +1161,11 @@ export function MapEngine({
             popTitle = `${placeName}: ${count} Trainees`;
             popSub = `LAICO ${catName} · ${loc.country}`;
           }
+        } else if (loc.entityId === "amrf" && (loc.subcategoryId === "phd_completed" || loc.subcategoryId === "ongoing_phd")) {
+          const cityName = loc.city || loc.metadata?.city || loc.state;
+          const thesisTitle = loc.metadata?.thesisTitle || loc.name;
+          popTitle = `${cityName} - AMRF Ph.D. Scholar`;
+          popSub = `Thesis: "${thesisTitle}"`;
         } else if (loc.entityId === "staffs" || loc.type === "Staff State Dot") {
           const stateName = loc.rawName || loc.state || loc.city || loc.name;
           const count = (loc.metadata?.traineeCount as number) || (loc.metrics?.["Employees Count"] as number) || (loc.metrics?.["Trainees Count"] as number) || 1;
