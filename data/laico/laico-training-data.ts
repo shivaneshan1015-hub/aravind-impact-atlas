@@ -15,13 +15,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 112,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "Tamil Nadu",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 112,
-      "period": "2017 - 2026",
       "placeName": "Tamil Nadu",
       "color": "#0D9488"
     }
@@ -40,13 +38,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 84,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "Kerala",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 84,
-      "period": "2017 - 2026",
       "placeName": "Kerala",
       "color": "#0D9488"
     }
@@ -65,13 +61,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 45,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "Karnataka",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 45,
-      "period": "2017 - 2026",
       "placeName": "Karnataka",
       "color": "#0D9488"
     }
@@ -90,13 +84,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 38,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "Maharashtra",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 38,
-      "period": "2017 - 2026",
       "placeName": "Maharashtra",
       "color": "#0D9488"
     }
@@ -115,13 +107,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 29,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "Andhra Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 29,
-      "period": "2017 - 2026",
       "placeName": "Andhra Pradesh",
       "color": "#0D9488"
     }
@@ -140,13 +130,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 26,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "Uttar Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 26,
-      "period": "2017 - 2026",
       "placeName": "Uttar Pradesh",
       "color": "#0D9488"
     }
@@ -165,13 +153,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 22,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "Delhi",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 22,
-      "period": "2017 - 2026",
       "placeName": "Delhi",
       "color": "#0D9488"
     }
@@ -190,13 +176,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 18,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "West Bengal",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 18,
-      "period": "2017 - 2026",
       "placeName": "West Bengal",
       "color": "#0D9488"
     }
@@ -215,13 +199,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 15,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "Mongolia",
       "Country": "Mongolia"
     },
     "metadata": {
       "traineeCount": 15,
-      "period": "2017 - 2026",
       "placeName": "Mongolia",
       "color": "#0D9488"
     }
@@ -240,13 +222,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 12,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "Tanzania",
       "Country": "Tanzania"
     },
     "metadata": {
       "traineeCount": 12,
-      "period": "2017 - 2026",
       "placeName": "Tanzania",
       "color": "#0D9488"
     }
@@ -265,13 +245,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 10,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "Ghana",
       "Country": "Ghana"
     },
     "metadata": {
       "traineeCount": 10,
-      "period": "2017 - 2026",
       "placeName": "Ghana",
       "color": "#0D9488"
     }
@@ -290,13 +268,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 8,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "Vietnam",
       "Country": "Vietnam"
     },
     "metadata": {
       "traineeCount": 8,
-      "period": "2017 - 2026",
       "placeName": "Vietnam",
       "color": "#0D9488"
     }
@@ -315,13 +291,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 7,
       "Category": "Management Courses",
-      "Period": "2017 \u2013 2026",
       "Region": "Kenya",
       "Country": "Kenya"
     },
     "metadata": {
       "traineeCount": 7,
-      "period": "2017 - 2026",
       "placeName": "Kenya",
       "color": "#0D9488"
     }
@@ -340,13 +314,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 95,
       "Category": "Long Term Trainees",
-      "Period": "2017 \u2013 2026",
       "Region": "Tamil Nadu",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 95,
-      "period": "2017 - 2026",
       "placeName": "Tamil Nadu",
       "color": "#3B82F6"
     }
@@ -365,13 +337,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 78,
       "Category": "Long Term Trainees",
-      "Period": "2017 \u2013 2026",
       "Region": "Kerala",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 78,
-      "period": "2017 - 2026",
       "placeName": "Kerala",
       "color": "#3B82F6"
     }
@@ -390,13 +360,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 52,
       "Category": "Long Term Trainees",
-      "Period": "2017 \u2013 2026",
       "Region": "Karnataka",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 52,
-      "period": "2017 - 2026",
       "placeName": "Karnataka",
       "color": "#3B82F6"
     }
@@ -415,13 +383,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 41,
       "Category": "Long Term Trainees",
-      "Period": "2017 \u2013 2026",
       "Region": "Maharashtra",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 41,
-      "period": "2017 - 2026",
       "placeName": "Maharashtra",
       "color": "#3B82F6"
     }
@@ -440,13 +406,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 32,
       "Category": "Long Term Trainees",
-      "Period": "2017 \u2013 2026",
       "Region": "Andhra Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 32,
-      "period": "2017 - 2026",
       "placeName": "Andhra Pradesh",
       "color": "#3B82F6"
     }
@@ -465,13 +429,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 24,
       "Category": "Long Term Trainees",
-      "Period": "2017 \u2013 2026",
       "Region": "Telangana",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 24,
-      "period": "2017 - 2026",
       "placeName": "Telangana",
       "color": "#3B82F6"
     }
@@ -490,13 +452,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 19,
       "Category": "Long Term Trainees",
-      "Period": "2017 \u2013 2026",
       "Region": "Gujarat",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 19,
-      "period": "2017 - 2026",
       "placeName": "Gujarat",
       "color": "#3B82F6"
     }
@@ -515,13 +475,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 18,
       "Category": "Long Term Trainees",
-      "Period": "2017 \u2013 2026",
       "Region": "Uttar Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 18,
-      "period": "2017 - 2026",
       "placeName": "Uttar Pradesh",
       "color": "#3B82F6"
     }
@@ -540,13 +498,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 14,
       "Category": "Long Term Trainees",
-      "Period": "2017 \u2013 2026",
       "Region": "Mongolia",
       "Country": "Mongolia"
     },
     "metadata": {
       "traineeCount": 14,
-      "period": "2017 - 2026",
       "placeName": "Mongolia",
       "color": "#3B82F6"
     }
@@ -565,13 +521,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 12,
       "Category": "Long Term Trainees",
-      "Period": "2017 \u2013 2026",
       "Region": "Nepal",
       "Country": "Nepal"
     },
     "metadata": {
       "traineeCount": 12,
-      "period": "2017 - 2026",
       "placeName": "Nepal",
       "color": "#3B82F6"
     }
@@ -590,13 +544,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 9,
       "Category": "Long Term Trainees",
-      "Period": "2017 \u2013 2026",
       "Region": "Vietnam",
       "Country": "Vietnam"
     },
     "metadata": {
       "traineeCount": 9,
-      "period": "2017 - 2026",
       "placeName": "Vietnam",
       "color": "#3B82F6"
     }
@@ -615,13 +567,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 7,
       "Category": "Long Term Trainees",
-      "Period": "2017 \u2013 2026",
       "Region": "Nigeria",
       "Country": "Nigeria"
     },
     "metadata": {
       "traineeCount": 7,
-      "period": "2017 - 2026",
       "placeName": "Nigeria",
       "color": "#3B82F6"
     }
@@ -640,13 +590,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 142,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Tamil Nadu",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 142,
-      "period": "2017 - 2026",
       "placeName": "Tamil Nadu",
       "color": "#8B5CF6"
     }
@@ -665,13 +613,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 118,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Kerala",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 118,
-      "period": "2017 - 2026",
       "placeName": "Kerala",
       "color": "#8B5CF6"
     }
@@ -690,13 +636,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 64,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Karnataka",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 64,
-      "period": "2017 - 2026",
       "placeName": "Karnataka",
       "color": "#8B5CF6"
     }
@@ -715,13 +659,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 50,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Maharashtra",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 50,
-      "period": "2017 - 2026",
       "placeName": "Maharashtra",
       "color": "#8B5CF6"
     }
@@ -740,13 +682,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 42,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Andhra Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 42,
-      "period": "2017 - 2026",
       "placeName": "Andhra Pradesh",
       "color": "#8B5CF6"
     }
@@ -765,13 +705,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 30,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Telangana",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 30,
-      "period": "2017 - 2026",
       "placeName": "Telangana",
       "color": "#8B5CF6"
     }
@@ -790,13 +728,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 28,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Uttar Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 28,
-      "period": "2017 - 2026",
       "placeName": "Uttar Pradesh",
       "color": "#8B5CF6"
     }
@@ -815,13 +751,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 19,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Delhi",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 19,
-      "period": "2017 - 2026",
       "placeName": "Delhi",
       "color": "#8B5CF6"
     }
@@ -840,13 +774,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 16,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Bihar",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 16,
-      "period": "2017 - 2026",
       "placeName": "Bihar",
       "color": "#8B5CF6"
     }
@@ -865,13 +797,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 14,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Rajasthan",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 14,
-      "period": "2017 - 2026",
       "placeName": "Rajasthan",
       "color": "#8B5CF6"
     }
@@ -890,13 +820,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 10,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Nepal",
       "Country": "Nepal"
     },
     "metadata": {
       "traineeCount": 10,
-      "period": "2017 - 2026",
       "placeName": "Nepal",
       "color": "#8B5CF6"
     }
@@ -915,13 +843,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 8,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Mongolia",
       "Country": "Mongolia"
     },
     "metadata": {
       "traineeCount": 8,
-      "period": "2017 - 2026",
       "placeName": "Mongolia",
       "color": "#8B5CF6"
     }
@@ -940,13 +866,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 168,
       "Category": "Technicians",
-      "Period": "2017 \u2013 2026",
       "Region": "Tamil Nadu",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 168,
-      "period": "2017 - 2026",
       "placeName": "Tamil Nadu",
       "color": "#E11D48"
     }
@@ -965,13 +889,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 135,
       "Category": "Technicians",
-      "Period": "2017 \u2013 2026",
       "Region": "Kerala",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 135,
-      "period": "2017 - 2026",
       "placeName": "Kerala",
       "color": "#E11D48"
     }
@@ -990,13 +912,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 72,
       "Category": "Technicians",
-      "Period": "2017 \u2013 2026",
       "Region": "Karnataka",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 72,
-      "period": "2017 - 2026",
       "placeName": "Karnataka",
       "color": "#E11D48"
     }
@@ -1015,13 +935,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 48,
       "Category": "Technicians",
-      "Period": "2017 \u2013 2026",
       "Region": "Andhra Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 48,
-      "period": "2017 - 2026",
       "placeName": "Andhra Pradesh",
       "color": "#E11D48"
     }
@@ -1040,13 +958,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 45,
       "Category": "Technicians",
-      "Period": "2017 \u2013 2026",
       "Region": "Maharashtra",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 45,
-      "period": "2017 - 2026",
       "placeName": "Maharashtra",
       "color": "#E11D48"
     }
@@ -1065,13 +981,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 32,
       "Category": "Technicians",
-      "Period": "2017 \u2013 2026",
       "Region": "Telangana",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 32,
-      "period": "2017 - 2026",
       "placeName": "Telangana",
       "color": "#E11D48"
     }
@@ -1090,13 +1004,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 29,
       "Category": "Technicians",
-      "Period": "2017 \u2013 2026",
       "Region": "Uttar Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 29,
-      "period": "2017 - 2026",
       "placeName": "Uttar Pradesh",
       "color": "#E11D48"
     }
@@ -1115,13 +1027,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 21,
       "Category": "Technicians",
-      "Period": "2017 \u2013 2026",
       "Region": "Odisha",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 21,
-      "period": "2017 - 2026",
       "placeName": "Odisha",
       "color": "#E11D48"
     }
@@ -1140,13 +1050,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 18,
       "Category": "Technicians",
-      "Period": "2017 \u2013 2026",
       "Region": "Assam",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 18,
-      "period": "2017 - 2026",
       "placeName": "Assam",
       "color": "#E11D48"
     }
@@ -1165,13 +1073,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 15,
       "Category": "Technicians",
-      "Period": "2017 \u2013 2026",
       "Region": "Bihar",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 15,
-      "period": "2017 - 2026",
       "placeName": "Bihar",
       "color": "#E11D48"
     }
@@ -1190,13 +1096,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 11,
       "Category": "Technicians",
-      "Period": "2017 \u2013 2026",
       "Region": "Tanzania",
       "Country": "Tanzania"
     },
     "metadata": {
       "traineeCount": 11,
-      "period": "2017 - 2026",
       "placeName": "Tanzania",
       "color": "#E11D48"
     }
@@ -1215,13 +1119,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 9,
       "Category": "Technicians",
-      "Period": "2017 \u2013 2026",
       "Region": "Ghana",
       "Country": "Ghana"
     },
     "metadata": {
       "traineeCount": 9,
-      "period": "2017 - 2026",
       "placeName": "Ghana",
       "color": "#E11D48"
     }
@@ -1240,13 +1142,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 210,
       "Category": "Paramedics",
-      "Period": "2017 \u2013 2026",
       "Region": "Tamil Nadu",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 210,
-      "period": "2017 - 2026",
       "placeName": "Tamil Nadu",
       "color": "#06B6D4"
     }
@@ -1265,13 +1165,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 185,
       "Category": "Paramedics",
-      "Period": "2017 \u2013 2026",
       "Region": "Kerala",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 185,
-      "period": "2017 - 2026",
       "placeName": "Kerala",
       "color": "#06B6D4"
     }
@@ -1290,13 +1188,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 88,
       "Category": "Paramedics",
-      "Period": "2017 \u2013 2026",
       "Region": "Karnataka",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 88,
-      "period": "2017 - 2026",
       "placeName": "Karnataka",
       "color": "#06B6D4"
     }
@@ -1315,13 +1211,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 56,
       "Category": "Paramedics",
-      "Period": "2017 \u2013 2026",
       "Region": "Andhra Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 56,
-      "period": "2017 - 2026",
       "placeName": "Andhra Pradesh",
       "color": "#06B6D4"
     }
@@ -1340,13 +1234,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 52,
       "Category": "Paramedics",
-      "Period": "2017 \u2013 2026",
       "Region": "Maharashtra",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 52,
-      "period": "2017 - 2026",
       "placeName": "Maharashtra",
       "color": "#06B6D4"
     }
@@ -1365,13 +1257,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 38,
       "Category": "Paramedics",
-      "Period": "2017 \u2013 2026",
       "Region": "Telangana",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 38,
-      "period": "2017 - 2026",
       "placeName": "Telangana",
       "color": "#06B6D4"
     }
@@ -1390,13 +1280,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 35,
       "Category": "Paramedics",
-      "Period": "2017 \u2013 2026",
       "Region": "Uttar Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 35,
-      "period": "2017 - 2026",
       "placeName": "Uttar Pradesh",
       "color": "#06B6D4"
     }
@@ -1415,13 +1303,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 24,
       "Category": "Paramedics",
-      "Period": "2017 \u2013 2026",
       "Region": "West Bengal",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 24,
-      "period": "2017 - 2026",
       "placeName": "West Bengal",
       "color": "#06B6D4"
     }
@@ -1440,13 +1326,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 20,
       "Category": "Paramedics",
-      "Period": "2017 \u2013 2026",
       "Region": "Madhya Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 20,
-      "period": "2017 - 2026",
       "placeName": "Madhya Pradesh",
       "color": "#06B6D4"
     }
@@ -1465,13 +1349,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 18,
       "Category": "Paramedics",
-      "Period": "2017 \u2013 2026",
       "Region": "Rajasthan",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 18,
-      "period": "2017 - 2026",
       "placeName": "Rajasthan",
       "color": "#06B6D4"
     }
@@ -1490,13 +1372,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 12,
       "Category": "Paramedics",
-      "Period": "2017 \u2013 2026",
       "Region": "Kenya",
       "Country": "Kenya"
     },
     "metadata": {
       "traineeCount": 12,
-      "period": "2017 - 2026",
       "placeName": "Kenya",
       "color": "#06B6D4"
     }
@@ -1515,13 +1395,11 @@ export const LAICO_OTHER_TRAINING_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 9,
       "Category": "Paramedics",
-      "Period": "2017 \u2013 2026",
       "Region": "Egypt",
       "Country": "Egypt"
     },
     "metadata": {
       "traineeCount": 9,
-      "period": "2017 - 2026",
       "placeName": "Egypt",
       "color": "#06B6D4"
     }

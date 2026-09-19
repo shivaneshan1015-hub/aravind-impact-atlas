@@ -132,7 +132,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "management_courses",
         name: "Management Courses",
-        tagline: "Hospital management & executive leadership (2017 – 2026)",
+        tagline: "Hospital management & executive leadership",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],
@@ -141,7 +141,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "long_term_trainees",
         name: "Long Term Trainees",
-        tagline: "Long term clinical fellowships (2017 – 2026)",
+        tagline: "Long term clinical fellowships",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],
@@ -150,7 +150,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "short_term_trainees",
         name: "Short Term Trainees",
-        tagline: "Short term specialized clinical training (855 Trainees, 2017 – 2026)",
+        tagline: "Short term specialized clinical training (1,759 Trainees)",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],
@@ -159,7 +159,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "post_graduates",
         name: "Post Graduates",
-        tagline: "Post graduate residency & academic specialization (2017 – 2026)",
+        tagline: "Post graduate residency & academic specialization",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],
@@ -168,7 +168,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "technicians",
         name: "Technicians",
-        tagline: "Ophthalmic & instrument maintenance technicians (2017 – 2026)",
+        tagline: "Ophthalmic & instrument maintenance technicians",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],
@@ -177,7 +177,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "paramedics",
         name: "Paramedics",
-        tagline: "Mid-level ophthalmic personnel & nursing (2017 – 2026)",
+        tagline: "Mid-level ophthalmic personnel & nursing",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],

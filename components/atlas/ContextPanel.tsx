@@ -90,7 +90,7 @@ export function ContextPanel({
                 {selectedLocation.entityId === "aurolab" && (selectedLocation.subcategoryId === "international" || selectedLocation.country !== "India")
                   ? `${selectedLocation.country}, ${selectedLocation.state}`
                   : selectedLocation.entityId === "laico" && selectedLocation.subcategoryId !== "capacity_building"
-                  ? `${selectedLocation.metadata?.traineeCount || selectedLocation.metrics?.["Trainees Count"] || 1} Trainees · 2017–2026 (${selectedLocation.country})`
+                  ? `${selectedLocation.metadata?.traineeCount || selectedLocation.metrics?.["Trainees Count"] || 1} Trainees (${selectedLocation.country})`
                   : `${selectedLocation.city}, ${selectedLocation.state}`}
               </p>
             </div>

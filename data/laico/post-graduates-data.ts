@@ -15,13 +15,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 237,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Tamil Nadu",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 237,
-      "period": "2017 - 2026",
       "placeName": "Tamil Nadu",
       "color": "#8B5CF6"
     }
@@ -40,13 +38,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 5,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Rajasthan",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 5,
-      "period": "2017 - 2026",
       "placeName": "Rajasthan",
       "color": "#8B5CF6"
     }
@@ -65,13 +61,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 100,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Kerala",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 100,
-      "period": "2017 - 2026",
       "placeName": "Kerala",
       "color": "#8B5CF6"
     }
@@ -90,13 +84,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 27,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Andhra Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 27,
-      "period": "2017 - 2026",
       "placeName": "Andhra Pradesh",
       "color": "#8B5CF6"
     }
@@ -115,13 +107,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 14,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Telangana",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 14,
-      "period": "2017 - 2026",
       "placeName": "Telangana",
       "color": "#8B5CF6"
     }
@@ -140,13 +130,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 4,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Haryana",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 4,
-      "period": "2017 - 2026",
       "placeName": "Haryana",
       "color": "#8B5CF6"
     }
@@ -165,13 +153,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 8,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Uttar Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 8,
-      "period": "2017 - 2026",
       "placeName": "Uttar Pradesh",
       "color": "#8B5CF6"
     }
@@ -190,13 +176,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 6,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Delhi",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 6,
-      "period": "2017 - 2026",
       "placeName": "Delhi",
       "color": "#8B5CF6"
     }
@@ -215,13 +199,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 7,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Pondicherry",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 7,
-      "period": "2017 - 2026",
       "placeName": "Pondicherry",
       "color": "#8B5CF6"
     }
@@ -240,13 +222,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 57,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Maharashtra",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 57,
-      "period": "2017 - 2026",
       "placeName": "Maharashtra",
       "color": "#8B5CF6"
     }
@@ -265,13 +245,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 14,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Andaman & Nicobar",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 14,
-      "period": "2017 - 2026",
       "placeName": "Andaman & Nicobar",
       "color": "#8B5CF6"
     }
@@ -290,13 +268,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 2,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Uttarakhand",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 2,
-      "period": "2017 - 2026",
       "placeName": "Uttarakhand",
       "color": "#8B5CF6"
     }
@@ -315,13 +291,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 14,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Madhya Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 14,
-      "period": "2017 - 2026",
       "placeName": "Madhya Pradesh",
       "color": "#8B5CF6"
     }
@@ -340,13 +314,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 3,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Assam",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 3,
-      "period": "2017 - 2026",
       "placeName": "Assam",
       "color": "#8B5CF6"
     }
@@ -365,13 +337,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 24,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Karnataka",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 24,
-      "period": "2017 - 2026",
       "placeName": "Karnataka",
       "color": "#8B5CF6"
     }
@@ -390,13 +360,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 1,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Sikkim",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 1,
-      "period": "2017 - 2026",
       "placeName": "Sikkim",
       "color": "#8B5CF6"
     }
@@ -415,13 +383,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 6,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Gujarat",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 6,
-      "period": "2017 - 2026",
       "placeName": "Gujarat",
       "color": "#8B5CF6"
     }
@@ -440,13 +406,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 2,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Bihar",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 2,
-      "period": "2017 - 2026",
       "placeName": "Bihar",
       "color": "#8B5CF6"
     }
@@ -465,13 +429,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 1,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Odisha",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 1,
-      "period": "2017 - 2026",
       "placeName": "Odisha",
       "color": "#8B5CF6"
     }
@@ -490,13 +452,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 4,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Punjab",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 4,
-      "period": "2017 - 2026",
       "placeName": "Punjab",
       "color": "#8B5CF6"
     }
@@ -515,13 +475,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 1,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Afghanistan",
       "Country": "Afghanistan"
     },
     "metadata": {
       "traineeCount": 1,
-      "period": "2017 - 2026",
       "placeName": "Afghanistan",
       "color": "#8B5CF6"
     }
@@ -540,13 +498,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 4,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "West Bengal",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 4,
-      "period": "2017 - 2026",
       "placeName": "West Bengal",
       "color": "#8B5CF6"
     }
@@ -565,13 +521,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 1,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Himachal Pradesh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 1,
-      "period": "2017 - 2026",
       "placeName": "Himachal Pradesh",
       "color": "#8B5CF6"
     }
@@ -590,13 +544,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 1,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Chhattisgarh",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 1,
-      "period": "2017 - 2026",
       "placeName": "Chhattisgarh",
       "color": "#8B5CF6"
     }
@@ -615,13 +567,11 @@ export const LAICO_POST_GRADUATES_DATA: GeoLocationItem[] = [
     "metrics": {
       "Trainees Count": 1,
       "Category": "Post Graduates",
-      "Period": "2017 \u2013 2026",
       "Region": "Jharkhand",
       "Country": "India"
     },
     "metadata": {
       "traineeCount": 1,
-      "period": "2017 - 2026",
       "placeName": "Jharkhand",
       "color": "#8B5CF6"
     }

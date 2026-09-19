@@ -611,16 +611,13 @@ export function SidebarPanel({
                 </div>
               </div>
 
-            {/* Primary Category 2: Training Programmes (Period: 2017 – 2026) */}
+            {/* Primary Category 2: Training Programmes */}
             <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2.5">
               <div className="flex items-center justify-between border-b border-slate-200/60 pb-2">
                 <div>
                   <span className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
                     <Award className="w-4 h-4 text-amber-600" />
                     <span>Training Programmes</span>
-                  </span>
-                  <span className="text-[10px] text-amber-800 font-extrabold block mt-0.5">
-                    Period: 2017 – 2026
                   </span>
                 </div>
                 <span className="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-black">
@@ -633,7 +630,7 @@ export function SidebarPanel({
                 {[
                   { id: "management_courses", name: "Management Courses", color: "#0D9488", desc: "Executive Leadership & Management" },
                   { id: "long_term_trainees", name: "Long Term Trainees", color: "#3B82F6", desc: "Clinical Fellowships" },
-                  { id: "short_term_trainees", name: "Short Term Trainees", color: "#F59E0B", desc: "Specialized Clinical Training", countBadge: "855 Trainees" },
+                  { id: "short_term_trainees", name: "Short Term Trainees", color: "#F59E0B", desc: "Specialized Clinical Training", countBadge: "1,759 Trainees" },
                   { id: "post_graduates", name: "Post Graduates", color: "#8B5CF6", desc: "Residency & Specialization", countBadge: "544 Scholars" },
                   { id: "technicians", name: "Technicians", color: "#E11D48", desc: "Ophthalmic & Instrument Techs" },
                   { id: "paramedics", name: "Paramedics", color: "#06B6D4", desc: "Mid-level Personnel & Nursing" },
