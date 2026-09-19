@@ -79,6 +79,17 @@ export function ExhibitionShell() {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const [isInfoOpen, setIsInfoOpen] = React.useState(false);
 
+  // Reset all local entity filters whenever user switches entity / story page
+  React.useEffect(() => {
+    setCareTypeFilter("all");
+    setVisionCentreHubFilter("all");
+    setStaffGroup("employees");
+    setStaffCategory("all");
+    setPatientFilter("all");
+    setLaicoCountryFilter("all");
+    setEyeBankCategoryFilter("all");
+  }, [selectedEntityId]);
+
   // Guided Narration Hook for CARE Hospitals Pilot
   const narration = useNarration();
 

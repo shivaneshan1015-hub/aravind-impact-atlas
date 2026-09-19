@@ -627,6 +627,7 @@ export function SidebarPanel({
                     <Award className="w-4 h-4 text-amber-600" />
                     <span>Training Programmes</span>
                   </span>
+                  <span className="text-[10px] text-slate-500 font-semibold block mt-0.5">As of Sep 2026</span>
                 </div>
                 <span className="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-black">
                   6 Categories
@@ -689,10 +690,13 @@ export function SidebarPanel({
             {/* Primary Category 1: Doctorate */}
             <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2.5">
               <div className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center justify-between">
-                <span className="flex items-center gap-1.5">
-                  <Microscope className="w-4 h-4 text-purple-600" />
-                  <span>Ph.D. Doctoral Program</span>
-                </span>
+                <div>
+                  <span className="flex items-center gap-1.5">
+                    <Microscope className="w-4 h-4 text-purple-600" />
+                    <span>Ph.D. Doctoral Program</span>
+                  </span>
+                  <span className="text-[10px] text-slate-500 font-semibold block mt-0.5">As of Sep 2026</span>
+                </div>
                 <span className="text-[10px] bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full font-bold">
                   54 Scholars Total
                 </span>
@@ -772,6 +776,10 @@ export function SidebarPanel({
         {/* 4. AUROLAB CATEGORY */}
         {entityConfig.id === "aurolab" && (
           <div className="space-y-3">
+            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-1 flex items-center justify-between">
+              <span>Aurolab Distribution Network</span>
+              <span className="text-amber-700 font-extrabold">As of Sep 2026</span>
+            </div>
             {/* Primary Category 1: Domestic */}
             <button
               onClick={() => onSelectSubcategory?.("domestic")}
@@ -819,6 +827,10 @@ export function SidebarPanel({
         {/* 5. AUROITECH CATEGORY */}
         {entityConfig.id === "auroitech" && (
           <div className="space-y-2">
+            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-1 flex items-center justify-between mb-1">
+              <span>AuroiTech Digital Health</span>
+              <span className="text-sky-700 font-extrabold">As of Sep 2026</span>
+            </div>
             {[
               { id: "ihms", name: "IHMS", desc: "154 Global Deployments across 12 Nations" },
               { id: "eyenotes", name: "Eyenotes", desc: "8970 patients are registered daily across 185 centres" },

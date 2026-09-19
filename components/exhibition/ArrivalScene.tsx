@@ -149,9 +149,28 @@ export function ArrivalScene() {
             <span>START GUIDED TOUR</span>
           </button>
         </div>
+
+        {/* Starting Page Bottom Institutional Logos (LAICO stacked on top of ARAVIND EYE CARE SYSTEM) */}
+        <div className="pt-6 flex flex-col items-center justify-center space-y-3">
+          {/* Top Logo: LAICO */}
+          <div className="bg-white/95 backdrop-blur-md px-6 py-2.5 rounded-2xl shadow-sm border border-slate-200/80 flex items-center justify-center transition-transform hover:scale-105">
+            <img
+              src="/images/laico-logo.png"
+              alt="Lions Aravind Institute of Community Ophthalmology (LAICO)"
+              className="h-14 md:h-16 object-contain"
+            />
+          </div>
+
+          {/* Bottom Logo: ARAVIND EYE CARE SYSTEM */}
+          <div className="bg-white/95 backdrop-blur-md px-6 py-2.5 rounded-2xl shadow-sm border border-slate-200/80 flex items-center justify-center transition-transform hover:scale-105">
+            <img
+              src="/images/aravind-logo.png"
+              alt="Aravind Eye Care System"
+              className="h-9 md:h-10 object-contain"
+            />
+          </div>
+        </div>
       </div>
-
-
     </div>
   );
 }

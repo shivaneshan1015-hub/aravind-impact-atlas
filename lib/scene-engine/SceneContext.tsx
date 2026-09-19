@@ -134,8 +134,10 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
     if (cfg && cfg.subcategories.length > 0) {
       setSelectedSubcategoryId(cfg.subcategories[0].id);
     }
+    setSelectedCountry("India");
     setSelectedState(null);
     setSelectedLocation(null);
+    setProductFilterId(null);
 
     if (entityId === "all") {
       setCurrentScene("one_system");

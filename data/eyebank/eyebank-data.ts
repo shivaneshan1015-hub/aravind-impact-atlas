@@ -219,6 +219,7 @@ export const DISTRICT_COORDINATES: Record<string, { lat: number; lng: number; st
   Vilupuram: { lat: 11.9401, lng: 79.4937, state: "Tamil Nadu" },
   Puducherry: { lat: 11.9416, lng: 79.8083, state: "Puducherry" },
   Pondicherry: { lat: 11.9416, lng: 79.8083, state: "Puducherry" },
+  Pudhucherry: { lat: 11.9416, lng: 79.8083, state: "Puducherry" },
   Thiruvanamalai: { lat: 12.2253, lng: 79.0747, state: "Tamil Nadu" },
   Kallakuruchi: { lat: 11.7384, lng: 78.9610, state: "Tamil Nadu" },
   Salem: { lat: 11.6643, lng: 78.1460, state: "Tamil Nadu" },
@@ -285,7 +286,7 @@ function getNormalizedDistrictKey(district: string): string {
   if (d === "virdhunagar" || d === "virudhunagar") return "virudhunagar";
   if (d === "mayaladudurai" || d === "mayiladuthurai" || d === "mayaldudurai") return "mayiladuthurai";
   if (d === "vilupuram" || d === "viluppuram") return "viluppuram";
-  if (d === "puducherry" || d === "pondicherry") return "puducherry";
+  if (d === "puducherry" || d === "pondicherry" || d === "pudhucherry") return "puducherry";
   if (d === "thiruvanamalai" || d === "thiruvannamalai") return "thiruvannamalai";
   if (d === "kallakuruchi" || d === "kallakurichi") return "kallakurichi";
   if (d === "krishanagiri" || d === "krishnagiri") return "krishnagiri";
