@@ -731,6 +731,49 @@ export function SidebarPanel({
                   <span>Ongoing (8)</span>
                 </button>
               </div>
+
+              {/* Selected Pin Thesis Details Card (Rendered below Ongoing & Completed buttons) */}
+              {selectedLocation && (selectedLocation.subcategoryId === "phd_completed" || selectedLocation.subcategoryId === "ongoing_phd" || selectedLocation.metadata?.status) && (
+                <div className={`p-3 rounded-xl border text-xs space-y-2 mt-2 transition-all ${
+                  selectedLocation.metadata?.status === "ongoing" || selectedLocation.subcategoryId === "ongoing_phd"
+                    ? "bg-pink-50/95 border-[#9D174D]/40 text-slate-900"
+                    : "bg-cyan-50/95 border-[#155E75]/40 text-slate-900"
+                }`}>
+                  <div className="flex items-center justify-between border-b pb-1.5 border-slate-200">
+                    <div className="font-black flex items-center gap-1.5">
+                      <span className={`w-2.5 h-2.5 rounded-full ${
+                        selectedLocation.metadata?.status === "ongoing" || selectedLocation.subcategoryId === "ongoing_phd"
+                          ? "bg-[#9D174D]"
+                          : "bg-[#155E75]"
+                      }`} />
+                      <span className="text-sm font-black">{selectedLocation.city || selectedLocation.name}</span>
+                    </div>
+                    <button
+                      onClick={() => onSelectLocation?.(null)}
+                      className="text-[10px] font-bold text-slate-500 hover:text-slate-900 bg-white px-2 py-0.5 rounded border border-slate-200 transition-colors"
+                    >
+                      × Deselect
+                    </button>
+                  </div>
+
+                  <div className="text-[11px] font-extrabold flex items-center justify-between">
+                    <span>
+                      {(selectedLocation.metadata?.count as number) || 1} {selectedLocation.metadata?.status === "ongoing" || selectedLocation.subcategoryId === "ongoing_phd" ? "Ongoing" : "Completed"} Ph.D. {((selectedLocation.metadata?.count as number) || 1) > 1 ? "Theses" : "Thesis"}
+                    </span>
+                  </div>
+
+                  <div className="space-y-1.5 max-h-52 overflow-y-auto pr-1">
+                    {((selectedLocation.metadata?.thesesList as string[]) || [selectedLocation.metadata?.thesisTitle || selectedLocation.name]).map((thesis, idx) => (
+                      <div key={idx} className="p-2 rounded-lg bg-white border border-slate-200/80 text-[10.5px] leading-snug font-medium flex items-start gap-1.5 shadow-2xs">
+                        <span className="font-black shrink-0" style={{
+                          color: selectedLocation.metadata?.status === "ongoing" || selectedLocation.subcategoryId === "ongoing_phd" ? "#9D174D" : "#155E75"
+                        }}>{idx + 1}.</span>
+                        <span>{thesis}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Primary Category 2: Collaboration */}

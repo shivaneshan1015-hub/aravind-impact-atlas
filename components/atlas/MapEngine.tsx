@@ -411,13 +411,28 @@ export function MapEngine({
       setMapLoaded(true);
     });
 
+    map.on("click", (e) => {
+      const target = e.originalEvent.target as HTMLElement;
+      if (
+        !target.closest(".group") &&
+        !target.closest(".maplibregl-marker") &&
+        !target.closest(".maplibregl-popup")
+      ) {
+        if (popupRef.current) {
+          popupRef.current.remove();
+          popupRef.current = null;
+        }
+        onClearLocation();
+      }
+    });
+
     mapRef.current = map;
 
     return () => {
       map.remove();
       mapRef.current = null;
     };
-  }, []);
+  }, [onClearLocation]);
 
   // Toggle Vector Grammar Layers
   useEffect(() => {
@@ -515,10 +530,10 @@ export function MapEngine({
       popupRef.current = null;
     }
 
-    const themeColor = entityConfig?.color || "#EA580C";
-
-    // 1. State filter
-    let filtered = selectedState
+    // 0. Single Pin Focus Filter (if user clicked a single location pin, isolate that pin)
+    let filtered = selectedLocation
+      ? locations.filter((l) => l.id === selectedLocation.id)
+      : selectedState
       ? locations.filter((l) => l.state === selectedState)
       : locations;
 
@@ -991,10 +1006,10 @@ export function MapEngine({
                 </div>
               </div>
 
-              <!-- Visible City & Ongoing Scholar Count Pill Badge over Pin -->
+              <!-- Visible City & Scholar Count Pill Badge over Pin (Clean without words ongoing/completed) -->
               <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-0.5 rounded-lg shadow-xl border border-pink-300 whitespace-nowrap flex items-center gap-1.5 transition-transform group-hover:scale-110 pointer-events-none">
                 <span class="w-2 h-2 rounded-full bg-[#9D174D]"></span>
-                <span>${cityName}:</span> <span class="text-[#9D174D] font-extrabold">${count} Ongoing</span>
+                <span>${cityName}</span> <span class="text-[#9D174D] font-extrabold">(${count})</span>
               </span>
 
               <!-- Sleek Ongoing Ph.D. Dark Pin Marker (#9D174D) -->
@@ -1032,10 +1047,10 @@ export function MapEngine({
                 </div>
               </div>
 
-              <!-- Visible City & Completed Scholar Count Pill Badge over Pin -->
+              <!-- Visible City & Scholar Count Pill Badge over Pin (Clean without words ongoing/completed) -->
               <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-0.5 rounded-lg shadow-xl border border-cyan-300 whitespace-nowrap flex items-center gap-1.5 transition-transform group-hover:scale-110 pointer-events-none">
                 <span class="w-2 h-2 rounded-full bg-[#155E75]"></span>
-                <span>${cityName}:</span> <span class="text-[#155E75] font-extrabold">${count} Completed</span>
+                <span>${cityName}</span> <span class="text-[#155E75] font-extrabold">(${count})</span>
               </span>
 
               <!-- Sleek Completed Ph.D. Dark Pin Marker (#155E75) -->
