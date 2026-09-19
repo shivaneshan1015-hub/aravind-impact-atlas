@@ -17,7 +17,7 @@ export interface MapEngineProps {
   stateAggregations: StateAggregation[];
   selectedState: string | null;
   selectedLocation: GeoLocationItem | null;
-  onSelectState: (stateName: string, bounds?: [[number, number], [number, number]]) => void;
+  onSelectState: (stateName: string | null, bounds?: [[number, number], [number, number]]) => void;
   onSelectLocation: (location: GeoLocationItem) => void;
   onClearLocation: () => void;
   selectedSubcategoryId?: string;
@@ -109,9 +109,11 @@ export function MapEngine({
       : "footprint";
 
   const onClearLocationRef = useRef(onClearLocation);
+  const onSelectStateRef = useRef(onSelectState);
   useEffect(() => {
     onClearLocationRef.current = onClearLocation;
-  }, [onClearLocation]);
+    onSelectStateRef.current = onSelectState;
+  }, [onClearLocation, onSelectState]);
 
   // Initialize MapLibre GL map instance
   useEffect(() => {
@@ -429,6 +431,7 @@ export function MapEngine({
           popupRef.current = null;
         }
         onClearLocationRef.current?.();
+        onSelectStateRef.current?.(null);
       }
     });
 

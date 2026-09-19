@@ -345,6 +345,7 @@ export function SidebarPanel({
                   onSelectPatientFilter?.("all");
                   onSelectCareTypeFilter?.("all");
                   onSelectLocation?.(null);
+                  onSelectState?.(null);
                 }}
                 className="w-full text-left flex items-center justify-between"
               >
@@ -368,6 +369,7 @@ export function SidebarPanel({
                     onSelectPatientFilter?.("pay");
                     onSelectCareTypeFilter?.("all");
                     onSelectLocation?.(null);
+                    onSelectState?.(null);
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "pay"
@@ -385,6 +387,7 @@ export function SidebarPanel({
                     onSelectPatientFilter?.("free");
                     onSelectCareTypeFilter?.("all");
                     onSelectLocation?.(null);
+                    onSelectState?.(null);
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "free"
@@ -402,6 +405,7 @@ export function SidebarPanel({
                     onSelectPatientFilter?.("camp");
                     onSelectCareTypeFilter?.("all");
                     onSelectLocation?.(null);
+                    onSelectState?.(null);
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "camp"
@@ -419,6 +423,7 @@ export function SidebarPanel({
                     onSelectPatientFilter?.("all");
                     onSelectCareTypeFilter?.("all");
                     onSelectLocation?.(null);
+                    onSelectState?.(null);
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "all"

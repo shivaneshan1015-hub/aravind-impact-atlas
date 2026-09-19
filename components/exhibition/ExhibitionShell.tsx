@@ -129,6 +129,17 @@ export function ExhibitionShell() {
     selectLocation(loc);
   };
 
+  const handleSelectPatientFilter = React.useCallback(
+    (filter: "pay" | "free" | "camp" | "all") => {
+      setPatientFilter(filter);
+      setCareTypeFilter("all");
+      selectSubcategory("patients");
+      selectLocation(null);
+      selectState(null);
+    },
+    [selectSubcategory, selectLocation, selectState]
+  );
+
   // Active Entity Config with fallback
   const activeEntityConfig = ENTITY_CONFIGS[selectedEntityId] || ENTITY_CONFIGS.hospitals;
 
@@ -226,7 +237,7 @@ export function ExhibitionShell() {
             staffCategory={staffCategory}
             onSelectStaffCategory={setStaffCategory}
             patientFilter={patientFilter}
-            onSelectPatientFilter={setPatientFilter}
+            onSelectPatientFilter={handleSelectPatientFilter}
             visionCentreHubFilter={visionCentreHubFilter}
             onSelectVisionCentreHubFilter={setVisionCentreHubFilter}
             laicoCountryFilter={laicoCountryFilter}
