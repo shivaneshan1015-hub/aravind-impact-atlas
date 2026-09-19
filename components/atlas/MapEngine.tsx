@@ -963,72 +963,70 @@ export function MapEngine({
             </div>
           `;
         } else if (isOngoing) {
-          // 3. ONGOING Ph.D. SCHOLAR (Pink #DB2777 matching menu)
+          // 3. ONGOING Ph.D. SCHOLAR (Pink #DB2777 matching menu - No count text inside pin icon)
           const cityName = loc.city || loc.metadata?.city || loc.state;
           const count = (loc.metadata?.count as number) || 1;
           const thesesList = (loc.metadata?.thesesList as string[]) || [loc.metadata?.thesisTitle || loc.name];
 
           const countBadgeText = `${cityName} (${count} Ongoing Ph.D. ${count > 1 ? 'Theses' : 'Thesis'})`;
           const thesesHtml = thesesList
-            .map((t, idx) => `<div class="py-0.5 border-b border-slate-100 last:border-0"><span class="font-black text-pink-700 mr-1">${idx + 1}.</span>${t}</div>`)
+            .map((t, idx) => `<div class="py-1 border-b border-slate-100 last:border-0 flex items-start gap-1"><span class="font-black text-pink-700 shrink-0 mr-0.5">${idx + 1}.</span><span class="leading-tight">${t}</span></div>`)
             .join("");
 
           el.innerHTML = `
-            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${countBadgeText}">
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-30" title="${countBadgeText}">
               <!-- Touch / Click / Hover Multi-Thesis Card over Pin -->
-              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-3 py-2 rounded-xl shadow-2xl border-2 border-pink-500 max-w-xs text-left transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-pink-600 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} pointer-events-none">
-                <span class="font-black text-pink-900 border-b border-pink-200 pb-1 flex items-center justify-between gap-2">
+              <div class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 p-2.5 rounded-xl shadow-2xl border-2 border-pink-500 max-w-xs text-left transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-pink-600 scale-105 pointer-events-auto' : 'opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none'} z-50 select-text">
+                <div class="font-black text-pink-900 border-b border-pink-200 pb-1 flex items-center justify-between gap-2">
                   <span class="flex items-center gap-1 text-[11px]">
                     <span class="w-2 h-2 rounded-full bg-pink-500"></span>
                     <span>${cityName}</span>
                   </span>
-                  <span class="bg-pink-100 text-pink-900 px-1.5 py-0.2 rounded text-[9px] font-extrabold whitespace-nowrap">
-                    ${count} ${count > 1 ? 'Ongoing' : 'Ongoing'}
+                  <span class="bg-pink-100 text-pink-900 px-1.5 py-0.5 rounded text-[9px] font-extrabold whitespace-nowrap">
+                    ${count} Ongoing
                   </span>
-                </span>
-                <div class="text-[9.5px] text-slate-700 font-semibold max-h-36 overflow-y-auto mt-1 pr-1 space-y-0.5 leading-tight">
+                </div>
+                <div class="text-[9.5px] text-slate-700 font-semibold max-h-44 overflow-y-auto mt-1.5 pr-1 space-y-0.5 leading-tight" style="overscroll-behavior: contain;">
                   ${thesesHtml}
                 </div>
-              </span>
+              </div>
 
-              <!-- Ongoing Ph.D. Pin Marker (Pink #DB2777) -->
-              <div class="w-6 h-6 rounded-full bg-[#DB2777] border-2 border-white shadow-xl flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-140">
-                <span class="text-[10px] font-black text-white">${count}</span>
+              <!-- Sleek Ongoing Ph.D. Pin Marker (Pink #DB2777 - No Number Inside) -->
+              <div class="w-4.5 h-4.5 rounded-full bg-[#DB2777] border-2 border-white shadow-xl relative transition-transform duration-200 group-hover:scale-150">
               </div>
             </div>
           `;
         } else {
-          // 4. COMPLETED Ph.D. SCHOLAR (Cyan #0891B2 matching menu)
+          // 4. COMPLETED Ph.D. SCHOLAR (Cyan #0891B2 matching menu - No count text inside pin icon)
           const cityName = loc.city || loc.metadata?.city || loc.state;
           const count = (loc.metadata?.count as number) || 1;
           const thesesList = (loc.metadata?.thesesList as string[]) || [loc.metadata?.thesisTitle || loc.name];
 
           const countBadgeText = `${cityName} (${count} Completed Ph.D. ${count > 1 ? 'Theses' : 'Thesis'})`;
           const thesesHtml = thesesList
-            .map((t, idx) => `<div class="py-0.5 border-b border-slate-100 last:border-0"><span class="font-black text-cyan-700 mr-1">${idx + 1}.</span>${t}</div>`)
+            .map((t, idx) => `<div class="py-1 border-b border-slate-100 last:border-0 flex items-start gap-1"><span class="font-black text-cyan-700 shrink-0 mr-0.5">${idx + 1}.</span><span class="leading-tight">${t}</span></div>`)
             .join("");
 
           el.innerHTML = `
-            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${countBadgeText}">
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-30" title="${countBadgeText}">
               <!-- Touch / Click / Hover Multi-Thesis Card over Pin -->
-              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-3 py-2 rounded-xl shadow-2xl border-2 border-cyan-500 max-w-xs text-left transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-cyan-600 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} pointer-events-none">
-                <span class="font-black text-cyan-900 border-b border-cyan-200 pb-1 flex items-center justify-between gap-2">
+              <div class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 p-2.5 rounded-xl shadow-2xl border-2 border-cyan-500 max-w-xs text-left transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-cyan-600 scale-105 pointer-events-auto' : 'opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none'} z-50 select-text">
+                <div class="font-black text-cyan-900 border-b border-cyan-200 pb-1 flex items-center justify-between gap-2">
                   <span class="flex items-center gap-1 text-[11px]">
                     <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
                     <span>${cityName}</span>
                   </span>
-                  <span class="bg-cyan-100 text-cyan-900 px-1.5 py-0.2 rounded text-[9px] font-extrabold whitespace-nowrap">
-                    ${count} ${count > 1 ? 'Completed' : 'Completed'}
+                  <span class="bg-cyan-100 text-cyan-900 px-1.5 py-0.5 rounded text-[9px] font-extrabold whitespace-nowrap">
+                    ${count} Completed
                   </span>
-                </span>
-                <div class="text-[9.5px] text-slate-700 font-semibold max-h-36 overflow-y-auto mt-1 pr-1 space-y-0.5 leading-tight">
+                </div>
+                <div class="text-[9.5px] text-slate-700 font-semibold max-h-44 overflow-y-auto mt-1.5 pr-1 space-y-0.5 leading-tight" style="overscroll-behavior: contain;">
                   ${thesesHtml}
                 </div>
-              </span>
+              </div>
 
-              <!-- Completed Ph.D. Pin Marker (Cyan #0891B2) -->
-              <div class="w-6 h-6 rounded-full bg-[#0891B2] border-2 border-white shadow-xl flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-140">
-                <span class="text-[10px] font-black text-white">${count}</span>
+              <!-- Sleek Completed Ph.D. Pin Marker (Cyan #0891B2 - No Number Inside) -->
+              <div class="w-4.5 h-4.5 rounded-full bg-[#0891B2] border-2 border-white shadow-xl relative transition-transform duration-200 group-hover:scale-150">
               </div>
             </div>
           `;
@@ -1190,10 +1188,22 @@ export function MapEngine({
             popSub = `LAICO ${catName} · ${loc.country}`;
           }
         } else if (loc.entityId === "amrf" && (loc.subcategoryId === "phd_completed" || loc.subcategoryId === "ongoing_phd")) {
+          const isCompleted = loc.subcategoryId === "phd_completed";
           const cityName = loc.city || loc.metadata?.city || loc.state;
-          const thesisTitle = loc.metadata?.thesisTitle || loc.name;
-          popTitle = `${cityName} - AMRF Ph.D. Scholar`;
-          popSub = `Thesis: "${thesisTitle}"`;
+          const count = (loc.metadata?.count as number) || 1;
+          const thesesList = (loc.metadata?.thesesList as string[]) || [loc.metadata?.thesisTitle || loc.name];
+          const badgeColor = isCompleted ? "text-cyan-600" : "text-pink-600";
+
+          popTitle = `${cityName} (${count} ${isCompleted ? "Completed" : "Ongoing"} Ph.D. ${count > 1 ? "Theses" : "Thesis"})`;
+          
+          const itemsList = thesesList.map((t, idx) => `
+            <div class="py-1 border-b border-slate-100 last:border-0 flex items-start gap-1.5">
+              <span class="font-black ${badgeColor} shrink-0 text-[10px]">${idx + 1}.</span>
+              <span class="text-slate-700 text-[10px] font-semibold leading-tight">${t}</span>
+            </div>
+          `).join("");
+
+          popSub = `<div class="max-h-56 overflow-y-auto pr-1 mt-1 font-sans space-y-0.5 pointer-events-auto select-text" style="overscroll-behavior: contain;">${itemsList}</div>`;
         } else if (loc.entityId === "staffs" || loc.type === "Staff State Dot") {
           const stateName = loc.rawName || loc.state || loc.city || loc.name;
           const count = (loc.metadata?.traineeCount as number) || (loc.metrics?.["Employees Count"] as number) || (loc.metrics?.["Trainees Count"] as number) || 1;
@@ -1202,7 +1212,7 @@ export function MapEngine({
           popSub = `Aravind Staffs Directory · ${loc.country || "India"}`;
         }
           
-        if (loc.establishedYear && !isAurolab && !isEyeBank) {
+        if (loc.establishedYear && !isAurolab && !isEyeBank && loc.subcategoryId !== "phd_completed" && loc.subcategoryId !== "ongoing_phd") {
           popSub += ` · Est. ${loc.establishedYear}`;
         }
 
@@ -1218,9 +1228,9 @@ export function MapEngine({
 
         const popupDom = document.createElement("div");
         popupDom.className =
-          "px-3 py-2 bg-white/95 text-slate-900 rounded-lg shadow-xl text-xs font-bold border border-slate-200 select-none pointer-events-none min-w-[160px]";
+          "px-3 py-2 bg-white/95 text-slate-900 rounded-lg shadow-xl text-xs font-bold border border-slate-200 pointer-events-auto min-w-[200px] max-w-xs";
         popupDom.innerHTML = `
-          <div class="flex items-center justify-between gap-2 mb-0.5">
+          <div class="flex items-center justify-between gap-2 mb-0.5 border-b border-slate-200 pb-1">
             <span class="text-xs font-black text-slate-900 leading-tight">${popTitle}</span>
             ${typeBadge}
           </div>
@@ -1296,6 +1306,22 @@ export function MapEngine({
           );
           return;
         }
+      }
+
+      if (entityConfig.id === "amrf" && (selectedSubcategoryId === "phd_completed" || selectedSubcategoryId === "ongoing_phd")) {
+        // Tight South India / Tamil Nadu camera focus for AMRF Ph.D. scholars so pins land cleanly on solid land
+        map.fitBounds(
+          [
+            [74.2, 7.8],   // SW: Trivandrum / Kerala
+            [81.8, 14.5],  // NE: Northern Tamil Nadu / AP border
+          ],
+          {
+            padding: { top: 60, bottom: 60, left: 60, right: 60 },
+            maxZoom: 7.2,
+            duration: 1200,
+          }
+        );
+        return;
       }
 
       let filtered = locations;
