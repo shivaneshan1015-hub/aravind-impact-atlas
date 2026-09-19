@@ -963,44 +963,72 @@ export function MapEngine({
             </div>
           `;
         } else if (isOngoing) {
-          // 3. ONGOING Ph.D. SCHOLAR (Rich Dark Deep Rose/Magenta)
+          // 3. ONGOING Ph.D. SCHOLAR (Pink #DB2777 matching menu)
+          const cityName = loc.city || loc.metadata?.city || loc.state;
+          const count = (loc.metadata?.count as number) || 1;
+          const thesesList = (loc.metadata?.thesesList as string[]) || [loc.metadata?.thesisTitle || loc.name];
+
+          const countBadgeText = `${cityName} (${count} Ongoing Ph.D. ${count > 1 ? 'Theses' : 'Thesis'})`;
+          const thesesHtml = thesesList
+            .map((t, idx) => `<div class="py-0.5 border-b border-slate-100 last:border-0"><span class="font-black text-pink-700 mr-1">${idx + 1}.</span>${t}</div>`)
+            .join("");
+
           el.innerHTML = `
-            <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name} (${loc.city}, ${loc.state})">
-              <!-- Eye Care Research Atomic Pupil Badge -->
-              <div class="w-5 h-5 rounded-full bg-gradient-to-br from-pink-900 to-rose-950 border-2 border-pink-400 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
-                <svg class="w-3 h-3 text-pink-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <circle cx="12" cy="12" r="7" stroke-dasharray="3 2" />
-                  <circle cx="12" cy="12" r="2.5" fill="#FFFFFF" />
-                </svg>
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${countBadgeText}">
+              <!-- Touch / Click / Hover Multi-Thesis Card over Pin -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-3 py-2 rounded-xl shadow-2xl border-2 border-pink-500 max-w-xs text-left transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-pink-600 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} pointer-events-none">
+                <span class="font-black text-pink-900 border-b border-pink-200 pb-1 flex items-center justify-between gap-2">
+                  <span class="flex items-center gap-1 text-[11px]">
+                    <span class="w-2 h-2 rounded-full bg-pink-500"></span>
+                    <span>${cityName}</span>
+                  </span>
+                  <span class="bg-pink-100 text-pink-900 px-1.5 py-0.2 rounded text-[9px] font-extrabold whitespace-nowrap">
+                    ${count} ${count > 1 ? 'Ongoing' : 'Ongoing'}
+                  </span>
+                </span>
+                <div class="text-[9.5px] text-slate-700 font-semibold max-h-36 overflow-y-auto mt-1 pr-1 space-y-0.5 leading-tight">
+                  ${thesesHtml}
+                </div>
+              </span>
+
+              <!-- Ongoing Ph.D. Pin Marker (Pink #DB2777) -->
+              <div class="w-6 h-6 rounded-full bg-[#DB2777] border-2 border-white shadow-xl flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-140">
+                <span class="text-[10px] font-black text-white">${count}</span>
               </div>
             </div>
           `;
         } else {
-          // 4. COMPLETED Ph.D. SCHOLAR (Rich Dark Deep Cyan)
+          // 4. COMPLETED Ph.D. SCHOLAR (Cyan #0891B2 matching menu)
           const cityName = loc.city || loc.metadata?.city || loc.state;
-          const thesisTitle = loc.metadata?.thesisTitle || loc.name || loc.rawName;
+          const count = (loc.metadata?.count as number) || 1;
+          const thesesList = (loc.metadata?.thesesList as string[]) || [loc.metadata?.thesisTitle || loc.name];
+
+          const countBadgeText = `${cityName} (${count} Completed Ph.D. ${count > 1 ? 'Theses' : 'Thesis'})`;
+          const thesesHtml = thesesList
+            .map((t, idx) => `<div class="py-0.5 border-b border-slate-100 last:border-0"><span class="font-black text-cyan-700 mr-1">${idx + 1}.</span>${t}</div>`)
+            .join("");
 
           el.innerHTML = `
-            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${cityName}: ${thesisTitle}">
-              <!-- Touch / Click / Hover City Name & Thesis Title Floating Label over Pin -->
-              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1.5 rounded-lg shadow-xl border border-cyan-400 max-w-[260px] text-left transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-cyan-600 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} pointer-events-none">
-                <span class="font-black text-cyan-900 flex items-center gap-1">
-                  <svg class="w-3 h-3 text-cyan-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                  </svg>
-                  <span>${cityName}</span>
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${countBadgeText}">
+              <!-- Touch / Click / Hover Multi-Thesis Card over Pin -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-3 py-2 rounded-xl shadow-2xl border-2 border-cyan-500 max-w-xs text-left transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-cyan-600 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} pointer-events-none">
+                <span class="font-black text-cyan-900 border-b border-cyan-200 pb-1 flex items-center justify-between gap-2">
+                  <span class="flex items-center gap-1 text-[11px]">
+                    <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
+                    <span>${cityName}</span>
+                  </span>
+                  <span class="bg-cyan-100 text-cyan-900 px-1.5 py-0.2 rounded text-[9px] font-extrabold whitespace-nowrap">
+                    ${count} ${count > 1 ? 'Completed' : 'Completed'}
+                  </span>
                 </span>
-                <span class="text-[9px] text-slate-700 font-bold block mt-0.5 line-clamp-2 leading-tight">
-                  ${thesisTitle}
-                </span>
+                <div class="text-[9.5px] text-slate-700 font-semibold max-h-36 overflow-y-auto mt-1 pr-1 space-y-0.5 leading-tight">
+                  ${thesesHtml}
+                </div>
               </span>
 
-              <!-- Eye Science Iris / Lens Badge -->
-              <div class="w-5.5 h-5.5 rounded-full bg-gradient-to-br from-cyan-900 to-blue-950 border-2 border-cyan-400 shadow-lg flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-150">
-                <svg class="w-3 h-3 text-cyan-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M2 12s3-6 10-6 10 6 10 6-3 6-10 6-10-6-10-6z" />
-                  <circle cx="12" cy="12" r="2.5" fill="#FFFFFF" />
-                </svg>
+              <!-- Completed Ph.D. Pin Marker (Cyan #0891B2) -->
+              <div class="w-6 h-6 rounded-full bg-[#0891B2] border-2 border-white shadow-xl flex items-center justify-center relative overflow-hidden transition-transform duration-200 group-hover:scale-140">
+                <span class="text-[10px] font-black text-white">${count}</span>
               </div>
             </div>
           `;
