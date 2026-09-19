@@ -963,7 +963,7 @@ export function MapEngine({
             </div>
           `;
         } else if (isOngoing) {
-          // 3. ONGOING Ph.D. SCHOLAR (Dark Pink #9D174D matching menu - No count text inside pin icon)
+          // 3. ONGOING Ph.D. SCHOLAR (Dark Pink #9D174D matching menu)
           const cityName = loc.city || loc.metadata?.city || loc.state;
           const count = (loc.metadata?.count as number) || 1;
           const thesesList = (loc.metadata?.thesesList as string[]) || [loc.metadata?.thesisTitle || loc.name];
@@ -975,7 +975,7 @@ export function MapEngine({
 
           el.innerHTML = `
             <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-30" title="${countBadgeText}">
-              <!-- Touch / Click / Hover Multi-Thesis Card over Pin -->
+              <!-- Touch / Hover Multi-Thesis Card over Pin -->
               <div class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 p-2.5 rounded-xl shadow-2xl border-2 border-[#9D174D] max-w-xs text-left transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-[#9D174D] scale-105 pointer-events-auto' : 'opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none'} z-50 select-text">
                 <div class="font-black text-[#9D174D] border-b border-pink-200 pb-1 flex items-center justify-between gap-2">
                   <span class="flex items-center gap-1 text-[11px]">
@@ -991,13 +991,20 @@ export function MapEngine({
                 </div>
               </div>
 
-              <!-- Sleek Ongoing Ph.D. Dark Pin Marker (#9D174D - No Number Inside) -->
-              <div class="w-4.5 h-4.5 rounded-full bg-[#9D174D] border-2 border-white shadow-xl relative transition-transform duration-200 group-hover:scale-150">
+              <!-- Visible City & Ongoing Scholar Count Pill Badge over Pin -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-0.5 rounded-lg shadow-xl border border-pink-300 whitespace-nowrap flex items-center gap-1.5 transition-transform group-hover:scale-110 pointer-events-none">
+                <span class="w-2 h-2 rounded-full bg-[#9D174D]"></span>
+                <span>${cityName}:</span> <span class="text-[#9D174D] font-extrabold">${count} Ongoing</span>
+              </span>
+
+              <!-- Sleek Ongoing Ph.D. Dark Pin Marker (#9D174D) -->
+              <div class="w-5 h-5 rounded-full bg-[#9D174D] border-2 border-white shadow-xl relative transition-transform duration-200 group-hover:scale-130 flex items-center justify-center">
+                <div class="w-2 h-2 rounded-full bg-white opacity-80"></div>
               </div>
             </div>
           `;
         } else {
-          // 4. COMPLETED Ph.D. SCHOLAR (Dark Cyan #155E75 matching menu - No count text inside pin icon)
+          // 4. COMPLETED Ph.D. SCHOLAR (Dark Cyan #155E75 matching menu)
           const cityName = loc.city || loc.metadata?.city || loc.state;
           const count = (loc.metadata?.count as number) || 1;
           const thesesList = (loc.metadata?.thesesList as string[]) || [loc.metadata?.thesisTitle || loc.name];
@@ -1009,7 +1016,7 @@ export function MapEngine({
 
           el.innerHTML = `
             <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-30" title="${countBadgeText}">
-              <!-- Touch / Click / Hover Multi-Thesis Card over Pin -->
+              <!-- Touch / Hover Multi-Thesis Card over Pin -->
               <div class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 p-2.5 rounded-xl shadow-2xl border-2 border-[#155E75] max-w-xs text-left transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-[#155E75] scale-105 pointer-events-auto' : 'opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none'} z-50 select-text">
                 <div class="font-black text-[#155E75] border-b border-cyan-200 pb-1 flex items-center justify-between gap-2">
                   <span class="flex items-center gap-1 text-[11px]">
@@ -1025,8 +1032,15 @@ export function MapEngine({
                 </div>
               </div>
 
-              <!-- Sleek Completed Ph.D. Dark Pin Marker (#155E75 - No Number Inside) -->
-              <div class="w-4.5 h-4.5 rounded-full bg-[#155E75] border-2 border-white shadow-xl relative transition-transform duration-200 group-hover:scale-150">
+              <!-- Visible City & Completed Scholar Count Pill Badge over Pin -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-0.5 rounded-lg shadow-xl border border-cyan-300 whitespace-nowrap flex items-center gap-1.5 transition-transform group-hover:scale-110 pointer-events-none">
+                <span class="w-2 h-2 rounded-full bg-[#155E75]"></span>
+                <span>${cityName}:</span> <span class="text-[#155E75] font-extrabold">${count} Completed</span>
+              </span>
+
+              <!-- Sleek Completed Ph.D. Dark Pin Marker (#155E75) -->
+              <div class="w-5 h-5 rounded-full bg-[#155E75] border-2 border-white shadow-xl relative transition-transform duration-200 group-hover:scale-130 flex items-center justify-center">
+                <div class="w-2 h-2 rounded-full bg-white opacity-80"></div>
               </div>
             </div>
           `;

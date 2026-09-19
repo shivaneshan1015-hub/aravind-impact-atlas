@@ -31,7 +31,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
   },
   {
       "id": "amrf_phd_completed_vellore",
-      "name": "Vellore (1 Ph.D. Thesis)",
+      "name": "Vellore (1 Completed Ph.D. Thesis)",
       "rawName": "Vellore",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -56,12 +56,12 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Vellore",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_madurai",
-      "name": "Madurai (20 Ph.D. Thesises)",
+      "name": "Madurai (16 Completed Ph.D. Theses)",
       "rawName": "Madurai",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -72,7 +72,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
       "longitude": 78.1198,
       "type": "PhD Scholar",
       "metrics": {
-          "count": 20,
+          "count": 16,
           "city": "Madurai",
           "state": "Tamil Nadu",
           "status": "Completed",
@@ -80,37 +80,33 @@ export const AMRF_DATA: GeoLocationItem[] = [
       },
       "metadata": {
           "status": "completed",
-          "count": 20,
+          "count": 16,
           "thesesList": [
               "Aetiology and pathogenic Mechanism of Uveitis associated with Leptospirosis",
-              "Involvement of Transcription Factor genes PAX6/FOXL2 in various ocular anomalies",
               "Understanding the Molecular Genetics of Cataract",
               "Serological and Molecular characterization of Rubella virus in children with Ocular defects of Congenital Rubella Syndrome",
               "Molecular Mechanisms of Diabetic Retinopathy",
               "Molecular Genetics and Functional Analysis of Albinism Patients in India",
               "Characterization Of The Immunopathogenic Mechanism In Human Mycotic Keratitis",
-              "Investigating the role of Nuclear, Mitochondrial Genome and microRNA in the pathogenesis of Fuchs Endothelial Corneal Dystrophy (FECD)",
-              "Understanding the role of trabecular meshwork stem cells in the maintenance of tissue homeostasis",
+              "Investigating the role of Nuclear, Mitochondrial Genome and microRNA in the pathogenesis of Diabetic retinopathy",
+              "Understanding the role of trabecular meshwork stem cells in the maintenance of tissue homeostasis in normal and glaucomatous human eyes",
               "Characterization of genetic and transcriptional alterations in retinoblastoma",
               "Molecular Genetics of Macular Corneal Dystrophy (MCD) in Indian population",
               "Understanding the Molecular Mechanisms of Chemoresistance in Retinoblastoma",
-              "Identification of modifier genes involved in Tumorigenesis of Retinoblastoma",
-              "Identification of Pathogenic variants associated with Genetic Eye diseases in whole Exome and Genome dataset",
               "Genomic Characterization of Kinome Related Genes in Retinoblastoma",
               "Molecular Characterization Of Tumor Progression In Retinoblastoma",
-              "Characterization of Adult Human Lens Epithelial Stem Cells in the Maintenance of Tissue Homeostasis",
               "Identification, Characterization and Maintenance of Stem Cells in Adult Human Retinal Pigment Epithelium",
               "Molecular Characterization of Ocular Lymphoma for improved Disease prognosis",
-              "Human Adult Stem Cell Derived Small Extracellular Vesicles for Trabecular Meshwork Regeneration"
+              "Human Adult Stem Cell Derived Small Extracellular Vesicles for Trabecular Meshwork Regeneration in Glaucoma"
           ],
           "city": "Madurai",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_karur",
-      "name": "Karur (1 Ph.D. Thesis)",
+      "name": "Karur (1 Completed Ph.D. Thesis)",
       "rawName": "Karur",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -131,16 +127,46 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 1,
           "thesesList": [
-              "Studies on Myocilin TIGR/MYOC gene mutations and Myocilin protein in Indian patients with glaucoma"
+              "Studies on Myocilin TIGR/MYOC) gene mutations and Myocilin protein in Indian patients with Primary Open Angle Glaucoma"
           ],
           "city": "Karur",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
+      }
+  },
+  {
+      "id": "amrf_phd_completed_samayanallur",
+      "name": "Samayanallur (1 Completed Ph.D. Thesis)",
+      "rawName": "Samayanallur",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Samayanallur",
+      "latitude": 9.9881,
+      "longitude": 78.0494,
+      "type": "PhD Scholar",
+      "metrics": {
+          "count": 1,
+          "city": "Samayanallur",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "count": 1,
+          "thesesList": [
+              "Involvement of Transcription Factor genes PAX6/FOXL2 in various ocular anomalies"
+          ],
+          "city": "Samayanallur",
+          "state": "Tamil Nadu",
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_karnataka",
-      "name": "Karnataka (1 Ph.D. Thesis)",
+      "name": "Karnataka (1 Completed Ph.D. Thesis)",
       "rawName": "Karnataka",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -165,12 +191,12 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Karnataka",
           "state": "Karnataka",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_sattur",
-      "name": "Sattur (1 Ph.D. Thesis)",
+      "name": "Sattur (1 Completed Ph.D. Thesis)",
       "rawName": "Sattur",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -195,12 +221,12 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Sattur",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_dindigul",
-      "name": "Dindigul (2 Ph.D. Thesises)",
+      "name": "Dindigul (2 Completed Ph.D. Theses)",
       "rawName": "Dindigul",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -221,17 +247,17 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 2,
           "thesesList": [
-              "Genetic and functional analysis of Fuchs Endothelial Corneal Dystrophy (FECD) and Congenital Hereditary Endothelial Dystrophy (CHED) in Indian population",
+              "Genetic and functional analysis of Fuchs Endothelial Corneal Dystrophy (FECD) and Congenital hereditary endothelial dystrophy (CHED) in Indian patients",
               "Micro RNAs Specific to Corneal Epithelial Stem Cells"
           ],
           "city": "Dindigul",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_tenkasi",
-      "name": "Tenkasi (1 Ph.D. Thesis)",
+      "name": "Tenkasi (1 Completed Ph.D. Thesis)",
       "rawName": "Tenkasi",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -256,24 +282,24 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Tenkasi",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
-      "id": "amrf_phd_completed_luknow",
-      "name": "Luknow (1 Ph.D. Thesis)",
-      "rawName": "Luknow",
+      "id": "amrf_phd_completed_lucknow",
+      "name": "Lucknow (1 Completed Ph.D. Thesis)",
+      "rawName": "Lucknow",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Uttar Pradesh",
-      "city": "Luknow",
+      "city": "Lucknow",
       "latitude": 26.8467,
       "longitude": 80.9462,
       "type": "PhD Scholar",
       "metrics": {
           "count": 1,
-          "city": "Luknow",
+          "city": "Lucknow",
           "state": "Uttar Pradesh",
           "status": "Completed",
           "degree": "Ph.D. Ocular Sciences"
@@ -282,16 +308,16 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 1,
           "thesesList": [
-              "Identification and Characterization of Mutations in Candidate Genes involved in major Congenital Ocular Anomalies"
+              "Identification and Characterization of Mutations in Candidate Genes involved in major Congenital Globe Anomalies"
           ],
-          "city": "Luknow",
+          "city": "Lucknow",
           "state": "Uttar Pradesh",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_bihar",
-      "name": "Bihar (1 Ph.D. Thesis)",
+      "name": "Bihar (1 Completed Ph.D. Thesis)",
       "rawName": "Bihar",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -312,16 +338,16 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 1,
           "thesesList": [
-              "Etiology and immunopathogenesis of subconjunctival and Anterior Chamber Granulomatous Uveitis"
+              "Etiology and immunopathogenesis of subconjunctival and Anterior Chamber Granulomatous Uveitis in children of South India"
           ],
           "city": "Bihar",
           "state": "Bihar",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_chapra",
-      "name": "Chapra (1 Ph.D. Thesis)",
+      "name": "Chapra (1 Completed Ph.D. Thesis)",
       "rawName": "Chapra",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -346,12 +372,12 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Chapra",
           "state": "Bihar",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_tenali",
-      "name": "Tenali (1 Ph.D. Thesis)",
+      "name": "Tenali (1 Completed Ph.D. Thesis)",
       "rawName": "Tenali",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -372,24 +398,24 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 1,
           "thesesList": [
-              "Identification of genetic variants in genes associated with Primary Open Angle Glaucoma in Indian Population"
+              "Identification of genetic variants in genes associated with Primary Open Angle Glaucoma in Indian population"
           ],
           "city": "Tenali",
           "state": "Andhra Pradesh",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_kerala",
-      "name": "Kerala (1 Ph.D. Thesis)",
+      "name": "Kerala (1 Completed Ph.D. Thesis)",
       "rawName": "Kerala",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Kerala",
       "city": "Kerala",
-      "latitude": 10.5276,
-      "longitude": 76.2144,
+      "latitude": 8.5241,
+      "longitude": 76.9366,
       "type": "PhD Scholar",
       "metrics": {
           "count": 1,
@@ -402,16 +428,16 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 1,
           "thesesList": [
-              "Studies on the characterization of limbal niche- their role in maintenance and ex vivo expansion of limbal epithelial stem cells"
+              "Studies on the characterization of limbal niche- their role in maintenance and ex vivo expansion of human corneal epithelial stem cells"
           ],
           "city": "Kerala",
           "state": "Kerala",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_assam",
-      "name": "Assam (1 Ph.D. Thesis)",
+      "name": "Assam (1 Completed Ph.D. Thesis)",
       "rawName": "Assam",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -432,16 +458,16 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 1,
           "thesesList": [
-              "Mitochondrial Genes Involvement in Leber\u2019s Hereditary Optic Neuropathy (LHON)"
+              "Mitochondrial Genes Involvement in Leber's Hereditary Optic Neuropathy (LHON)"
           ],
           "city": "Assam",
           "state": "Assam",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_kovilpatti",
-      "name": "Kovilpatti (1 Ph.D. Thesis)",
+      "name": "Kovilpatti (1 Completed Ph.D. Thesis)",
       "rawName": "Kovilpatti",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -462,16 +488,16 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 1,
           "thesesList": [
-              "Genotypic characterization and analysis of virulence factors in Methicillin resistant Staphylococcus aureus (MRSA) causing ocular infections"
+              "Genotypic characterization and analysis of virulence factors in Methicillin resistant Staphylococcus aureus causing ocular infections"
           ],
           "city": "Kovilpatti",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_new_delhi",
-      "name": "New Delhi (1 Ph.D. Thesis)",
+      "name": "New Delhi (1 Completed Ph.D. Thesis)",
       "rawName": "New Delhi",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -492,16 +518,16 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 1,
           "thesesList": [
-              "Molecular Genetics and Cytokine Profiling in South Indian patients with Primary Angle Closure Glaucoma (PACG)"
+              "Molecular Genetics and Cytokine Profiling in South Indian patients with Primary Angle Closure Glaucoma"
           ],
           "city": "New Delhi",
           "state": "New Delhi",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_trichy",
-      "name": "Trichy (1 Ph.D. Thesis)",
+      "name": "Trichy (1 Completed Ph.D. Thesis)",
       "rawName": "Trichy",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -526,12 +552,12 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Trichy",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_kashmir",
-      "name": "Kashmir (1 Ph.D. Thesis)",
+      "name": "Kashmir (1 Completed Ph.D. Thesis)",
       "rawName": "Kashmir",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -552,16 +578,16 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 1,
           "thesesList": [
-              "Genetics and functional approaches to understand the pathogenicity of Primary Open Angle Glaucoma (POAG)"
+              "Genetics and functional approaches to understand the pathogenicity of Primary Open Angle Glaucoma"
           ],
           "city": "Kashmir",
           "state": "Kashmir",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_karaikudi",
-      "name": "Karaikudi (1 Ph.D. Thesis)",
+      "name": "Karaikudi (1 Completed Ph.D. Thesis)",
       "rawName": "Karaikudi",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -586,12 +612,42 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Karaikudi",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
+      }
+  },
+  {
+      "id": "amrf_phd_completed_sholavandan",
+      "name": "Sholavandan (1 Completed Ph.D. Thesis)",
+      "rawName": "Sholavandan",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Sholavandan",
+      "latitude": 10.0212,
+      "longitude": 78.0069,
+      "type": "PhD Scholar",
+      "metrics": {
+          "count": 1,
+          "city": "Sholavandan",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "count": 1,
+          "thesesList": [
+              "Identification of modifier genes involved in Tumorigenesis of Retinoblastoma"
+          ],
+          "city": "Sholavandan",
+          "state": "Tamil Nadu",
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_tamil_nadu",
-      "name": "Tamil Nadu (2 Ph.D. Thesises)",
+      "name": "Tamil Nadu (2 Completed Ph.D. Theses)",
       "rawName": "Tamil Nadu",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -613,16 +669,46 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "count": 2,
           "thesesList": [
               "Interaction of Pathogenic Fungi with Human Corneal Epithelial cells",
-              "Characterization of Antimicrobial Resistance and virulence in ocular Pseudomonas aeruginosa isolates"
+              "Characterization of Antimicrobial Resistance and virulence in ocular Pseudomonas aeruginosa and Methicillin-Resistant Staphylococcus aureus strains through comparative genomic analysis"
           ],
           "city": "Tamil Nadu",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
+      }
+  },
+  {
+      "id": "amrf_phd_completed_thirumangalam",
+      "name": "Thirumangalam (1 Completed Ph.D. Thesis)",
+      "rawName": "Thirumangalam",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Thirumangalam",
+      "latitude": 9.8252,
+      "longitude": 77.9894,
+      "type": "PhD Scholar",
+      "metrics": {
+          "count": 1,
+          "city": "Thirumangalam",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "count": 1,
+          "thesesList": [
+              "Identification of Pathogenic variants associated with Genetic Eye diseases in whole Exome and Genome data"
+          ],
+          "city": "Thirumangalam",
+          "state": "Tamil Nadu",
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_aruppukkottai",
-      "name": "Aruppukkottai (1 Ph.D. Thesis)",
+      "name": "Aruppukkottai (1 Completed Ph.D. Thesis)",
       "rawName": "Aruppukkottai",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -643,16 +729,16 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 1,
           "thesesList": [
-              "Molecular Genetics and Functional Studies of Mitochondrial Genes Associated with Leber\u2019s Hereditary Optic Neuropathy (LHON)"
+              "Molecular Genetics and Functional Studies of Mitochondrial Genes Associated with Leber's Hereditary Optic Neuropathy"
           ],
           "city": "Aruppukkottai",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_rajapalayam",
-      "name": "Rajapalayam (1 Ph.D. Thesis)",
+      "name": "Rajapalayam (1 Completed Ph.D. Thesis)",
       "rawName": "Rajapalayam",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -677,12 +763,12 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Rajapalayam",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_coimbatore",
-      "name": "Coimbatore (1 Ph.D. Thesis)",
+      "name": "Coimbatore (1 Completed Ph.D. Thesis)",
       "rawName": "Coimbatore",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -703,16 +789,16 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 1,
           "thesesList": [
-              "Molecular Characterization of Leber\u2019s Congenital Amaurosis in South Indian Cohort"
+              "Molecular Characterization of Leber's Congenital Amaurosis in South Indian Cohort"
           ],
           "city": "Coimbatore",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_sivakasi",
-      "name": "Sivakasi (1 Ph.D. Thesis)",
+      "name": "Sivakasi (1 Completed Ph.D. Thesis)",
       "rawName": "Sivakasi",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
@@ -720,7 +806,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
       "state": "Tamil Nadu",
       "city": "Sivakasi",
       "latitude": 9.4533,
-      "longitude": 77.7974,
+      "longitude": 77.7973,
       "type": "PhD Scholar",
       "metrics": {
           "count": 1,
@@ -733,28 +819,28 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "status": "completed",
           "count": 1,
           "thesesList": [
-              "Investigating the Cross Talk Between Nuclear and Mitochondrial Genome in Patients with Leber Hereditary Optic Neuropathy (LHON)"
+              "Investigating the Cross Talk Between Nuclear and Mitochondrial Genome in Patients with Leber's Hereditary Optic Neuropathy"
           ],
           "city": "Sivakasi",
           "state": "Tamil Nadu",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
-      "id": "amrf_phd_completed_kolkatta",
-      "name": "Kolkatta (1 Ph.D. Thesis)",
-      "rawName": "Kolkatta",
+      "id": "amrf_phd_completed_kolkata",
+      "name": "Kolkata (1 Completed Ph.D. Thesis)",
+      "rawName": "Kolkata",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "West Bengal",
-      "city": "Kolkatta",
+      "city": "Kolkata",
       "latitude": 22.5726,
       "longitude": 88.3639,
       "type": "PhD Scholar",
       "metrics": {
           "count": 1,
-          "city": "Kolkatta",
+          "city": "Kolkata",
           "state": "West Bengal",
           "status": "Completed",
           "degree": "Ph.D. Ocular Sciences"
@@ -765,22 +851,52 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "thesesList": [
               "Molecular genetics of Juvenile X-linked Retinoschisis in South Indian population"
           ],
-          "city": "Kolkatta",
+          "city": "Kolkata",
           "state": "West Bengal",
-          "color": "#155E75"
+          "color": "#0891B2"
+      }
+  },
+  {
+      "id": "amrf_phd_completed_usilampatti",
+      "name": "Usilampatti (1 Completed Ph.D. Thesis)",
+      "rawName": "Usilampatti",
+      "entityId": "amrf",
+      "subcategoryId": "phd_completed",
+      "country": "India",
+      "state": "Tamil Nadu",
+      "city": "Usilampatti",
+      "latitude": 10.0101,
+      "longitude": 77.7911,
+      "type": "PhD Scholar",
+      "metrics": {
+          "count": 1,
+          "city": "Usilampatti",
+          "state": "Tamil Nadu",
+          "status": "Completed",
+          "degree": "Ph.D. Ocular Sciences"
+      },
+      "metadata": {
+          "status": "completed",
+          "count": 1,
+          "thesesList": [
+              "Characterization of Adult Human Lens Epithelial Stem Cells in the Maintenance of Tissue Homeostasis and their Functional Status in Cataractous Lens"
+          ],
+          "city": "Usilampatti",
+          "state": "Tamil Nadu",
+          "color": "#0891B2"
       }
   },
   {
       "id": "amrf_phd_completed_andhra_pradesh",
-      "name": "Andhra Pradesh (1 Ph.D. Thesis)",
+      "name": "Andhra Pradesh (1 Completed Ph.D. Thesis)",
       "rawName": "Andhra Pradesh",
       "entityId": "amrf",
       "subcategoryId": "phd_completed",
       "country": "India",
       "state": "Andhra Pradesh",
       "city": "Andhra Pradesh",
-      "latitude": 15.9129,
-      "longitude": 79.74,
+      "latitude": 16.5062,
+      "longitude": 80.648,
       "type": "PhD Scholar",
       "metrics": {
           "count": 1,
@@ -797,24 +913,24 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Andhra Pradesh",
           "state": "Andhra Pradesh",
-          "color": "#155E75"
+          "color": "#0891B2"
       }
   },
   {
-      "id": "amrf_phd_ongoing_nagapattnam",
-      "name": "Nagapattnam (1 Ph.D. Thesis)",
-      "rawName": "Nagapattnam",
+      "id": "amrf_ongoing_phd_nagapattinam",
+      "name": "Nagapattinam (1 Ongoing Ph.D. Thesis)",
+      "rawName": "Nagapattinam",
       "entityId": "amrf",
       "subcategoryId": "ongoing_phd",
       "country": "India",
       "state": "Tamil Nadu",
-      "city": "Nagapattnam",
+      "city": "Nagapattinam",
       "latitude": 10.7656,
-      "longitude": 79.8,
+      "longitude": 79.8449,
       "type": "PhD Scholar",
       "metrics": {
           "count": 1,
-          "city": "Nagapattnam",
+          "city": "Nagapattinam",
           "state": "Tamil Nadu",
           "status": "Ongoing",
           "degree": "Ph.D. Ocular Sciences"
@@ -825,14 +941,14 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "thesesList": [
               "Identification and Analysis of Alternartive Transcripts in Retinoblastoma progression"
           ],
-          "city": "Nagapattnam",
+          "city": "Nagapattinam",
           "state": "Tamil Nadu",
-          "color": "#9D174D"
+          "color": "#DB2777"
       }
   },
   {
-      "id": "amrf_phd_ongoing_kannur",
-      "name": "Kannur (1 Ph.D. Thesis)",
+      "id": "amrf_ongoing_phd_kannur",
+      "name": "Kannur (1 Ongoing Ph.D. Thesis)",
       "rawName": "Kannur",
       "entityId": "amrf",
       "subcategoryId": "ongoing_phd",
@@ -840,7 +956,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
       "state": "Kerala",
       "city": "Kannur",
       "latitude": 11.8745,
-      "longitude": 75.4,
+      "longitude": 75.3704,
       "type": "PhD Scholar",
       "metrics": {
           "count": 1,
@@ -857,12 +973,12 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Kannur",
           "state": "Kerala",
-          "color": "#9D174D"
+          "color": "#DB2777"
       }
   },
   {
-      "id": "amrf_phd_ongoing_madurai",
-      "name": "Madurai (4 Ph.D. Thesises)",
+      "id": "amrf_ongoing_phd_madurai",
+      "name": "Madurai (4 Ongoing Ph.D. Theses)",
       "rawName": "Madurai",
       "entityId": "amrf",
       "subcategoryId": "ongoing_phd",
@@ -890,12 +1006,12 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Madurai",
           "state": "Tamil Nadu",
-          "color": "#9D174D"
+          "color": "#DB2777"
       }
   },
   {
-      "id": "amrf_phd_ongoing_kollam",
-      "name": "Kollam (1 Ph.D. Thesis)",
+      "id": "amrf_ongoing_phd_kollam",
+      "name": "Kollam (1 Ongoing Ph.D. Thesis)",
       "rawName": "Kollam",
       "entityId": "amrf",
       "subcategoryId": "ongoing_phd",
@@ -903,7 +1019,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
       "state": "Kerala",
       "city": "Kollam",
       "latitude": 8.8932,
-      "longitude": 76.65,
+      "longitude": 76.6141,
       "type": "PhD Scholar",
       "metrics": {
           "count": 1,
@@ -920,24 +1036,24 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Kollam",
           "state": "Kerala",
-          "color": "#9D174D"
+          "color": "#DB2777"
       }
   },
   {
-      "id": "amrf_phd_ongoing_dindugal",
-      "name": "Dindugal (1 Ph.D. Thesis)",
-      "rawName": "Dindugal",
+      "id": "amrf_ongoing_phd_dindigul",
+      "name": "Dindigul (1 Ongoing Ph.D. Thesis)",
+      "rawName": "Dindigul",
       "entityId": "amrf",
       "subcategoryId": "ongoing_phd",
       "country": "India",
       "state": "Tamil Nadu",
-      "city": "Dindugal",
+      "city": "Dindigul",
       "latitude": 10.3673,
       "longitude": 77.9803,
       "type": "PhD Scholar",
       "metrics": {
           "count": 1,
-          "city": "Dindugal",
+          "city": "Dindigul",
           "state": "Tamil Nadu",
           "status": "Ongoing",
           "degree": "Ph.D. Ocular Sciences"
@@ -948,9 +1064,9 @@ export const AMRF_DATA: GeoLocationItem[] = [
           "thesesList": [
               "Molecular Characterization of Human Retinal Pigment Epithelial Stem Cells and their role in Age-related macular degeneration"
           ],
-          "city": "Dindugal",
+          "city": "Dindigul",
           "state": "Tamil Nadu",
-          "color": "#9D174D"
+          "color": "#DB2777"
       }
   },
   {
