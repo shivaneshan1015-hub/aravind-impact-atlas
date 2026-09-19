@@ -90,17 +90,6 @@ export function ArrivalScene() {
               <circle cx="33.5" cy="16.5" r="1.3" fill="#FFFFFF" />
             </g>
           </svg>
-          <style jsx>{`
-            @keyframes eyeScan {
-              0%, 100% { transform: translateX(0px); }
-              25% { transform: translateX(-6px); }
-              50% { transform: translateX(0px); }
-              75% { transform: translateX(6px); }
-            }
-            .animate-eye-scan {
-              animation: eyeScan 3.5s ease-in-out infinite;
-            }
-          `}</style>
         </div>
 
         {/* Exhibition Main Title */}

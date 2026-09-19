@@ -196,7 +196,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
     bgGlow: "rgba(124, 58, 237, 0.15)",
     subcategories: [
       {
-        id: "doctorate",
+        id: "phd_completed",
         name: "Doctorate",
         tagline: "Ph.D. Doctoral scholars (Completed & Registered)",
         defaultScope: "state",

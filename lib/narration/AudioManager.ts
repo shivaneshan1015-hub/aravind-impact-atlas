@@ -15,9 +15,17 @@ export class AudioManager {
   private virtualDuration: number = 65; // Fallback duration in seconds
 
   constructor() {
-    if (typeof window !== "undefined") {
-      this.audio = new Audio();
-      this.bindAudioEvents();
+    this.ensureAudioInitialized();
+  }
+
+  private ensureAudioInitialized() {
+    if (typeof window !== "undefined" && !this.audio) {
+      try {
+        this.audio = new Audio();
+        this.bindAudioEvents();
+      } catch (err) {
+        console.warn("Failed to instantiate Audio object:", err);
+      }
     }
   }
 
@@ -73,6 +81,7 @@ export class AudioManager {
   }
 
   public load(audioSrc: string, durationEstimate: number = 65) {
+    this.ensureAudioInitialized();
     this.stop();
     this.virtualDuration = durationEstimate;
     this.virtualTime = 0;
@@ -85,6 +94,7 @@ export class AudioManager {
   }
 
   public play(): Promise<void> {
+    this.ensureAudioInitialized();
     if (this.isFallbackMode) {
       this.resumeFallbackTimer();
       return Promise.resolve();

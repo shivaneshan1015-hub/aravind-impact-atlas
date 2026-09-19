@@ -988,7 +988,7 @@ export function MapEngine({
           const count = (loc.metadata?.count as number) || 1;
           const thesesList = (loc.metadata?.thesesList as string[]) || [loc.metadata?.thesisTitle || loc.name];
 
-          const countBadgeText = `${cityName} (${count} Ongoing Ph.D. ${count > 1 ? 'Theses' : 'Thesis'})`;
+          const countBadgeText = `${cityName} (${count})`;
           const thesesHtml = thesesList
             .map((t, idx) => `<div class="py-1 border-b border-slate-100 last:border-0 flex items-start gap-1"><span class="font-black text-[#9D174D] shrink-0 mr-0.5">${idx + 1}.</span><span class="leading-tight">${t}</span></div>`)
             .join("");
@@ -1029,7 +1029,7 @@ export function MapEngine({
           const count = (loc.metadata?.count as number) || 1;
           const thesesList = (loc.metadata?.thesesList as string[]) || [loc.metadata?.thesisTitle || loc.name];
 
-          const countBadgeText = `${cityName} (${count} Completed Ph.D. ${count > 1 ? 'Theses' : 'Thesis'})`;
+          const countBadgeText = `${cityName} (${count})`;
           const thesesHtml = thesesList
             .map((t, idx) => `<div class="py-1 border-b border-slate-100 last:border-0 flex items-start gap-1"><span class="font-black text-[#155E75] shrink-0 mr-0.5">${idx + 1}.</span><span class="leading-tight">${t}</span></div>`)
             .join("");

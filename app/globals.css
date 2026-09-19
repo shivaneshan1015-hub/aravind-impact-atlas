@@ -52,3 +52,16 @@ button, a, [role="button"] {
 .maplibregl-popup-tip {
   border-top-color: #FFFFFF !important;
 }
+
+/* Eye Scan Animation for Starting Page emblem */
+@keyframes eyeScan {
+  0%, 100% { transform: translateX(0px); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(0px); }
+  75% { transform: translateX(6px); }
+}
+
+.animate-eye-scan {
+  animation: eyeScan 3.5s ease-in-out infinite;
+}
+

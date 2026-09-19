@@ -262,10 +262,7 @@ export function getFilteredLocations(
 
     // Special handling for AMRF
     if (entityId === "amrf") {
-      if (!subcategoryId || subcategoryId === "doctorate") {
-        return item.subcategoryId === "phd_completed" || item.subcategoryId === "ongoing_phd";
-      }
-      if (subcategoryId === "phd_completed") {
+      if (!subcategoryId || subcategoryId === "doctorate" || subcategoryId === "phd_completed") {
         return item.subcategoryId === "phd_completed";
       }
       if (subcategoryId === "ongoing_phd") {
