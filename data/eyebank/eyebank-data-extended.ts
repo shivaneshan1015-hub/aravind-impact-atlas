@@ -107,9 +107,9 @@ export const EYE_BANK_COLLECTION_CENTRES: EyeBankCollectionCenter[] = [
   },
 ];
 
-// Transposed from Image: Collected Eyes Distribution network data across India
+// Transposed from User Prompt: Collected Eyes Distribution network data across India (5 Base Centres Only)
 export const EYE_BANK_DISTRIBUTION_RECORDS: EyeBankDistributionRecord[] = [
-  // RAIEB , Madurai Destinations
+  // RAIEB , Madurai Destinations (30 Districts)
   { centerName: "RAIEB , Madurai", district: "Madurai", state: "Tamilnadu" },
   { centerName: "RAIEB , Madurai", district: "Ernakulam", state: "Kerala" },
   { centerName: "RAIEB , Madurai", district: "Bangalore", state: "Karnataka" },
@@ -141,31 +141,25 @@ export const EYE_BANK_DISTRIBUTION_RECORDS: EyeBankDistributionRecord[] = [
   { centerName: "RAIEB , Madurai", district: "Tirupathi", state: "Andhrapradesh" },
   { centerName: "RAIEB , Madurai", district: "Palakkad", state: "Kerala" },
 
-  // AIOB, Coimbatore Destinations
+  // AIOB, Coimbatore Destinations (5 Districts)
   { centerName: "AIOB, Coimbatore", district: "Coimbatore", state: "Tamil Nadu" },
   { centerName: "AIOB, Coimbatore", district: "Palakadu", state: "Kerala" },
   { centerName: "AIOB, Coimbatore", district: "Tirupur", state: "Tamil Nadu" },
   { centerName: "AIOB, Coimbatore", district: "Kozhikode", state: "Kerala" },
   { centerName: "AIOB, Coimbatore", district: "Erode", state: "Tamil Nadu" },
 
-  // RAEB ,Tirunelveli Destinations
+  // RAEB ,Tirunelveli Destinations (3 Districts)
   { centerName: "RAEB ,Tirunelveli", district: "Tirunelveli", state: "Tamil Nadu" },
   { centerName: "RAEB ,Tirunelveli", district: "Tuticorin", state: "Tamil Nadu" },
   { centerName: "RAEB ,Tirunelveli", district: "Kaniyakumari", state: "Tamil Nadu" },
 
-  // AEB Chennai Destinations
+  // AEB Chennai Destinations (3 Districts)
   { centerName: "AEB Chennai", district: "Chennai", state: "Tamil Nadu" },
   { centerName: "AEB Chennai", district: "Chengalpattu", state: "Tamil Nadu" },
   { centerName: "AEB Chennai", district: "Vellore", state: "Tamil Nadu" },
 
-  // AEBAP,Pondicherry Destinations
-  { centerName: "AEBAP,Pondicherry", district: "Puducherry", state: "Puducherry" },
-
-  // AEH, Salem Destinations
-  { centerName: "AEH, Salem", district: "Salem", state: "Tamil Nadu" },
-
-  // AEH ,Tirupathi Destinations
-  { centerName: "AEH ,Tirupathi", district: "Thirupathi", state: "Andhra Pradesh" },
+  // AEBAP,Pondicherry Destinations (1 District)
+  { centerName: "AEBAP,Pondicherry", district: "Pudhucherry", state: "Pudhucherry" },
 ];
 
 // Transposed from Image 4: Aravind Integrated Eye Bank Services (AIEBS) 10-Year Collection & Utilization

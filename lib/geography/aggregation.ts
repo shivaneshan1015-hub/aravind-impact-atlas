@@ -251,7 +251,11 @@ export function getFilteredLocations(
         return !!(item.metadata?.isMainHub || item.subcategoryId === "collection_network");
       }
       if (subcategoryId === "distributed") {
-        return !!(item.metadata?.isMainHub || item.subcategoryId === "distribution_network");
+        if (item.metadata?.isMainHub) {
+          // Only show the 5 distribution base eye bank centres (Madurai, Coimbatore, Tirunelveli, Chennai, Pondicherry)
+          return item.metadata?.categoryId !== "salem" && item.metadata?.categoryId !== "tirupathi";
+        }
+        return item.subcategoryId === "distribution_network";
       }
       return true; // Return all Eye Bank main hubs & collection/distribution nodes for display
     }

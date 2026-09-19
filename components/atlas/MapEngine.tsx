@@ -734,36 +734,26 @@ export function MapEngine({
         const hubColor = (loc.metadata?.color as string) || "#991B1B";
 
         if (isMainHub) {
-          if (isDistributedSubcategoryActive) {
-            // Small compact Main Hub Pin when Distributed subcategory is active
-            el.innerHTML = `
-              <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
-                <div style="width: 10px; height: 10px; background-color: ${hubColor}; border: 2px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 6px ${hubColor}cc, 0 1px 3px rgba(0,0,0,0.4); transition: all 0.2s ease-out;" class="group-hover:scale-150">
-                </div>
-              </div>
-            `;
-          } else {
-            // Distinct Eye Bank Base Hub Pin Badge with District Name Label over Pin
-            el.innerHTML = `
-              <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-30" title="${loc.name}">
-                <!-- Touch / Click / Hover District Name Label over Pin -->
-                <span class="mb-1 text-[11px] font-black text-white px-2.5 py-1 rounded-lg shadow-2xl border border-white/40 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform ${isSelected ? 'scale-110 ring-2 ring-white opacity-100' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'}" style="background-color: ${hubColor}">
-                  <svg class="w-3 h-3 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M9 17h6"/>
-                  </svg>
-                  <span>${distName} Base Eye Bank</span>
-                </span>
+          // Distinct Base Eye Bank Centre Pin Badge with Hub Name Label and Category Color
+          el.innerHTML = `
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto cursor-pointer z-30" title="${loc.name}">
+              <!-- Touch / Click / Hover District Name Label over Pin -->
+              <span class="mb-1 text-[11px] font-black text-white px-2.5 py-1 rounded-lg shadow-2xl border border-white/40 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform ${isSelected ? 'scale-110 ring-2 ring-white opacity-100' : 'opacity-90 group-hover:opacity-100 group-active:opacity-100'}" style="background-color: ${hubColor}">
+                <svg class="w-3 h-3 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M9 17h6"/>
+                </svg>
+                <span>${distName} Base Eye Bank</span>
+              </span>
 
-                <!-- Large Eye Bank Base Hub Building Badge Pin -->
-                <div class="w-8 h-8 rounded-xl border-2 border-white shadow-2xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125" style="background-color: ${hubColor}">
-                  <svg class="w-4.5 h-4.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
-                    <circle cx="12" cy="12" r="3" fill="#FFFFFF" fill-opacity="0.9" />
-                  </svg>
-                </div>
+              <!-- Large Eye Bank Base Hub Building Badge Pin -->
+              <div class="w-8 h-8 rounded-xl border-2 border-white shadow-2xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125" style="background-color: ${hubColor}">
+                <svg class="w-4.5 h-4.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                  <circle cx="12" cy="12" r="3" fill="#FFFFFF" fill-opacity="0.9" />
+                </svg>
               </div>
-            `;
-          }
+            </div>
+          `;
         } else if (isDistribution) {
           // Distribution Destination Pin with District Name on Hover & Dual 50/50 Split Gradient for Shared Hubs
           const isShared = loc.metadata?.isShared;

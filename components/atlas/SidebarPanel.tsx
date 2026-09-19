@@ -39,7 +39,7 @@ import {
   VisionCentreHospitalCategory,
 } from "@/data/hospitals/vision-centres-data";
 import { LAICO_DATA } from "@/data/laico/laico-data";
-import { EYE_BANK_CATEGORIES } from "@/data/eyebank/eyebank-data";
+import { EYE_BANK_CATEGORIES, EYE_BANK_DISTRIBUTION_CATEGORIES } from "@/data/eyebank/eyebank-data";
 
 export interface SidebarPanelProps {
   entityConfig: EntityConfig;
@@ -917,73 +917,80 @@ export function SidebarPanel({
                   </div>
                 )}
 
-                {/* 7 Base Eye Bank Category Filter */}
-                <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2">
-                  <div className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center justify-between">
-                    <span className="flex items-center gap-1.5">
-                      <Layers className="w-3.5 h-3.5 text-emerald-700" />
-                      <span>7 Base Eye Banks</span>
-                    </span>
-                    <span className="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full font-extrabold">
-                      Filter
-                    </span>
-                  </div>
+                {/* Base Eye Bank Category Filter (5 Centres for Distribution, 7 for Collection) */}
+                {(() => {
+                  const isDistributedMode = activeSubId === "distributed" || activeSubId === "distribution_network";
+                  const availableCategories = isDistributedMode ? EYE_BANK_DISTRIBUTION_CATEGORIES : EYE_BANK_CATEGORIES;
+                  const categoryCount = availableCategories.length;
 
-                  {/* ALL Categories Option */}
-                  <button
-                    onClick={() => onSelectEyeBankCategoryFilter?.("all")}
-                    className={`w-full p-2 rounded-xl border text-left text-[11px] font-extrabold transition-all flex items-center justify-between ${
-                      eyeBankCategoryFilter === "all"
-                        ? "bg-slate-900 text-white border-slate-900 shadow-2xs"
-                        : "bg-white hover:bg-slate-100 text-slate-700 border-slate-200"
-                    }`}
-                  >
-                    <span>ALL 7 Categories</span>
-                    {eyeBankCategoryFilter === "all" && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />}
-                  </button>
+                  return (
+                    <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2">
+                      <div className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center justify-between">
+                        <span className="flex items-center gap-1.5">
+                          <Layers className="w-3.5 h-3.5 text-emerald-700" />
+                          <span>{categoryCount} Base Eye Banks</span>
+                        </span>
+                        <span className="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full font-extrabold">
+                          Filter
+                        </span>
+                      </div>
 
-                  {/* 7 Individual Category Buttons */}
-                  <div className="space-y-1">
-                    {EYE_BANK_CATEGORIES.map((cat) => {
-                      const isSelected = eyeBankCategoryFilter === cat.id;
-                      const isDistributedMode = activeSubId === "distributed" || activeSubId === "distribution_network";
-                      const distCount = isDistributedMode
-                        ? (cat.distributionDistricts?.length || cat.districts.length)
-                        : cat.districts.length;
+                      {/* ALL Categories Option */}
+                      <button
+                        onClick={() => onSelectEyeBankCategoryFilter?.("all")}
+                        className={`w-full p-2 rounded-xl border text-left text-[11px] font-extrabold transition-all flex items-center justify-between ${
+                          eyeBankCategoryFilter === "all"
+                            ? "bg-slate-900 text-white border-slate-900 shadow-2xs"
+                            : "bg-white hover:bg-slate-100 text-slate-700 border-slate-200"
+                        }`}
+                      >
+                        <span>ALL {categoryCount} Categories</span>
+                        {eyeBankCategoryFilter === "all" && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />}
+                      </button>
 
-                      return (
-                        <button
-                          key={cat.id}
-                          onClick={() => onSelectEyeBankCategoryFilter?.(isSelected ? "all" : cat.id)}
-                          className={`w-full p-2.5 rounded-xl border text-left text-[11px] font-bold transition-all flex items-center justify-between ${
-                            isSelected
-                              ? "text-white shadow-sm ring-2 ring-slate-900"
-                              : "bg-white hover:bg-slate-100 text-slate-800 border-slate-200"
-                          }`}
-                          style={{
-                            backgroundColor: isSelected ? cat.color : undefined,
-                            borderColor: isSelected ? cat.color : undefined,
-                          }}
-                        >
-                          <div className="flex items-center gap-2">
-                            <span
-                              className="w-2.5 h-2.5 rounded-full border border-white/50 shrink-0"
-                              style={{ backgroundColor: cat.color }}
-                            />
-                            <span className="truncate">{cat.name}</span>
-                          </div>
-                          <span
-                            className={`text-[9px] px-1.5 py-0.5 rounded-full font-extrabold ${
-                              isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-700"
-                            }`}
-                          >
-                            {distCount} Dists
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
+                      {/* Individual Category Buttons */}
+                      <div className="space-y-1">
+                        {availableCategories.map((cat) => {
+                          const isSelected = eyeBankCategoryFilter === cat.id;
+                          const distCount = isDistributedMode
+                            ? (cat.distributionDistricts?.length || 0)
+                            : cat.districts.length;
+
+                          return (
+                            <button
+                              key={cat.id}
+                              onClick={() => onSelectEyeBankCategoryFilter?.(isSelected ? "all" : cat.id)}
+                              className={`w-full p-2.5 rounded-xl border text-left text-[11px] font-bold transition-all flex items-center justify-between ${
+                                isSelected
+                                  ? "text-white shadow-sm ring-2 ring-slate-900"
+                                  : "bg-white hover:bg-slate-100 text-slate-800 border-slate-200"
+                              }`}
+                              style={{
+                                backgroundColor: isSelected ? cat.color : undefined,
+                                borderColor: isSelected ? cat.color : undefined,
+                              }}
+                            >
+                              <div className="flex items-center gap-2">
+                                <span
+                                  className="w-2.5 h-2.5 rounded-full border border-white/50 shrink-0"
+                                  style={{ backgroundColor: cat.color }}
+                                />
+                                <span className="truncate">{cat.name}</span>
+                              </div>
+                              <span
+                                className={`text-[9px] px-1.5 py-0.5 rounded-full font-extrabold ${
+                                  isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-700"
+                                }`}
+                              >
+                                {distCount} Dists
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             )}
           </div>
