@@ -141,7 +141,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "long_term_trainees",
         name: "Long Term Trainees",
-        tagline: "Long term clinical & managerial fellowships (2017 – 2026)",
+        tagline: "Long term clinical fellowships (2017 – 2026)",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],

@@ -5,6 +5,7 @@ import { HOSPITALS_DATA } from "./hospitals/hospitals-data";
 import { VISION_CENTRES_DATA } from "./hospitals/vision-centres-data";
 import { LAICO_DATA } from "./laico/laico-data";
 import { LAICO_SHORT_TERM_TRAINEES_DATA } from "./laico/short-term-trainees-data";
+import { LAICO_POST_GRADUATES_DATA } from "./laico/post-graduates-data";
 import { LAICO_OTHER_TRAINING_DATA } from "./laico/laico-training-data";
 import { AMRF_DATA } from "./amrf/amrf-data";
 import { AUROITECH_DATA } from "./auroitech/auroitech-data";
@@ -24,6 +25,7 @@ export const DEMO_LOCATIONS: GeoLocationItem[] = [
   ...VISION_CENTRES_DATA,
   ...LAICO_DATA,
   ...LAICO_SHORT_TERM_TRAINEES_DATA,
+  ...LAICO_POST_GRADUATES_DATA,
   ...LAICO_OTHER_TRAINING_DATA,
   ...AMRF_DATA,
   ...AUROITECH_DATA,

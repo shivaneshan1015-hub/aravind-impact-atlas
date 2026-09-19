@@ -858,8 +858,7 @@ export function MapEngine({
               </span>
 
               <!-- Training Programme Pin Marker Dot with matching Category Color -->
-              <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 10px ${dotColor}dd, 0 2px 5px rgba(0,0,0,0.35); transition: transform 0.15s ease-out;" class="group-hover:scale-130 group-active:scale-130 flex items-center justify-center">
-                ${traineeCount > 10 ? `<span class="text-[8px] font-black text-white leading-none">${traineeCount}</span>` : ''}
+              <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 10px ${dotColor}dd, 0 2px 5px rgba(0,0,0,0.35); transition: transform 0.15s ease-out;" class="group-hover:scale-130 group-active:scale-130">
               </div>
             </div>
           `;
