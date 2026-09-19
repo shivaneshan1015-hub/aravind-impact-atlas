@@ -40,6 +40,7 @@ export function MapEngine({
   selectedLocation,
   onSelectState,
   onSelectLocation,
+  onClearLocation,
   selectedSubcategoryId,
   modeGrammar = "auto",
   geographicLevel = "country",
