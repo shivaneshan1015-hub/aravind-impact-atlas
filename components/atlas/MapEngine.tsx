@@ -828,11 +828,38 @@ export function MapEngine({
             </div>
           `;
         } else {
-          // 3. LAICO PARTICIPANT NETWORK HUB
-          const dotColor = "#0F766E";
+          // LAICO TRAINING PROGRAMME STATE/COUNTRY HUB WITH COUNT OVER PIN
+          const categoryColors: Record<string, string> = {
+            management_courses: "#0D9488",
+            long_term_trainees: "#3B82F6",
+            short_term_trainees: "#F59E0B",
+            post_graduates: "#8B5CF6",
+            technicians: "#E11D48",
+            paramedics: "#06B6D4",
+          };
+          const dotColor = (loc.metadata?.color as string) || categoryColors[loc.subcategoryId] || "#F59E0B";
+
+          const traineeCount = (loc.metadata?.traineeCount as number) || (loc.metrics?.["Trainees Count"] as number) || 1;
+          const placeName = loc.rawName || loc.city || loc.state || loc.name;
+
+          // Scaled dot size (11px to 26px based on trainee volume)
+          const minSize = 11;
+          const maxSize = 26;
+          const logCount = Math.log10(Math.max(1, traineeCount));
+          const logMax = Math.log10(250);
+          const calculatedSize = Math.round(minSize + (logCount / logMax) * (maxSize - minSize));
+          const dotSize = `${Math.min(maxSize, Math.max(minSize, calculatedSize))}px`;
+
           el.innerHTML = `
-            <div class="relative flex items-center justify-center pointer-events-auto group" title="${loc.name}">
-              <div style="width: 10px; height: 10px; background-color: ${dotColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 6px ${dotColor}cc, 0 1px 3px rgba(0,0,0,0.3);" class="group-hover:scale-150">
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${placeName}: ${traineeCount} Trainees (2017 – 2026)">
+              <!-- Touch / Click / Hover Place Name & Count Label directly over Pin -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1 rounded-lg shadow-xl border border-slate-300 whitespace-nowrap ${isSelected ? 'opacity-100 ring-2 ring-slate-900 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} transition-all duration-150 pointer-events-none">
+                <span class="font-extrabold">${placeName}:</span> <span style="color: ${dotColor}" class="font-black">${traineeCount} Trainees</span>
+              </span>
+
+              <!-- Training Programme Pin Marker Dot with matching Category Color -->
+              <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1.5px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 10px ${dotColor}dd, 0 2px 5px rgba(0,0,0,0.35); transition: transform 0.15s ease-out;" class="group-hover:scale-130 group-active:scale-130 flex items-center justify-center">
+                ${traineeCount > 10 ? `<span class="text-[8px] font-black text-white leading-none">${traineeCount}</span>` : ''}
               </div>
             </div>
           `;
@@ -1090,8 +1117,11 @@ export function MapEngine({
             popTitle = `${loc.city} Partner Hub`;
             popSub = `Mentored Hospital · ${loc.state ? loc.state + ", " : ""}${loc.country}`;
           } else {
-            popTitle = loc.name;
-            popSub = `${loc.city}, ${loc.country}`;
+            const placeName = loc.rawName || loc.city || loc.state || loc.name;
+            const count = (loc.metadata?.traineeCount as number) || (loc.metrics?.["Trainees Count"] as number) || 1;
+            const catName = (loc.metrics?.Category as string) || "Training Programme";
+            popTitle = `${placeName}: ${count} Trainees`;
+            popSub = `LAICO ${catName} · Period: 2017 – 2026 · ${loc.country}`;
           }
         }
           

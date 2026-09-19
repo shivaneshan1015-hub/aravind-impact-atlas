@@ -81,12 +81,16 @@ export function ContextPanel({
                   ? selectedLocation.subcategoryId === "domestic" || selectedLocation.country === "India"
                     ? `${selectedLocation.city || selectedLocation.name} District`
                     : selectedLocation.country
+                  : selectedLocation.entityId === "laico" && selectedLocation.subcategoryId !== "capacity_building"
+                  ? `${selectedLocation.rawName || selectedLocation.city}`
                   : selectedLocation.name}
               </h4>
               <p className="text-[11px] text-slate-500 mt-0.5 flex items-center gap-1 font-medium">
                 <MapPin className="w-3 h-3 text-slate-400 shrink-0" />
                 {selectedLocation.entityId === "aurolab" && (selectedLocation.subcategoryId === "international" || selectedLocation.country !== "India")
                   ? `${selectedLocation.country}, ${selectedLocation.state}`
+                  : selectedLocation.entityId === "laico" && selectedLocation.subcategoryId !== "capacity_building"
+                  ? `${selectedLocation.metadata?.traineeCount || selectedLocation.metrics?.["Trainees Count"] || 1} Trainees · 2017–2026 (${selectedLocation.country})`
                   : `${selectedLocation.city}, ${selectedLocation.state}`}
               </p>
             </div>

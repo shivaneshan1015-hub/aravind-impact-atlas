@@ -226,6 +226,14 @@ export function getFilteredLocations(
       return item.careType !== "vision_centre"; // Default overview shows core hospitals network
     }
 
+    // Special handling for LAICO
+    if (entityId === "laico") {
+      if (subcategoryId) {
+        return item.subcategoryId === subcategoryId;
+      }
+      return item.subcategoryId === "capacity_building";
+    }
+
     // Special handling for Aurolab
     if (entityId === "aurolab") {
       if (!subcategoryId || subcategoryId === "domestic" || subcategoryId === "national_dealers" || subcategoryId === "domestic_dealers") {
