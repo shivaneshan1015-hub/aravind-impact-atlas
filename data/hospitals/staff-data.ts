@@ -59,22 +59,22 @@ export const TRAINEE_CATEGORIES: Record<StaffCategory, StaffCategoryMeta> = {
   },
   doctors: {
     id: "doctors",
-    name: "Doctor Fellows",
-    count: 316,
+    name: "Fellows",
+    count: 351,
     color: "#065F46", // Dark Forest Emerald
     bgLight: "bg-emerald-900 text-white border-emerald-800",
   },
   post_graduates: {
     id: "post_graduates",
     name: "Post Graduates",
-    count: 222,
+    count: 187,
     color: "#581C87", // Dark Purple
     bgLight: "bg-purple-950 text-white border-purple-900",
   },
   aop: {
     id: "aop",
     name: "AOP Trainees",
-    count: 2010,
+    count: 2009,
     color: "#312E81", // Dark Midnight Indigo
     bgLight: "bg-indigo-950 text-white border-indigo-900",
   },
@@ -192,6 +192,88 @@ export const DISTRICT_COORDINATES: Record<string, DistrictCoords> = {
   "Visakhapatnam": { lat: 17.6868, lng: 83.2185, state: "Andhra Pradesh", country: "India" },
   "Wayanad": { lat: 11.6103, lng: 76.0827, state: "Kerala", country: "India" },
   "West Tripura": { lat: 23.8315, lng: 91.2868, state: "Tripura", country: "India" },
+  "Agra": { lat: 27.1767, lng: 78.0081, state: "Uttar Pradesh", country: "India" },
+  "Ahmed Nagar": { lat: 19.0948, lng: 74.748, state: "Maharashtra", country: "India" },
+  "Akola": { lat: 20.7002, lng: 77.0082, state: "Maharashtra", country: "India" },
+  "Alirajpur": { lat: 22.3041, lng: 74.3541, state: "Madhya Pradesh", country: "India" },
+  "Ambala": { lat: 30.3782, lng: 76.7767, state: "Haryana", country: "India" },
+  "Aurangabad": { lat: 19.8762, lng: 75.3433, state: "Maharashtra", country: "India" },
+  "Balaghat": { lat: 21.808, lng: 80.184, state: "Madhya Pradesh", country: "India" },
+  "Bardhaman": { lat: 23.2324, lng: 87.8615, state: "West Bengal", country: "India" },
+  "Bellary": { lat: 15.1394, lng: 76.9214, state: "Karnataka", country: "India" },
+  "Bhopal": { lat: 23.2599, lng: 77.4126, state: "Madhya Pradesh", country: "India" },
+  "Bhutan": { lat: 27.5142, lng: 90.4336, state: "Thimphu", country: "Bhutan" },
+  "Budgam": { lat: 34.0157, lng: 74.7176, state: "Jammu & Kashmir", country: "India" },
+  "Buxar": { lat: 25.5647, lng: 83.9777, state: "Bihar", country: "India" },
+  "Cachar": { lat: 24.8333, lng: 92.7667, state: "Assam", country: "India" },
+  "Central Delhi": { lat: 28.6448, lng: 77.2167, state: "Delhi", country: "India" },
+  "Chhindwara": { lat: 22.0574, lng: 78.9382, state: "Madhya Pradesh", country: "India" },
+  "Davangere": { lat: 14.4644, lng: 75.9218, state: "Karnataka", country: "India" },
+  "Dibrugarh": { lat: 27.4728, lng: 94.912, state: "Assam", country: "India" },
+  "Durg": { lat: 21.1904, lng: 81.2849, state: "Chhattisgarh", country: "India" },
+  "East Godavari": { lat: 16.9891, lng: 82.2475, state: "Andhra Pradesh", country: "India" },
+  "East Singhbhum": { lat: 22.8046, lng: 86.2029, state: "Jharkhand", country: "India" },
+  "Faridabad": { lat: 28.4089, lng: 77.3178, state: "Haryana", country: "India" },
+  "Gandhi Nagar": { lat: 23.2156, lng: 72.6369, state: "Gujarat", country: "India" },
+  "Gautam Buddha Nagar": { lat: 28.5355, lng: 77.391, state: "Uttar Pradesh", country: "India" },
+  "Hanumangarh": { lat: 29.5815, lng: 74.3197, state: "Rajasthan", country: "India" },
+  "Hisar": { lat: 29.1492, lng: 75.7217, state: "Haryana", country: "India" },
+  "Imphal West": { lat: 24.817, lng: 93.9368, state: "Manipur", country: "India" },
+  "Indore": { lat: 22.7196, lng: 75.8577, state: "Madhya Pradesh", country: "India" },
+  "Jaipur": { lat: 26.9124, lng: 75.7873, state: "Rajasthan", country: "India" },
+  "Jalandhar": { lat: 31.326, lng: 75.5762, state: "Punjab", country: "India" },
+  "Jalgaon": { lat: 21.0077, lng: 75.5626, state: "Maharashtra", country: "India" },
+  "Jalna": { lat: 19.841, lng: 75.8864, state: "Maharashtra", country: "India" },
+  "Kamrup": { lat: 26.1833, lng: 91.6833, state: "Assam", country: "India" },
+  "Kanpur Nagar": { lat: 26.4499, lng: 80.3319, state: "Uttar Pradesh", country: "India" },
+  "Karim Nagar": { lat: 18.4386, lng: 79.1288, state: "Telangana", country: "India" },
+  "Karnal": { lat: 29.6857, lng: 76.9905, state: "Haryana", country: "India" },
+  "Kenya": { lat: -1.2921, lng: 36.8219, state: "Nairobi", country: "Kenya" },
+  "Khagaria": { lat: 25.5028, lng: 86.4828, state: "Bihar", country: "India" },
+  "Koppal": { lat: 15.3506, lng: 76.1549, state: "Karnataka", country: "India" },
+  "Kurukshetra": { lat: 29.9695, lng: 76.8783, state: "Haryana", country: "India" },
+  "Lakhisarai": { lat: 25.1742, lng: 86.0945, state: "Bihar", country: "India" },
+  "Ludhiana": { lat: 30.901, lng: 75.8573, state: "Punjab", country: "India" },
+  "Mahabub Nagar": { lat: 16.7488, lng: 78.0035, state: "Telangana", country: "India" },
+  "Mahe": { lat: 11.7002, lng: 75.5347, state: "Pondicherry", country: "India" },
+  "Malappuram": { lat: 11.0732, lng: 76.074, state: "Kerala", country: "India" },
+  "Mathura": { lat: 27.4924, lng: 77.6737, state: "Uttar Pradesh", country: "India" },
+  "Medak": { lat: 18.0461, lng: 78.2638, state: "Telangana", country: "India" },
+  "Meerut": { lat: 28.9845, lng: 77.7064, state: "Uttar Pradesh", country: "India" },
+  "Mudhalipatti": { lat: 11.15, lng: 78.2, state: "Tamil Nadu", country: "India" },
+  "Nagpur": { lat: 21.1458, lng: 79.0882, state: "Maharashtra", country: "India" },
+  "Nalgonda": { lat: 17.0577, lng: 79.2683, state: "Telangana", country: "India" },
+  "Nanded": { lat: 19.1383, lng: 77.321, state: "Maharashtra", country: "India" },
+  "Nashik": { lat: 19.9975, lng: 73.7898, state: "Maharashtra", country: "India" },
+  "Neemuch": { lat: 24.4735, lng: 74.872, state: "Madhya Pradesh", country: "India" },
+  "Nizamabad": { lat: 18.6725, lng: 78.0941, state: "Telangana", country: "India" },
+  "North Goa": { lat: 15.553, lng: 73.8744, state: "Goa", country: "India" },
+  "Parbhani": { lat: 19.2608, lng: 76.7748, state: "Maharashtra", country: "India" },
+  "Patna": { lat: 25.5941, lng: 85.1376, state: "Bihar", country: "India" },
+  "Puri": { lat: 19.8135, lng: 85.8312, state: "Odisha", country: "India" },
+  "Rajkot": { lat: 22.3039, lng: 70.8022, state: "Gujarat", country: "India" },
+  "Sabarkantha": { lat: 23.63, lng: 72.96, state: "Gujarat", country: "India" },
+  "Sangli": { lat: 16.8524, lng: 74.5815, state: "Maharashtra", country: "India" },
+  "Sangrur": { lat: 30.2458, lng: 75.842, state: "Punjab", country: "India" },
+  "Satara": { lat: 17.6805, lng: 74.0183, state: "Maharashtra", country: "India" },
+  "Satna": { lat: 24.6005, lng: 80.8322, state: "Madhya Pradesh", country: "India" },
+  "Shimoga": { lat: 13.9299, lng: 75.5681, state: "Karnataka", country: "India" },
+  "Sonipat": { lat: 28.9931, lng: 77.0151, state: "Haryana", country: "India" },
+  "South 24 Parganas": { lat: 22.1352, lng: 88.4016, state: "West Bengal", country: "India" },
+  "South Delhi": { lat: 28.4817, lng: 77.1873, state: "Delhi", country: "India" },
+  "South Tripura": { lat: 23.2323, lng: 91.4726, state: "Tripura", country: "India" },
+  "Srikakulam": { lat: 18.2949, lng: 83.8938, state: "Andhra Pradesh", country: "India" },
+  "Srinagar": { lat: 34.0837, lng: 74.7973, state: "Jammu & Kashmir", country: "India" },
+  "Tirupathi": { lat: 13.6288, lng: 79.4192, state: "Andhra Pradesh", country: "India" },
+  "Tiruppuvanam": { lat: 9.845, lng: 78.267, state: "Tamil Nadu", country: "India" },
+  "Valsad": { lat: 20.5992, lng: 72.9342, state: "Gujarat", country: "India" },
+  "Varanasi": { lat: 25.3176, lng: 82.9739, state: "Uttar Pradesh", country: "India" },
+  "West Godavari": { lat: 16.7107, lng: 81.0952, state: "Andhra Pradesh", country: "India" },
+  "West Midnapore": { lat: 22.4257, lng: 87.3199, state: "West Bengal", country: "India" },
+  "West Siang": { lat: 28.218, lng: 94.7278, state: "Arunachal Pradesh", country: "India" },
+  "Yadgir": { lat: 16.77, lng: 77.13, state: "Karnataka", country: "India" },
+  "Yamuna Nagar": { lat: 30.129, lng: 77.2674, state: "Haryana", country: "India" },
+  "Yavatmal": { lat: 20.3888, lng: 78.1204, state: "Maharashtra", country: "India" },
 };
 
 export interface EmployeeDistrictRecord {
@@ -302,6 +384,177 @@ export const EMPLOYEE_DISTRICT_RECORDS: EmployeeDistrictRecord[] = [
   { district: "West Tripura", admin: 0, doctors: 2, aop: 0, support: 0 },
 ];
 
+export interface TraineeDistrictRecord {
+  district: string;
+  admin: number;
+  doctors: number;
+  post_graduates: number;
+  aop: number;
+  support: number;
+}
+
+export const TRAINEE_DISTRICT_RECORDS: TraineeDistrictRecord[] = [
+  { district: "Agra", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Ahmed Nagar", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Ahmedabad", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Akola", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Alappuzha", admin: 0, doctors: 7, post_graduates: 3, aop: 0, support: 0 },
+  { district: "Alirajpur", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Ambala", admin: 0, doctors: 2, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Amravati", admin: 0, doctors: 1, post_graduates: 2, aop: 0, support: 0 },
+  { district: "Ananthapur", admin: 0, doctors: 0, post_graduates: 2, aop: 5, support: 0 },
+  { district: "Ariyalur", admin: 0, doctors: 0, post_graduates: 0, aop: 17, support: 0 },
+  { district: "Aurangabad", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Balaghat", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Bangalore", admin: 0, doctors: 8, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Bardhaman", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Bellary", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Bhopal", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Bhutan", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Budgam", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Buxar", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Cachar", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Central Delhi", admin: 0, doctors: 1, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Chennai", admin: 0, doctors: 12, post_graduates: 8, aop: 6, support: 0 },
+  { district: "Chhindwara", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Chittoor", admin: 2, doctors: 10, post_graduates: 2, aop: 135, support: 0 },
+  { district: "Coimbatore", admin: 5, doctors: 13, post_graduates: 5, aop: 25, support: 10 },
+  { district: "Cuddalore", admin: 2, doctors: 3, post_graduates: 1, aop: 123, support: 0 },
+  { district: "Cuddapah", admin: 0, doctors: 2, post_graduates: 2, aop: 16, support: 0 },
+  { district: "Dakshina Kannada", admin: 0, doctors: 1, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Davangere", admin: 0, doctors: 3, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Dharmapuri", admin: 1, doctors: 1, post_graduates: 1, aop: 16, support: 1 },
+  { district: "Dharwad", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Dibrugarh", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Dindigul", admin: 2, doctors: 1, post_graduates: 0, aop: 174, support: 0 },
+  { district: "Durg", admin: 0, doctors: 0, post_graduates: 2, aop: 0, support: 0 },
+  { district: "East Godavari", admin: 0, doctors: 2, post_graduates: 0, aop: 0, support: 0 },
+  { district: "East Singhbhum", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Ernakulam", admin: 0, doctors: 10, post_graduates: 4, aop: 0, support: 0 },
+  { district: "Erode", admin: 0, doctors: 4, post_graduates: 4, aop: 14, support: 0 },
+  { district: "Faridabad", admin: 0, doctors: 1, post_graduates: 2, aop: 0, support: 0 },
+  { district: "Gandhi Nagar", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Gautam Buddha Nagar", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Ghaziabad", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Gulbarga", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Guntur", admin: 0, doctors: 7, post_graduates: 0, aop: 2, support: 0 },
+  { district: "Gwalior", admin: 1, doctors: 0, post_graduates: 2, aop: 0, support: 0 },
+  { district: "Hanumangarh", admin: 0, doctors: 0, post_graduates: 2, aop: 0, support: 0 },
+  { district: "Hisar", admin: 0, doctors: 1, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Hyderabad", admin: 0, doctors: 9, post_graduates: 3, aop: 0, support: 0 },
+  { district: "Idukki", admin: 0, doctors: 2, post_graduates: 1, aop: 1, support: 0 },
+  { district: "Imphal West", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Indore", admin: 0, doctors: 2, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Jaipur", admin: 0, doctors: 2, post_graduates: 2, aop: 0, support: 0 },
+  { district: "Jalandhar", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Jalgaon", admin: 0, doctors: 2, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Jalna", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "K.V.Rangareddy", admin: 0, doctors: 2, post_graduates: 0, aop: 0, support: 0 },
+  { district: "KALLAKURICHI", admin: 0, doctors: 0, post_graduates: 0, aop: 1, support: 0 },
+  { district: "Kallakurichi", admin: 0, doctors: 0, post_graduates: 0, aop: 1, support: 0 },
+  { district: "Kamrup", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Kanchipuram", admin: 5, doctors: 5, post_graduates: 6, aop: 17, support: 0 },
+  { district: "Kannur", admin: 0, doctors: 5, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Kanpur Nagar", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Kanyakumari", admin: 2, doctors: 3, post_graduates: 1, aop: 24, support: 0 },
+  { district: "Karaikal", admin: 0, doctors: 0, post_graduates: 0, aop: 3, support: 0 },
+  { district: "Karim Nagar", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Karnal", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Karur", admin: 0, doctors: 2, post_graduates: 0, aop: 12, support: 0 },
+  { district: "Kasargod", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Kenya", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Khagaria", admin: 0, doctors: 1, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Kolhapur", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Kollam", admin: 0, doctors: 7, post_graduates: 5, aop: 0, support: 0 },
+  { district: "Koppal", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Kottayam", admin: 0, doctors: 4, post_graduates: 4, aop: 0, support: 0 },
+  { district: "Kozhikode", admin: 0, doctors: 9, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Krishna", admin: 0, doctors: 2, post_graduates: 0, aop: 1, support: 0 },
+  { district: "Krishnagiri", admin: 0, doctors: 1, post_graduates: 1, aop: 29, support: 0 },
+  { district: "Kurnool", admin: 0, doctors: 3, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Kurukshetra", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Lakhisarai", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Latur", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Lucknow", admin: 0, doctors: 3, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Ludhiana", admin: 0, doctors: 1, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Madurai", admin: 22, doctors: 16, post_graduates: 10, aop: 130, support: 1 },
+  { district: "Mahabub Nagar", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Mahe", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Malappuram", admin: 0, doctors: 7, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Mathura", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Medak", admin: 0, doctors: 1, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Meerut", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Mumbai", admin: 0, doctors: 8, post_graduates: 9, aop: 0, support: 0 },
+  { district: "Nagapattinam", admin: 1, doctors: 0, post_graduates: 1, aop: 46, support: 0 },
+  { district: "Nagpur", admin: 0, doctors: 4, post_graduates: 4, aop: 0, support: 0 },
+  { district: "Nalgonda", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Namakkal", admin: 0, doctors: 2, post_graduates: 5, aop: 15, support: 0 },
+  { district: "Nanded", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Nashik", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Neemuch", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Nellore", admin: 0, doctors: 3, post_graduates: 0, aop: 6, support: 0 },
+  { district: "Nilgiris", admin: 1, doctors: 0, post_graduates: 0, aop: 8, support: 0 },
+  { district: "Nizamabad", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "North Goa", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Palakkad", admin: 0, doctors: 3, post_graduates: 1, aop: 1, support: 0 },
+  { district: "Parbhani", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Pathanamthitta", admin: 0, doctors: 3, post_graduates: 3, aop: 0, support: 0 },
+  { district: "Patna", admin: 0, doctors: 1, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Perambalur", admin: 0, doctors: 0, post_graduates: 0, aop: 5, support: 0 },
+  { district: "Pondicherry", admin: 11, doctors: 10, post_graduates: 0, aop: 4, support: 0 },
+  { district: "Prakasam", admin: 0, doctors: 4, post_graduates: 1, aop: 2, support: 0 },
+  { district: "Pudukkottai", admin: 1, doctors: 0, post_graduates: 2, aop: 63, support: 0 },
+  { district: "Pune", admin: 0, doctors: 5, post_graduates: 11, aop: 0, support: 0 },
+  { district: "Puri", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Rajkot", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Ramanathapuram", admin: 2, doctors: 1, post_graduates: 0, aop: 50, support: 5 },
+  { district: "Ranchi", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Sabarkantha", admin: 0, doctors: 2, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Salem", admin: 19, doctors: 8, post_graduates: 4, aop: 43, support: 0 },
+  { district: "Sangli", admin: 0, doctors: 2, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Sangrur", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Satara", admin: 0, doctors: 1, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Satna", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Shimoga", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Sivaganga", admin: 3, doctors: 0, post_graduates: 2, aop: 78, support: 0 },
+  { district: "Sonipat", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "South 24 Parganas", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "South Delhi", admin: 0, doctors: 2, post_graduates: 0, aop: 0, support: 0 },
+  { district: "South Tripura", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "South West Delhi", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Srikakulam", admin: 0, doctors: 2, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Srinagar", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Surat", admin: 0, doctors: 5, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Tenkasi", admin: 0, doctors: 0, post_graduates: 0, aop: 1, support: 0 },
+  { district: "Thane", admin: 0, doctors: 2, post_graduates: 3, aop: 0, support: 0 },
+  { district: "Thanjavur", admin: 5, doctors: 6, post_graduates: 2, aop: 37, support: 0 },
+  { district: "Theni", admin: 0, doctors: 1, post_graduates: 2, aop: 101, support: 0 },
+  { district: "Thiruvananthapuram", admin: 0, doctors: 12, post_graduates: 11, aop: 0, support: 0 },
+  { district: "Thrissur", admin: 0, doctors: 6, post_graduates: 3, aop: 0, support: 0 },
+  { district: "Tiruchirappalli", admin: 1, doctors: 11, post_graduates: 3, aop: 60, support: 2 },
+  { district: "Tirunelveli", admin: 2, doctors: 7, post_graduates: 3, aop: 224, support: 4 },
+  { district: "Tirupathi", admin: 0, doctors: 0, post_graduates: 0, aop: 2, support: 0 },
+  { district: "Tiruvallur", admin: 6, doctors: 10, post_graduates: 0, aop: 45, support: 1 },
+  { district: "Tiruvannamalai", admin: 1, doctors: 1, post_graduates: 0, aop: 81, support: 0 },
+  { district: "Tiruvarur", admin: 1, doctors: 0, post_graduates: 0, aop: 17, support: 0 },
+  { district: "Tuticorin", admin: 1, doctors: 0, post_graduates: 0, aop: 85, support: 2 },
+  { district: "Udupi", admin: 1, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Valsad", admin: 0, doctors: 1, post_graduates: 2, aop: 0, support: 0 },
+  { district: "Varanasi", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Vellore", admin: 0, doctors: 1, post_graduates: 1, aop: 88, support: 1 },
+  { district: "Villupuram", admin: 2, doctors: 1, post_graduates: 1, aop: 94, support: 0 },
+  { district: "Virudhunagar", admin: 2, doctors: 1, post_graduates: 0, aop: 101, support: 0 },
+  { district: "Visakhapatnam", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Wayanad", admin: 0, doctors: 2, post_graduates: 0, aop: 0, support: 0 },
+  { district: "West Godavari", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "West Midnapore", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+  { district: "West Siang", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Yadgir", admin: 0, doctors: 3, post_graduates: 0, aop: 0, support: 0 },
+  { district: "Yamuna Nagar", admin: 0, doctors: 0, post_graduates: 1, aop: 0, support: 0 },
+  { district: "Yavatmal", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
+];
+
+
 export interface StateStaffData {
   state: string;
   lat: number;
@@ -361,118 +614,70 @@ export function generateStaffDots(
       : [activeCategory];
 
   const results: StaffDotItem[] = [];
+  const records = group === "employees" ? EMPLOYEE_DISTRICT_RECORDS : TRAINEE_DISTRICT_RECORDS;
+  const goldenAngle = 2.39996323;
 
-  if (group === "employees") {
-    const goldenAngle = 2.39996323;
+  targetCategories.forEach((catKey, catIdx) => {
+    const catMeta = categories[catKey];
+    if (!catMeta) return;
 
-    targetCategories.forEach((catKey, catIdx) => {
-      const catMeta = categories[catKey];
-      if (!catMeta) return;
+    records.forEach((rec) => {
+      const count = rec[catKey as keyof (EmployeeDistrictRecord | TraineeDistrictRecord)] as number;
+      if (!count || count <= 0) return;
 
-      EMPLOYEE_DISTRICT_RECORDS.forEach((rec) => {
-        const count = rec[catKey as keyof EmployeeDistrictRecord] as number;
-        if (!count || count <= 0) return;
+      const distCoords = DISTRICT_COORDINATES[rec.district];
+      if (!distCoords) return;
 
-        const distCoords = DISTRICT_COORDINATES[rec.district];
-        if (!distCoords) return;
+      const maxRadius = Math.min(0.06, 0.0035 * Math.sqrt(count));
+      const catAngleShift = catIdx * (Math.PI / 2);
 
-        const maxRadius = Math.min(0.06, 0.0035 * Math.sqrt(count));
-        const catAngleShift = catIdx * (Math.PI / 2);
+      for (let i = 0; i < count; i++) {
+        let latOffset = 0;
+        let lngOffset = 0;
 
-        for (let i = 0; i < count; i++) {
-          let latOffset = 0;
-          let lngOffset = 0;
+        if (count > 1) {
+          const angle = i * goldenAngle + catAngleShift;
+          const r = (Math.sqrt(i + 0.5) / Math.sqrt(count)) * maxRadius + 0.002;
+          latOffset = r * Math.sin(angle);
+          lngOffset = r * Math.cos(angle) * 1.25;
+        }
 
-          if (count > 1) {
-            const angle = i * goldenAngle + catAngleShift;
-            const r = (Math.sqrt(i + 0.5) / Math.sqrt(count)) * maxRadius + 0.002;
-            latOffset = r * Math.sin(angle);
-            lngOffset = r * Math.cos(angle) * 1.25;
-          }
-
-          results.push({
-            id: `staff-${group}-${catKey}-${rec.district.replace(/\s+/g, "_")}-${i}`,
-            name: `${count} ${rec.district}`,
-            rawName: rec.district,
-            entityId: "staffs",
-            subcategoryId: group,
+        results.push({
+          id: `staff-${group}-${catKey}-${rec.district.replace(/\s+/g, "_")}-${i}`,
+          name: `${count} ${rec.district}`,
+          rawName: rec.district,
+          entityId: "staffs",
+          subcategoryId: group,
+          country: distCoords.country,
+          state: distCoords.state,
+          city: rec.district,
+          latitude: distCoords.lat + latOffset,
+          longitude: distCoords.lng + lngOffset,
+          type: "Staff Dot",
+          careType: "community",
+          sourceStatus: "source-supplied",
+          staffGroup: group,
+          category: catKey,
+          districtName: rec.district,
+          metrics: {
+            "Staff Count": count,
+            "Category": catMeta.name,
+            "District": rec.district,
+          },
+          metadata: {
+            color: catMeta.color,
+            staffGroup: group,
+            category: catKey,
+            categoryName: catMeta.name,
+            districtName: rec.district,
+            districtCount: count,
             country: distCoords.country,
             state: distCoords.state,
-            city: rec.district,
-            latitude: distCoords.lat + latOffset,
-            longitude: distCoords.lng + lngOffset,
-            type: "Staff Dot",
-            careType: "community",
-            sourceStatus: "source-supplied",
-            staffGroup: group,
-            category: catKey,
-            districtName: rec.district,
-            metrics: {
-              "Staff Count": count,
-              "Category": catMeta.name,
-              "District": rec.district,
-            },
-            metadata: {
-              color: catMeta.color,
-              staffGroup: group,
-              category: catKey,
-              categoryName: catMeta.name,
-              districtName: rec.district,
-              districtCount: count,
-              country: distCoords.country,
-              state: distCoords.state,
-            },
-          });
-        }
-      });
+          },
+        });
+      }
     });
-  } else {
-    // Trainees - State level
-    targetCategories.forEach((catKey) => {
-      const catMeta = categories[catKey];
-      if (!catMeta) return;
-
-      TRAINEE_STATE_RECORDS.forEach((rec) => {
-        const count = rec[catKey as keyof StateStaffData] as number;
-        if (count && count > 0) {
-          results.push({
-            id: `staff-${group}-${catKey}-${rec.state.replace(/\s+/g, "_")}`,
-            name: `${rec.state}: ${count} ${catMeta.name}`,
-            rawName: rec.state,
-            entityId: "staffs",
-            subcategoryId: group,
-            country: rec.country,
-            state: rec.state,
-            city: rec.state,
-            latitude: rec.lat,
-            longitude: rec.lng,
-            type: "Staff State Dot",
-            careType: "community",
-            sourceStatus: "source-supplied",
-            staffGroup: group,
-            category: catKey,
-            districtName: rec.state,
-            metrics: {
-              "Staff Count": count,
-              "Category": catMeta.name,
-              "State": rec.state,
-            },
-            metadata: {
-              color: catMeta.color,
-              staffGroup: group,
-              category: catKey,
-              categoryName: catMeta.name,
-              districtName: rec.state,
-              districtCount: count,
-              country: rec.country,
-              state: rec.state,
-              traineeCount: count,
-            },
-          });
-        }
-      });
-    });
-  }
+  });
 
   return results;
 }

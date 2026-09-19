@@ -146,7 +146,7 @@ export function ArrivalScene() {
             <img
               src="/images/laico-logo.png"
               alt="Lions Aravind Institute of Community Ophthalmology (LAICO)"
-              className="h-20 md:h-24 object-contain mix-blend-multiply"
+              className="h-20 md:h-24 object-contain filter drop-shadow-sm"
             />
           </div>
 
@@ -155,7 +155,7 @@ export function ArrivalScene() {
             <img
               src="/images/aravind-logo.png"
               alt="Aravind Eye Care System"
-              className="h-14 md:h-16 object-contain mix-blend-multiply"
+              className="h-20 md:h-24 max-w-lg w-auto object-contain filter drop-shadow-sm"
             />
           </div>
         </div>
