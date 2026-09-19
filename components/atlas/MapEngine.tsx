@@ -425,11 +425,7 @@ export function MapEngine({
     if (!map || !mapLoaded) return;
 
     if (map.getLayer("laico-network-layer")) {
-      map.setLayoutProperty(
-        "laico-network-layer",
-        "visibility",
-        activeGrammar === "capacity" || entityConfig.id === "laico" ? "visible" : "none"
-      );
+      map.setLayoutProperty("laico-network-layer", "visibility", "none");
     }
     if (map.getLayer("amrf-collaboration-layer")) {
       const isCollabActive = selectedSubcategoryId === "collaboratives";
