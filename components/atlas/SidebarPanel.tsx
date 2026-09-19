@@ -194,6 +194,7 @@ export function SidebarPanel({
                   onClick={() => {
                     onSelectSubcategory?.("hospitals_tertiary");
                     onSelectCareTypeFilter("tertiary");
+                    onSelectLocation?.(null);
                   }}
                   className={`w-full p-2.5 rounded-xl border flex items-center justify-between text-xs font-bold transition-all ${
                     careTypeFilter === "tertiary" || activeSubId === "hospitals_tertiary"
@@ -214,6 +215,7 @@ export function SidebarPanel({
                   onClick={() => {
                     onSelectSubcategory?.("hospitals_secondary");
                     onSelectCareTypeFilter("secondary");
+                    onSelectLocation?.(null);
                   }}
                   className={`w-full p-2.5 rounded-xl border flex items-center justify-between text-xs font-bold transition-all ${
                     careTypeFilter === "secondary" || activeSubId === "hospitals_secondary"
@@ -234,6 +236,7 @@ export function SidebarPanel({
                   onClick={() => {
                     onSelectSubcategory?.("hospitals_community");
                     onSelectCareTypeFilter("community");
+                    onSelectLocation?.(null);
                   }}
                   className={`w-full p-2.5 rounded-xl border flex items-center justify-between text-xs font-bold transition-all ${
                     careTypeFilter === "community" || activeSubId === "hospitals_community"
@@ -254,6 +257,7 @@ export function SidebarPanel({
                   onClick={() => {
                     onSelectSubcategory?.("hospitals_vision_centres");
                     onSelectCareTypeFilter("vision_centre");
+                    onSelectLocation?.(null);
                   }}
                   className={`w-full p-2.5 rounded-xl border flex items-center justify-between text-xs font-bold transition-all ${
                     activeSubId === "hospitals_vision_centres"
@@ -339,6 +343,8 @@ export function SidebarPanel({
                 onClick={() => {
                   onSelectSubcategory?.("patients");
                   onSelectPatientFilter?.("all");
+                  onSelectCareTypeFilter?.("all");
+                  onSelectLocation?.(null);
                 }}
                 className="w-full text-left flex items-center justify-between"
               >
@@ -360,6 +366,8 @@ export function SidebarPanel({
                   onClick={() => {
                     onSelectSubcategory?.("patients");
                     onSelectPatientFilter?.("pay");
+                    onSelectCareTypeFilter?.("all");
+                    onSelectLocation?.(null);
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "pay"
@@ -375,6 +383,8 @@ export function SidebarPanel({
                   onClick={() => {
                     onSelectSubcategory?.("patients");
                     onSelectPatientFilter?.("free");
+                    onSelectCareTypeFilter?.("all");
+                    onSelectLocation?.(null);
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "free"
@@ -390,6 +400,8 @@ export function SidebarPanel({
                   onClick={() => {
                     onSelectSubcategory?.("patients");
                     onSelectPatientFilter?.("camp");
+                    onSelectCareTypeFilter?.("all");
+                    onSelectLocation?.(null);
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "camp"
@@ -405,6 +417,8 @@ export function SidebarPanel({
                   onClick={() => {
                     onSelectSubcategory?.("patients");
                     onSelectPatientFilter?.("all");
+                    onSelectCareTypeFilter?.("all");
+                    onSelectLocation?.(null);
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "all"

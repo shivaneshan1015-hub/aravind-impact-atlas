@@ -90,6 +90,13 @@ export function ExhibitionShell() {
     setEyeBankCategoryFilter("all");
   }, [selectedEntityId]);
 
+  // Synchronize careTypeFilter when switching to patients subcategory
+  React.useEffect(() => {
+    if (selectedSubcategoryId === "patients") {
+      setCareTypeFilter("all");
+    }
+  }, [selectedSubcategoryId]);
+
   // Guided Narration Hook for CARE Hospitals Pilot
   const narration = useNarration();
 

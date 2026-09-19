@@ -536,16 +536,20 @@ export function MapEngine({
       popupRef.current = null;
     }
 
-    // 0. Single Pin Focus Filter (if user clicked a single location pin, isolate that pin)
-    let filtered = selectedLocation
-      ? locations.filter((l) => l.id === selectedLocation.id)
-      : selectedState
+    // 0. Geographic State Filter (fallback to all locations if selectedState has no matches in current view)
+    let filtered = selectedState && locations.some((l) => l.state === selectedState)
       ? locations.filter((l) => l.state === selectedState)
       : locations;
 
-    // 2. CARE Type filter (Skip for Staff Dots so staff dots always render)
+    // 2. CARE Type filter (Skip for Staff Dots and Patient Hubs so they always render)
     if (careTypeFilter !== "all") {
-      filtered = filtered.filter((l) => l.careType === careTypeFilter || l.type === "Staff Dot");
+      filtered = filtered.filter(
+        (l) =>
+          l.careType === careTypeFilter ||
+          l.type === "Staff Dot" ||
+          l.type === "Patient Hub" ||
+          l.subcategoryId === "patients"
+      );
     }
 
     // 2b. Vision Centre Hospital Hub Category filter
@@ -1317,7 +1321,13 @@ export function MapEngine({
 
       let filtered = locations;
       if (careTypeFilter && careTypeFilter !== "all") {
-        filtered = filtered.filter((l) => l.careType === careTypeFilter);
+        filtered = filtered.filter(
+          (l) =>
+            l.careType === careTypeFilter ||
+            l.type === "Staff Dot" ||
+            l.type === "Patient Hub" ||
+            l.subcategoryId === "patients"
+        );
       }
       if (visionCentreHubFilter && visionCentreHubFilter !== "all") {
         filtered = filtered.filter((l) => l.metadata?.hospitalHub === visionCentreHubFilter);
