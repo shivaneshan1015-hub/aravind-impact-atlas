@@ -545,7 +545,7 @@ export function MapEngine({
       el.className =
         "group cursor-pointer transition-all duration-200 select-none w-12 h-12 flex items-center justify-center";
 
-      const isStaffDot = loc.type === "Staff Dot";
+      const isStaffDot = loc.type === "Staff Dot" || loc.type === "Staff State Dot" || loc.subcategoryId === "staffs" || loc.entityId === "staffs";
       const isAurolabLoc = loc.entityId === "aurolab";
       const isEyeBankLoc = loc.entityId === "eyebank";
       const isIhmsLoc = loc.subcategoryId === "ihms";
@@ -617,19 +617,14 @@ export function MapEngine({
         // Free -> #064E3B (Dark Emerald Green)
         // Camp -> #78350F (Dark Burnt Amber)
         let dotColor = "#1E3A8A";
-        let categoryLabel = "Pay";
         if (activeFilter === "free" || loc.metadata?.isFreeDot) {
           dotColor = "#064E3B";
-          categoryLabel = "Free";
         } else if (activeFilter === "camp" || loc.metadata?.isCampDot) {
           dotColor = "#78350F";
-          categoryLabel = "Camp";
         } else if (activeFilter === "pay") {
           dotColor = "#1E3A8A";
-          categoryLabel = "Pay";
         } else {
           dotColor = "#0F172A";
-          categoryLabel = "Total";
         }
 
         // Proportional Sizing Formula (Min 10px, Max 36px based on patient volume)
@@ -643,10 +638,10 @@ export function MapEngine({
         const distName = loc.city || loc.rawName || loc.name;
 
         el.innerHTML = `
-          <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${distName} (${categoryLabel}): ${displayCount.toLocaleString()} Patients">
+          <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${distName}: ${displayCount.toLocaleString()}">
             <!-- Touch / Click Place Name & Count Label directly over Pin -->
             <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1 rounded-lg shadow-xl border border-slate-300 whitespace-nowrap ${isSelected ? 'opacity-100 ring-2 ring-slate-900 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} transition-all duration-150 pointer-events-none">
-              <span class="font-extrabold">${distName}:</span> <span style="color: ${dotColor}">${displayCount.toLocaleString()} (${categoryLabel})</span>
+              <span class="font-extrabold">${distName}:</span> <span style="color: ${dotColor}">${displayCount.toLocaleString()}</span>
             </span>
 
             <!-- Proportional Patient Pin Marker Circle -->
@@ -655,13 +650,18 @@ export function MapEngine({
           </div>
         `;
       } else if (isStaffDot) {
-        const dotColor = "#1E3A8A"; // Rich Dark Royal Blue
+        const dotColor = (loc.metadata?.color as string) || "#1E293B";
         const dotSize = isSelected ? "10px" : "6px";
-        const catName = loc.metrics?.category || loc.metadata?.category || "Staff";
+        const distCount = (loc.metadata?.districtCount as number) || (loc.metrics?.["Staff Count"] as number) || 1;
         const distName = (loc as any).districtName || loc.metadata?.districtName || loc.city || loc.state;
+        const titleText = `${distCount} ${distName}`;
         el.innerHTML = `
-          <div class="relative flex items-center justify-center pointer-events-auto group" title="${catName} (${distName})">
-            <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 5px ${dotColor}bb, 0 1px 2px rgba(0,0,0,0.3); transition: transform 0.15s ease-out;" class="group-hover:scale-150">
+          <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${titleText}">
+            <!-- Touch / Hover Label over Staff Dot -->
+            <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2 py-0.5 rounded-md shadow-lg border border-slate-300 whitespace-nowrap ${isSelected ? 'opacity-100 ring-2 ring-slate-900 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} transition-all duration-150 pointer-events-none">
+              ${titleText}
+            </span>
+            <div style="width: ${dotSize}; height: ${dotSize}; background-color: ${dotColor}; border: 1px solid #FFFFFF; border-radius: 9999px; box-shadow: 0 0 5px ${dotColor}bb, 0 1px 2px rgba(0,0,0,0.3); transition: transform 0.15s ease-out;" class="group-hover:scale-150 group-active:scale-150">
             </div>
           </div>
         `;
