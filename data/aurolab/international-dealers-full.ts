@@ -108,7 +108,8 @@ export const AUROLAB_INTERNATIONAL_83_CLIENTS: InternationalClientRecord[] = [
 export const AUROLAB_INTERNATIONAL_LOCATIONS_FULL: GeoLocationItem[] = AUROLAB_INTERNATIONAL_83_CLIENTS.map(
   (c) => ({
     id: `auro_intl_83_${c.sNo}`,
-    name: c.clientLabel,
+    name: c.country,
+    rawName: c.country,
     entityId: "aurolab",
     subcategoryId: "international",
     country: c.country,
@@ -117,10 +118,10 @@ export const AUROLAB_INTERNATIONAL_LOCATIONS_FULL: GeoLocationItem[] = AUROLAB_I
     latitude: c.lat,
     longitude: c.lng,
     metrics: {
-      clientNo: c.sNo,
-      exportNation: c.country,
-      geographicRegion: c.region,
-      productRange: "Auroflex IOLs, Sutures, Pharma",
+      Country: c.country,
+      Region: c.region,
+      "Global Client Record": `#${c.sNo}`,
+      Products: "Auroflex IOLs, Sutures, Pharma",
     },
     address: `${c.country}, ${c.region}`,
   })

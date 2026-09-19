@@ -57,7 +57,8 @@ export const AUROLAB_DOMESTIC_DEALERS_42: AurolabDealerRecord[] = [
 
 export const AUROLAB_DOMESTIC_LOCATIONS: GeoLocationItem[] = AUROLAB_DOMESTIC_DEALERS_42.map((d) => ({
   id: `aurolab_domestic_${d.sNo}`,
-  name: `${d.city} Dealer Node`,
+  name: `${d.city} District`,
+  rawName: d.city,
   entityId: "aurolab",
   subcategoryId: "domestic",
   country: "India",
@@ -66,9 +67,10 @@ export const AUROLAB_DOMESTIC_LOCATIONS: GeoLocationItem[] = AUROLAB_DOMESTIC_DE
   latitude: d.lat,
   longitude: d.lng,
   metrics: {
-    dealerCity: d.city,
-    stateName: d.state,
-    recordNo: d.sNo,
+    District: d.city,
+    State: d.state,
+    Country: "India",
+    "Distribution Node": `#${d.sNo}`,
   },
   address: `${d.city}, ${d.state}, India`,
 }));

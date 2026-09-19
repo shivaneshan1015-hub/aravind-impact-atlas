@@ -967,15 +967,24 @@ export function MapEngine({
           `;
         }
       } else if (isAurolabLoc) {
+        const isDomestic = loc.subcategoryId === "domestic" || loc.country === "India";
+        const placeName = isDomestic ? (loc.city || loc.rawName || loc.name) : (loc.country || loc.city || loc.name);
+
         el.innerHTML = `
-          <div class="relative flex items-center justify-center group pointer-events-auto">
-            <div class="relative w-8 h-8 flex items-center justify-center">
+          <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${placeName}">
+            <!-- Touch / Click / Hover Place Name Label directly over Pin -->
+            <span class="mb-1 text-[10px] font-black text-amber-950 bg-white/95 px-2.5 py-1 rounded-lg shadow-xl border border-amber-300 whitespace-nowrap ${isSelected ? 'opacity-100 ring-2 ring-amber-700 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} transition-all duration-150 pointer-events-none">
+              <span class="font-extrabold text-amber-900">${placeName}</span>
+            </span>
+
+            <!-- Central Optic Lens Ring & Curved Haptic Loops Pin Icon -->
+            <div class="relative w-8 h-8 flex items-center justify-center transition-transform duration-150 group-hover:scale-125 group-active:scale-125">
               <!-- Left Curved Haptic Loop -->
               <svg class="absolute -left-2 w-4 h-4 text-amber-700 opacity-90 transition-transform group-hover:-translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10" />
               </svg>
               <!-- Central Optic Lens Ring -->
-              <div class="w-4 h-4 rounded-full bg-amber-900 border-2 border-amber-600 shadow-md flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
+              <div class="w-4 h-4 rounded-full bg-amber-900 border-2 border-amber-600 shadow-md flex items-center justify-center relative overflow-hidden">
                 <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
               </div>
               <!-- Right Curved Haptic Loop -->
@@ -1092,8 +1101,15 @@ export function MapEngine({
             popSub = `Attached Hub: ${loc.metadata?.attachedMainCenter || "Main Eye Bank"}`;
           }
         } else if (isAurolab) {
-          popTitle = `${loc.state} Aggregate Distribution`;
-          popSub = `Regional Aggregate Footprint · ${loc.state}`;
+          const isDomestic = loc.subcategoryId === "domestic" || loc.country === "India";
+          const placeName = isDomestic ? (loc.city || loc.rawName || loc.name) : (loc.country || loc.city || loc.name);
+          if (isDomestic) {
+            popTitle = `${placeName} District`;
+            popSub = `Aurolab Domestic Distribution Node · ${loc.state}, India`;
+          } else {
+            popTitle = placeName;
+            popSub = `Aurolab International Distribution · ${loc.state}`;
+          }
         } else if (loc.entityId === "laico") {
           const isCb = loc.subcategoryId === "capacity_building";
           if (isCb) {

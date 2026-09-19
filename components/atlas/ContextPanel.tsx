@@ -77,11 +77,17 @@ export function ContextPanel({
                 {entityConfig.shortName} Location Node
               </span>
               <h4 className="text-base font-black text-slate-900 leading-snug">
-                {selectedLocation.name}
+                {selectedLocation.entityId === "aurolab"
+                  ? selectedLocation.subcategoryId === "domestic" || selectedLocation.country === "India"
+                    ? `${selectedLocation.city || selectedLocation.name} District`
+                    : selectedLocation.country
+                  : selectedLocation.name}
               </h4>
               <p className="text-[11px] text-slate-500 mt-0.5 flex items-center gap-1 font-medium">
                 <MapPin className="w-3 h-3 text-slate-400 shrink-0" />
-                {selectedLocation.city}, {selectedLocation.state}
+                {selectedLocation.entityId === "aurolab" && (selectedLocation.subcategoryId === "international" || selectedLocation.country !== "India")
+                  ? `${selectedLocation.country}, ${selectedLocation.state}`
+                  : `${selectedLocation.city}, ${selectedLocation.state}`}
               </p>
             </div>
 
