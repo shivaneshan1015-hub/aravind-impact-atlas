@@ -436,7 +436,7 @@ export function SidebarPanel({
                   </span>
                 </div>
                 <span className="text-[10px] bg-slate-200 text-slate-900 px-2 py-0.5 rounded-full font-black">
-                  {staffGroup === "employees" ? "3,995 Employees" : "2,677 Trainees"}
+                  {staffGroup === "employees" ? "3,995 Employees" : "2,676 Trainees"}
                 </span>
               </div>
 
@@ -470,7 +470,7 @@ export function SidebarPanel({
                   }`}
                 >
                   <UserPlus className="w-3.5 h-3.5" />
-                  <span>Trainees (2,677)</span>
+                  <span>Trainees (2,676)</span>
                 </button>
               </div>
 

@@ -140,22 +140,22 @@ export function ArrivalScene() {
         </div>
 
         {/* Starting Page Bottom Institutional Logos (LAICO stacked on top of ARAVIND EYE CARE SYSTEM) */}
-        <div className="pt-6 flex flex-col items-center justify-center space-y-4">
+        <div className="pt-4 flex flex-col items-center justify-center space-y-3 w-full max-w-xl">
           {/* Top Logo: LAICO */}
           <div className="flex items-center justify-center transition-transform hover:scale-105">
             <img
               src="/images/laico-logo.png"
               alt="Lions Aravind Institute of Community Ophthalmology (LAICO)"
-              className="h-20 md:h-24 object-contain filter drop-shadow-sm"
+              className="h-16 md:h-20 w-auto object-contain"
             />
           </div>
 
           {/* Bottom Logo: ARAVIND EYE CARE SYSTEM (Increased size, seamless transparent background) */}
-          <div className="flex items-center justify-center transition-transform hover:scale-105">
+          <div className="flex items-center justify-center transition-transform hover:scale-105 w-full">
             <img
               src="/images/aravind-logo.png"
               alt="Aravind Eye Care System"
-              className="h-20 md:h-24 max-w-lg w-auto object-contain filter drop-shadow-sm"
+              className="h-10 md:h-14 w-full max-w-lg object-contain"
             />
           </div>
         </div>
