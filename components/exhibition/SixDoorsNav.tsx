@@ -63,17 +63,17 @@ export function SixDoorsNav() {
       <div className="text-center max-w-2xl mx-auto space-y-2 mt-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-widest border border-amber-200">
           <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-          <span>Six Geographic Stories</span>
+          <span>Seven Geographic Stories</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
           Select an Impact Dimension
         </h2>
         <p className="text-sm text-slate-600">
-          Discover how each part of the Aravind ecosystem extends care, knowledge, research, access, technology, and sight restoration.
+          Discover how each part of the Aravind ecosystem extends care, knowledge, research, access, technology, sight restoration, and workforce.
         </p>
       </div>
 
-      {/* Grid of 6 Doors (Touch-first cards, min height 130px) */}
+      {/* Grid of 7 Doors (Touch-first cards, min height 130px) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl w-full mx-auto my-6">
         {storiesList.map((story, idx) => {
           const Icon = ICON_MAP[story.entityId] || Activity;
@@ -146,7 +146,7 @@ export function SixDoorsNav() {
                 SEE THE CONNECTION — ONE SYSTEM
               </h3>
               <p className="text-xs text-amber-100 font-medium">
-                Combine all 6 dimensions onto one unified map canvas.
+                Combine all 7 dimensions onto one unified map canvas.
               </p>
             </div>
           </div>

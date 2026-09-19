@@ -16,14 +16,14 @@ export function OneSystemFinale() {
       </div>
 
       <h2 className="text-3xl font-black text-slate-900 leading-tight">
-        ONE SYSTEM
+        One system
         <span className="block text-xl font-light text-slate-600">
           A WORLD OF IMPACT
         </span>
       </h2>
 
       <p className="text-xs text-slate-600 mt-2 font-medium leading-relaxed">
-        These are not six separate organizations. Care, Capacity Building, Research, Access, Technology, and Sight Restoration work as one unified system to eliminate needless blindness.
+        These are not seven separate organizations. Care, Capacity Building, Research, Access, Technology, Sight Restoration, and Workforce work as one unified system to eliminate needless blindness.
       </p>
 
       {/* Hero Integrated Metrics */}
@@ -49,7 +49,7 @@ export function OneSystemFinale() {
         </div>
       </div>
 
-      {/* 6 Connected Dimensions Grid */}
+      {/* 7 Connected Dimensions Grid */}
       <div className="space-y-1.5 pt-2 border-t border-slate-100">
         <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">
           Integrated System Dimensions
@@ -96,6 +96,13 @@ export function OneSystemFinale() {
           >
             <div className="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0" />
             <span className="group-hover:text-emerald-600 text-[11px]">06 Sight Restoration</span>
+          </button>
+          <button
+            onClick={() => selectStory("staffs")}
+            className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-left font-bold text-slate-800 transition-all flex items-center gap-2 group col-span-2"
+          >
+            <div className="w-2.5 h-2.5 rounded-full bg-slate-800 shrink-0" />
+            <span className="group-hover:text-slate-900 text-[11px]">07 Workforce</span>
           </button>
         </div>
       </div>

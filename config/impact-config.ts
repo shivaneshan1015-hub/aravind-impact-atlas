@@ -29,9 +29,9 @@ export interface ImpactConfig {
 export const CENTRAL_IMPACT_CONFIGS: Record<EntityId, ImpactConfig> = {
   hospitals: {
     id: "hospitals",
-    label: "Aravind Eye Hospitals",
-    entity: "Aravind Eye Hospitals",
-    shortName: "Aravind Eye Hospitals",
+    label: "Patient care",
+    entity: "Patient care",
+    shortName: "Patient care",
     question: "Where does care reach?",
     description: "Network of primary, secondary, and tertiary eye hospitals providing high-quality care to millions.",
     accent: "#2563EB",
@@ -55,11 +55,11 @@ export const CENTRAL_IMPACT_CONFIGS: Record<EntityId, ImpactConfig> = {
   },
   laico: {
     id: "laico",
-    label: "LAICO",
-    entity: "Lions Aravind Institute of Community Ophthalmology",
-    shortName: "LAICO",
+    label: "Training and capacity building",
+    entity: "Training and capacity building",
+    shortName: "Training and capacity building",
     question: "Where does eye-care knowledge travel?",
-    description: "Global consultancy and training institute expanding eye care through 399 mentored partner hospitals.",
+    description: "Global consultancy and training institute expanding eye care through 409 mentored partner hospitals.",
     accent: "#0D9488",
     mapMode: "network",
     availableMetrics: ["partnerHospitals", "participantsCount", "countriesCount", "coursesCount"],
@@ -69,7 +69,7 @@ export const CENTRAL_IMPACT_CONFIGS: Record<EntityId, ImpactConfig> = {
     visualGrammar: "Knowledge flow vectors emanating from LAICO (Madurai) across global partner hospitals",
     primaryMetric: {
       label: "Mentored Hospitals",
-      value: "399",
+      value: "409",
       unit: "globally",
     },
     secondaryMetrics: [
@@ -185,8 +185,8 @@ export const CENTRAL_IMPACT_CONFIGS: Record<EntityId, ImpactConfig> = {
   },
   staffs: {
     id: "staffs",
-    label: "STAFFS DIRECTORY",
-    entity: "Staffs Directory",
+    label: "Staffs directory",
+    entity: "Staffs directory",
     shortName: "Staffs",
     question: "Where does our healthcare workforce come from?",
     description: "Comprehensive directory of Aravind Eye Care System workforce across healthcare facilities.",
@@ -195,7 +195,7 @@ export const CENTRAL_IMPACT_CONFIGS: Record<EntityId, ImpactConfig> = {
     availableMetrics: ["employeeCount", "adminCount", "doctorsCount", "aopCount", "supportCount"],
     availableGeographies: ["country", "state", "city"],
     doorNumber: "07",
-    tagline: "Aravind Eye Care System Healthcare Workforce",
+    tagline: "Aravind Eye Hospital Workforce",
     visualGrammar: "State-wise staff workforce density and category distribution",
     primaryMetric: {
       label: "Total Employees",
@@ -212,18 +212,18 @@ export const CENTRAL_IMPACT_CONFIGS: Record<EntityId, ImpactConfig> = {
   },
   all: {
     id: "all",
-    label: "ONE SYSTEM",
+    label: "One system",
     entity: "Aravind Golden Jubilee Ecosystem",
     shortName: "All Impact",
     question: "How does one system create a world of impact?",
-    description: "Integrating Care, Capacity Building, Research, Access, Technology, and Vision Restoration into one unified impact model.",
+    description: "Integrating Care, Capacity Building, Research, Access, Technology, Vision Restoration, and Workforce into one unified impact model.",
     accent: "#D97706",
     mapMode: "all",
     availableMetrics: ["totalLocations", "entitiesCount", "statesCount", "countriesCount"],
     availableGeographies: ["world", "country", "state"],
     doorNumber: "★",
     tagline: "Combined Aravind Golden Jubilee Ecosystem",
-    visualGrammar: "Unified multi-layer emergence showcasing the 6 connected dimensions",
+    visualGrammar: "Unified multi-layer emergence showcasing the 7 connected dimensions",
     primaryMetric: {
       label: "Total Patient Touchpoints",
       value: "75,000,000+",
@@ -231,9 +231,9 @@ export const CENTRAL_IMPACT_CONFIGS: Record<EntityId, ImpactConfig> = {
     },
     secondaryMetrics: [
       { label: "Active Countries", value: "160+" },
-      { label: "Entities Integrated", value: "6 Core Entities" },
+      { label: "Entities Integrated", value: "7 Core Entities" },
       { label: "Golden Jubilee Year", value: "1976 – 2026" },
     ],
-    storyNarrative: "One system. Six connected dimensions. A world of impact eliminating needless blindness.",
+    storyNarrative: "One system. Seven connected dimensions. A world of impact eliminating needless blindness.",
   },
 };

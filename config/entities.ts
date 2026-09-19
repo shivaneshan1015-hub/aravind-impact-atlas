@@ -36,9 +36,9 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
   },
   hospitals: {
     id: "hospitals",
-    name: "Aravind Eye Hospitals",
-    shortName: "Aravind Eye Hospitals",
-    tagline: "Aravind Eye Hospitals",
+    name: "Patient care",
+    shortName: "Patient care",
+    tagline: "Patient care",
     description:
       "Network of tertiary, secondary, outpatient eye care hospitals and vision centres providing high-quality, compassionate eye care.",
     color: "#2563EB", // Deep Blue
@@ -102,11 +102,11 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
   },
   laico: {
     id: "laico",
-    name: "Lions Aravind Institute of Community Ophthalmology",
-    shortName: "LAICO",
-    tagline: "LAICO",
+    name: "Training and capacity building",
+    shortName: "Training and capacity building",
+    tagline: "Training and capacity building",
     description:
-      "Global consultancy and training institute expanding high-volume, high-quality eye care through 399 partner hospitals across 30+ nations.",
+      "Global consultancy and training institute expanding high-volume, high-quality eye care through 409 partner hospitals across 30+ nations.",
     color: "#0D9488", // Teal
     colorLight: "#2DD4BF",
     bgGlow: "rgba(13, 148, 136, 0.15)",
@@ -114,11 +114,11 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "capacity_building",
         name: "Capacity Building",
-        tagline: "Mentored partner hospitals worldwide (399 Hospitals)",
+        tagline: "Mentored partner hospitals worldwide (409 Hospitals)",
         defaultScope: "world",
         primaryMetricKey: "partnerHospitals",
         secondaryMetricKeys: ["surgeriesMentored", "efficiencyGain"],
-        legendTitle: "Partner Network (399 Hospitals)",
+        legendTitle: "Partner Network (409 Hospitals)",
       },
       {
         id: "management_courses",
@@ -131,7 +131,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       },
       {
         id: "long_term_trainees",
-        name: "Long Term Trainees",
+        name: "Long Term Fellows",
         tagline: "Long term clinical fellowships (2,167 Fellows)",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
@@ -140,12 +140,12 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       },
       {
         id: "short_term_trainees",
-        name: "Short Term Trainees",
-        tagline: "Short term specialized clinical training (1,759 Trainees)",
+        name: "Short Term Fellows",
+        tagline: "Short term specialized clinical training (1,759 Fellows)",
         defaultScope: "world",
         primaryMetricKey: "participantsCount",
         secondaryMetricKeys: ["coursesCount", "nationsRepresented"],
-        legendTitle: "Short Term Trainees",
+        legendTitle: "Short Term Fellows",
       },
       {
         id: "post_graduates",
@@ -176,7 +176,7 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       },
     ],
     metrics: [
-      { id: "partnerHospitals", label: "Mentored Hospitals (399)" },
+      { id: "partnerHospitals", label: "Mentored Hospitals (409)" },
       { id: "participantsCount", label: "Trained Executives" },
       { id: "countriesCount", label: "Countries Engaged" },
       { id: "coursesCount", label: "Training Programs" },
@@ -369,9 +369,9 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
   },
   staffs: {
     id: "staffs",
-    name: "Staffs Directory",
+    name: "Staffs directory",
     shortName: "Staffs",
-    tagline: "Workforce",
+    tagline: "Aravind Eye Hospital Workforce",
     description:
       "Comprehensive workforce directory of Aravind Eye Care System including Employees and Trainees across administrative, medical, paramedical, and support departments.",
     color: "#1E293B", // Dark Slate

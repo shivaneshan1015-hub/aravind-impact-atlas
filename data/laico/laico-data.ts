@@ -6570,13 +6570,13 @@ export const LAICO_DATA: GeoLocationItem[] = [
     "metrics": {
       "mentorshipType": "Capacity Building & Management Mentorship",
       "capacityStatus": "Active Mentored Hospital",
-      "hospitalCount": 1,
-      "programCount": 1
+      "hospitalCount": 2,
+      "programCount": 2
     },
     "metadata": {
       "district": "Eldoret",
       "index": 299,
-      "partnerCount": 1
+      "partnerCount": 2
     }
   },
   {
@@ -6664,6 +6664,204 @@ export const LAICO_DATA: GeoLocationItem[] = [
     "metadata": {
       "district": "Kitale",
       "index": 303,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_304",
+    "name": "Cherangany Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Trans-Nzoia",
+    "city": "Cherangany",
+    "latitude": 1.016,
+    "longitude": 35.25,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Cherangany",
+      "index": 304,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_305",
+    "name": "Homabay Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Homa Bay",
+    "city": "Homabay",
+    "latitude": -0.5273,
+    "longitude": 34.4571,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Homabay",
+      "index": 305,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_306",
+    "name": "Garissa Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Garissa",
+    "city": "Garissa",
+    "latitude": -0.4532,
+    "longitude": 39.646,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Garissa",
+      "index": 306,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_307",
+    "name": "Laikipia Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Laikipia",
+    "city": "Laikipia",
+    "latitude": 0.0167,
+    "longitude": 37.0728,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Laikipia",
+      "index": 307,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_308",
+    "name": "Kilifi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Kilifi",
+    "city": "Kilifi",
+    "latitude": -3.6307,
+    "longitude": 39.8499,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kilifi",
+      "index": 308,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_309",
+    "name": "Kajiado Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Kajiado",
+    "city": "Kajiado",
+    "latitude": -1.8524,
+    "longitude": 36.7768,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Kajiado",
+      "index": 309,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_310",
+    "name": "Tharakanidhi Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Tharaka-Nithi",
+    "city": "Tharakanidhi",
+    "latitude": -0.33,
+    "longitude": 37.65,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Tharakanidhi",
+      "index": 310,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_311",
+    "name": "Embu Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Embu",
+    "city": "Embu",
+    "latitude": -0.5342,
+    "longitude": 37.4583,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Embu",
+      "index": 311,
+      "partnerCount": 1
+    }
+  },
+  {
+    "id": "laico_cb_312",
+    "name": "Bomet Capacity Partner",
+    "entityId": "laico",
+    "subcategoryId": "capacity_building",
+    "country": "Kenya",
+    "state": "Bomet",
+    "city": "Bomet",
+    "latitude": -0.7813,
+    "longitude": 35.3416,
+    "metrics": {
+      "mentorshipType": "Capacity Building & Management Mentorship",
+      "capacityStatus": "Active Mentored Hospital",
+      "hospitalCount": 1,
+      "programCount": 1
+    },
+    "metadata": {
+      "district": "Bomet",
+      "index": 312,
       "partnerCount": 1
     }
   }

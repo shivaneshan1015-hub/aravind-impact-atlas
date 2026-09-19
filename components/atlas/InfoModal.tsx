@@ -45,17 +45,17 @@ export function InfoModal({ isOpen, onClose }: InfoModalProps) {
               About the Impact Atlas Engine
             </h4>
             <p>
-              The <strong>Aravind Impact Atlas</strong> is an interactive geographic visualization system built to celebrate 50 years of the Aravind Eye Care System (1976–2026). It presents the global footprint and healthcare impact across six core Aravind entities.
+              The <strong>Aravind Impact Atlas</strong> is an interactive geographic visualization system built to celebrate 50 years of the Aravind Eye Care System (1976–2026). It presents the global footprint and healthcare impact across seven core Aravind entities.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-              <span className="text-blue-700 font-bold text-xs">1. Eye Hospitals</span>
+              <span className="text-blue-700 font-bold text-xs">1. Patient care</span>
               <p className="text-slate-600 mt-1">High-volume, compassionate eye care network providing free and subsidized care.</p>
             </div>
             <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-              <span className="text-teal-700 font-bold text-xs">2. LAICO</span>
+              <span className="text-teal-700 font-bold text-xs">2. Training and capacity building</span>
               <p className="text-slate-600 mt-1">Capacity building consultancy training healthcare leaders in 100+ countries.</p>
             </div>
             <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">

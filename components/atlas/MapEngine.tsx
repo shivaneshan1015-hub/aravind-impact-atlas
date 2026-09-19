@@ -472,7 +472,7 @@ export function MapEngine({
         map.setLayoutProperty(
           "eyebank-flow-layer",
           "visibility",
-          isDistributedOnly ? "none" : "visible"
+          isDistributedOnly || isCollectedOnly ? "none" : "visible"
         );
         if (eyeBankCategoryFilter && eyeBankCategoryFilter !== "all") {
           map.setFilter("eyebank-flow-layer", ["==", ["get", "categoryId"], eyeBankCategoryFilter]);
@@ -841,10 +841,10 @@ export function MapEngine({
           const dotSize = `${Math.min(maxSize, Math.max(minSize, calculatedSize))}px`;
 
           el.innerHTML = `
-            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${placeName}: ${traineeCount} Trainees">
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-20" title="${placeName}: ${traineeCount} Fellows">
               <!-- Touch / Click / Hover Place Name & Count Label directly over Pin -->
               <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-1 rounded-lg shadow-xl border border-slate-300 whitespace-nowrap ${isSelected ? 'opacity-100 ring-2 ring-slate-900 scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} transition-all duration-150 pointer-events-none">
-                <span class="font-extrabold">${placeName}:</span> <span style="color: ${dotColor}" class="font-black">${traineeCount} Trainees</span>
+                <span class="font-extrabold">${placeName}:</span> <span style="color: ${dotColor}" class="font-black">${traineeCount} Fellows</span>
               </span>
 
               <!-- Training Programme Pin Marker Dot with matching Category Color -->

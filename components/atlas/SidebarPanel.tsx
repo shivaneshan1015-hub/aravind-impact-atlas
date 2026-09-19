@@ -429,10 +429,10 @@ export function SidebarPanel({
                 <div>
                   <span className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
                     <Users className="w-4 h-4 text-slate-700" />
-                    <span>Staffs Directory</span>
+                    <span>Staffs directory</span>
                   </span>
                   <span className="text-[10px] text-slate-600 font-extrabold block mt-0.5">
-                    Aravind Workforce • <span className="font-bold underline decoration-slate-400/50">As of Sep 2026</span>
+                    Aravind Eye Hospital Workforce • <span className="font-bold underline decoration-slate-400/50">As of Sep 2026</span>
                   </span>
                 </div>
                 <span className="text-[10px] bg-slate-200 text-slate-900 px-2 py-0.5 rounded-full font-black">
@@ -552,7 +552,7 @@ export function SidebarPanel({
               <span className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
                 activeSubId === "capacity_building" ? "bg-white/20 text-white" : "bg-emerald-100 text-emerald-900"
               }`}>
-                399 Hospitals
+                {laicoCountryStats.grandTotalHospitals} Hospitals
               </span>
             </button>
 
@@ -637,8 +637,8 @@ export function SidebarPanel({
               <div className="space-y-1.5 pt-1">
                 {[
                   { id: "management_courses", name: "Management Courses", color: "#0D9488", desc: "Executive Leadership & Management", countBadge: "2,048 Alumni" },
-                  { id: "long_term_trainees", name: "Long Term Trainees", color: "#3B82F6", desc: "Clinical Fellowships", countBadge: "2,167 Fellows" },
-                  { id: "short_term_trainees", name: "Short Term Trainees", color: "#F59E0B", desc: "Specialized Clinical Training", countBadge: "1,759 Trainees" },
+                  { id: "long_term_trainees", name: "Long Term Fellows", color: "#3B82F6", desc: "Clinical Fellowships", countBadge: "2,167 Fellows" },
+                  { id: "short_term_trainees", name: "Short Term Fellows", color: "#F59E0B", desc: "Specialized Clinical Training", countBadge: "1,759 Fellows" },
                   { id: "post_graduates", name: "Post Graduates", color: "#8B5CF6", desc: "Residency & Specialization", countBadge: "1,136 Scholars" },
                   { id: "technicians", name: "Technicians", color: "#E11D48", desc: "Ophthalmic & Instrument Techs", countBadge: "512 Techs" },
                   { id: "paramedics", name: "Paramedics", color: "#06B6D4", desc: "Mid-level Personnel & Nursing", countBadge: "505 Paramedics" },

@@ -59,7 +59,7 @@ export const TRAINEE_CATEGORIES: Record<StaffCategory, StaffCategoryMeta> = {
   },
   doctors: {
     id: "doctors",
-    name: "Doctor Trainees",
+    name: "Doctor Fellows",
     count: 316,
     color: "#065F46", // Dark Forest Emerald
     bgLight: "bg-emerald-900 text-white border-emerald-800",
