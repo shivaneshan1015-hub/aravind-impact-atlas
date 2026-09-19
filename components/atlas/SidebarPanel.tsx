@@ -408,7 +408,7 @@ export function SidebarPanel({
                   }}
                   className={`py-1.5 px-0.5 rounded-lg text-[10px] font-extrabold flex flex-col items-center justify-center transition-all ${
                     patientFilter === "all"
-                      ? "bg-slate-900 text-white shadow-xs"
+                      ? "bg-[#0F172A] text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
                   title={`${PATIENT_COMBINED_TOTAL.toLocaleString()} Total Patients`}

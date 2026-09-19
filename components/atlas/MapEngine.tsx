@@ -617,7 +617,7 @@ export function MapEngine({
         // Free -> #064E3B (Dark Emerald Green)
         // Camp -> #78350F (Dark Burnt Amber)
         let dotColor = "#1E3A8A";
-        let categoryLabel = "Patients";
+        let categoryLabel = "Pay";
         if (activeFilter === "free" || loc.metadata?.isFreeDot) {
           dotColor = "#064E3B";
           categoryLabel = "Free";
@@ -628,7 +628,7 @@ export function MapEngine({
           dotColor = "#1E3A8A";
           categoryLabel = "Pay";
         } else {
-          dotColor = "#1E3A8A";
+          dotColor = "#0F172A";
           categoryLabel = "Total";
         }
 
@@ -1103,7 +1103,7 @@ export function MapEngine({
         const isIhmsLoc = loc.subcategoryId === "ihms";
         const isEyenotesLoc = loc.subcategoryId === "eyenotes";
         const isVcmsLoc = loc.subcategoryId === "vcms";
-        if (loc.type === "Patient Dot" || loc.subcategoryId === "patients") {
+        if (loc.type === "Patient Dot" || loc.type === "Patient Hub" || loc.subcategoryId === "patients") {
           const pay = ((loc.metadata?.payCount || 0) as number).toLocaleString();
           const free = ((loc.metadata?.freeCount || 0) as number).toLocaleString();
           const camp = ((loc.metadata?.campCount || 0) as number).toLocaleString();
