@@ -60,6 +60,7 @@ export function SceneProvider({ children }: { children: React.ReactNode }) {
 
     const resetInactivityTimer = () => {
       clearTimeout(timer);
+      if (!EXHIBITION_CONFIG.attractMode.enabled) return;
       // Only set attract timer if user is not already in attract scene
       if (currentScene !== "attract") {
         timer = setTimeout(() => {

@@ -2,24 +2,6 @@ import { GeoLocationItem } from "@/types/geo";
 
 export const LAICO_DATA: GeoLocationItem[] = [
   {
-    "id": "laico_hq",
-    "name": "LAICO Training & Management Headquarters",
-    "entityId": "laico",
-    "subcategoryId": "laico_participants",
-    "country": "India",
-    "state": "Tamil Nadu",
-    "city": "Madurai",
-    "latitude": 9.9252,
-    "longitude": 78.1198,
-    "metrics": {
-      "participantsCount": "14,500+",
-      "countriesRepresented": 104,
-      "partnerHospitals": 340
-    },
-    "address": "72, Kuruvikaran Salai, Madurai, Tamil Nadu 625020",
-    "establishedYear": 1992
-  },
-  {
     "id": "laico_cb_1",
     "name": "Karimnagar Capacity Partner",
     "entityId": "laico",

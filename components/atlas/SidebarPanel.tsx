@@ -560,17 +560,6 @@ export function SidebarPanel({
                   </span>
                 </div>
 
-                {/* Country Search Box */}
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Search country..."
-                    value={countrySearchQuery}
-                    onChange={(e) => setCountrySearchQuery(e.target.value)}
-                    className="w-full text-xs font-semibold px-2.5 py-1.5 rounded-xl border border-slate-300 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-600/50"
-                  />
-                </div>
-
                 {/* Country List & Counts */}
                 <div className="space-y-1 max-h-56 overflow-y-auto pr-1">
                   {/* ALL Countries Option */}

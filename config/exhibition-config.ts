@@ -3,8 +3,8 @@ import { EntityId } from "@/types/entity";
 export const EXHIBITION_CONFIG = {
   // Attract Mode Exhibition Screen Saver Configuration
   attractMode: {
-    enabled: true,
-    idleTimeoutMs: 60000, // 60 seconds inactivity -> enter Attract Mode
+    enabled: false,
+    idleTimeoutMs: 999999999, // Inactivity screen transition disabled
     storyDurationMs: 8000, // 8 seconds per impact story reveal in attract loop
     loopSequence: [
       "hospitals",

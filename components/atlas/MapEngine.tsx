@@ -800,31 +800,9 @@ export function MapEngine({
           `;
         }
       } else if (loc.entityId === "laico") {
-        const isHq = loc.id === "laico_hq";
         const isCbDot = loc.subcategoryId === "capacity_building";
 
-        if (isHq) {
-          // 1. LAICO TRAINING & MANAGEMENT HEADQUARTERS AT MADURAI (Rich Dark Teal)
-          el.innerHTML = `
-            <div class="relative flex flex-col items-center justify-center pointer-events-auto group" title="${loc.name}">
-              ${
-                !hidePinLabels
-                  ? `<span class="mb-1 text-[11px] font-black text-white bg-teal-950/95 px-3 py-1 rounded-lg shadow-2xl border-2 border-teal-400 whitespace-nowrap tracking-wide flex items-center gap-1.5 transition-transform group-hover:scale-110">
-                       <span class="w-2 h-2 rounded-full bg-teal-300"></span>
-                       <span>LAICO Training HQ (Madurai)</span>
-                     </span>`
-                  : ""
-              }
-
-              <div class="w-8 h-8 rounded-full bg-teal-900 border-2 border-teal-300 shadow-2xl flex items-center justify-center relative overflow-hidden transition-all group-hover:scale-125">
-                <svg class="w-4.5 h-4.5 text-teal-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                  <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5" />
-                </svg>
-              </div>
-            </div>
-          `;
-        } else if (isCbDot) {
+        if (isCbDot) {
           // 2. CAPACITY BUILDING MENTORED HOSPITAL DOT (Dark Emerald Green #064E3B)
           const partnerCount = (loc.metadata?.partnerCount as number) || (loc.metrics?.hospitalCount as number) || 1;
           const distName = loc.city || (loc.metadata?.district as string) || loc.name;
