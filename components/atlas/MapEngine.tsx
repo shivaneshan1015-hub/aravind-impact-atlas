@@ -987,33 +987,11 @@ export function MapEngine({
           // 3. ONGOING Ph.D. SCHOLAR (Dark Pink #9D174D matching menu)
           const cityName = loc.city || loc.metadata?.city || loc.state;
           const count = (loc.metadata?.count as number) || 1;
-          const thesesList = (loc.metadata?.thesesList as string[]) || [loc.metadata?.thesisTitle || loc.name];
-
-          const countBadgeText = `${cityName} (${count})`;
-          const thesesHtml = thesesList
-            .map((t, idx) => `<div class="py-1 border-b border-slate-100 last:border-0 flex items-start gap-1"><span class="font-black text-[#9D174D] shrink-0 mr-0.5">${idx + 1}.</span><span class="leading-tight">${t}</span></div>`)
-            .join("");
 
           el.innerHTML = `
-            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-30" title="${countBadgeText}">
-              <!-- Touch / Hover Multi-Thesis Card over Pin -->
-              <div class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 p-2.5 rounded-xl shadow-2xl border-2 border-[#9D174D] max-w-xs text-left transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-[#9D174D] scale-105 pointer-events-auto' : 'opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none'} z-50 select-text">
-                <div class="font-black text-[#9D174D] border-b border-pink-200 pb-1 flex items-center justify-between gap-2">
-                  <span class="flex items-center gap-1 text-[11px]">
-                    <span class="w-2 h-2 rounded-full bg-[#9D174D]"></span>
-                    <span>${cityName}</span>
-                  </span>
-                  <span class="bg-pink-100 text-[#9D174D] px-1.5 py-0.5 rounded text-[9px] font-extrabold whitespace-nowrap">
-                    ${count} Ongoing
-                  </span>
-                </div>
-                <div class="text-[9.5px] text-slate-700 font-semibold max-h-44 overflow-y-auto mt-1.5 pr-1 space-y-0.5 leading-tight" style="overscroll-behavior: contain;">
-                  ${thesesHtml}
-                </div>
-              </div>
-
-              <!-- Visible City & Scholar Count Pill Badge over Pin (Clean without words ongoing/completed) -->
-              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-0.5 rounded-lg shadow-xl border border-pink-300 whitespace-nowrap flex items-center gap-1.5 transition-transform group-hover:scale-110 pointer-events-none">
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-30" title="${cityName}: ${count} Ongoing Ph.D. Scholar${count > 1 ? 's' : ''}">
+              <!-- City & Count Label Badge - Visible when clicked or hovered -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-0.5 rounded-lg shadow-xl border border-pink-300 whitespace-nowrap flex items-center gap-1.5 transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-[#9D174D] scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} pointer-events-none">
                 <span class="w-2 h-2 rounded-full bg-[#9D174D]"></span>
                 <span>${cityName}</span> <span class="text-[#9D174D] font-extrabold">(${count})</span>
               </span>
@@ -1028,33 +1006,11 @@ export function MapEngine({
           // 4. COMPLETED Ph.D. SCHOLAR (Dark Cyan #155E75 matching menu)
           const cityName = loc.city || loc.metadata?.city || loc.state;
           const count = (loc.metadata?.count as number) || 1;
-          const thesesList = (loc.metadata?.thesesList as string[]) || [loc.metadata?.thesisTitle || loc.name];
-
-          const countBadgeText = `${cityName} (${count})`;
-          const thesesHtml = thesesList
-            .map((t, idx) => `<div class="py-1 border-b border-slate-100 last:border-0 flex items-start gap-1"><span class="font-black text-[#155E75] shrink-0 mr-0.5">${idx + 1}.</span><span class="leading-tight">${t}</span></div>`)
-            .join("");
 
           el.innerHTML = `
-            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-30" title="${countBadgeText}">
-              <!-- Touch / Hover Multi-Thesis Card over Pin -->
-              <div class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 p-2.5 rounded-xl shadow-2xl border-2 border-[#155E75] max-w-xs text-left transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-[#155E75] scale-105 pointer-events-auto' : 'opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none'} z-50 select-text">
-                <div class="font-black text-[#155E75] border-b border-cyan-200 pb-1 flex items-center justify-between gap-2">
-                  <span class="flex items-center gap-1 text-[11px]">
-                    <span class="w-2 h-2 rounded-full bg-[#155E75]"></span>
-                    <span>${cityName}</span>
-                  </span>
-                  <span class="bg-cyan-100 text-[#155E75] px-1.5 py-0.5 rounded text-[9px] font-extrabold whitespace-nowrap">
-                    ${count} Completed
-                  </span>
-                </div>
-                <div class="text-[9.5px] text-slate-700 font-semibold max-h-44 overflow-y-auto mt-1.5 pr-1 space-y-0.5 leading-tight" style="overscroll-behavior: contain;">
-                  ${thesesHtml}
-                </div>
-              </div>
-
-              <!-- Visible City & Scholar Count Pill Badge over Pin (Clean without words ongoing/completed) -->
-              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-0.5 rounded-lg shadow-xl border border-cyan-300 whitespace-nowrap flex items-center gap-1.5 transition-transform group-hover:scale-110 pointer-events-none">
+            <div class="relative flex flex-col items-center justify-center pointer-events-auto group cursor-pointer z-30" title="${cityName}: ${count} Completed Ph.D. Scholar${count > 1 ? 's' : ''}">
+              <!-- City & Count Label Badge - Visible when clicked or hovered -->
+              <span class="mb-1 text-[10px] font-black text-slate-900 bg-white/95 px-2.5 py-0.5 rounded-lg shadow-xl border border-cyan-300 whitespace-nowrap flex items-center gap-1.5 transition-all duration-150 ${isSelected ? 'opacity-100 ring-2 ring-[#155E75] scale-105' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'} pointer-events-none">
                 <span class="w-2 h-2 rounded-full bg-[#155E75]"></span>
                 <span>${cityName}</span> <span class="text-[#155E75] font-extrabold">(${count})</span>
               </span>
