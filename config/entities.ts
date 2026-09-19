@@ -294,11 +294,11 @@ export const ENTITY_CONFIGS: Record<EntityId, EntityConfig> = {
       {
         id: "eyenotes",
         name: "Eyenotes",
-        tagline: "8970 patients are registered daily across 185 centres",
+        tagline: "28970 patients are registered daily across 209 centres",
         defaultScope: "world",
         primaryMetricKey: "eyenotesUsers",
         secondaryMetricKeys: ["emrRecords", "activeDoctors"],
-        legendTitle: "8970 patients are registered daily across 185 centres",
+        legendTitle: "28970 patients are registered daily across 209 centres",
       },
       {
         id: "vcms",

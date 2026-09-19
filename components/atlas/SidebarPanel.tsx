@@ -876,7 +876,7 @@ export function SidebarPanel({
             </div>
             {[
               { id: "ihms", name: "IHMS", desc: "154 Global Deployments across 12 Nations" },
-              { id: "eyenotes", name: "Eyenotes", desc: "8970 patients are registered daily across 185 centres" },
+              { id: "eyenotes", name: "Eyenotes", desc: "28970 patients are registered daily across 209 centres" },
               { id: "vcms", name: "VCMS", desc: "398 Vision Centres across Bangladesh, India & Nepal" },
             ].map((m) => {
               const isSelected = activeSubId === m.id;
