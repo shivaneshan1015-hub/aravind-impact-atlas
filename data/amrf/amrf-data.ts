@@ -56,7 +56,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Vellore",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -105,7 +105,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Madurai",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -135,7 +135,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Karur",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -165,7 +165,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Karnataka",
           "state": "Karnataka",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -195,7 +195,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Sattur",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -226,7 +226,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Dindigul",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -256,7 +256,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Tenkasi",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -286,7 +286,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Luknow",
           "state": "Uttar Pradesh",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -316,7 +316,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Bihar",
           "state": "Bihar",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -346,7 +346,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Chapra",
           "state": "Bihar",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -376,7 +376,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Tenali",
           "state": "Andhra Pradesh",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -406,7 +406,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Kerala",
           "state": "Kerala",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -436,7 +436,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Assam",
           "state": "Assam",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -466,7 +466,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Kovilpatti",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -496,7 +496,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "New Delhi",
           "state": "New Delhi",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -526,7 +526,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Trichy",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -556,7 +556,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Kashmir",
           "state": "Kashmir",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -586,7 +586,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Karaikudi",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -617,7 +617,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Tamil Nadu",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -647,7 +647,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Aruppukkottai",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -677,7 +677,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Rajapalayam",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -707,7 +707,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Coimbatore",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -737,7 +737,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Sivakasi",
           "state": "Tamil Nadu",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -767,7 +767,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Kolkatta",
           "state": "West Bengal",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -797,7 +797,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Andhra Pradesh",
           "state": "Andhra Pradesh",
-          "color": "#0891B2"
+          "color": "#155E75"
       }
   },
   {
@@ -827,7 +827,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Nagapattnam",
           "state": "Tamil Nadu",
-          "color": "#DB2777"
+          "color": "#9D174D"
       }
   },
   {
@@ -857,7 +857,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Kannur",
           "state": "Kerala",
-          "color": "#DB2777"
+          "color": "#9D174D"
       }
   },
   {
@@ -890,7 +890,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Madurai",
           "state": "Tamil Nadu",
-          "color": "#DB2777"
+          "color": "#9D174D"
       }
   },
   {
@@ -920,7 +920,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Kollam",
           "state": "Kerala",
-          "color": "#DB2777"
+          "color": "#9D174D"
       }
   },
   {
@@ -950,7 +950,7 @@ export const AMRF_DATA: GeoLocationItem[] = [
           ],
           "city": "Dindugal",
           "state": "Tamil Nadu",
-          "color": "#DB2777"
+          "color": "#9D174D"
       }
   },
   {

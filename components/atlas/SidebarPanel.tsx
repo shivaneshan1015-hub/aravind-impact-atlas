@@ -698,7 +698,7 @@ export function SidebarPanel({
                 </span>
               </div>
 
-              {/* Status Switcher: Completed (46) vs Ongoing (8) */}
+              {/* Status Switcher: Completed (46) vs Ongoing (8) with matching Dark Pin colors */}
               <div className="grid grid-cols-2 gap-1.5 p-1 bg-slate-200/60 rounded-xl">
                 <button
                   onClick={() => {
@@ -706,11 +706,11 @@ export function SidebarPanel({
                   }}
                   className={`py-2 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1.5 transition-all ${
                     activeSubId === "doctorate" || activeSubId === "phd_completed"
-                      ? "bg-cyan-600 text-white shadow-xs"
+                      ? "bg-[#155E75] text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
                 >
-                  <span className="w-2 h-2 rounded-full bg-cyan-300 inline-block" />
+                  <span className="w-2 h-2 rounded-full bg-[#38BDF8] inline-block" />
                   <span>Completed (46)</span>
                 </button>
                 <button
@@ -719,11 +719,11 @@ export function SidebarPanel({
                   }}
                   className={`py-2 px-2 rounded-lg text-xs font-extrabold flex items-center justify-center gap-1.5 transition-all ${
                     activeSubId === "ongoing_phd"
-                      ? "bg-pink-600 text-white shadow-xs"
+                      ? "bg-[#9D174D] text-white shadow-xs"
                       : "text-slate-700 hover:bg-slate-300/50"
                   }`}
                 >
-                  <span className="w-2 h-2 rounded-full bg-pink-300 inline-block" />
+                  <span className="w-2 h-2 rounded-full bg-[#F472B6] inline-block" />
                   <span>Ongoing (8)</span>
                 </button>
               </div>
