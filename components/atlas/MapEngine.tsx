@@ -107,6 +107,11 @@ export function MapEngine({
       ? "flow"
       : "footprint";
 
+  const onClearLocationRef = useRef(onClearLocation);
+  useEffect(() => {
+    onClearLocationRef.current = onClearLocation;
+  }, [onClearLocation]);
+
   // Initialize MapLibre GL map instance
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current) return;
@@ -422,7 +427,7 @@ export function MapEngine({
           popupRef.current.remove();
           popupRef.current = null;
         }
-        onClearLocation();
+        onClearLocationRef.current?.();
       }
     });
 
@@ -432,7 +437,7 @@ export function MapEngine({
       map.remove();
       mapRef.current = null;
     };
-  }, [onClearLocation]);
+  }, []);
 
   // Toggle Vector Grammar Layers
   useEffect(() => {

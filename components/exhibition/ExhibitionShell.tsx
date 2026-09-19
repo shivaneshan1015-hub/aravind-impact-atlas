@@ -187,6 +187,10 @@ export function ExhibitionShell() {
     return filteredLocations.filter((l) => l.state === selectedState);
   }, [filteredLocations, selectedState]);
 
+  const handleClearLocation = React.useCallback(() => {
+    selectLocation(null);
+  }, [selectLocation]);
+
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-[#0F172A] font-sans antialiased text-slate-100 flex flex-col">
       {/* Scene Overlays */}
@@ -240,7 +244,7 @@ export function ExhibitionShell() {
               selectedSubcategoryId={selectedSubcategoryId}
               onSelectState={handleSelectStateWithInterruption}
               onSelectLocation={handleSelectLocationWithInterruption}
-              onClearLocation={() => selectLocation(null)}
+              onClearLocation={handleClearLocation}
               careTypeFilter={careTypeFilter}
               visionCentreHubFilter={visionCentreHubFilter}
               eyeBankCategoryFilter={eyeBankCategoryFilter}
