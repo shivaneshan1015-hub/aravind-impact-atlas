@@ -450,7 +450,7 @@ export const TRAINEE_DISTRICT_RECORDS: TraineeDistrictRecord[] = [
   { district: "Jalgaon", admin: 0, doctors: 2, post_graduates: 0, aop: 0, support: 0 },
   { district: "Jalna", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
   { district: "K.V.Rangareddy", admin: 0, doctors: 2, post_graduates: 0, aop: 0, support: 0 },
-  { district: "KALLAKURICHI", admin: 0, doctors: 0, post_graduates: 0, aop: 1, support: 0 },
+  { district: "Kallakurichi", admin: 0, doctors: 0, post_graduates: 0, aop: 1, support: 0 },
   { district: "Kallakurichi", admin: 0, doctors: 0, post_graduates: 0, aop: 1, support: 0 },
   { district: "Kamrup", admin: 0, doctors: 1, post_graduates: 0, aop: 0, support: 0 },
   { district: "Kanchipuram", admin: 5, doctors: 5, post_graduates: 6, aop: 17, support: 0 },
